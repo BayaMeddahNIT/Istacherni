@@ -1,0 +1,321 @@
+[
+    {
+    "id": "penal_284",
+    "law_type": "قانون العقوبات (الجزائر)",
+    "article_number": 284,
+    "title": "التهديد (كتابي/رمزي) مع أمر بإيداع مال أو شرط",
+    "source": { "document": "الأمر 75-47", "date": "1975-06-17" },
+    "definition": "تهديد بالاغتيال أو الحبس أو أي اعتداء على الأشخاص (يعاقب عليه بالإعدام أو السجن المؤبد) يتم عبر كتابة مجهولة/موقعة أو صورة/رمز/شعار، إذا كان مصحوبًا بأمر بإيداع مبلغ مالي أو تنفيذ شرط آخر.",
+    "conditions": [
+        "التهديد بكتابة (مجهولة أو موقعة) أو بصورة/رمز/شعار",
+        "موضوع التهديد: اغتيال/حبس/اعتداء جسيم على الأشخاص",
+        "التهديد مصحوب بأمر بإيداع مبلغ أو تنفيذ شرط"
+    ],
+    "penalties": {
+        "imprisonment": { "min_years": 2, "max_years": 10 },
+        "fine": { "min_dzd": 500, "max_dzd": 5000 }
+    },
+    "additional_penalties": {
+        "rights_deprivation_article_14": { "min_years": 1, "max_years": 5 },
+        "ban_of_residence": { "min_years": 1, "max_years": 5 }
+    },
+    "related_articles": [14, 285, 286, 287],
+    "language": "ar"
+    },
+    {
+    "id": "penal_285",
+    "law_type": "قانون العقوبات (الجزائر)",
+    "article_number": 285,
+    "title": "التهديد بدون أمر أو شرط",
+    "source": { "document": "الأمر 75-47", "date": "1975-06-17" },
+    "definition": "تهديد من نوع المادة 284 دون أن يكون مصحوبًا بأي أمر أو شرط.",
+    "conditions": [
+        "وجود تهديد من نوع المادة 284",
+        "عدم وجود أمر/شرط مصاحب"
+    ],
+    "penalties": {
+        "imprisonment": { "min_years": 1, "max_years": 3 },
+        "fine": { "min_dzd": 500, "max_dzd": 2500 }
+    },
+    "additional_penalties": {
+        "ban_of_residence": { "min_years": 1, "max_years": 5 }
+    },
+    "related_articles": [284, 286],
+    "language": "ar"
+    },
+    {
+    "id": "penal_286",
+    "law_type": "قانون العقوبات (الجزائر)",
+    "article_number": 286,
+    "title": "التهديد الشفهي المصحوب بأمر أو شرط",
+    "source": { "document": "قانون العقوبات", "date": null },
+    "definition": "إذا كانت التهديدات المصحوبة بأمر أو تحت شرط قد تمت شفهيًا.",
+    "conditions": [
+        "التهديد شفهي",
+        "التهديد مع أمر أو تحت شرط"
+    ],
+    "penalties": {
+        "imprisonment": { "min_months": 6, "max_months": 24 },
+        "fine": { "min_dzd": 500, "max_dzd": 1500 }
+    },
+    "additional_penalties": {
+        "ban_of_residence": { "min_years": 1, "max_years": 5 }
+    },
+    "related_articles": [284, 285, 287],
+    "language": "ar"
+    },
+    {
+    "id": "penal_287",
+    "law_type": "قانون العقوبات (الجزائر)",
+    "article_number": 287,
+    "title": "تهديد بارتكاب عنف/اعتداءات (غير 284) مع أمر أو شرط",
+    "source": { "document": "القانون 82-04", "date": "1982-02-13" },
+    "definition": "التهديد بوسيلة من وسائل المواد 284 إلى 286 بارتكاب عنف/اعتداءات غير المنصوص عليها في المادة 284، إذا كان التهديد مع أمر أو تحت شرط.",
+        "conditions": [
+        "التهديد تم بوسيلة من وسائل المواد 284 إلى 286",
+        "موضوع التهديد: عنف/اعتداءات غير المنصوص عليها في المادة 284",
+        "التهديد مصحوب بأمر أو تحت شرط"
+    ],
+        "penalties": {
+        "imprisonment": { "min_months": 3, "max_months": 12 },
+        "fine": { "min_dzd": 500, "max_dzd": 1000 }
+    },
+    "related_articles": [284, 285, 286],
+    "language": "ar"
+    },
+    {
+
+
+
+    "id": "penal_350",
+    "law_type": "قانون العقوبات (الجزائر)",
+    "article_number": 350,
+    "title": "السرقة (تعريف + عقوبة + الشروع + تحويل الماء/الغاز/الكهرباء)",
+    "source": { "document": "القانون 82-04", "date": "1982-02-13" },
+    "definition": "كل من يختلس احتيالًا شيئًا لا يملكه يعد مرتكبًا للسرقة، والشروع يعاقب بنفس العقوبة، وتمتد نفس العقوبات لتحويل الماء أو الغاز أو الكهرباء.",
+    "conditions": [
+        "اختلاس شيء لا يملكه الفاعل",
+        "طبيعة الفعل احتيالية/غير مشروعة",
+        "الشروع يعاقب كالفعل التام"
+    ],
+    "penalties": {
+        "imprisonment": { "min_years": 1, "max_years": 5 },
+        "fine": { "min_dzd": 500, "max_dzd": 20000 }
+    },
+    "additional_penalties": {
+        "rights_deprivation_article_14": { "min_years": 1, "max_years": 5 },
+        "ban_of_residence": { "min_years": 1, "max_years": 5 }
+    },
+    "related_articles": [14, 351],
+    "language": "ar"
+    },
+    {
+
+
+
+    "id": "penal_351",
+    "law_type": "قانون العقوبات (الجزائر)",
+    "article_number": 351,
+    "title": "السرقة مع حمل سلاح (عقوبة الإعدام)",
+    "source": { "document": "الأمر 75-47", "date": "1975-06-17" },
+    "definition": "تعاقب السرقة بالإعدام إذا كان السارق أو أحدهم حاملًا لسلاح ظاهر أو مخفي، حتى لو تمت من شخص واحد ودون ظروف مشددة أخرى.",
+    "conditions": [
+        "وقوع سرقة",
+        "حمل سلاح ظاهر أو مخفي من أحد الجناة"
+    ],
+    "penalties": {
+        "death_penalty": true
+    },
+    "related_articles": [350],
+    "language": "ar"
+    },
+    {
+
+
+
+
+    "id": "penal_372",
+    "law_type": "قانون العقوبات (الجزائر)",
+    "article_number": 372,
+    "title": "النصب/الاحتيال (Escroquerie) والشروع",
+    "source": { "document": "قانون العقوبات", "date": null },
+    "definition": "الحصول أو محاولة الحصول على أموال/منقولات/سندات… باستعمال اسم كاذب أو صفة كاذبة أو مناورات احتيالية لإيهام الغير بوجود مشاريع أو سلطة أو ائتمان وهمي أو لإثارة الأمل/الخوف بشأن حدث خيالي.",
+    "conditions": [
+        "استعمال اسم كاذب أو صفة كاذبة أو مناورات احتيالية",
+        "تسلم/استلام أو محاولة تسلم أموال أو أشياء أو سندات…",
+        "الاستيلاء/محاولة الاستيلاء على كل أو جزء من مال الغير"
+    ],
+    "penalties": {
+        "imprisonment": { "min_years": 1, "max_years": 5 },
+        "fine": { "min_dzd": 500, "max_dzd": 20000 }
+    },
+    "related_articles": [373],
+    "language": "ar"
+    },
+    {
+    "id": "penal_296",
+    "law_type": "قانون العقوبات (الجزائر)",
+    "article_number": 296,
+    "title": "تعريف القذف/التشهير (Diffamation)",
+    "source": { "document": "قانون العقوبات", "date": null },
+    "definition": "كل ادعاء أو إسناد لواقعة تمس الشرف أو الاعتبار يُعد قذفًا/تشهيرًا، ويعاقب نشره حتى لو كان بصيغة الشك أو دون تسمية صريحة متى أمكن التعرف على المقصود.",
+    "conditions": [
+        "إسناد واقعة تمس الشرف أو الاعتبار",
+        "تحقق النشر/الإشهار"
+    ],
+    "penalties": null,
+    "related_articles": [298],
+    "language": "ar"
+    },
+    {
+    "id": "penal_297",
+    "law_type": "قانون العقوبات (الجزائر)",
+    "article_number": 297,
+    "title": "تعريف السب/الشتم (Injure)",
+    "source": { "document": "قانون العقوبات", "date": null },
+    "definition": "كل تعبير مهين أو لفظ ازدراء أو شتيمة لا تتضمن إسناد واقعة محددة يُعد سبًا/شتمًا.",
+    "conditions": [
+        "تعبير مهين/ازدراء/سباب",
+        "بدون إسناد واقعة"
+    ],
+    "penalties": null,
+    "related_articles": [298, 298.1, 299],
+    "language": "ar"
+    },
+    {
+    "id": "penal_298",
+    "law_type": "قانون العقوبات (الجزائر)",
+    "article_number": 298,
+    "title": "عقوبة القذف/التشهير",
+    "source": { "document": "القانون 01-09", "date": "2001-06-26" },
+    "definition": "يعاقب القذف/التشهير إذا وقع على الأفراد، وتشدد العقوبة إذا استهدف جماعة إثنية/فلسفية أو ديانة بهدف التحريض على الكراهية.",
+    "penalties": {
+        "diffamation_against_individuals": {
+            "imprisonment": { "min_days": 5, "max_months": 6 },
+            "fine": { "min_dzd": 5000, "max_dzd": 50000 },
+            "alternative": "أو إحدى العقوبتين فقط"
+        },
+        "diffamation_against_group_incitement": {
+            "imprisonment": { "min_months": 1, "max_years": 1 },
+            "fine": { "min_dzd": 10000, "max_dzd": 100000 },
+            "alternative": "أو إحدى العقوبتين فقط"
+        }
+    },
+    "related_articles": [296],
+    "language": "ar"
+    },
+    {
+    "id": "penal_298bis",
+    "law_type": "قانون العقوبات (الجزائر)",
+    "article_number": 298.1,
+    "title": "عقوبة السب/الشتم ضد جماعة (ethnique/philosophique/religion)",
+    "source": { "document": "القانون 01-09", "date": "2001-06-26" },
+    "definition": "السب/الشتم تجاه شخص/أشخاص ينتمون إلى جماعة إثنية أو فلسفية أو ديانة معينة.",
+    "penalties": {
+        "imprisonment": { "min_days": 5, "max_months": 6 },
+        "fine": { "min_dzd": 5000, "max_dzd": 50000 },
+        "alternative": "أو إحدى العقوبتين فقط"
+    },
+    "related_articles": [297],
+    "language": "ar"
+    },
+    {
+    "id": "penal_299",
+    "law_type": "قانون العقوبات (الجزائر)",
+    "article_number": 299,
+    "title": "عقوبة السب/الشتم ضد الأشخاص",
+    "source": { "document": "القانون 01-09", "date": "2001-06-26" },
+    "definition": "السب/الشتم الموجه إلى شخص أو عدة أشخاص.",
+    "penalties": {
+        "imprisonment": { "min_days": 6, "max_months": 3 },
+        "fine": { "min_dzd": 5000, "max_dzd": 50000 },
+        "alternative": "أو إحدى العقوبتين فقط"
+    },
+    "related_articles": [297],
+    "language": "ar"
+    },
+    {
+
+
+
+
+
+    "id": "penal_264",
+    "law_type": "قانون العقوبات (الجزائر)",
+    "article_number": 264,
+    "title": "العنف العمدي المسبب لعجز يفوق 15 يومًا (وتدرج التشديد)",
+    "source": { "document": "القانون 82-04", "date": "1982-02-13" },
+    "definition": "كل من أحدث عمدًا جروحًا أو ضربًا أو أي عنف/تعدٍّ، فإذا نتج مرض أو عجز كلي عن العمل لأكثر من 15 يومًا عوقب. وتُشدَّد العقوبة إذا نتجت عاهة دائمة أو إذا ترتبت الوفاة دون نية القتل.",
+    "conditions": [
+        "فعل عمدي: جروح/ضرب/عنف/تعدٍّ",
+        "النتيجة: مرض أو عجز كلي عن العمل لأكثر من 15 يومًا"
+    ],
+    "penalties": {
+        "base": {
+            "imprisonment": { "min_months": 2, "max_years": 5 },
+            "fine": { "min_dzd": 500, "max_dzd": 10000 }
+        },
+        "if_permanent_disability": {
+            "reclusion": { "min_years": 5, "max_years": 10 }
+        },
+        "if_death_without_intent": {
+            "reclusion": { "min_years": 10, "max_years": 20 }
+        }
+    },
+    "additional_penalties": {
+        "rights_deprivation_article_14": { "min_years": 1, "max_years": 5 }
+    },
+    "related_articles": [14, 265, 266],
+    "language": "ar"
+    },
+    {
+
+
+
+
+    "id": "penal_265",
+    "law_type": "قانون العقوبات (الجزائر)",
+    "article_number": 265,
+    "title": "تشديد عقوبة العنف عند سبق الإصرار أو الترصد",
+    "source": { "document": "قانون العقوبات", "date": null },
+    "definition": "إذا وُجد سبق الإصرار أو الترصد تُشدَّد العقوبات وفق نتائج العنف المذكورة في المادة 264.",
+    "conditions": [
+        "سبق الإصرار أو الترصد",
+        "وقوع عنف من نوع المادة 264"
+    ],
+    "penalties": {
+        "if_death_results": { "reclusion_perpetuity": true },
+        "if_permanent_disability_results": { "reclusion": { "min_years": 10, "max_years": 20 } },
+        "if_base_case_of_264": { "reclusion": { "min_years": 5, "max_years": 10 } }
+    },
+    "related_articles": [264, 266],
+    "language": "ar"
+    },
+    {
+
+
+
+        
+    "id": "penal_266",
+    "law_type": "قانون العقوبات (الجزائر)",
+    "article_number": 266,
+    "title": "عنف بعجز ≤ 15 يومًا مع سبق الإصرار/الترصد أو حمل سلاح",
+    "source": { "document": "القانون 82-04", "date": "1982-02-13" },
+    "definition": "إذا لم تتجاوز مدة العجز 15 يومًا لكن العنف وقع مع سبق الإصرار أو الترصد أو حمل سلاح، يعاقب الفاعل بعقوبة جنحية مع إمكانية المصادرة.",
+    "conditions": [
+        "عنف عمدي",
+        "العجز الكلي عن العمل لا يتجاوز 15 يومًا",
+        "وجود ظرف: سبق الإصرار أو الترصد أو حمل سلاح"
+    ],
+    "penalties": {
+        "imprisonment": { "min_months": 2, "max_years": 5 },
+        "fine": { "min_dzd": 500, "max_dzd": 10000 }
+    },
+    "additional_penalties": {
+        "confiscation_possible": true,
+        "confiscation_note": "تجوز مصادرة الأشياء التي استعملت أو كان يُفترض استعمالها، مع مراعاة حقوق الغير حسن النية."
+    },
+    "related_articles": [264, 265],
+    "language": "ar"
+    }
+]

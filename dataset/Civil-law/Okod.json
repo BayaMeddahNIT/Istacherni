@@ -1,0 +1,1474 @@
+[
+    {
+        "id": "DZ_CIVIL_ART_54",
+        "country": "Algeria",
+        "law_domain": "Civil Law",
+        "law_name": "القانون المدني",
+        "book": "الكتاب الثاني: الالتزامات والعقود",
+        "title": "تعريف العقد",
+        "article_number": 54,
+        "classification": {
+        "main_category": "الالتزامات والعقود",
+        "sub_category": "نظرية العقد",
+        "section": "تعريف العقد"
+        },
+        "text": {
+        "original": "المادة 54 : (معدلة) العقد اتفاق يلتزم بموجبه شخص أو عدة أشخاص نحو شخص أو عدة أشخاص آخرين بمنح أو فعل أو عدم فعل شيء ما.",
+        "language": "ar"
+        },
+        "keywords": [
+        "العقد",
+        "الاتفاق",
+        "الالتزام",
+        "منح",
+        "فعل",
+        "عدم فعل"
+        ],
+        "legal_type": "تعريفية",
+        "norm_type": "يجوز الاتفاق على خلافها",
+        "relations": {
+        "related_articles": [55, 56, 57, 58],
+        "derived_from": null,
+        "amended_by": "القانون رقم 05-10 المؤرخ في 20 يونيو 2005",
+        "repeals": null
+        },
+        "source": {
+        "document": "القانون المدني الجزائري",
+        "year": 2007,
+        "publisher": "الجريدة الرسمية"
+        },
+        "versioning": {
+        "status": "ساري",
+        "version": "v1.0",
+        "last_update": "2007-05-13"
+        }
+    },
+    {
+        "id": "DZ_CIVIL_ART_55",
+        "country": "Algeria",
+        "law_domain": "Civil Law",
+        "law_name": "القانون المدني",
+        "book": "الكتاب الثاني: الالتزامات والعقود",
+        "title": "العقد الملزم للجانبين",
+        "article_number": 55,
+        "classification": {
+        "main_category": "الالتزامات والعقود",
+        "sub_category": "نظرية العقد",
+        "section": "العقد الملزم للجانبين"
+        },
+        "text": {
+        "original": "المادة 55 : يكون العقد ملزما للطرفين، متى تبادل المتعاقدان الالتزام بعضهما بعضا.",
+        "language": "ar"
+        },
+        "keywords": [
+        "العقد الملزم للجانبين",
+        "الالتزام المتبادل",
+        "الطرفان"
+        ],
+        "legal_type": "تنظيمية",
+        "norm_type": "يجوز الاتفاق على خلافها",
+        "relations": {
+        "related_articles": [54, 56, 57, 58],
+        "derived_from": null,
+        "amended_by": null,
+        "repeals": null
+        },
+        "source": {
+        "document": "القانون المدني الجزائري",
+        "year": 2007,
+        "publisher": "الجريدة الرسمية"
+        },
+        "versioning": {
+        "status": "ساري",
+        "version": "v1.0",
+        "last_update": "2007-05-13"
+        }
+    },
+    {
+        "id": "DZ_CIVIL_ART_56",
+        "country": "Algeria",
+        "law_domain": "Civil Law",
+        "law_name": "القانون المدني",
+        "book": "الكتاب الثاني: الالتزامات والعقود",
+        "title": "العقد الملزم لجانب واحد",
+        "article_number": 56,
+        "classification": {
+        "main_category": "الالتزامات والعقود",
+        "sub_category": "نظرية العقد",
+        "section": "العقد الملزم لجانب واحد"
+        },
+        "text": {
+        "original": "المادة 56 : يكون العقد ملزما لشخص، أو لعدة أشخاص، إذا تعاقد فيه شخص نحو شخص، أو عدة أشخاص آخرين دون التزام من هؤلاء الآخرين.",
+        "language": "ar"
+        },
+        "keywords": [
+        "العقد الملزم لجانب واحد",
+        "الالتزام من جانب واحد",
+        "عدم التبادل"
+        ],
+        "legal_type": "تنظيمية",
+        "norm_type": "يجوز الاتفاق على خلافها",
+        "relations": {
+        "related_articles": [54, 55, 57, 58],
+        "derived_from": null,
+        "amended_by": null,
+        "repeals": null
+        },
+        "source": {
+        "document": "القانون المدني الجزائري",
+        "year": 2007,
+        "publisher": "الجريدة الرسمية"
+        },
+        "versioning": {
+        "status": "ساري",
+        "version": "v1.0",
+        "last_update": "2007-05-13"
+        }
+    },
+    {
+        "id": "DZ_CIVIL_ART_57",
+        "country": "Algeria",
+        "law_domain": "Civil Law",
+        "law_name": "القانون المدني",
+        "book": "الكتاب الثاني: الالتزامات والعقود",
+        "title": "العقد التبادلي وعقد الغرر",
+        "article_number": 57,
+        "classification": {
+        "main_category": "الالتزامات والعقود",
+        "sub_category": "نظرية العقد",
+        "section": "العقد التبادلي وعقد الغرر"
+        },
+        "text": {
+        "original": "المادة 57 : يكون العقد تبادليا متى التزم أحد الطرفين بمنح، أو فعل شيء، يعتبر معادلا لما يمنح، أو يفعل له. إذا كان الشيء المعادل محتويا على حظ ربح، أو خسارة لكل واحد من الطرفين على حسب حادث غير محقق فإن العقد يعتبر عقد غرر.",
+        "language": "ar"
+        },
+        "keywords": [
+        "العقد التبادلي",
+        "عقد الغرر",
+        "المقابل",
+        "الربح",
+        "الخسارة"
+        ],
+        "legal_type": "تنظيمية",
+        "norm_type": "يجوز الاتفاق على خلافها",
+        "relations": {
+        "related_articles": [54, 55, 56, 58],
+        "derived_from": null,
+        "amended_by": null,
+        "repeals": null
+        },
+        "source": {
+        "document": "القانون المدني الجزائري",
+        "year": 2007,
+        "publisher": "الجريدة الرسمية"
+        },
+        "versioning": {
+        "status": "ساري",
+        "version": "v1.0",
+        "last_update": "2007-05-13"
+        }
+    },
+    {
+        "id": "DZ_CIVIL_ART_58",
+        "country": "Algeria",
+        "law_domain": "Civil Law",
+        "law_name": "القانون المدني",
+        "book": "الكتاب الثاني: الالتزامات والعقود",
+        "title": "العقد بعوض",
+        "article_number": 58,
+        "classification": {
+        "main_category": "الالتزامات والعقود",
+        "sub_category": "نظرية العقد",
+        "section": "العقد بعوض"
+        },
+        "text": {
+        "original": "المادة 58 : العقد بعوض هو الذي يلزم كل واحد من الطرفين إعطاء، أو فعل شيء ما.",
+        "language": "ar"
+        },
+        "keywords": [
+        "العقد بعوض",
+        "المقابل",
+        "الالتزامات المتبادلة"
+        ],
+        "legal_type": "تصنيفية",
+        "norm_type": "يجوز الاتفاق على خلافها",
+        "relations": {
+        "related_articles": [54, 55, 56, 57],
+        "derived_from": null,
+        "amended_by": null,
+        "repeals": null
+        },
+        "source": {
+        "document": "القانون المدني الجزائري",
+        "year": 2007,
+        "publisher": "الجريدة الرسمية"
+        },
+        "versioning": {
+        "status": "ساري",
+        "version": "v1.0",
+        "last_update": "2007-05-13"
+        }
+    },
+    {
+        "id": "DZ_CIVIL_ART_59",
+        "country": "Algeria",
+        "law_domain": "Civil Law",
+        "law_name": "القانون المدني",
+        "book": "الكتاب الثاني: الالتزامات والعقود",
+        "title": "انعقاد العقد بتطابق الإرادتين",
+        "article_number": 59,
+        "classification": {
+        "main_category": "الالتزامات والعقود",
+        "sub_category": "نظرية العقد",
+        "section": "الرضا – الإيجاب والقبول"
+        },
+        "text": {
+        "original": "المادة 59 : يتم العقد بمجرد أن يتبادل الطرفان التعبير عن إرادتهما المتطابقتين دون الإخلال بالنصوص القانونية.",
+        "language": "ar"
+        },
+        "keywords": [
+        "انعقاد العقد",
+        "تطابق الإرادتين",
+        "الرضا"
+        ],
+        "legal_type": "تنظيمية",
+        "norm_type": "لا يجوز الاتفاق على خلافها",
+        "relations": {
+        "related_articles": [60, 61, 66],
+        "derived_from": null,
+        "amended_by": null,
+        "repeals": null
+        },
+        "source": {
+        "document": "القانون المدني الجزائري",
+        "year": 2007,
+        "publisher": "الجريدة الرسمية"
+        },
+        "versioning": {
+        "status": "ساري",
+        "version": "v1.0",
+        "last_update": "2007-05-13"
+        }
+    },
+    {
+        "id": "DZ_CIVIL_ART_60",
+        "country": "Algeria",
+        "law_domain": "Civil Law",
+        "law_name": "القانون المدني",
+        "book": "الكتاب الثاني: الالتزامات والعقود",
+        "title": "طرق التعبير عن الإرادة",
+        "article_number": 60,
+        "classification": {
+        "main_category": "الالتزامات والعقود",
+        "sub_category": "نظرية العقد",
+        "section": "الرضا – الإيجاب والقبول"
+        },
+        "text": {
+        "original": "المادة 60 : التعبير عن الإرادة يكون باللفظ وبالكتابة، أو بالإشارة المتداولة عرفا كما يكون باتخاذ موقف لا يدع أي شك في دلالته على مقصود صاحبه. ويجوز أن يكون التعبير عن الإرادة ضمنيا إذا لم ينص القانون أو يتفق الطرفان على أن يكون صريحا.",
+        "language": "ar"
+        },
+        "keywords": [
+        "التعبير عن الإرادة",
+        "اللفظ",
+        "الكتابة",
+        "الإشارة",
+        "التعبير الضمني"
+        ],
+        "legal_type": "تنظيمية",
+        "norm_type": "يجوز الاتفاق على خلافها",
+        "relations": {
+        "related_articles": [59, 61, 68],
+        "derived_from": null,
+        "amended_by": null,
+        "repeals": null
+        },
+        "source": {
+        "document": "القانون المدني الجزائري",
+        "year": 2007,
+        "publisher": "الجريدة الرسمية"
+        },
+        "versioning": {
+        "status": "ساري",
+        "version": "v1.0",
+        "last_update": "2007-05-13"
+        }
+    },
+    {
+        "id": "DZ_CIVIL_ART_61",
+        "country": "Algeria",
+        "law_domain": "Civil Law",
+        "law_name": "القانون المدني",
+        "book": "الكتاب الثاني: الالتزامات والعقود",
+        "title": "وقت إنتاج التعبير عن الإرادة لأثره",
+        "article_number": 61,
+        "classification": {
+        "main_category": "الالتزامات والعقود",
+        "sub_category": "نظرية العقد",
+        "section": "الرضا – الإيجاب والقبول"
+        },
+        "text": {
+        "original": "المادة 61 : ينتج التعبير عن الإرادة أثره في الوقت الذي يتصل فيه، بعلم من وجه إليه، ويعتبر وصول التعبير قرينة على العلم به ما لم يقم الدليل على عكس ذلك.",
+        "language": "ar"
+        },
+        "keywords": [
+        "التعبير عن الإرادة",
+        "اتصال الإرادة",
+        "قرينة العلم",
+        "وقت الأثر"
+        ],
+        "legal_type": "تنظيمية",
+        "norm_type": "لا يجوز الاتفاق على خلافها",
+        "relations": {
+        "related_articles": [59, 60, 67],
+        "derived_from": null,
+        "amended_by": null,
+        "repeals": null
+        },
+        "source": {
+        "document": "القانون المدني الجزائري",
+        "year": 2007,
+        "publisher": "الجريدة الرسمية"
+        },
+        "versioning": {
+        "status": "ساري",
+        "version": "v1.0",
+        "last_update": "2007-05-13"
+        }
+    },
+    {
+        "id": "DZ_CIVIL_ART_62",
+        "country": "Algeria",
+        "law_domain": "Civil Law",
+        "law_name": "القانون المدني",
+        "book": "الكتاب الثاني: الالتزامات والعقود",
+        "title": "أثر وفاة المعبِّر أو فقد أهليته",
+        "article_number": 62,
+        "classification": {
+        "main_category": "الالتزامات والعقود",
+        "sub_category": "نظرية العقد",
+        "section": "الرضا – الإيجاب والقبول"
+        },
+        "text": {
+        "original": "المادة 62 : إذا مات من صدر منه التعبير عن الإرادة أو فقد أهليته قبل أن ينتج التعبير أثره، فإن ذلك لا يمنع من ترتب هذا الأثر عند اتصال التعبير بعلم من وجه إليه، هذا ما لم يتبين العكس من التعبير أو من طبيعة التعامل.",
+        "language": "ar"
+        },
+        "keywords": [
+        "وفاة الموجب",
+        "فقد الأهلية",
+        "أثر التعبير",
+        "طبيعة التعامل"
+        ],
+        "legal_type": "تنظيمية",
+        "norm_type": "لا يجوز الاتفاق على خلافها",
+        "relations": {
+        "related_articles": [61, 63],
+        "derived_from": null,
+        "amended_by": null,
+        "repeals": null
+        },
+        "source": {
+        "document": "القانون المدني الجزائري",
+        "year": 2007,
+        "publisher": "الجريدة الرسمية"
+        },
+        "versioning": {
+        "status": "ساري",
+        "version": "v1.0",
+        "last_update": "2007-05-13"
+        }
+    },
+    {
+        "id": "DZ_CIVIL_ART_63",
+        "country": "Algeria",
+        "law_domain": "Civil Law",
+        "law_name": "القانون المدني",
+        "book": "الكتاب الثاني: الالتزامات والعقود",
+        "title": "الإيجاب المقترن بأجل للقبول",
+        "article_number": 63,
+        "classification": {
+        "main_category": "الالتزامات والعقود",
+        "sub_category": "نظرية العقد",
+        "section": "الرضا – الإيجاب والقبول"
+        },
+        "text": {
+        "original": "المادة 63 : إذا عين أجل للقبول التزم الموجب بالبقاء على إيجابه إلى انقضاء هذا الأجل. وقد يستخلص الأجل من ظروف الحال، أو من طبيعة المعاملة.",
+        "language": "ar"
+        },
+        "keywords": [
+        "الإيجاب",
+        "أجل القبول",
+        "التزام الموجب",
+        "ظروف الحال"
+        ],
+        "legal_type": "تنظيمية",
+        "norm_type": "لا يجوز الاتفاق على خلافها",
+        "relations": {
+        "related_articles": [64, 67],
+        "derived_from": null,
+        "amended_by": null,
+        "repeals": null
+        },
+        "source": {
+        "document": "القانون المدني الجزائري",
+        "year": 2007,
+        "publisher": "الجريدة الرسمية"
+        },
+        "versioning": {
+        "status": "ساري",
+        "version": "v1.0",
+        "last_update": "2007-05-13"
+        }
+    },
+    {
+        "id": "DZ_CIVIL_ART_64",
+        "country": "Algeria",
+        "law_domain": "Civil Law",
+        "law_name": "القانون المدني",
+        "book": "الكتاب الثاني: الالتزامات والعقود",
+        "title": "الإيجاب في مجلس العقد",
+        "article_number": 64,
+        "classification": {
+        "main_category": "الالتزامات والعقود",
+        "sub_category": "نظرية العقد",
+        "section": "الرضا – الإيجاب والقبول"
+        },
+        "text": {
+        "original": "المادة 64 : إذا صدر الإيجاب في مجلس العقد لشخص حاضر دون تحديد أجل القبول فإن الموجب يتحلل من إيجابه إذا لم يصدر القبول فورا وكذلك إذا صدر الإيجاب من شخص إلى آخر بطريق الهاتف أو بأي طريق مماثل. غير أن العقد يتم، ولو لم يصدر القبول فورا، إذا لم يوجد ما يدل على أن الموجب قد عدل عن إيجابه في الفترة ما بين الإيجاب والقبول، وكان القبول صدر قبل أن ينفض مجلس العقد.",
+        "language": "ar"
+        },
+        "keywords": [
+        "مجلس العقد",
+        "الإيجاب",
+        "القبول الفوري",
+        "الهاتف"
+        ],
+        "legal_type": "تنظيمية",
+        "norm_type": "لا يجوز الاتفاق على خلافها",
+        "relations": {
+        "related_articles": [63, 68, 69],
+        "derived_from": null,
+        "amended_by": null,
+        "repeals": null
+        },
+        "source": {
+        "document": "القانون المدني الجزائري",
+        "year": 2007,
+        "publisher": "الجريدة الرسمية"
+        },
+        "versioning": {
+        "status": "ساري",
+        "version": "v1.0",
+        "last_update": "2007-05-13"
+        }
+    },
+    {
+        "id": "DZ_CIVIL_ART_65",
+        "country": "Algeria",
+        "law_domain": "Civil Law",
+        "law_name": "القانون المدني",
+        "book": "الكتاب الثاني: الالتزامات والعقود",
+        "title": "الاتفاق على المسائل الجوهرية وتأجيل التفصيلات",
+        "article_number": 65,
+        "classification": {
+        "main_category": "الالتزامات والعقود",
+        "sub_category": "نظرية العقد",
+        "section": "الرضا – الإيجاب والقبول"
+        },
+        "text": {
+        "original": "المادة 65 : إذا اتفق الطرفان على جميع المسائل الجوهرية في العقد واحتفظا بمسائل تفصيلية يتفقان عليها فيما بعد ولم يشترطا أن لا أثر للعقد عند عدم الاتفاق عليها، اعتبر العقد منبرما وإذا قام خلاف على المسائل التي لم يتم الاتفاق عليها، فإن المحكمة تقضي فيها طبقا لطبيعة المعاملة ولأحكام القانون، والعرف، والعدالة.",
+        "language": "ar"
+        },
+        "keywords": [
+        "المسائل الجوهرية",
+        "المسائل التفصيلية",
+        "انعقاد العقد",
+        "دور المحكمة"
+        ],
+        "legal_type": "تنظيمية",
+        "norm_type": "لا يجوز الاتفاق على خلافها",
+        "relations": {
+        "related_articles": [59, 71],
+        "derived_from": null,
+        "amended_by": null,
+        "repeals": null
+        },
+        "source": {
+        "document": "القانون المدني الجزائري",
+        "year": 2007,
+        "publisher": "الجريدة الرسمية"
+        },
+        "versioning": {
+        "status": "ساري",
+        "version": "v1.0",
+        "last_update": "2007-05-13"
+        }
+    },
+    {
+        "id": "DZ_CIVIL_ART_66",
+        "country": "Algeria",
+        "law_domain": "Civil Law",
+        "law_name": "القانون المدني",
+        "book": "الكتاب الثاني: الالتزامات والعقود",
+        "title": "أثر القبول المعدِّل للإيجاب",
+        "article_number": 66,
+        "classification": {
+        "main_category": "الالتزامات والعقود",
+        "sub_category": "نظرية العقد",
+        "section": "الرضا – الإيجاب والقبول"
+        },
+        "text": {
+        "original": "المادة 66 : لا يعتبر القبول الذي يغير الإيجاب إلا إيجابا جديدا.",
+        "language": "ar"
+        },
+        "keywords": [
+        "القبول",
+        "تعديل الإيجاب",
+        "إيجاب جديد"
+        ],
+        "legal_type": "تنظيمية",
+        "norm_type": "لا يجوز الاتفاق على خلافها",
+        "relations": {
+        "related_articles": [59, 60, 65],
+        "derived_from": null,
+        "amended_by": null,
+        "repeals": null
+        },
+        "source": {
+        "document": "القانون المدني الجزائري",
+        "year": 2007,
+        "publisher": "الجريدة الرسمية"
+        },
+        "versioning": {
+        "status": "ساري",
+        "version": "v1.0",
+        "last_update": "2007-05-13"
+        }
+    },
+    {
+        "id": "DZ_CIVIL_ART_67",
+        "country": "Algeria",
+        "law_domain": "Civil Law",
+        "law_name": "القانون المدني",
+        "book": "الكتاب الثاني: الالتزامات والعقود",
+        "title": "زمان ومكان التعاقد بين الغائبين",
+        "article_number": 67,
+        "classification": {
+        "main_category": "الالتزامات والعقود",
+        "sub_category": "نظرية العقد",
+        "section": "الرضا – الإيجاب والقبول"
+        },
+        "text": {
+        "original": "المادة 67 : يعتبر التعاقد ما بين الغائبين قد تم في المكان وفي الزمان اللذين يعلم فيهما الموجب بالقبول، ما لم يوجد اتفاق أو نص قانوني يقضي بغير ذلك. ويفترض أن الموجب قد علم بالقبول في المكان، وفي الزمان اللذين وصل إليه فيهما القبول.",
+        "language": "ar"
+        },
+        "keywords": [
+        "التعاقد بين الغائبين",
+        "زمان التعاقد",
+        "مكان التعاقد",
+        "علم الموجب بالقبول"
+        ],
+        "legal_type": "تنظيمية",
+        "norm_type": "يجوز الاتفاق على خلافها",
+        "relations": {
+        "related_articles": [68, 71, 72],
+        "derived_from": null,
+        "amended_by": null,
+        "repeals": null
+        },
+        "source": {
+        "document": "القانون المدني الجزائري",
+        "year": 2007,
+        "publisher": "الجريدة الرسمية"
+        },
+        "versioning": {
+        "status": "ساري",
+        "version": "v1.0",
+        "last_update": "2007-05-13"
+        }
+    },
+    {
+        "id": "DZ_CIVIL_ART_68",
+        "country": "Algeria",
+        "law_domain": "Civil Law",
+        "law_name": "القانون المدني",
+        "book": "الكتاب الثاني: الالتزامات والعقود",
+        "title": "السكوت كقبول",
+        "article_number": 68,
+        "classification": {
+        "main_category": "الالتزامات والعقود",
+        "sub_category": "نظرية العقد",
+        "section": "الرضا – الإيجاب والقبول"
+        },
+        "text": {
+        "original": "المادة 68 : إذا كانت طبيعة المعاملة، أو العرف التجاري، أو غير ذلك من الظروف، تدل على أن الموجب لم يكن لينتظر تصريحا بالقبول فإن العقد يعتبر قد تم، إذا لم يرفض الإيجاب في وقت مناسب. ويعتبر السكوت في الرد قبولا، إذا اتصل الإيجاب بتعامل سابق بين المتعاقدين، أو إذا كان الإيجاب لمصلحة من وجه إليه.",
+        "language": "ar"
+        },
+        "keywords": [
+        "السكوت",
+        "القبول الضمني",
+        "العرف التجاري",
+        "التعامل السابق"
+        ],
+        "legal_type": "تنظيمية",
+        "norm_type": "يجوز الاتفاق على خلافها",
+        "relations": {
+        "related_articles": [67, 69],
+        "derived_from": null,
+        "amended_by": null,
+        "repeals": null
+        },
+        "source": {
+        "document": "القانون المدني الجزائري",
+        "year": 2007,
+        "publisher": "الجريدة الرسمية"
+        },
+        "versioning": {
+        "status": "ساري",
+        "version": "v1.0",
+        "last_update": "2007-05-13"
+        }
+    },
+    {
+        "id": "DZ_CIVIL_ART_69",
+        "country": "Algeria",
+        "law_domain": "Civil Law",
+        "law_name": "القانون المدني",
+        "book": "الكتاب الثاني: الالتزامات والعقود",
+        "title": "انعقاد العقد في المزايدات",
+        "article_number": 69,
+        "classification": {
+        "main_category": "الالتزامات والعقود",
+        "sub_category": "نظرية العقد",
+        "section": "الرضا – الإيجاب والقبول"
+        },
+        "text": {
+        "original": "المادة 69 : لا يتم العقد في المزايدات إلا برسو المزاد، ويسقط المزاد بمزاد أعلى ولو كان باطلا.",
+        "language": "ar"
+        },
+        "keywords": [
+        "المزايدات",
+        "رسو المزاد",
+        "سقوط المزاد",
+        "مزاد أعلى"
+        ],
+        "legal_type": "تنظيمية",
+        "norm_type": "لا يجوز الاتفاق على خلافها",
+        "relations": {
+        "related_articles": [68, 70],
+        "derived_from": null,
+        "amended_by": null,
+        "repeals": null
+        },
+        "source": {
+        "document": "القانون المدني الجزائري",
+        "year": 2007,
+        "publisher": "الجريدة الرسمية"
+        },
+        "versioning": {
+        "status": "ساري",
+        "version": "v1.0",
+        "last_update": "2007-05-13"
+        }
+    },
+    {
+        "id": "DZ_CIVIL_ART_70",
+        "country": "Algeria",
+        "law_domain": "Civil Law",
+        "law_name": "القانون المدني",
+        "book": "الكتاب الثاني: الالتزامات والعقود",
+        "title": "القبول في عقد الإذعان",
+        "article_number": 70,
+        "classification": {
+        "main_category": "الالتزامات والعقود",
+        "sub_category": "نظرية العقد",
+        "section": "الرضا – الإيجاب والقبول"
+        },
+        "text": {
+        "original": "المادة 70 : يحصل القبول في عقد الإذعان بمجرد التسليم لشروط مقررة يضعها الموجب ولا يقبل المناقشة فيها.",
+        "language": "ar"
+        },
+        "keywords": [
+        "عقد الإذعان",
+        "القبول",
+        "الشروط المقررة",
+        "عدم المناقشة"
+        ],
+        "legal_type": "تنظيمية",
+        "norm_type": "لا يجوز الاتفاق على خلافها",
+        "relations": {
+        "related_articles": [69, 71],
+        "derived_from": null,
+        "amended_by": null,
+        "repeals": null
+        },
+        "source": {
+        "document": "القانون المدني الجزائري",
+        "year": 2007,
+        "publisher": "الجريدة الرسمية"
+        },
+        "versioning": {
+        "status": "ساري",
+        "version": "v1.0",
+        "last_update": "2007-05-13"
+        }
+    },
+    {
+        "id": "DZ_CIVIL_ART_71",
+        "country": "Algeria",
+        "law_domain": "Civil Law",
+        "law_name": "القانون المدني",
+        "book": "الكتاب الثاني: الالتزامات والعقود",
+        "title": "شروط صحة الوعد بالتعاقد",
+        "article_number": 71,
+        "classification": {
+        "main_category": "الالتزامات والعقود",
+        "sub_category": "نظرية العقد",
+        "section": "الرضا – الإيجاب والقبول"
+        },
+        "text": {
+        "original": "المادة 71 : الاتفاق الذي يعد له كلا المتعاقدين أو أحدهما بإبرام عقد معين في المستقبل لا يكون له أثر إلا إذا عينت جميع المسائل الجوهرية للعقد المراد إبرامه، والمدة التي يجب إبرامه فيها. وإذا اشترط القانون لتمام العقد استيفاء شكل معين فهذا الشكل يطبق أيضا على الاتفاق المتضمن الوعد بالتعاقد.",
+        "language": "ar"
+        },
+        "keywords": [
+        "الوعد بالتعاقد",
+        "المسائل الجوهرية",
+        "المدة",
+        "الشكل القانوني"
+        ],
+        "legal_type": "تنظيمية",
+        "norm_type": "لا يجوز الاتفاق على خلافها",
+        "relations": {
+        "related_articles": [67, 72],
+        "derived_from": null,
+        "amended_by": null,
+        "repeals": null
+        },
+        "source": {
+        "document": "القانون المدني الجزائري",
+        "year": 2007,
+        "publisher": "الجريدة الرسمية"
+        },
+        "versioning": {
+        "status": "ساري",
+        "version": "v1.0",
+        "last_update": "2007-05-13"
+        }
+    },
+    {
+        "id": "DZ_CIVIL_ART_72",
+        "country": "Algeria",
+        "law_domain": "Civil Law",
+        "law_name": "القانون المدني",
+        "book": "الكتاب الثاني: الالتزامات والعقود",
+        "title": "حجية الحكم في تنفيذ الوعد بالتعاقد",
+        "article_number": 72,
+        "classification": {
+        "main_category": "الالتزامات والعقود",
+        "sub_category": "نظرية العقد",
+        "section": "الرضا – الإيجاب والقبول"
+        },
+        "text": {
+        "original": "المادة 72 : إذا وعد شخص بإبرام عقد ثم نكل وقاضاه المتعاقد الآخر طالبا تنفيذ الوعد، وكانت الشروط اللازمة لتمام العقد وخاصة ما يتعلق منها بالشكل متوافرة، قام الحكم مقام العقد.",
+        "language": "ar"
+        },
+        "keywords": [
+        "الوعد بالتعاقد",
+        "تنفيذ عيني",
+        "قيام الحكم مقام العقد"
+        ],
+        "legal_type": "تنظيمية",
+        "norm_type": "لا يجوز الاتفاق على خلافها",
+        "relations": {
+        "related_articles": [71, 72.1],
+        "derived_from": null,
+        "amended_by": null,
+        "repeals": null
+        },
+        "source": {
+        "document": "القانون المدني الجزائري",
+        "year": 2007,
+        "publisher": "الجريدة الرسمية"
+        },
+        "versioning": {
+        "status": "ساري",
+        "version": "v1.0",
+        "last_update": "2007-05-13"
+        }
+    },
+    {
+        "id": "DZ_CIVIL_ART_72bis",
+        "country": "Algeria",
+        "law_domain": "Civil Law",
+        "law_name": "القانون المدني",
+        "book": "الكتاب الثاني: الالتزامات والعقود",
+        "title": "العربون وحق العدول",
+        "article_number": "72 مكرر",
+        "classification": {
+        "main_category": "الالتزامات والعقود",
+        "sub_category": "نظرية العقد",
+        "section": "الرضا – الإيجاب والقبول"
+        },
+        "text": {
+        "original": "المادة 72 مكرر : (جديدة) يمنح دفع العربون وقت إبرام العقد لكل من المتعاقدين الحق في العدول عنه خلال المدة المتفق عليها، إلا إذا قضى الاتفاق بخلاف ذلك. فإذا عدل من دفع العربون فقده. وإذا عدل من قبضه رده ومثله ولو لم يترتب على العدول أي ضرر.",
+        "language": "ar"
+        },
+        "keywords": [
+        "العربون",
+        "حق العدول",
+        "فسخ العقد",
+        "التعويض الاتفاقي"
+        ],
+        "legal_type": "تنظيمية",
+        "norm_type": "يجوز الاتفاق على خلافها",
+        "relations": {
+        "related_articles": [72],
+        "derived_from": null,
+        "amended_by": "القانون رقم 05-10 المؤرخ في 20 يونيو 2005",
+        "repeals": null
+        },
+        "source": {
+        "document": "القانون المدني الجزائري",
+        "year": 2007,
+        "publisher": "الجريدة الرسمية"
+        },
+        "versioning": {
+        "status": "ساري",
+        "version": "v1.0",
+        "last_update": "2007-06-20"
+        }
+    },
+    {
+        "id": "DZ_CIVIL_ART_78",
+        "country": "Algeria",
+        "law_domain": "Civil Law",
+        "law_name": "القانون المدني",
+        "book": "الكتاب الثاني: الالتزامات والعقود",
+        "title": "الأهلية الأصلية للتعاقد",
+        "article_number": 78,
+        "classification": {
+        "main_category": "الالتزامات والعقود",
+        "sub_category": "نظرية العقد",
+        "section": "الأهلية"
+        },
+        "text": {
+        "original": "المادة 78 : (معدلة) كل شخص أهل للتعاقد ما لم يطرأ على أهليته عارض يجعله ناقص الأهلية أو فاقدها بحكم القانون.",
+        "language": "ar"
+        },
+        "keywords": [
+        "الأهلية",
+        "أهلية التعاقد",
+        "ناقص الأهلية",
+        "فاقد الأهلية",
+        "عارض الأهلية"
+        ],
+        "legal_type": "تعريفية",
+        "norm_type": "لا يجوز الاتفاق على خلافها",
+        "relations": {
+        "related_articles": [79, 80, 81],
+        "derived_from": "النص الأصلي للأمر 75-58 المؤرخ في 26 سبتمبر 1975",
+        "amended_by": "القانون رقم 05-10 المؤرخ في 20 يونيو 2005",
+        "repeals": null
+        },
+        "source": {
+        "document": "القانون المدني الجزائري",
+        "year": 2007,
+        "publisher": "الجريدة الرسمية"
+        },
+        "versioning": {
+        "status": "ساري",
+        "version": "v2.0",
+        "last_update": "2005-06-20"
+        }
+    },
+    {
+        "id": "DZ_CIVIL_ART_79",
+        "country": "Algeria",
+        "law_domain": "Civil Law",
+        "law_name": "القانون المدني",
+        "book": "الكتاب الثاني: الالتزامات والعقود",
+        "title": "إحالة قواعد الأهلية إلى قانون الأسرة",
+        "article_number": 79,
+        "classification": {
+        "main_category": "الالتزامات والعقود",
+        "sub_category": "نظرية العقد",
+        "section": "الأهلية"
+        },
+        "text": {
+        "original": "المادة 79 : (معدلة) تسري على القصر وعلى المحجور عليهم وعلى غيرهم من عديمي الأهلية أو ناقصيها قواعد الأهلية المنصوص عليها في قانون الأسرة.",
+        "language": "ar"
+        },
+        "keywords": [
+        "القصر",
+        "المحجور عليهم",
+        "عديم الأهلية",
+        "ناقص الأهلية",
+        "قانون الأسرة",
+        "إحالة تشريعية"
+        ],
+        "legal_type": "تنظيمية",
+        "norm_type": "لا يجوز الاتفاق على خلافها",
+        "relations": {
+        "related_articles": [78, 80, 81],
+        "derived_from": "مدونة الأحوال الشخصية / قانون الأسرة",
+        "amended_by": "القانون رقم 05-10 المؤرخ في 20 يونيو 2005",
+        "repeals": null
+        },
+        "source": {
+        "document": "القانون المدني الجزائري",
+        "year": 2007,
+        "publisher": "الجريدة الرسمية"
+        },
+        "versioning": {
+        "status": "ساري",
+        "version": "v2.0",
+        "last_update": "2005-06-20"
+        }
+    },
+    {
+        "id": "DZ_CIVIL_ART_80",
+        "country": "Algeria",
+        "law_domain": "Civil Law",
+        "law_name": "القانون المدني",
+        "book": "الكتاب الثاني: الالتزامات والعقود",
+        "title": "المساعد القضائي لذوي العجز الحسي",
+        "article_number": 80,
+        "classification": {
+        "main_category": "الالتزامات والعقود",
+        "sub_category": "نظرية العقد",
+        "section": "الأهلية"
+        },
+        "text": {
+        "original": "المادة 80 : (معدلة) إذا كان الشخص أصم أبكم، أو أعمى أصم، أو أعمى أبكم، وتعذر عليه بسبب تلك العاهة التعبير عن إرادته، جاز للمحكمة أن تعين له مساعدا قضائيا يعاونه في التصرفات التي تقتضيها مصلحته. ويكون قابلا للإبطال كل تصرف عين من أجله مساعد قضائي إذا صدر من الشخص الذي تقررت مساعدته بدون حضور المساعد بعد تسجيل قرار المساعدة.",
+        "language": "ar"
+        },
+        "keywords": [
+        "المساعد القضائي",
+        "الأصم الأبكم",
+        "الأعمى الأصم",
+        "الأعمى الأبكم",
+        "قابلية الإبطال",
+        "حماية عديم وضعيف الأهلية"
+        ],
+        "legal_type": "تنظيمية",
+        "norm_type": "لا يجوز الاتفاق على خلافها",
+        "relations": {
+        "related_articles": [78, 79, 81],
+        "derived_from": "النص الأصلي للأمر 75-58 المتعلق بالوصي القضائي",
+        "amended_by": "القانون رقم 05-10 المؤرخ في 20 يونيو 2005",
+        "repeals": null
+        },
+        "source": {
+        "document": "القانون المدني الجزائري",
+        "year": 2007,
+        "publisher": "الجريدة الرسمية"
+        },
+        "versioning": {
+        "status": "ساري",
+        "version": "v2.0",
+        "last_update": "2005-06-20"
+        }
+    },
+    {
+        "id": "DZ_CIVIL_ART_81",
+        "country": "Algeria",
+        "law_domain": "Civil Law",
+        "law_name": "القانون المدني",
+        "book": "الكتاب الثاني: الالتزامات والعقود",
+        "title": "حق إبطال العقد للغلط الجوهري",
+        "article_number": 81,
+        "classification": {
+        "main_category": "الالتزامات والعقود",
+        "sub_category": "نظرية العقد",
+        "section": "عيوب الرضا – الغلط"
+        },
+        "text": {
+        "original": "المادة 81 : يجوز للمتعاقد الذي وقع في غلط جوهري وقت إبرام العقد، أن يطلب إبطاله.",
+        "language": "ar"
+        },
+        "keywords": [
+        "الغلط الجوهري",
+        "إبطال العقد",
+        "عيوب الرضا"
+        ],
+        "legal_type": "تنظيمية",
+        "norm_type": "لا يجوز الاتفاق على خلافها",
+        "relations": {
+        "related_articles": [82, 83, 85],
+        "derived_from": null,
+        "amended_by": null,
+        "repeals": null
+        },
+        "source": {
+        "document": "القانون المدني الجزائري",
+        "year": 2007,
+        "publisher": "الجريدة الرسمية"
+        },
+        "versioning": {
+        "status": "ساري",
+        "version": "v1.0",
+        "last_update": "2007-05-13"
+        }
+    },
+    {
+        "id": "DZ_CIVIL_ART_82",
+        "country": "Algeria",
+        "law_domain": "Civil Law",
+        "law_name": "القانون المدني",
+        "book": "الكتاب الثاني: الالتزامات والعقود",
+        "title": "مفهوم الغلط الجوهري",
+        "article_number": 82,
+        "classification": {
+        "main_category": "الالتزامات والعقود",
+        "sub_category": "نظرية العقد",
+        "section": "عيوب الرضا – الغلط"
+        },
+        "text": {
+        "original": "المادة 82 : يكون الغلط جوهريا إذا بلغ حدا من الجسامة بحيث يمتنع معه المتعاقد عن إبرام العقد لو لم يقع في هذا الغلط ويعتبر الغلط جوهريا على الأخص إذا وقع في صفة للشيء يراها المتعاقدان جوهرية، أو يجب اعتبارها كذلك نظرا لشروط العقد ولحسن النية. وإذا وقع في ذات المتعاقد أو في صفة من صفاته، وكانت تلك الذات أو هذه الصفة السبب الرئيسي في التعاقد.",
+        "language": "ar"
+        },
+        "keywords": [
+        "الغلط الجوهري",
+        "صفة جوهرية",
+        "ذات المتعاقد",
+        "حسن النية"
+        ],
+        "legal_type": "تعريفية",
+        "norm_type": "لا يجوز الاتفاق على خلافها",
+        "relations": {
+        "related_articles": [81, 83],
+        "derived_from": null,
+        "amended_by": null,
+        "repeals": null
+        },
+        "source": {
+        "document": "القانون المدني الجزائري",
+        "year": 2007,
+        "publisher": "الجريدة الرسمية"
+        },
+        "versioning": {
+        "status": "ساري",
+        "version": "v1.0",
+        "last_update": "2007-05-13"
+        }
+    },
+    {
+        "id": "DZ_CIVIL_ART_83",
+        "country": "Algeria",
+        "law_domain": "Civil Law",
+        "law_name": "القانون المدني",
+        "book": "الكتاب الثاني: الالتزامات والعقود",
+        "title": "الغلط في القانون كسبب للإبطال",
+        "article_number": 83,
+        "classification": {
+        "main_category": "الالتزامات والعقود",
+        "sub_category": "نظرية العقد",
+        "section": "عيوب الرضا – الغلط"
+        },
+        "text": {
+        "original": "المادة 83 : يكون العقد قابلا للإبطال لغلط في القانون إذا توفرت فيه شروط الغلط في الواقع طبقا للمادتين 81 و82 ما لم يقض القانون بغير ذلك.",
+        "language": "ar"
+        },
+        "keywords": [
+        "الغلط في القانون",
+        "إبطال العقد",
+        "شروط الغلط"
+        ],
+        "legal_type": "تنظيمية",
+        "norm_type": "لا يجوز الاتفاق على خلافها",
+        "relations": {
+        "related_articles": [81, 82],
+        "derived_from": null,
+        "amended_by": null,
+        "repeals": null
+        },
+        "source": {
+        "document": "القانون المدني الجزائري",
+        "year": 2007,
+        "publisher": "الجريدة الرسمية"
+        },
+        "versioning": {
+        "status": "ساري",
+        "version": "v1.0",
+        "last_update": "2007-05-13"
+        }
+    },
+    {
+        "id": "DZ_CIVIL_ART_84",
+        "country": "Algeria",
+        "law_domain": "Civil Law",
+        "law_name": "القانون المدني",
+        "book": "الكتاب الثاني: الالتزامات والعقود",
+        "title": "الغلط في الحساب وغلطات القلم",
+        "article_number": 84,
+        "classification": {
+        "main_category": "الالتزامات والعقود",
+        "sub_category": "نظرية العقد",
+        "section": "عيوب الرضا – الغلط"
+        },
+        "text": {
+        "original": "المادة 84 : لا يؤثر في صحة العقد مجرد الغلط في الحساب ولا غلطات القلم، ولكن يجب تصحيح الغلط.",
+        "language": "ar"
+        },
+        "keywords": [
+        "الغلط في الحساب",
+        "غلطات القلم",
+        "تصحيح الغلط",
+        "صحة العقد"
+        ],
+        "legal_type": "تنظيمية",
+        "norm_type": "لا يجوز الاتفاق على خلافها",
+        "relations": {
+        "related_articles": [81, 82, 83],
+        "derived_from": null,
+        "amended_by": null,
+        "repeals": null
+        },
+        "source": {
+        "document": "القانون المدني الجزائري",
+        "year": 2007,
+        "publisher": "الجريدة الرسمية"
+        },
+        "versioning": {
+        "status": "ساري",
+        "version": "v1.0",
+        "last_update": "2007-05-13"
+        }
+    },
+    {
+        "id": "DZ_CIVIL_ART_85",
+        "country": "Algeria",
+        "law_domain": "Civil Law",
+        "law_name": "القانون المدني",
+        "book": "الكتاب الثاني: الالتزامات والعقود",
+        "title": "قيد حسن النية في التمسك بالغلط",
+        "article_number": 85,
+        "classification": {
+        "main_category": "الالتزامات والعقود",
+        "sub_category": "نظرية العقد",
+        "section": "عيوب الرضا – الغلط"
+        },
+        "text": {
+        "original": "المادة 85 : ليس لمن وقع في غلط أن يتمسك به على وجه يتعارض مع ما يقضي به حسن النية. ويبقى بالأخص ملزما بالعقد قصد إبرامه إذا أظهر الطرف الآخر استعداده لتنفيذ هذا العقد.",
+        "language": "ar"
+        },
+        "keywords": [
+        "حسن النية",
+        "التمسك بالغلط",
+        "بقاء الالتزام بالعقد"
+        ],
+        "legal_type": "تنظيمية",
+        "norm_type": "لا يجوز الاتفاق على خلافها",
+        "relations": {
+        "related_articles": [81, 82, 83, 84],
+        "derived_from": null,
+        "amended_by": null,
+        "repeals": null
+        },
+        "source": {
+        "document": "القانون المدني الجزائري",
+        "year": 2007,
+        "publisher": "الجريدة الرسمية"
+        },
+        "versioning": {
+        "status": "ساري",
+        "version": "v1.0",
+        "last_update": "2007-05-13"
+        }
+    },
+    {
+        "id": "DZ_CIVIL_ART_99",
+        "country": "Algeria",
+        "law_domain": "Civil Law",
+        "law_name": "القانون المدني",
+        "book": "الكتاب الثاني: الالتزامات والعقود",
+        "title": "قصر حق الإبطال على من قرر له",
+        "article_number": 99,
+        "classification": {
+        "main_category": "الالتزامات والعقود",
+        "sub_category": "نظرية العقد",
+        "section": "بطلان العقد وإبطاله"
+        },
+        "text": {
+        "original": "المادة 99 : إذا جعل القانون لأحد المتعاقدين حقا في إبطال العقد فليس للمتعاقد الآخر أن يتمسك بهذا الحق.",
+        "language": "ar"
+        },
+        "keywords": [
+        "حق الإبطال",
+        "بطلان نسبي",
+        "حماية الطرف الضعيف"
+        ],
+        "legal_type": "تنظيمية",
+        "norm_type": "لا يجوز الاتفاق على خلافها",
+        "relations": {
+        "related_articles": [100, 101, 103],
+        "derived_from": null,
+        "amended_by": null,
+        "repeals": null
+        },
+        "source": {
+        "document": "القانون المدني الجزائري",
+        "year": 2007,
+        "publisher": "الجريدة الرسمية"
+        },
+        "versioning": {
+        "status": "ساري",
+        "version": "v1.0",
+        "last_update": "2007-05-13"
+        }
+    },
+    {
+        "id": "DZ_CIVIL_ART_100",
+        "country": "Algeria",
+        "law_domain": "Civil Law",
+        "law_name": "القانون المدني",
+        "book": "الكتاب الثاني: الالتزامات والعقود",
+        "title": "الإجازة وأثرها الرجعي",
+        "article_number": 100,
+        "classification": {
+        "main_category": "الالتزامات والعقود",
+        "sub_category": "نظرية العقد",
+        "section": "بطلان العقد وإبطاله"
+        },
+        "text": {
+        "original": "المادة 100 : يزول حق إبطال العقد بالإجازة الصريحة أو الضمنية وتستند الإجازة إلى التاريخ الذي تم فيه العقد، دون إخلال بحقوق الغير.",
+        "language": "ar"
+        },
+        "keywords": [
+        "الإجازة",
+        "الأثر الرجعي",
+        "حقوق الغير",
+        "سقوط حق الإبطال"
+        ],
+        "legal_type": "تنظيمية",
+        "norm_type": "لا يجوز الاتفاق على خلافها",
+        "relations": {
+        "related_articles": [99, 101, 103],
+        "derived_from": null,
+        "amended_by": null,
+        "repeals": null
+        },
+        "source": {
+        "document": "القانون المدني الجزائري",
+        "year": 2007,
+        "publisher": "الجريدة الرسمية"
+        },
+        "versioning": {
+        "status": "ساري",
+        "version": "v1.0",
+        "last_update": "2007-05-13"
+        }
+    },
+    {
+        "id": "DZ_CIVIL_ART_101",
+        "country": "Algeria",
+        "law_domain": "Civil Law",
+        "law_name": "القانون المدني",
+        "book": "الكتاب الثاني: الالتزامات والعقود",
+        "title": "تقادم دعوى الإبطال",
+        "article_number": 101,
+        "classification": {
+        "main_category": "الالتزامات والعقود",
+        "sub_category": "نظرية العقد",
+        "section": "بطلان العقد وإبطاله"
+        },
+        "text": {
+        "original": "المادة 101 : (معدلة) يسقط الحق في إبطال العقد إذا لم يتمسك به صاحبه خلال خمس (5) سنوات. ويبدأ سريان هذه المدة، في حالة نقص الأهلية من اليوم الذي يزول فيه هذا السبب، وفي حالة الغلط أو التدليس من اليوم الذي يكشف فيه، وفي حالة الإكراه من يوم انقطاعه، غير أنه لا يجوز التمسك بحق الإبطال لغلط أو تدليس أو إكراه إذا انقضت عشرة (10) سنوات من وقت تمام العقد.",
+        "language": "ar"
+        },
+        "keywords": [
+        "تقادم دعوى الإبطال",
+        "نقص الأهلية",
+        "الغلط",
+        "التدليس",
+        "الإكراه",
+        "آجال السقوط"
+        ],
+        "legal_type": "تنظيمية",
+        "norm_type": "لا يجوز الاتفاق على خلافها",
+        "relations": {
+        "related_articles": [81, 86, 99, 100],
+        "derived_from": "النص الأصلي للأمر 75-58 بشأن آجال أطول",
+        "amended_by": "القانون رقم 05-10 المؤرخ في 20 يونيو 2005",
+        "repeals": null
+        },
+        "source": {
+        "document": "القانون المدني الجزائري",
+        "year": 2007,
+        "publisher": "الجريدة الرسمية"
+        },
+        "versioning": {
+        "status": "ساري",
+        "version": "v2.0",
+        "last_update": "2005-06-20"
+        }
+    },
+    {
+        "id": "DZ_CIVIL_ART_102",
+        "country": "Algeria",
+        "law_domain": "Civil Law",
+        "law_name": "القانون المدني",
+        "book": "الكتاب الثاني: الالتزامات والعقود",
+        "title": "البطلان المطلق وآثاره",
+        "article_number": 102,
+        "classification": {
+        "main_category": "الالتزامات والعقود",
+        "sub_category": "نظرية العقد",
+        "section": "بطلان العقد وإبطاله"
+        },
+        "text": {
+        "original": "المادة 102 : إذا كان العقد باطلا بطلا مطلقا جاز لكل ذي مصلحة أن يتمسك بهذا البطلان، وللمحكمة أن تقضي به من تلقاء نفسها ولا يزول البطلان بالإجازة. وتسقط دعوى البطلان بمضي خمسة عشرة سنة من وقت إبرام العقد.",
+        "language": "ar"
+        },
+        "keywords": [
+        "البطلان المطلق",
+        "دعوى البطلان",
+        "الإجازة",
+        "تقادم البطلان"
+        ],
+        "legal_type": "تنظيمية",
+        "norm_type": "لا يجوز الاتفاق على خلافها",
+        "relations": {
+        "related_articles": [99, 100, 103, 104, 105],
+        "derived_from": null,
+        "amended_by": null,
+        "repeals": null
+        },
+        "source": {
+        "document": "القانون المدني الجزائري",
+        "year": 2007,
+        "publisher": "الجريدة الرسمية"
+        },
+        "versioning": {
+        "status": "ساري",
+        "version": "v1.0",
+        "last_update": "2007-05-13"
+        }
+    },
+    {
+        "id": "DZ_CIVIL_ART_103",
+        "country": "Algeria",
+        "law_domain": "Civil Law",
+        "law_name": "القانون المدني",
+        "book": "الكتاب الثاني: الالتزامات والعقود",
+        "title": "آثار البطلان والإبطال ورد المنافع",
+        "article_number": 103,
+        "classification": {
+        "main_category": "الالتزامات والعقود",
+        "sub_category": "نظرية العقد",
+        "section": "بطلان العقد وإبطاله"
+        },
+        "text": {
+        "original": "المادة 103 : (معدلة) يعاد المتعاقدان إلى الحالة التي كانا عليها قبل العقد في حالة بطلان العقد أو إبطاله، فإن كان هذا مستحيلا جاز الحكم بتعويض معادل. غير أنه لا يلزم ناقص الأهلية، إذا أبطل العقد لنقص أهليته، إلا برد ما عاد عليه من منفعة بسبب تنفيذ العقد. يحرم من الاسترداد في حالة بطلان العقد من تسبب في عدم مشروعيته أو كان عالما به.",
+        "language": "ar"
+        },
+        "keywords": [
+        "أثر البطلان",
+        "الإبطال",
+        "إعادة الحال",
+        "تعويض معادل",
+        "ناقص الأهلية",
+        "عدم المشروعية"
+        ],
+        "legal_type": "تنظيمية",
+        "norm_type": "لا يجوز الاتفاق على خلافها",
+        "relations": {
+        "related_articles": [78, 79, 102, 104],
+        "derived_from": "النص الأصلي للأمر 75-58",
+        "amended_by": "القانون رقم 05-10 المؤرخ في 20 يونيو 2005",
+        "repeals": null
+        },
+        "source": {
+        "document": "القانون المدني الجزائري",
+        "year": 2007,
+        "publisher": "الجريدة الرسمية"
+        },
+        "versioning": {
+        "status": "ساري",
+        "version": "v2.0",
+        "last_update": "2005-06-20"
+        }
+    },
+    {
+        "id": "DZ_CIVIL_ART_104",
+        "country": "Algeria",
+        "law_domain": "Civil Law",
+        "law_name": "القانون المدني",
+        "book": "الكتاب الثاني: الالتزامات والعقود",
+        "title": "البطلان الجزئي للعقد",
+        "article_number": 104,
+        "classification": {
+        "main_category": "الالتزامات والعقود",
+        "sub_category": "نظرية العقد",
+        "section": "بطلان العقد وإبطاله"
+        },
+        "text": {
+        "original": "المادة 104 : إذا كان العقد في شق منه باطلا أو قابلا للإبطال، فهذا الشق وحده هو الذي يبطل، إلا إذا تبين أن العقد ما كان ليتم بغير الشق الذي وقع باطلا، أو قابلا للإبطال فيبطل العقد كله.",
+        "language": "ar"
+        },
+        "keywords": [
+        "البطلان الجزئي",
+        "قابلية الإبطال",
+        "بطلان العقد كله"
+        ],
+        "legal_type": "تنظيمية",
+        "norm_type": "لا يجوز الاتفاق على خلافها",
+        "relations": {
+        "related_articles": [102, 103, 105],
+        "derived_from": null,
+        "amended_by": null,
+        "repeals": null
+        },
+        "source": {
+        "document": "القانون المدني الجزائري",
+        "year": 2007,
+        "publisher": "الجريدة الرسمية"
+        },
+        "versioning": {
+        "status": "ساري",
+        "version": "v1.0",
+        "last_update": "2007-05-13"
+        }
+    },
+    {
+        "id": "DZ_CIVIL_ART_105",
+        "country": "Algeria",
+        "law_domain": "Civil Law",
+        "law_name": "القانون المدني",
+        "book": "الكتاب الثاني: الالتزامات والعقود",
+        "title": "تحويل العقد الباطل إلى عقد صحيح",
+        "article_number": 105,
+        "classification": {
+        "main_category": "الالتزامات والعقود",
+        "sub_category": "نظرية العقد",
+        "section": "بطلان العقد وإبطاله"
+        },
+        "text": {
+        "original": "المادة 105 : إذا كان العقد باطلا أو قابلا للإبطال وتوفرت فيه أركان عقد آخر فإن العقد يكون صحيحا باعتباره العقد الذي توفرت أركانه، إذا تبين أن نية المتعاقدين كانت تنصرف إلى إبرام هذا العقد.",
+        "language": "ar"
+        },
+        "keywords": [
+        "تحويل العقد",
+        "العقد الباطل",
+        "العقد القابل للإبطال",
+        "نية المتعاقدين"
+        ],
+        "legal_type": "تنظيمية",
+        "norm_type": "لا يجوز الاتفاق على خلافها",
+        "relations": {
+        "related_articles": [102, 104],
+        "derived_from": null,
+        "amended_by": null,
+        "repeals": null
+        },
+        "source": {
+        "document": "القانون المدني الجزائري",
+        "year": 2007,
+        "publisher": "الجريدة الرسمية"
+        },
+        "versioning": {
+        "status": "ساري",
+        "version": "v1.0",
+        "last_update": "2007-05-13"
+        }
+    }
+]
