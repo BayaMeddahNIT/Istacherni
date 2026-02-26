@@ -1,0 +1,5720 @@
+[
+    {
+    "id": "DZ_CIVIL_ART_674",
+    "country": "Algeria",
+    "law_domain": "Civil Law",
+    "law_name": "القانون المدني",
+    "book": "الكتاب الثالث: الملكية والحقوق العينية",
+    "title": "تعريف الملكية",
+    "article_number": 674,
+    "classification": {
+      "main_category": "الملكية",
+      "sub_category": "حقوق المالك",
+      "section": "الاستعمال"
+    },
+    "text": {
+      "original": "المادة 674 : الملكية هي حق المتمتع والتصرف في الأشياء بشرط أن لا يستعمل استعمالا تحرمه القوانين والأنظمة",
+      "language": "ar"
+    },
+    "keywords": [
+      "الملكية",
+      "حق المتمتع",
+      "التصرف في الأشياء",
+      "الاستعمال المحظور"
+    ],
+    "legal_type": "تعريفية",
+    "norm_type": "لا يجوز الاتفاق على خلافها",
+    "relations": {
+      "related_articles": [675, 676],
+      "derived_from": null,
+      "amended_by": null,
+      "repeals": null
+    },
+    "source": {
+      "document": "القانون المدني الجزائري",
+      "year": 2007,
+      "publisher": "الجريدة الرسمية"
+    },
+    "versioning": {
+      "status": "ساري",
+      "version": "v1.0",
+      "last_update": "2007-05-13"
+    }
+  }
+  ,{
+  "id": "DZ_CIVIL_ART_675",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "نطاق ملكية الشيء وامتدادها",
+  "article_number": 675,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "حق الملكية",
+    "section": "نطاقه ووسائل حمايته"
+  },
+  "text": {
+    "original": "المادة 675 : مالك الشيء يملك كل ما يعد من عناصره الجوهرية بحيث لا يمكن فصله عنه دون ان يفسد او يتلف او يتغير. وتشمل ملكية الارض ما فوقها وما تحتها الى الحد المفيد في التمتع بها علوا وعمقا. ويجوز بمقتضى القانون او الاتفاق ان تكون ملكية سطح الارض منفصلة عن ملكية ما فوقها او ما تحتها.",
+    "language": "ar"
+  },
+  "keywords": [
+    "عناصر جوهرية",
+    "ملكية الارض",
+    "العلو والعمق",
+    "انفصال الملكية"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [674, 676, 682, 683],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_676",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "ثمار ومنتجات وملحقات الشيء",
+  "article_number": 676,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "حق الملكية",
+    "section": "نطاقه ووسائل حمايته"
+  },
+  "text": {
+    "original": "المادة 676 : لمالك الشيء الحق في كل ثماره ومنتجاته وملحقاته ما لم يوجد نص او اتفاق يخالف ذلك.",
+    "language": "ar"
+  },
+  "keywords": [
+    "ثمار",
+    "منتجات",
+    "ملحقات",
+    "حق المالك"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [674, 675],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_677",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "حماية الملكية ونزعها للمنفعة العامة",
+  "article_number": 677,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "حق الملكية",
+    "section": "نطاقه ووسائل حمايته"
+  },
+  "text": {
+    "original": "المادة 677 : لا يجوز حرمان اي احد من ملكيته الا في الاحوال والشروط المنصوص عليها في القانون. غير ان للادارة الحق في نزع جميع الملكية العقارية او بعضها، او نزع الحقوق العينية العقارية للمنفعة العامة مقابل تعويض منصف وعادل. واذا وقع خلاف في مبلغ التعويض وجب ان يحدد هذا المبلغ بحكم قضائي الا ان تحديد مبلغ التعويض يجب ان لا يشكل باي حال مانعا لحيازة الاملاك المنتزعة.",
+    "language": "ar"
+  },
+  "keywords": [
+    "نزع الملكية",
+    "المنفعة العامة",
+    "تعويض عادل",
+    "حماية الملكية"
+  ],
+  "legal_type": "امرة",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [678, 681, 681 مكرر 2],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_678",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "شروط التاميم",
+  "article_number": 678,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "حق الملكية",
+    "section": "نطاقه ووسائل حمايته"
+  },
+  "text": {
+    "original": "المادة 678 : لا يجوز اصدار حكم التاميم الا بنص قانوني على ان الشروط واجراءات نقل الملكية والكيفية التي يتم بها التعويض يحددها القانون.",
+    "language": "ar"
+  },
+  "keywords": [
+    "التاميم",
+    "نقل الملكية",
+    "تعويض",
+    "نص قانوني"
+  ],
+  "legal_type": "امرة",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [677],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_679",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "الحصول على الاموال والخدمات لضمان سير المرافق العمومية",
+  "article_number": 679,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "حق الملكية",
+    "section": "نطاقه ووسائل حمايته"
+  },
+  "text": {
+    "original": "المادة 679 : (معدلة) يتم الحصول على الاموال والخدمات لضمان سير المرافق العمومية باتفاق رضائي وفق الحالات والشروط المنصوص عليها في القانون. الا انه يمكن في الحالات الاستثنائية والاستعجالية وضمانا لاستمرارية المرفق العمومي، الحصول على الاموال والخدمات عن طريق الاستيلاء. ولا يجوز الاستيلاء باي حال على المحلات المخصصة فعلا للسكن.",
+    "language": "ar"
+  },
+  "keywords": [
+    "المرافق العمومية",
+    "الاستيلاء",
+    "اتفاق رضائي",
+    "حظر الاستيلاء على السكن"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [680, 681, 6811, 6812, 6813],
+    "derived_from": null,
+    "amended_by": "القانون 88-14",
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_680",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "اجراءات الاستيلاء",
+  "article_number": 680,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "حق الملكية",
+    "section": "نطاقه ووسائل حمايته"
+  },
+  "text": {
+    "original": "المادة 680 : (معدلة) يتم الاستيلاء بصفة فردية او جماعية ويكون كتابيا. يوقع الامر من طرف الوالي او كل سلطة مؤهلة قانونا ويوضح فيه اذا كان الاستيلاء بقصد الحصول على الاموال او الخدمات، ويبين طبيعة وصفة و/او مدة الخدمة وعند الاقتضاء مبلغ وطرق دفع التعويض و/او الاجر.",
+    "language": "ar"
+  },
+  "keywords": [
+    "الاستيلاء",
+    "اجراءات كتابية",
+    "الوالي",
+    "تعويض"
+  ],
+  "legal_type": "اجرائية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [679, 681],
+    "derived_from": null,
+    "amended_by": "القانون 88-14",
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_681",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "تنفيذ الاستيلاء",
+  "article_number": 681,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "حق الملكية",
+    "section": "نطاقه ووسائل حمايته"
+  },
+  "text": {
+    "original": "المادة 681 : (معدلة) ينفذ الاستيلاء مباشرة او من قبل رئيس المجلس الشعبي البلدي. ويمكن في الحالات التي تقتضي ذلك، تنفيذه بالقوة بطريقة ادارية دون الاخلال بالعقوبات المدنية والجزائية التي اقرها التشريع المعمول به.",
+    "language": "ar"
+  },
+  "keywords": [
+    "تنفيذ الاستيلاء",
+    "القوة الادارية",
+    "المجلس الشعبي البلدي"
+  ],
+  "legal_type": "اجرائية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [679, 680, 6811],
+    "derived_from": null,
+    "amended_by": "القانون 88-14",
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_681_1",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "جرد الاموال عند الاستيلاء",
+  "article_number": "681 مكرر 1",
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "حق الملكية",
+    "section": "نطاقه ووسائل حمايته"
+  },
+  "text": {
+    "original": "المادة 681 مكرر 1 : (جديدة) في حالة وجود حيازة من طرف المستفيد من الاستيلاء، يكون هذا الاستيلاء مسبوقا بجرد. وبنفس الطريقة يترتب عن استعادة الحيازة من طرف المستفيد اعداد جرد.",
+    "language": "ar"
+  },
+  "keywords": [
+    "جرد",
+    "حيازة",
+    "الاستيلاء"
+  ],
+  "legal_type": "اجرائية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [679, 680, 681],
+    "derived_from": null,
+    "amended_by": "القانون 88-14",
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_682",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "الاشياء القابلة للتعامل",
+  "article_number": 682,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "تقسيم الاشياء والاموال",
+    "section": "القسم الثاني"
+  },
+  "text": {
+    "original": "المادة 682 : كل شيء غير خارج عن التعامل بطبيعته او بحكم القانون يصلح ان يكون محلا للحقوق المالية. والاشياء التي تخرج عن التعامل بطبيعتها هي التي لا يستطيع احد ان يستاثر بحيازتها واما الخارجة بحكم القانون فهي التي يجيز القانون ان تكون محلا للحقوق المالية.",
+    "language": "ar"
+  },
+  "keywords": [
+    "الاشياء",
+    "التعامل",
+    "الحقوق المالية"
+  ],
+  "legal_type": "تعريفية",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [683, 684],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_683",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "العقار والمنقول",
+  "article_number": 683,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "تقسيم الاشياء والاموال",
+    "section": "القسم الثاني"
+  },
+  "text": {
+    "original": "المادة 683 : كل شيء مستقر بحيزه وثابت فيه ولا يمكن نقله منه دون تلف فهو عقار، وكل ما عدا ذلك من شيء فهو منقول. غير ان المنقول الذي يضعه صاحبه في عقار يملكه، رصدا على خدمة هذا العقار او استغلاله يعتبر عقارا بالتخصيص.",
+    "language": "ar"
+  },
+  "keywords": [
+    "عقار",
+    "منقول",
+    "عقار بالتخصيص"
+  ],
+  "legal_type": "تعريفية",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [682, 684],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_684",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "الحقوق العينية العقارية",
+  "article_number": 684,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "تقسيم الاشياء والاموال",
+    "section": "القسم الثاني"
+  },
+  "text": {
+    "original": "المادة 684 : يعتبر مالا عقاريا كل حق عيني يقع على عقار، بما في ذلك حق الملكية، وكذلك كل دعوى تتعلق بحق عيني على عقار.",
+    "language": "ar"
+  },
+  "keywords": [
+    "حق عيني",
+    "عقار",
+    "دعوى عقارية"
+  ],
+  "legal_type": "تعريفية",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [682, 683],
+    "derived_from": null,
+    "amended_by": "القانون 88-14",
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_685",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "الاشياء القابلة للاستهلاك",
+  "article_number": 685,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "تقسيم الاشياء والاموال",
+    "section": "القسم الثاني"
+  },
+  "text": {
+    "original": "المادة 685 : الاشياء القابلة للاستهلاك هي التي ينحصر استعمالها بحسب ما اعدت له، في استهلاكها او انفاقها. ويعتبر قابلا للاستهلاك كل شيء يكون جزءا من المحل التجاري وهو معد للبيع.",
+    "language": "ar"
+  },
+  "keywords": [
+    "الاشياء القابلة للاستهلاك",
+    "المحل التجاري",
+    "استهلاك",
+    "انفاق"
+  ],
+  "legal_type": "تعريفية",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [682, 686],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_686",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "الاشياء المثلية",
+  "article_number": 686,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "تقسيم الاشياء والاموال",
+    "section": "القسم الثاني"
+  },
+  "text": {
+    "original": "المادة 686 : الاشياء المثلية هي التي يقوم بعضها مقام بعض عند الوفاء والتي تقدر عادة في التعامل بين الناس بالعدد، او المقياس او الكيل، او الوزن.",
+    "language": "ar"
+  },
+  "keywords": [
+    "الاشياء المثلية",
+    "العدد",
+    "الوزن",
+    "الكيل"
+  ],
+  "legal_type": "تعريفية",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [685],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_687",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "الحقوق على الاشياء غير المادية",
+  "article_number": 687,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "تقسيم الاشياء والاموال",
+    "section": "القسم الثاني"
+  },
+  "text": {
+    "original": "المادة 687 : تنظم قوانين خاصة الحقوق التي ترد على اشياء غير مادية.",
+    "language": "ar"
+  },
+  "keywords": [
+    "اشياء غير مادية",
+    "تنظيم خاص",
+    "حقوق غير مادية"
+  ],
+  "legal_type": "احالية",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_688",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "اموال الدولة",
+  "article_number": 688,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "تقسيم الاشياء والاموال",
+    "section": "القسم الثاني"
+  },
+  "text": {
+    "original": "المادة 688 : تعتبر اموالا للدولة العقارات والمنقولات التي تخصص بالفعل او بمقتضى نص قانوني لمصلحة عامة، او لادارة، او لمؤسسة عمومية او لهيئة لها طابع اداري، او لمؤسسة اشتراكية، او لوحدة مسيرة ذاتيا او التعاونية داخلة في نطاق الثورة الزراعية.",
+    "language": "ar"
+  },
+  "keywords": [
+    "اموال الدولة",
+    "مصلحة عامة",
+    "مؤسسة عمومية"
+  ],
+  "legal_type": "تعريفية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [689],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_689",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "عدم جواز التصرف في اموال الدولة",
+  "article_number": 689,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "تقسيم الاشياء والاموال",
+    "section": "القسم الثاني"
+  },
+  "text": {
+    "original": "المادة 689 : لا يجوز التصرف في اموال الدولة، او حجزها، او تملكها بالتقادم غير ان القوانين التي تخصص هذه الاموال لاحدى المؤسسات المشار اليها في المادة 688، تحدد شروط ادارتها، وعند الاقتضاء شروط عدم التصرف فيها.",
+    "language": "ar"
+  },
+  "keywords": [
+    "اموال الدولة",
+    "عدم التصرف",
+    "التقادم"
+  ],
+  "legal_type": "امرة",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [688],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_690",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "القيود العامة على استعمال حق الملكية",
+  "article_number": 690,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "القيود التي تلحق حق الملكية",
+    "section": "القسم الثالث"
+  },
+  "text": {
+    "original": "المادة 690 : يجب على المالك ان يراعي في استعمال حقه ما تقضي به التشريعات الجاري بها العمل والمتعلقة بالمصلحة العامة، او المصلحة الخاصة. وعليه ايضا مراعاة الاحكام الاتية.",
+    "language": "ar"
+  },
+  "keywords": [
+    "قيود الملكية",
+    "المصلحة العامة",
+    "المصلحة الخاصة"
+  ],
+  "legal_type": "امرة",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [691, 692],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_691",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "منع التعسف في استعمال حق الملكية ومضار الجوار",
+  "article_number": 691,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "القيود التي تلحق حق الملكية",
+    "section": "القسم الثالث"
+  },
+  "text": {
+    "original": "المادة 691 : يجب على المالك الا يتعسف في استعمال حقه الى حد يضر بملك الجار. وليس للجار ان يرجع على جاره في مضار الجوار المالوفة غير انه يجوز له ان يطلب ازالة هذه المضار اذا تجاوزت الحد المالوف وعلى القاضي ان يراعي في ذلك العرف، وطبيعة العقارات وموقع كل منها بالنسبة الى الاخرين والغرض الذي خصصت له.",
+    "language": "ar"
+  },
+  "keywords": [
+    "التعسف في استعمال الحق",
+    "مضار الجوار",
+    "الحد المالوف",
+    "الجار"
+  ],
+  "legal_type": "امرة",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [690],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_692",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "ملكية الارض وموارد المياه",
+  "article_number": 692,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "القيود التي تلحق حق الملكية",
+    "section": "القسم الثالث"
+  },
+  "text": {
+    "original": "المادة 692 : الارض ملك لمن يخدمها. وتعتبر جميع موارد المياه ملكا للجماعة الوطنية. تحدد اجراءات تطبيق هذه المادة بالنصوص الخاصة بالثورة الزراعية والنصوص المتعلقة بالبحث والتوزيع، واستعمال، واستغلال المياه.",
+    "language": "ar"
+  },
+  "keywords": [
+    "ملكية الارض",
+    "موارد المياه",
+    "الجماعة الوطنية"
+  ],
+  "legal_type": "امرة",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [690],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_693",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "حق المرور للعقار المحصور",
+  "article_number": 693,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "القيود التي تلحق حق الملكية",
+    "section": "القسم الثالث"
+  },
+  "text": {
+    "original": "المادة 693 : يجوز لمالك الارض المحصورة التي ليس لها اي ممر يصلها بالطريق العام او كان لها ممر ولكنه غير كاف للمرور، ان يطلب حق المرور على الاملاك المجاورة مقابل تعويض يتناسب مع الاضرار التي مكن ان تحدث من جراء ذلك.",
+    "language": "ar"
+  },
+  "keywords": [
+    "العقار المحصور",
+    "حق المرور",
+    "تعويض"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [694, 695, 696, 697],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_694",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "تحديد كفاية الممر",
+  "article_number": 694,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "القيود التي تلحق حق الملكية",
+    "section": "القسم الثالث"
+  },
+  "text": {
+    "original": "المادة 694 : يعتبر الممر على الطريق العام غير كاف، او غير ممكن اذا كان ذلك يكلف مشاق كبيرة لا يمكن تسويتها ببذل اعمال باهظة لا تتناسب مع قيمة العقار. ويعتبر الممر عكس ذلك كافيا اذا كانت الاضرار عارضة يمكن ازالتها بنفقات قليلة، او اذا وجد الممر على وجه الاباحة ما دام لم يمنع استعماله.",
+    "language": "ar"
+  },
+  "keywords": [
+    "الممر",
+    "الطريق العام",
+    "كفاية المرور"
+  ],
+  "legal_type": "تفسيرية",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [693],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_695",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "حالات منع طلب حق المرور",
+  "article_number": 695,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "القيود التي تلحق حق الملكية",
+    "section": "القسم الثالث"
+  },
+  "text": {
+    "original": "المادة 695 : لا يجوز لمالك الارض المحصورة او التي لها ممر كاف على الطريق العام ان يطلب حق المرور على ارض الغير اذا كان الحصر ناتجا عن ارادته هو. وليس له ان يطالب بحق المرور اذا كان يتمتع اما بحق المرور على وجه الاتفاق واما بحق المرور على وجه الاباحة ما دام المرور الاتفاقي لم ينقض بعد، وحق الاباحة لم يزل.",
+    "language": "ar"
+  },
+  "keywords": [
+    "منع حق المرور",
+    "العقار المحصور",
+    "مرور اتفاقي"
+  ],
+  "legal_type": "امرة",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [693],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_696",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "تحديد موقع حق المرور الاقل ضررا",
+  "article_number": 696,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "القيود التي تلحق حق الملكية",
+    "section": "القسم الثالث"
+  },
+  "text": {
+    "original": "المادة 696 : يجب ان يؤخذ حق المرور من الجهة التي تكون فيها المسافة بين العقار والطريق العام ملائمة والتي تحقق اقل ضرر بالملاك المجاورين.",
+    "language": "ar"
+  },
+  "keywords": [
+    "حق المرور",
+    "العقار المحصور",
+    "اقل ضرر"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [693, 694, 695],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_697",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "حق المرور عند تجزئة العقار",
+  "article_number": 697,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "القيود التي تلحق حق الملكية",
+    "section": "القسم الثالث"
+  },
+  "text": {
+    "original": "المادة 697 : اذا كانت الارض المحصورة ناتجة عن تجزئة عقار، بسبب بيع او مبادلة، او قسمة، او من اي معاملة اخرى فلا يطلب حق المرور الا على الاراضي التي تشملها تلك المعاملات.",
+    "language": "ar"
+  },
+  "keywords": [
+    "تجزئة العقار",
+    "حق المرور",
+    "العقار المحصور"
+  ],
+  "legal_type": "امرة",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [693],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_698",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "تقادم قاعدة ارتفاق المرور",
+  "article_number": 698,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "القيود التي تلحق حق الملكية",
+    "section": "القسم الثالث"
+  },
+  "text": {
+    "original": "المادة 698 : ان القاعدة والكيفية التي يتم بهما ارتفاق حق المرور بسبب الحصر تحددان بتقادم خمسة عشرة (15) سنة فاذا اكتملت هذه المدة فلا يجوز لصاحب العقار المحصور تغيير قاعدة الارتفاق، ولا تحويلها او نقلها من طرف صاحب العقار المرتفق به دون اذن من صاحب العقار المحصور.",
+    "language": "ar"
+  },
+  "keywords": [
+    "ارتفاق المرور",
+    "التقادم",
+    "15 سنة"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [693, 699, 700],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_699",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "الحيازة كسند ملكية لارتفاق المرور",
+  "article_number": 699,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "القيود التي تلحق حق الملكية",
+    "section": "القسم الثالث"
+  },
+  "text": {
+    "original": "المادة 699 : ان حيازة الممر الذي يستعمله صاحب العقار المحصور لمدة خمسة عشرة (15) سنة، يعد بمثابة سند ملكية للارتفاق ويصبح تابعا للعقار الذي انشئ من اجله واذا كان ارتفاق المرور قد تقرر بالحيازة لصالح العقار المحصور فانه لا يزول بتوقف الحصر الذي كان السبب الاصلي فيه عارضا كان، او نهائيا.",
+    "language": "ar"
+  },
+  "keywords": [
+    "حيازة",
+    "ارتفاق المرور",
+    "التقادم"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [698],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_700",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "سقوط حق التعويض بالتقادم",
+  "article_number": 700,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "القيود التي تلحق حق الملكية",
+    "section": "القسم الثالث"
+  },
+  "text": {
+    "original": "المادة 700 : لا يجوز لمالك العقار المرتفق به ان يطلب التعويض اذا سكت حتى حصل صاحب الارض المحصورة بالاستعمال والحيازة على حق المرور بالتقادم لمدة خمسة عشرة (15) سنة.",
+    "language": "ar"
+  },
+  "keywords": [
+    "تعويض",
+    "ارتفاق المرور",
+    "التقادم"
+  ],
+  "legal_type": "امرة",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [698, 699],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_701",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "تحديد التعويض عن حق المرور",
+  "article_number": 701,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "القيود التي تلحق حق الملكية",
+    "section": "القسم الثالث"
+  },
+  "text": {
+    "original": "المادة 701 : اذا استحق صاحب العقار المرتفق به تعويضا، فانه يمكن ان يحتوي ذلك التعويض على مبلغ مالي يسدد دفعة واحدة او على اقساط متساوية تتناسب مع الضرر الناجم من استعمال الممر.",
+    "language": "ar"
+  },
+  "keywords": [
+    "تعويض",
+    "ارتفاق",
+    "اقساط"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [693],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_702",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "تحديد حدود الملكية بين الجيران",
+  "article_number": 702,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "حق الجوار",
+    "section": "القسم الثالث"
+  },
+  "text": {
+    "original": "المادة 702 : لكل مالك ان يجبر جاره على وضع حدود لاملاكهما المتلاصقة، وتكون نفقات التحديد مشتركة بينهما.",
+    "language": "ar"
+  },
+  "keywords": [
+    "حدود الملكية",
+    "الجيران",
+    "نفقات مشتركة"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [703, 704],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_703",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "استعمال الحائط المشترك",
+  "article_number": 703,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "حق الجوار",
+    "section": "القسم الثالث"
+  },
+  "text": {
+    "original": "المادة 703 : لمالك الحائط المشترك ان يستعمله بحسب الغرض الذي اعد له وان يضع فوقه عوارض ليسند عليها السقف دون ان يحمل الحائط فوق طاقته.",
+    "language": "ar"
+  },
+  "keywords": [
+    "الحائط المشترك",
+    "استعمال الحائط",
+    "الجار"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [704, 705],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_704",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "نفقات ترميم الحائط المشترك",
+  "article_number": 704,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "حق الجوار",
+    "section": "القسم الثالث"
+  },
+  "text": {
+    "original": "المادة 704 : فاذا لم يعد الحائط المشترك صالحا للغرض الذي خصص له فان نفقة ترميمه، واعادة بنائه تكون على الشركاء كل بنسبة حصته فيه.",
+    "language": "ar"
+  },
+  "keywords": [
+    "ترميم الحائط",
+    "الحائط المشترك",
+    "نفقات"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [703, 705],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_705",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "تعلية الحائط المشترك",
+  "article_number": 705,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "حق الجوار",
+    "section": "القسم الثالث"
+  },
+  "text": {
+    "original": "المادة 705 : للمالك اذا كانت له مصلحة جدية في تعلية الحائط المشترك ان يعليه بشرط ان لا يلحق بشريكه ضررا بليغا، وعليه ان يتحمل وحده نفقة التعلية وصيانة الجزء المعلى.",
+    "language": "ar"
+  },
+  "keywords": [
+    "الحائط المشترك",
+    "تعلية",
+    "نفقات",
+    "حق الجوار"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [704, 706],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_706",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "مشاركة الجار في التعلية",
+  "article_number": 706,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "حق الجوار",
+    "section": "القسم الثالث"
+  },
+  "text": {
+    "original": "المادة 706 : يمكن للجار الذي لم يسهم في نفقات التعلية ان يصبح شريكا في الجزء المعلى اذا دفع نصف ما انفق عليه وقيمة نصف الارض التي تقوم عليها الزيادة.",
+    "language": "ar"
+  },
+  "keywords": [
+    "الحائط المشترك",
+    "مشاركة الجار",
+    "نفقات",
+    "تعلية"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [705, 707],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_707",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "الحائط الفاصل بين العقارات المشتركة",
+  "article_number": 707,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "حق الجوار",
+    "section": "القسم الثالث"
+  },
+  "text": {
+    "original": "المادة 707 : يعد الحائط الذي يكون في وقت انشائه فاصلا بين بنائين مشتركا حتى مفرقهما هذا ما لم يقم الدليل على عكس ذلك.",
+    "language": "ar"
+  },
+  "keywords": [
+    "الحائط المشترك",
+    "فاصل",
+    "العقار المشترك"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [706, 708],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_708",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "حق الجار في الحائط والمحيط",
+  "article_number": 708,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "حق الجوار",
+    "section": "القسم الثالث"
+  },
+  "text": {
+    "original": "المادة 708 : ليس لجار ان يجبر جاره على تحويط ملكه ولا على التنازل عن جزء من حائط او من الارض التي يقوم عليها الحائط الا في الحالة المذكورة في المادة 697.",
+    "language": "ar"
+  },
+  "keywords": [
+    "الحائط المشترك",
+    "حق الجار",
+    "تحويط"
+  ],
+  "legal_type": "امرة",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [707, 709],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_709",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "المسافة الدنيا لبناء المطل",
+  "article_number": 709,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "حق الجوار",
+    "section": "القسم الثالث"
+  },
+  "text": {
+    "original": "المادة 709 : لا يجوز للجار ان يكون له على جاره له مطل مواجه على مسافة تقل عن مترين، وتقاس المسافة من ظهر الحائط الذي يوجد له المطل او من الحافة الخارجية للشرفة، او من النتؤ.",
+    "language": "ar"
+  },
+  "keywords": [
+    "المطل",
+    "مسافة",
+    "حق الجار"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [708, 710],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_710",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "المطل المنحرف وقيوده",
+  "article_number": 710,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "حق الجوار",
+    "section": "القسم الثالث"
+  },
+  "text": {
+    "original": "المادة 710 : لا يجوز ان يكون لجار على جاره مطل منحرف على مسافة تقل عن ستين (60) سنتيمترا من حرف المطل على ان هذا التحريم يبطل اذا كان المطل المنحرف على العقار المجاور هو في الوقت ذاته مطل مواجه للطريق العام.",
+    "language": "ar"
+  },
+  "keywords": [
+    "المطل المنحرف",
+    "مسافة",
+    "حق الجار"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [709],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_711",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "فتح المناور",
+  "article_number": 711,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "حق الجوار",
+    "section": "القسم الثالث"
+  },
+  "text": {
+    "original": "المادة 711 : لا تشترك اية مسافة لفتح المناور، التي تقام من ارتفاع مترين من ارض الغرفة التي يراد انارتها، ولا يقصد بها الا مرور الهواء ونفاذ النور، دون ان يمكن الاطلاع منها على العقار المجاور.",
+    "language": "ar"
+  },
+  "keywords": [
+    "المناور",
+    "نور",
+    "تهوية",
+    "حق الجوار"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [710, 712],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_712",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "المسافة لانشاء المصانع والمؤسسات المضرة",
+  "article_number": 712,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "حق الجوار",
+    "section": "القسم الثالث"
+  },
+  "text": {
+    "original": "المادة 712 : يجب ان تنشا المصانع، والابار، والالات البخارية وجميع المؤسسات المضرة بالجيران على المسافات المبينة في اللوائح وبالشروط التي تفرضها.",
+    "language": "ar"
+  },
+  "keywords": [
+    "المصانع",
+    "الابار",
+    "الالات البخارية",
+    "الجار",
+    "مسافات"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [711, 713],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_713",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "تاسيس الشيوع",
+  "article_number": 713,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية الشائعة",
+    "section": "القسم الرابع"
+  },
+  "text": {
+    "original": "المادة 713 : اذا ملك اثنان او اكثر شيئا وكانت حصة كل منهم فيه غير مقررة فهم شركاء على الشيوع وتعتبر الحصص متساوية اذا لم يقم دليل على غير ذلك.",
+    "language": "ar"
+  },
+  "keywords": [
+    "الملكية الشائعة",
+    "الشيوع",
+    "الحصص"
+  ],
+  "legal_type": "تعريفية",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [714, 715],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_714",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "حق الشريك في التصرف بالملكية الشائعة",
+  "article_number": 714,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية الشائعة",
+    "section": "القسم الرابع"
+  },
+  "text": {
+    "original": "المادة 714 : كل شريك في الشيوع يملك حصته ملكا تاما، وله ان يتصرف فيها وان يستولي على ثمارها وان يستعملها بحيث لا يلحق الضرر بحقوق سائر الشركاء.",
+    "language": "ar"
+  },
+  "keywords": [
+    "الملكية الشائعة",
+    "حصة الشريك",
+    "التصرف",
+    "الاستعمال"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [713, 715],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_715",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "ادارة المال الشائع",
+  "article_number": 715,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية الشائعة",
+    "section": "القسم الرابع"
+  },
+  "text": {
+    "original": "المادة 715 : تكون ادارة المال الشائع من حق الشركاء مجتمعين ما لم يوجد اتفاق يخالف ذلك.",
+    "language": "ar"
+  },
+  "keywords": [
+    "المال الشائع",
+    "الادارة",
+    "الشركاء"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [713, 716],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_716",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "تعيين مدير المال الشائع",
+  "article_number": 716,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية الشائعة",
+    "section": "القسم الرابع"
+  },
+  "text": {
+    "original": "المادة 716 : للاغلبية تعيين من يدير المال الشائع عند الحاجة، كما يمكنها اختيار مدير ووضع نظام للادارة ولحسن الانتفاع بالمال الشائع.",
+    "language": "ar"
+  },
+  "keywords": [
+    "المال الشائع",
+    "الادارة",
+    "مدير",
+    "الاغلبية"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [715, 717],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_717",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "قرارات الاغلبية في المال الشائع",
+  "article_number": 717,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية الشائعة",
+    "section": "القسم الرابع"
+  },
+  "text": {
+    "original": "المادة 717 : للشركاء الذين يملكون على الاقل ثلاثة ارباع المال الشائع، ان يقرروا التغييرات الاساسية او تعديل الغرض المعد للمال الشائع مع اعلان قراراتهم لبقية الشركاء، ويحق للمعارض اللجوء الى المحكمة خلال شهرين.",
+    "language": "ar"
+  },
+  "keywords": [
+    "المال الشائع",
+    "الاغلبية",
+    "قرارات",
+    "تغيير الغرض"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [716, 718],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_718",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "حق الشريك في حماية المال الشائع",
+  "article_number": 718,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية الشائعة",
+    "section": "القسم الرابع"
+  },
+  "text": {
+    "original": "المادة 718 : لكل شريك في الشيوع الحق في اتخاذ ما يلزم لحفظ المال، ولو كان ذلك بغير موافقة باقي الشركاء.",
+    "language": "ar"
+  },
+  "keywords": [
+    "المال الشائع",
+    "الشيوع",
+    "حفظ المال",
+    "حق الشريك"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [717, 719],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_719",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "نفقات ادارة المال الشائع",
+  "article_number": 719,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية الشائعة",
+    "section": "القسم الرابع"
+  },
+  "text": {
+    "original": "المادة 719 : يتحمل جميع الشركاء، كل بقدر حصته نفقات ادارة المال الشائع، وحفظه، والضرائب المفروضة عليه، وسائر التكاليف الناتجة عن الشيوع، ما لم يوجد نص يقضي بغير ذلك.",
+    "language": "ar"
+  },
+  "keywords": [
+    "المال الشائع",
+    "نفقات",
+    "الشركاء",
+    "الضرائب"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [718, 720],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_720",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "تصرف الاغلبية في المال الشائع",
+  "article_number": 720,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية الشائعة",
+    "section": "القسم الرابع"
+  },
+  "text": {
+    "original": "المادة 720 : للشركاء الذين يملكون على الاقل ثلاثة ارباع المال الشائع ان يقرروا التصرف فيه اذا استندوا الى اسباب قوية، مع اعلان قراراتهم لبقية الشركاء، وللمخالف حق الرجوع الى المحكمة خلال شهرين.",
+    "language": "ar"
+  },
+  "keywords": [
+    "المال الشائع",
+    "الاغلبية",
+    "التصرف",
+    "حق الرجوع"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [719, 721],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_721",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "استرداد الحصة المشتركة المباعة لاجنبي",
+  "article_number": 721,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية الشائعة",
+    "section": "القسم الرابع"
+  },
+  "text": {
+    "original": "المادة 721 : للشريك في المنقول الشائع او العقار ان يسترد قبل القسمة الحصة التي باعها شريك لغيره عن طريق التراضي، خلال شهر من تاريخ علمه بالبيع، ويحل المسترد محل المشتري في جميع الحقوق والالتزامات اذا عوضه عن ما انفقه.",
+    "language": "ar"
+  },
+  "keywords": [
+    "الملكية الشائعة",
+    "استرداد",
+    "البيع",
+    "حقوق الشريك"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [720, 722],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_722",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "طلب قسمة المال الشائع",
+  "article_number": 722,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية الشائعة",
+    "section": "القسم الرابع"
+  },
+  "text": {
+    "original": "المادة 722 : لكل شريك ان يطالب بقسمة المال الشائع ما لم يكن مجبرا على البقاء في الشيوع بمقتضى نص او اتفاق، ولا يجوز بمقتضى الاتفاق ان تمنح القسمة لاجل يجاوز خمس سنوات.",
+    "language": "ar"
+  },
+  "keywords": [
+    "الملكية الشائعة",
+    "قسمة",
+    "الشريك",
+    "اتفاق"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [721, 723],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_723",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "اقتسام المال الشائع باتفاق الشركاء",
+  "article_number": 723,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية الشائعة",
+    "section": "القسم الرابع"
+  },
+  "text": {
+    "original": "المادة 723 : يستطيع الشركاء اذا انعقد اجماعهم، ان يقتسموا المال الشائع بالطريقة التي يرونها، مع مراعاة الاجراءات القانونية في حال وجود ناقصين.",
+    "language": "ar"
+  },
+  "keywords": [
+    "الملكية الشائعة",
+    "اقتسام",
+    "الشركاء",
+    "اجماع"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [722, 724],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_724",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "رفع الدعوى لاقتسام المال الشائع",
+  "article_number": 724,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية الشائعة",
+    "section": "القسم الرابع"
+  },
+  "text": {
+    "original": "المادة 724 : اذا اختلف الشركاء في اقتسام المال الشائع، فعلى من يريد الخروج من الشيوع ان يرفع الدعوى على باقي الشركاء امام المحكمة، والتي قد تعين خبيرا لتقييم وتقسيم المال الشائع.",
+    "language": "ar"
+  },
+  "keywords": [
+    "الملكية الشائعة",
+    "قسمة",
+    "المحكمة",
+    "الخبرة"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [723, 725],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_725",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "الحصص الجزئية في القسمة",
+  "article_number": 725,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية الشائعة",
+    "section": "القسم الرابع"
+  },
+  "text": {
+    "original": "المادة 725 : يكون الخبير الحصص على اساس اصغر نصيب حتى ولو كانت القسمة جزئية، واذا تعذر اخذ احد الشركاء كامل نصيبه عينا، عوض بمعدل ما نقص من نصيبه.",
+    "language": "ar"
+  },
+  "keywords": [
+    "الملكية الشائعة",
+    "القسمة",
+    "الخبير",
+    "الحصص"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [724, 726],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_726",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "الفصل النهائي في منازعات القسمة",
+  "article_number": 726,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية الشائعة",
+    "section": "القسم الرابع"
+  },
+  "text": {
+    "original": "المادة 726 : تفصل المحكمة في كل المنازعات وخاصة المتعلقة بتكوين الحصص عند القسمة.",
+    "language": "ar"
+  },
+  "keywords": [
+    "الملكية الشائعة",
+    "المحكمة",
+    "القسمة",
+    "المنازعات"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [725],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},{
+  "id": "DZ_CIVIL_ART_727",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "القسمة بالاقتراع",
+  "article_number": 727,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية الشائعة",
+    "section": "القسم الرابع"
+  },
+  "text": {
+    "original": "المادة 727 : تجري القسمة بطريق الاقتراع، وتثبت المحكمة ذلك في محضرها وتصدر حكما باعطاء كل شريك نصيبه المفرز.",
+    "language": "ar"
+  },
+  "keywords": [
+    "الملكية الشائعة",
+    "القسمة",
+    "الاقتراع",
+    "المحكمة"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [726, 728],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_728",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "القسمة عند تعذر القسمة عينا",
+  "article_number": 728,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية الشائعة",
+    "section": "القسم الرابع"
+  },
+  "text": {
+    "original": "المادة 728 : اذا تعذرت القسمة عينا، او كان من شانها احداث نقص كبير في قيمة المال المراد قسمته، بيع هذا المال بالمزاد بالطريقة المبينة في قانون الاجراءات المدنية، وتقتصر المزايدة على الشركاء اذا طلبوا ذلك بالاجماع.",
+    "language": "ar"
+  },
+  "keywords": [
+    "الملكية الشائعة",
+    "القسمة",
+    "المزاد",
+    "الشركاء"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [727, 729],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_729",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "حق الدائنين في الاعتراض على القسمة",
+  "article_number": 729,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية الشائعة",
+    "section": "القسم الرابع"
+  },
+  "text": {
+    "original": "المادة 729 : لدائني كل شريك ان يعارضوا في ان تتم القسمة عينا او ان يباع المال بالمزاد بغير تداخلهم، ويجب ادخال الدائنين المقيدة حقوقهم قبل رفع دعوى القسمة، والا كانت القسمة غير نافذة في حقهم.",
+    "language": "ar"
+  },
+  "keywords": [
+    "الملكية الشائعة",
+    "الدائنون",
+    "القسمة",
+    "المعارضة"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [728, 730],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_730",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "تملك الحصة بعد القسمة",
+  "article_number": 730,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية الشائعة",
+    "section": "القسم الرابع"
+  },
+  "text": {
+    "original": "المادة 730 : يعتبر المتقاسم مالكا للحصة التي الت اليه منذ ان اصبح مالكا في الشيوع، وانه لم يكن مالكا على الاطلاق لباقي الحصص الاخرى.",
+    "language": "ar"
+  },
+  "keywords": [
+    "الملكية الشائعة",
+    "المتقاسم",
+    "الحصة",
+    "التملك"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [729, 731],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_731",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "ضمان التعويض بين المتقاسمين",
+  "article_number": 731,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية الشائعة",
+    "section": "القسم الرابع"
+  },
+  "text": {
+    "original": "المادة 731 : يضمن المتقاسمون بعضهم لبعض ما قد يقع من تعرض او استحقاق لسبب سابق على القسمة، ويكون كل منهم ملزما بنسبة حصته ان يعوض المتقاسم المتعرض له، مع مراعاة القيمة وقت القسمة، واستثناء حالات الاتفاق او الخطا الشخصي.",
+    "language": "ar"
+  },
+  "keywords": [
+    "الملكية الشائعة",
+    "الضمان",
+    "المتقاسمين",
+    "القسمة"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [730, 732],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_732",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "نقض القسمة بالتراضي",
+  "article_number": 732,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية الشائعة",
+    "section": "القسم الرابع"
+  },
+  "text": {
+    "original": "المادة 732 : يجوز نقض القسمة الحاصلة بالتراضي اذا اثبت احد المتقاسمين غبن يزيد على الخمس، مع مراعاة قيمة الشيء وقت القسمة، ويجب رفع الدعوى خلال السنة التالية للقسمة.",
+    "language": "ar"
+  },
+  "keywords": [
+    "الملكية الشائعة",
+    "القسمة",
+    "النقض",
+    "الغبن"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [731, 733],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_733",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "قسمة المهاياة وتحديد حصص الشركاء",
+  "article_number": 733,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية الشائعة",
+    "section": "القسم الرابع"
+  },
+  "text": {
+    "original": "المادة 733 : يتفق الشركاء في قسمة المهاياة على ان يختص كل منهم بجزء مفرز يساوي حصته في المال الشائع متناز لا لشركائه، ولا يصح الاتفاق لمدة تزيد على خمس سنوات، واذا دامت خمسة عشرة سنة افترضت قسمة نهائية.",
+    "language": "ar"
+  },
+  "keywords": [
+    "الملكية الشائعة",
+    "قسمة المهاياة",
+    "الشركاء",
+    "الحصص"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [732, 734],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_734",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "قواعد قسمة المهاياة بالانتفاع",
+  "article_number": 734,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية الشائعة",
+    "section": "القسم الرابع"
+  },
+  "text": {
+    "original": "المادة 734 : يجوز ان تكون قسمة المهاياة بان يتفق الشركاء على انتفاعهم بالمال المشترك لمدة تتناسب مع حصتهم، على الا تتجاوز مدة الاتفاق القانونية.",
+    "language": "ar"
+  },
+  "keywords": [
+    "الملكية الشائعة",
+    "قسمة المهاياة",
+    "الانتفاع",
+    "الشركاء"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [733, 736],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+    "id": "DZ_CIVIL_ART_735",
+    "country": "Algeria",
+    "law_domain": "Civil Law",
+    "law_name": "القانون المدني",
+    "book": "الكتاب الثالث: الملكية والحقوق العينية",
+    "title": "قسمة المهايأة",
+    "article_number": 735,
+    "classification": {
+      "main_category": "الملكية",
+      "sub_category": "قسمة الماهيأة",
+      "section": "أهلية المتقاسمين وطرق الاثبات"
+    },
+    "text": {
+      "original": "المادة 735: تخضع قسمة المهايأة من حيث جواز الاحتجاج بها على الغير ومن حيث أهلية المتقاسمين وحقوقهم والتزاماتهم وطرق الاثبات لأحكام عقد الايجار, مادامت هذه الأحكام لا تتعارض مع طبيعة هذه القسمة.",
+      "language": "ar"
+    },
+    "keywords": [
+      "قسمة المهايأة",
+      "الاحتجاج بالغير",
+      "أهلية المتقاسمين",
+      "حقوق والتزامات المتقاسمين",
+      "طرق الاثبات",
+      "عقد الايجار"
+    ],
+    "legal_type": "تنظيمية",
+    "norm_type": "يجوز الاتفاق على بعض تفاصيلها",
+    "relations": {
+      "related_articles": [736, 737],
+      "derived_from": null,
+      "amended_by": null,
+      "repeals": null
+    },
+    "source": {
+      "document": "القانون المدني الجزائري",
+      "year": 2007,
+      "publisher": "الجريدة الرسمية"
+    },
+    "versioning": {
+      "status": "ساري",
+      "version": "v1.0",
+      "last_update": "2007-05-13"
+    }
+  },
+{
+  "id": "DZ_CIVIL_ART_736",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "اتفاق الشركاء اثناء القسمة النهائية",
+  "article_number": 736,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية الشائعة",
+    "section": "القسم الرابع"
+  },
+  "text": {
+    "original": "المادة 736 : يمكن للشركاء ان يتفقوا اثناء اجراءات القسمة النهائية على ان يقسم المال الشائع مهاياة بينهم، وتظل هذه القسمة نافذة حتى تتم القسمة النهائية، واذا تعذر الاتفاق جازت المحكمة ان تامر بها اذا طلب احد الشركاء.",
+    "language": "ar"
+  },
+  "keywords": [
+    "الملكية الشائعة",
+    "القسمة النهائية",
+    "الشركاء",
+    "قسمة المهاياة"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [734, 737],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_737",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "عدم جواز قسم المال الشائع احيانا",
+  "article_number": 737,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية الشائعة",
+    "section": "القسم الرابع"
+  },
+  "text": {
+    "original": "المادة 737 : ليس للشركاء في مال شائع ان يطالبوا قسمته اذا تبين من الغرض الذي اعد له هذا المال انه يجب ان يبقى دائما على الشيوع.",
+    "language": "ar"
+  },
+  "keywords": [
+    "الملكية الشائعة",
+    "الشركاء",
+    "القسمة",
+    "الهدف"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [736, 738],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_738",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "ملكية الاسرة",
+  "article_number": 738,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية الشائعة",
+    "section": "القسم الرابع"
+  },
+  "text": {
+    "original": "المادة 738 : لاعضاء الاسرة الواحدة الذين تجمعهم وحدة العمل او المصلحة ان يتفقوا كتابة على انشاء ملكية للاسرة، وتتكون من تركة ورثوها او اي مال اخر لهم.",
+    "language": "ar"
+  },
+  "keywords": [
+    "ملكية الاسرة",
+    "الاسرة",
+    "الوحدة",
+    "الاتفاق"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [737, 739],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_739",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "مدة ملكية الاسرة واستحقاق الخروج",
+  "article_number": 739,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية الشائعة",
+    "section": "القسم الرابع"
+  },
+  "text": {
+    "original": "المادة 739 : يجوز الاتفاق على انشاء ملكية الاسرة لمدة لا تزيد على خمسة عشرة سنة، وللشريك ان يطلب اخراج نصيبه قبل انقضاء الاجل المتفق عليه اذا وجد مبرر قوي، واذا لم يكن هناك اجل محدد فيجوز الخروج بعد ستة اشهر من الاعلام.",
+    "language": "ar"
+  },
+  "keywords": [
+    "ملكية الاسرة",
+    "الاجل",
+    "الخروج",
+    "الشريك"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [738, 740],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_740",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "حظر القسمة والتصرف في ملكية الاسرة",
+  "article_number": 740,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية الشائعة",
+    "section": "القسم الرابع"
+  },
+  "text": {
+    "original": "المادة 740 : لا يجوز طلب القسمة ما دامت ملكية الاسرة قائمة، ولا يجوز لاي شريك التصرف في نصيبه لاجنبي الا بموافقة جميع الشركاء.",
+    "language": "ar"
+  },
+  "keywords": [
+    "ملكية الاسرة",
+    "القسمة",
+    "التصرف",
+    "الشركاء"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [739, 741],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_741",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "تعيين مدير ملكية الاسرة",
+  "article_number": 741,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية الشائعة",
+    "section": "القسم الرابع"
+  },
+  "text": {
+    "original": "المادة 741 : للشركاء اصحاب القدر الاكبر من قيمة الحصص ان يعينوا من بينهم للادارة واحدا او اكثر، ويجوز للمحكمة عزل المدير بناء على طلب اي شريك اذا وجد سبب قوي.",
+    "language": "ar"
+  },
+  "keywords": [
+    "ملكية الاسرة",
+    "الادارة",
+    "الشركاء",
+    "المدير"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [740, 742],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_742",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "تطبيق قواعد الملكية الشائعة على ملكية الاسرة",
+  "article_number": 742,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية الشائعة",
+    "section": "القسم الرابع"
+  },
+  "text": {
+    "original": "المادة 742 : فيما عدا الاحكام السابقة تنطبق قواعد الملكية الشائعة وقواعد الوكالة على ملكية الاسرة.",
+    "language": "ar"
+  },
+  "keywords": [
+    "ملكية الاسرة",
+    "الملكية الشائعة",
+    "الوكالة",
+    "الشركاء"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [741, 743],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_743",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "الملكية المشتركة في العقارات المبنية",
+  "article_number": 743,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية المشتركة",
+    "section": "القسم الخامس"
+  },
+  "text": {
+    "original": "المادة 743 : الملكية المشتركة هي الحالة القانونية التي يكون عليها العقار المبني او مجموعة العقارات المبنية والتي تكون ملكيتها مقسمة حصصا بين عدة اشخاص تشتمل كل واحدة منها على جزء خاص ونصيب في الاجزاء المشتركة.",
+    "language": "ar"
+  },
+  "keywords": [
+    "الملكية المشتركة",
+    "العقارات المبنية",
+    "الحصص",
+    "الاجزاء المشتركة"
+  ],
+  "legal_type": "تعريفية",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_744",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "الاجزاء الخاصة في الملكية المشتركة",
+  "article_number": 744,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية المشتركة",
+    "section": "القسم الخامس"
+  },
+  "text": {
+    "original": "المادة 744 : تعتبر اجزاء خاصة، اجزاء العقارات المبنية او غير المبنية والمملوكة بالتقسيم لكل واحد من الملاك الشركاء بغرض الاستعمال الشخصي والخاص... وتعتبر مشتركة بين الشركاء المتجاورين الحواجز او الحيطان الفاصلة دون الجدران الاساسية في البناء.",
+    "language": "ar"
+  },
+  "keywords": [
+    "الملكية المشتركة",
+    "الاجزاء الخاصة",
+    "الملاك الشركاء",
+    "الاستعمال الشخصي"
+  ],
+  "legal_type": "تعريفية",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [743, 745],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_745",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "الاجزاء المشتركة وحقوقها التابعة",
+  "article_number": 745,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية المشتركة",
+    "section": "القسم الخامس"
+  },
+  "text": {
+    "original": "المادة 745 : تعتبر اجزاء مشتركة اجزاء العقارات المبنية وغير المبنية التي يملكها على الشيوع كافة الملاكين المشتركين... وتعد حقوقا بالتبعية للاجزاء المشتركة حق تعلية العمارة والحق في بناء عمارات جديدة بالافنية والبساتين والجنائن المشتركة.",
+    "language": "ar"
+  },
+  "keywords": [
+    "الملكية المشتركة",
+    "الاجزاء المشتركة",
+    "حق التعلية",
+    "الحقوق التابعة"
+  ],
+  "legal_type": "تعريفية",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [744, 746],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_746",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "تحديد الحصة في الاجزاء المشتركة",
+  "article_number": 746,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية المشتركة",
+    "section": "القسم الخامس"
+  },
+  "text": {
+    "original": "المادة 746 : (معدلة) تتناسب الحصة في الاجزاء المشتركة الخاصة لكل قسمة مع المساحة النافعة بالنسبة للمساحة الاجمالية النافعة لمجموع القسمات التي تشكل الوحدة العقارية.",
+    "language": "ar"
+  },
+  "keywords": [
+    "الملكية المشتركة",
+    "الحصة",
+    "المساحة النافعة",
+    "الاجزاء المشتركة"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [745, 747],
+    "derived_from": null,
+    "amended_by": ["Law 83-01 (1983)"],
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "معدل",
+    "version": "v2.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_747",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "عدم قابلية الاجزاء المشتركة للقسمة المنفردة",
+  "article_number": 747,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية المشتركة",
+    "section": "القسم الخامس"
+  },
+  "text": {
+    "original": "المادة 747 : لا يجوز ان تكون الاجزاء المشتركة او الحقوق التابعة لها محلا لدعوى التقسيم او بيعا بالمزايدة بمعزل عن الاجزاء الخاصة.",
+    "language": "ar"
+  },
+  "keywords": [
+    "الملكية المشتركة",
+    "الاجزاء المشتركة",
+    "دعوى التقسيم",
+    "المزايدة"
+  ],
+  "legal_type": "امرة",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [746, 748],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_748",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "نظام الملكية المشتركة",
+  "article_number": 748,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية المشتركة",
+    "section": "القسم الخامس"
+  },
+  "text": {
+    "original": "المادة 748 : (معدلة) يحدد نظام الملكية المشتركة مصير الاجزاء المشتركة والاجزاء الخاصة وكيفيات الانتفاع بها والقواعد المتعلقة بادارتها وتسييرها.",
+    "language": "ar"
+  },
+  "keywords": [
+    "الملكية المشتركة",
+    "نظام الملكية",
+    "الادارة",
+    "الانتفاع"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [747, 749],
+    "derived_from": null,
+    "amended_by": ["Law 83-01 (1983)"],
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "معدل",
+    "version": "v2.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_749",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "حق الانتفاع بالاجزاء الخاصة والمشتركة",
+  "article_number": 749,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية المشتركة",
+    "section": "القسم الخامس"
+  },
+  "text": {
+    "original": "المادة 749 : لكل شريك الحق في التمتع بالاجزاء الخاصة التابعة لحصته، وله ان يستعمل وينتفع بالاجزاء المشتركة بشرط عدم المساس بحقوق باقي الشركاء او الحاق ضرر بالعقار.",
+    "language": "ar"
+  },
+  "keywords": [
+    "الملكية المشتركة",
+    "الانتفاع",
+    "الاجزاء الخاصة",
+    "الاجزاء المشتركة"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "مكملة",
+  "relations": {
+    "related_articles": [748, 750],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 2007,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "2007-05-13"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_750",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "انواع التكاليف المشتركة في الملكية المشتركة",
+  "article_number": 750,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية المشتركة",
+    "section": "القسم الخامس"
+  },
+  "text": {
+    "original": "المادة 750 : (معدلة) تنقسم التكاليف المشتركة الى نوعين: (1) تكاليف التسيير العادي والترميمات الصغيرة ويتحملها الشاغلون بالتساوي، (2) تكاليف الترميمات الكبرى والصيانة وامن الشركاء ويتحملها الملاك بحسب حصة كل جزء مشترك.",
+    "language": "ar"
+  },
+  "keywords": [
+    "الملكية المشتركة",
+    "التكاليف المشتركة",
+    "الترميمات",
+    "التسيير"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [749, "750 مكرر"],
+    "derived_from": null,
+    "amended_by": ["Law 83-01 (1983)"],
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "معدل",
+    "version": "v2.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_750_BIS",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "التزامات الهيئات العمومية في التكاليف المشتركة",
+  "article_number": "750 مكرر",
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية المشتركة",
+    "section": "القسم الخامس"
+  },
+  "text": {
+    "original": "المادة 750 مكرر : (جديدة) يجب على المجموعات والمصالح والهيئات العمومية ان تدرج في ميزانيتها الاعتمادات الضرورية لدفع التكاليف الملزمة بدفعها بصفتها شريكة في الملكية او شاغلة لها.",
+    "language": "ar"
+  },
+  "keywords": [
+    "الملكية المشتركة",
+    "الهيئات العمومية",
+    "التكاليف المشتركة",
+    "الميزانية"
+  ],
+  "legal_type": "امرة",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [750],
+    "derived_from": null,
+    "amended_by": ["Law 83-01 (1983)"],
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "جديدة",
+    "version": "v1.0",
+    "last_update": "1983-01-29"
+  }
+},
+
+{
+  "id": "DZ_CIVIL_ART_751",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "مادة ملغاة",
+  "article_number": 751,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية المشتركة",
+    "section": "القسم الخامس"
+  },
+  "text": {
+    "original": "المادة 751 : (ملغاة) الغيت بموجب القانون رقم 83-01 المؤرخ في 29 يناير 1983.",
+    "language": "ar"
+  },
+  "keywords": [
+    "الغاء",
+    "تعديل تشريعي",
+    "الملكية المشتركة"
+  ],
+  "legal_type": "الغاء تشريعي",
+  "norm_type": "ملغاة",
+  "relations": {
+    "related_articles": [750, 752],
+    "derived_from": null,
+    "amended_by": ["Law 83-01 (1983)"],
+    "repeals": ["النص الاصلي لسنة 1975"]
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ملغاة",
+    "version": "v0.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_752",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "مادة ملغاة",
+  "article_number": 752,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية المشتركة",
+    "section": "القسم الخامس"
+  },
+  "text": {
+    "original": "المادة 752 : (ملغاة) الغيت بموجب القانون رقم 83-01 المؤرخ في 29 يناير 1983.",
+    "language": "ar"
+  },
+  "keywords": [
+    "الغاء",
+    "تعديل تشريعي",
+    "توزيع التكاليف"
+  ],
+  "legal_type": "الغاء تشريعي",
+  "norm_type": "ملغاة",
+  "relations": {
+    "related_articles": [751, 753],
+    "derived_from": null,
+    "amended_by": ["Law 83-01 (1983)"],
+    "repeals": ["النص الاصلي لسنة 1975"]
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ملغاة",
+    "version": "v0.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_753",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "مادة ملغاة",
+  "article_number": 753,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية المشتركة",
+    "section": "القسم الخامس"
+  },
+  "text": {
+    "original": "المادة 753 : (ملغاة) الغيت بموجب القانون رقم 83-01 المؤرخ في 29 يناير 1983.",
+    "language": "ar"
+  },
+  "keywords": [
+    "الغاء",
+    "نظام الملكية المشتركة",
+    "التعديل التشريعي"
+  ],
+  "legal_type": "الغاء تشريعي",
+  "norm_type": "ملغاة",
+  "relations": {
+    "related_articles": [752, 754],
+    "derived_from": null,
+    "amended_by": ["Law 83-01 (1983)"],
+    "repeals": ["النص الاصلي لسنة 1975"]
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ملغاة",
+    "version": "v0.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_754",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "مسؤولية المالك السابق عند نقل الملكية",
+  "article_number": 754,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية المشتركة",
+    "section": "القسم الخامس"
+  },
+  "text": {
+    "original": "المادة 754 : (معدلة) في حالة نقل ملكية احدى القسمات، يبقى المالك السابق ملزما بدفع جميع الديون المترتبة عليه من الملكية المشتركة والمستحقة عند تاريخ انتقال الملكية والواجب دفعها نقدا سواء تعلق الامر بارصدة او بدفع نهائي. يجب على الشريك الذي يتخلى عن قسمته بعوض ان يسلم للموثق شهادة لا تتجاوز مدتها شهرا تثبت انه غير مطالب باي حق ازاء جماعة الشركاء. ويجب اخطار المتصرف بهذا التخلي برسالة مضمونة مع اشعار بالوصول ويجوز للمتصرف بطلب من المشتري ان يعترض في مدة خمسة عشر (15) يوما ابتداء من اعلان التخلي على دفع مبالغ البيع ليتسنى له الحصول على المبالغ الباقية في ذمة البائع.",
+    "language": "ar"
+  },
+  "keywords": [
+    "نقل الملكية",
+    "مسؤولية المالك السابق",
+    "شهادة عدم المديونية",
+    "جماعة الشركاء"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [756],
+    "derived_from": null,
+    "amended_by": ["Law 83-01 (1983)"],
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "معدل",
+    "version": "v2.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_755",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "مادة ملغاة",
+  "article_number": 755,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية المشتركة",
+    "section": "القسم الخامس"
+  },
+  "text": {
+    "original": "المادة 755 : (ملغاة) الغيت بموجب القانون رقم 83-01 المؤرخ في 29 يناير 1983.",
+    "language": "ar"
+  },
+  "keywords": [
+    "الغاء",
+    "جماعة الشركاء",
+    "الشخصية المدنية"
+  ],
+  "legal_type": "الغاء تشريعي",
+  "norm_type": "ملغاة",
+  "relations": {
+    "related_articles": [754, 756],
+    "derived_from": null,
+    "amended_by": ["Law 83-01 (1983)"],
+    "repeals": ["النص الاصلي لسنة 1975"]
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ملغاة",
+    "version": "v0.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_756",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "الرهن القانوني لضمان ديون الجمعية",
+  "article_number": 756,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية المشتركة",
+    "section": "القسم الخامس"
+  },
+  "text": {
+    "original": "المادة 756 : (معدلة) تضمن جميع الديون المستحقة للجمعية على كل شريك في الملكية برهن قانوني على قسمته. وتستفيد هذه الديون بالاضافة الى ذلك من الامتيازات الخاصة بمؤجر العقار.",
+    "language": "ar"
+  },
+  "keywords": [
+    "الرهن القانوني",
+    "ديون الجمعية",
+    "الامتياز",
+    "الملكية المشتركة"
+  ],
+  "legal_type": "ضمان",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [754],
+    "derived_from": null,
+    "amended_by": ["Law 83-01 (1983)"],
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "معدل",
+    "version": "v2.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_756BIS",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "حق التعويض عن الاضرار الناتجة عن البناءات",
+  "article_number": "756 مكرر",
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية المشتركة",
+    "section": "القسم الخامس"
+  },
+  "text": {
+    "original": "المادة 756 مكرر : (جديدة) للشركاء الحق في طلب التعويض اذا حصل لهم ضرر بسبب القيام بالبناءات سواء ادى ذلك الى نقصان في قيمة املاكهم او منعهم من الانتفاع بها منعا بليغا ولو مؤقتا او اصابتهم باضرار مادية. ويترتب هذا التعويض على جميع الشركاء ويوزع بقدر حقوق كل واحد في الاجزاء المشتركة.",
+    "language": "ar"
+  },
+  "keywords": [
+    "التعويض",
+    "اضرار البناء",
+    "نقصان القيمة",
+    "الملكية المشتركة"
+  ],
+  "legal_type": "مسؤولية مدنية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [750],
+    "derived_from": null,
+    "amended_by": ["Law 83-01 (1983)"],
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "جديد",
+    "version": "v1.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_756BIS_1",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "اعادة البناء في حالة الهدم",
+  "article_number": "756 مكرر 1",
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية المشتركة",
+    "section": "القسم الخامس"
+  },
+  "text": {
+    "original": "المادة 756 مكرر 1 : (جديدة) اذا حدث هدم كلي او جزئي فانه يمكن للشركاء المالكين للاجزاء المتكون منها المبنى المهدم ان يقرروا باغلبية الاصوات تجديد المبنى او اصلاح الجزء الذي لحقه الضرر. وتخصص بالدرجة الاولى التعويضات الواجبة للعقار المهدم لتجديد البناء وذلك مع مراعاة حقوق الدائنين المسجلين.",
+    "language": "ar"
+  },
+  "keywords": [
+    "الهدم",
+    "اعادة البناء",
+    "التعويضات",
+    "حقوق الدائنين"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": ["756 مكرر"],
+    "derived_from": null,
+    "amended_by": ["Law 83-01 (1983)"],
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "جديد",
+    "version": "v1.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_756BIS_2",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "تشكيل جمعية الشركاء",
+  "article_number": "756 مكرر 2",
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية المشتركة",
+    "section": "القسم الخامس"
+  },
+  "text": {
+    "original": "المادة 756 مكرر 2 : (جديدة) تشكل جماعة الشركاء في الملكية او الشاغلين لها جمعية تتمتع بالشخصية المدنية. تتولى الجمعية ادارة العقار والمحافظة عليه وكذا تسيير الاجزاء المشتركة.",
+    "language": "ar"
+  },
+  "keywords": [
+    "جمعية الشركاء",
+    "الشخصية المدنية",
+    "ادارة العقار",
+    "الاجزاء المشتركة"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": ["756 مكرر 3"],
+    "derived_from": null,
+    "amended_by": ["Law 83-01 (1983)"],
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "جديد",
+    "version": "v1.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_756BIS_3",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "انتخاب المتصرف",
+  "article_number": "756 مكرر 3",
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية المشتركة",
+    "section": "القسم الخامس"
+  },
+  "text": {
+    "original": "المادة 756 مكرر 3 : (جديدة) ينتخب المتصرف من طرف الجمعية التي يجوز لها ان تفصله عند الاقتضاء. وفي حالة التقصير يعين المتصرف تلقائيا من طرف رئيس المجلس الشعبي البلدي للمكان الذي يوجد فيه العقار.",
+    "language": "ar"
+  },
+  "keywords": [
+    "المتصرف",
+    "انتخاب",
+    "العزل",
+    "المجلس الشعبي البلدي"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": ["756 مكرر 2"],
+    "derived_from": null,
+    "amended_by": ["Law 83-01 (1983)"],
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "جديد",
+    "version": "v1.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_757",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "مادة ملغاة",
+  "article_number": 757,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية المشتركة",
+    "section": "القسم الخامس"
+  },
+  "text": {
+    "original": "المادة 757 : (ملغاة) الغيت بموجب القانون رقم 83-01 المؤرخ في 29 يناير 1983.",
+    "language": "ar"
+  },
+  "keywords": ["الغاء", "تعديل تشريعي"],
+  "legal_type": "الغاء تشريعي",
+  "norm_type": "ملغاة",
+  "relations": {
+    "related_articles": [756, 758],
+    "derived_from": null,
+    "amended_by": ["Law 83-01 (1983)"],
+    "repeals": ["النص الاصلي لسنة 1975"]
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ملغاة",
+    "version": "v0.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_758",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "مادة ملغاة",
+  "article_number": 758,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية المشتركة",
+    "section": "القسم الخامس"
+  },
+  "text": {
+    "original": "المادة 758 : (ملغاة) الغيت بموجب القانون رقم 83-01 المؤرخ في 29 يناير 1983.",
+    "language": "ar"
+  },
+  "keywords": [
+    "الغاء",
+    "تعديل تشريعي",
+    "الملكية المشتركة"
+  ],
+  "legal_type": "الغاء تشريعي",
+  "norm_type": "ملغاة",
+  "relations": {
+    "related_articles": [757, 759],
+    "derived_from": null,
+    "amended_by": ["Law 83-01 (1983)"],
+    "repeals": ["النص الاصلي لسنة 1975"]
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ملغاة",
+    "version": "v0.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_759",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "مادة ملغاة",
+  "article_number": 759,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية المشتركة",
+    "section": "القسم الخامس"
+  },
+  "text": {
+    "original": "المادة 759 : (ملغاة) الغيت بموجب القانون رقم 83-01 المؤرخ في 29 يناير 1983.",
+    "language": "ar"
+  },
+  "keywords": [
+    "الغاء",
+    "تعديل تشريعي"
+  ],
+  "legal_type": "الغاء تشريعي",
+  "norm_type": "ملغاة",
+  "relations": {
+    "related_articles": [758, 760],
+    "derived_from": null,
+    "amended_by": ["Law 83-01 (1983)"],
+    "repeals": ["النص الاصلي لسنة 1975"]
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ملغاة",
+    "version": "v0.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_760",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "مادة ملغاة",
+  "article_number": 760,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية المشتركة",
+    "section": "القسم الخامس"
+  },
+  "text": {
+    "original": "المادة 760 : (ملغاة) الغيت بموجب القانون رقم 83-01 المؤرخ في 29 يناير 1983.",
+    "language": "ar"
+  },
+  "keywords": [
+    "الغاء",
+    "تعديل تشريعي"
+  ],
+  "legal_type": "الغاء تشريعي",
+  "norm_type": "ملغاة",
+  "relations": {
+    "related_articles": [759, 761],
+    "derived_from": null,
+    "amended_by": ["Law 83-01 (1983)"],
+    "repeals": ["النص الاصلي لسنة 1975"]
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ملغاة",
+    "version": "v0.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_761",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "مادة ملغاة",
+  "article_number": 761,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية المشتركة",
+    "section": "القسم الخامس"
+  },
+  "text": {
+    "original": "المادة 761 : (ملغاة) الغيت بموجب القانون رقم 83-01 المؤرخ في 29 يناير 1983.",
+    "language": "ar"
+  },
+  "keywords": [
+    "الغاء",
+    "تعديل تشريعي"
+  ],
+  "legal_type": "الغاء تشريعي",
+  "norm_type": "ملغاة",
+  "relations": {
+    "related_articles": [760, 762],
+    "derived_from": null,
+    "amended_by": ["Law 83-01 (1983)"],
+    "repeals": ["النص الاصلي لسنة 1975"]
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ملغاة",
+    "version": "v0.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_762",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "مادة ملغاة",
+  "article_number": 762,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية المشتركة",
+    "section": "القسم الخامس"
+  },
+  "text": {
+    "original": "المادة 762 : (ملغاة) الغيت بموجب القانون رقم 83-01 المؤرخ في 29 يناير 1983.",
+    "language": "ar"
+  },
+  "keywords": [
+    "الغاء",
+    "تعديل تشريعي"
+  ],
+  "legal_type": "الغاء تشريعي",
+  "norm_type": "ملغاة",
+  "relations": {
+    "related_articles": [761, 763],
+    "derived_from": null,
+    "amended_by": ["Law 83-01 (1983)"],
+    "repeals": ["النص الاصلي لسنة 1975"]
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ملغاة",
+    "version": "v0.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_763",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "اجتماعات الجمعية",
+  "article_number": 763,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية المشتركة",
+    "section": "القسم الخامس"
+  },
+  "text": {
+    "original": "المادة 763 : (معدلة) تعقد الجمعية اجتماعا عاديا وجوبا مرة في السنة خلال الثلاثة (3) اشهر التي تلي نهاية السنة باستدعاء من طرف المتصرف. كما تعقد الاجتماعات استثنائيا عند الاقتضاء باستدعاء من طرف المتصرف بناء على مبادرة منه او بطلب من الشركاء في الملكية او الشاغلين لها. ولا يجوز للجمعية ان تناقش قانونا الا القضايا المقيدة في جدول الاعمال والتي تتم بشانها الاستدعاءات والاخطارات المثبتة بصورة نظامية.",
+    "language": "ar"
+  },
+  "keywords": [
+    "الجمعية",
+    "الاجتماع السنوي",
+    "جدول الاعمال",
+    "المتصرف"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [764, 765],
+    "derived_from": null,
+    "amended_by": ["Law 83-01 (1983)"],
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "معدل",
+    "version": "v2.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_764_BIS",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "مشاركة الشركاء والمستاجرين في اعمال الجمعية",
+  "article_number": 764,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية المشتركة",
+    "section": "القسم الخامس"
+  },
+  "text": {
+    "original": "المادة 764 مكرر : (جديدة) يساهم الشريك في الملكية في اعمال الجمعية وله الحق في التصويت على جميع المسائل التي تخص الملكية المشتركة. كما يشارك المستاجر في جميع اعمال الجمعية، وله الحق في الادلاء بصوت تقريري في الحالات التالية: 1) عندما تناقش الجمعية التكاليف من النوع الاول، 2) عندما تناقش الجمعية اشغال الترميم التي يراها اغلبية الاعضاء ضرورية، 3) عندما يكون الشريك في الملكية المعني غائبا او لم يمثله احد لدى الجمعية بصفة نظامية.",
+    "language": "ar"
+  },
+  "keywords": [
+    "الشركاء",
+    "المستاجر",
+    "التصويت",
+    "اعمال الجمعية"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [764, "764 مكرر 1", "764 مكرر 2"],
+    "derived_from": "Order 75-58 (1975)",
+    "amended_by": ["Law 83-01 (1983)"],
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "جديد",
+    "version": "v2.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_764_BIS_1",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "تمثيل الشركاء او الشاغلين في الجمعية",
+  "article_number": 764,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية المشتركة",
+    "section": "القسم الخامس"
+  },
+  "text": {
+    "original": "المادة 764 مكرر 1 : (جديدة) يجوز ان يمثل الشركاء في الملكية او الشاغلون لها وكيل يختارونه باستثناء المتصرف او زوجه. ولا يمكن لاي وكيل ان يتلقى اكثر من تفويض لاجراء التصويت. في حالة شيوع قسمة، وعند غياب الممثل المشترك الذي فوضه المعنيون يعين رئيس المحكمة وكيلا وذلك بطلب من احد الشركاء على الشيوع او من المتصرف.",
+    "language": "ar"
+  },
+  "keywords": [
+    "تمثيل",
+    "وكيل",
+    "شيوع القسمة",
+    "التصويت"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [764, "764 مكرر", "764 مكرر 2"],
+    "derived_from": "Order 75-58 (1975)",
+    "amended_by": ["Law 83-01 (1983)"],
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "جديد",
+    "version": "v2.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_764_BIS_2",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "سريان قرارات الجمعية على الشركاء والخلفاء",
+  "article_number": 764,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية المشتركة",
+    "section": "القسم الخامس"
+  },
+  "text": {
+    "original": "المادة 764 مكرر 2 : (جديدة) تنطبق القرارات التي صادقت عليها الجمعية العامة على جميع الشركاء في الملكية او الشاغلين لها وكذا خلفائهم. ولا يمكن منازعة هذه القرارات من طرف المعارضين او الغائبين الذين لم يتم تمثيلهم، الا امام المحكمة وذلك في اجل شهرين ابتداء من تاريخ تبليغ القرارات، تحت طائلة سقوط الحق.",
+    "language": "ar"
+  },
+  "keywords": [
+    "قرارات الجمعية",
+    "الشركاء",
+    "الخلفاء",
+    "المنازعة"
+  ],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [764, "764 مكرر", "764 مكرر 1"],
+    "derived_from": "Order 75-58 (1975)",
+    "amended_by": ["Law 83-01 (1983)"],
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "جديد",
+    "version": "v2.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_765",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "ملغاة",
+  "article_number": 765,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية المشتركة",
+    "section": "القسم الخامس"
+  },
+  "text": {
+    "original": "المادة 765: (ملغاة)",
+    "language": "ar"
+  },
+  "keywords": ["ملغاة"],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [764, 766],
+    "derived_from": null,
+    "amended_by": ["Law 83-01 (1983)"],
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ملغاة",
+    "version": "v2.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_766",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "ملغاة",
+  "article_number": 766,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية المشتركة",
+    "section": "القسم الخامس"
+  },
+  "text": {
+    "original": "المادة 766: (ملغاة) الغيت بالقانون رقم 83-01 المؤرخ في 29 يناير 1983.",
+    "language": "ar"
+  },
+  "keywords": ["ملغاة"],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [765, 767],
+    "derived_from": null,
+    "amended_by": ["Law 83-01 (1983)"],
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ملغاة",
+    "version": "v2.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_767",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "حدود سلطة الجمعية العامة على الاجزاء الخاصة",
+  "article_number": 767,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية المشتركة",
+    "section": "القسم الخامس"
+  },
+  "text": {
+    "original": "المادة 767 : (معدلة) لا يجوز للجمعية العامة مهما كانت اغلبية الاصوات ان تلزم احد الشركاء في الملكية بتغيير الاجزاء الخاصة فيما اعدت له، او تغيير كيفية الانتفاع بها كما هو مقرر في نظام الملكية المشتركة. كما يجوز لها ان تقرر التصرف في الاجزاء المشتركة التي تكون صيانتها ضرورية لحفظ ما اعد له العقار ما لم يقع الاجماع بين الشركاء على خلاف ذلك.",
+    "language": "ar"
+  },
+  "keywords": ["الجمعية العامة", "الاجزاء الخاصة", "الانتفاع", "الملكية المشتركة"],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [766, 768, 769],
+    "derived_from": null,
+    "amended_by": ["Law 83-01 (1983)"],
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "معدل",
+    "version": "v2.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_768",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "ملغاة",
+  "article_number": 768,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية المشتركة",
+    "section": "القسم الخامس"
+  },
+  "text": {
+    "original": "المادة 768: (ملغاة) الغيت بالقانون رقم 83-01 المؤرخ في 29 يناير 1983. تتخذ قرارات الجمعية باغلبية لا تقل عن ثلاثة ارباع اصوات اعضاء جمعية الشركاء فيما يخص الامور الهامة مثل اكتساب العقارات، اقامة نظام الملكية المشتركة او اي اعمال تتضمن التغيير او التحسين.",
+    "language": "ar"
+  },
+  "keywords": ["ملغاة", "الجمعية العامة", "اغلبية ثلاثة ارباع", "الاجزاء المشتركة"],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [767, 769],
+    "derived_from": null,
+    "amended_by": ["Law 83-01 (1983)"],
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ملغاة",
+    "version": "v2.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_769",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "حق البناء على العمارات القائمة",
+  "article_number": 769,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية المشتركة",
+    "section": "القسم الخامس"
+  },
+  "text": {
+    "original": "المادة 769 : (معدلة) لا يمكن بناء طوابق او عمارات بهدف انشاء محلات جديدة للاستعمال الخاص الا اذا كان قرار الجمعية بالاجماع قد قرر ذلك. كما يجب موافقة الشركاء الساكنين في الطابق العلوي عند اعطاء الحق بتعليته.",
+    "language": "ar"
+  },
+  "keywords": ["البناء", "الاجماع", "الاجزاء المشتركة", "الملاك"],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [767, 770, 772],
+    "derived_from": null,
+    "amended_by": ["Law 83-01 (1983)"],
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "معدل",
+    "version": "v2.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_770",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "ملغاة",
+  "article_number": 770,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية المشتركة",
+    "section": "القسم الخامس"
+  },
+  "text": {
+    "original": "المادة 770: (ملغاة) الغيت بالقانون رقم 83-01 المؤرخ في 29 يناير 1983.",
+    "language": "ar"
+  },
+  "keywords": ["ملغاة"],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [769, 771],
+    "derived_from": null,
+    "amended_by": ["Law 83-01 (1983)"],
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ملغاة",
+    "version": "v2.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_771",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "ملغاة",
+  "article_number": 771,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية المشتركة",
+    "section": "القسم الخامس"
+  },
+  "text": {
+    "original": "المادة 771: (ملغاة) الغيت بالقانون رقم 83-01 المؤرخ في 29 يناير 1983.",
+    "language": "ar"
+  },
+  "keywords": ["ملغاة"],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [770, 772],
+    "derived_from": null,
+    "amended_by": ["Law 83-01 (1983)"],
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ملغاة",
+    "version": "v2.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_772",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الثالث: الحقوق العينية الاصلية",
+  "title": "تقادم الدعاوى الشخصية ونطاق المعارضة",
+  "article_number": 772,
+  "classification": {
+    "main_category": "الحقوق العينية الاصلية",
+    "sub_category": "الملكية المشتركة",
+    "section": "القسم الخامس"
+  },
+  "text": {
+    "original": "المادة 772 : (معدلة) تتقادم بعشرة (10) اعوام الدعاوى الشخصية التي تنشا عن تطبيق نظام الملكية المشتركة بين الشاغلين وبين احد الشاغلين والمتصرف. اما الدعاوى التي يكون من شانها معارضة قرار الجمعية فيجب ان تقدم من طرف الشاغلين المعارضين منهم او الغائبين في مدة شهرين ابتداء من يوم اعلانها من طرف المتصرف والا سقطت الدعوى.",
+    "language": "ar"
+  },
+  "keywords": ["تقادم", "الدعاوى الشخصية", "الملكية المشتركة", "المعارضة"],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [769, 771],
+    "derived_from": null,
+    "amended_by": ["Law 83-01 (1983)"],
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "معدل",
+    "version": "v2.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_773",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الرابع: طرق اكتساب الملكية",
+  "title": "الاستيلاء على الاموال الشاغرة والتركة",
+  "article_number": 773,
+  "classification": {
+    "main_category": "طرق اكتساب الملكية",
+    "sub_category": "الاستيلاء والتركة",
+    "section": "القسم الاول"
+  },
+  "text": {
+    "original": "المادة 773: تعتبر ملكا من املاك الدولة جميع الاموال الشاغرة التي ليس لها مالك، وكذلك اموال الاشخاص الذين يموتون عن غير وارث او الذين تهمل تركتهم.",
+    "language": "ar"
+  },
+  "keywords": ["اموال شاغرة", "التركة", "الدولة", "الورثة"],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [774],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_774",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الرابع: طرق اكتساب الملكية",
+  "title": "تطبيق احكام قانون الاحوال الشخصية على الورثة",
+  "article_number": 774,
+  "classification": {
+    "main_category": "طرق اكتساب الملكية",
+    "sub_category": "الاستيلاء والتركة",
+    "section": "القسم الاول"
+  },
+  "text": {
+    "original": "المادة 774: تسري احكام قانون الاحوال الشخصية على تعيين الورثة وتحديد انصبتهم في الميراث وعلى انتقال اموال التركة.",
+    "language": "ar"
+  },
+  "keywords": ["الورثة", "الميراث", "التركة", "الاحوال الشخصية"],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [773, 775],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_775",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الرابع: طرق اكتساب الملكية",
+  "title": "تطبيق قانون الوصية",
+  "article_number": 775,
+  "classification": {
+    "main_category": "طرق اكتساب الملكية",
+    "sub_category": "الوصية",
+    "section": "القسم الثاني"
+  },
+  "text": {
+    "original": "المادة 775: يسري على الوصية قانون الاحوال الشخصية والنصوص القانونية المتعلقة بها.",
+    "language": "ar"
+  },
+  "keywords": ["الوصية", "الاحوال الشخصية", "التصرف بعد الموت"],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [774, 776, 777],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_776",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الرابع: طرق اكتساب الملكية",
+  "title": "التصرف القانوني في مرض الموت",
+  "article_number": 776,
+  "classification": {
+    "main_category": "طرق اكتساب الملكية",
+    "sub_category": "الوصية",
+    "section": "القسم الثاني"
+  },
+  "text": {
+    "original": "المادة 776: كل تصرف قانوني يصدر عن شخص في حال مرض الموت بقصد التبرع يعتبر تبرعا مضافا الى ما بعد الموت، وتسري عليه احكام الوصية. وعلى ورثة المتصرف اثبات ان التصرف صادر عن مورثهم في مرض الموت.",
+    "language": "ar"
+  },
+  "keywords": ["مرض الموت", "الوصية", "التبرع", "الورثة"],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [775, 777],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_777",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الرابع: طرق اكتساب الملكية",
+  "title": "الحيازة والاستثناء في الوصية",
+  "article_number": 777,
+  "classification": {
+    "main_category": "طرق اكتساب الملكية",
+    "sub_category": "الوصية",
+    "section": "القسم الثاني"
+  },
+  "text": {
+    "original": "المادة 777: يعتبر التصرف وصية وتجري عليه احكامها اذا تصرف شخص لاحد ورثته واستثنى لنفسه بطريقة ما حيازة الشيء المتصرف فيه والانتفاع به مدة حياته ما لم يكن هناك دليل يخالف ذلك.",
+    "language": "ar"
+  },
+  "keywords": ["الوصية", "الورثة", "الحيازة", "الانتفاع"],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [775, 776, 778],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_778",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الرابع: طرق اكتساب الملكية",
+  "title": "الالتصاق بالعقار – الارض الناتجة عن الطمي",
+  "article_number": 778,
+  "classification": {
+    "main_category": "طرق اكتساب الملكية",
+    "sub_category": "الالتصاق بالعقار",
+    "section": "القسم الثالث"
+  },
+  "text": {
+    "original": "المادة 778: الارض التي تتكون من طمي يجلبه النهر بطريقة تدريجية غير محسوسة تكون ملكا للمالكين المجاورين.",
+    "language": "ar"
+  },
+  "keywords": ["الالتصاق بالعقار", "الطمي", "النهر", "المالكين المجاورين"],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [779, 780],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_779",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الرابع: طرق اكتساب الملكية",
+  "title": "الالتصاق بالعقار – الارض المكشوفة عن البحر",
+  "article_number": 779,
+  "classification": {
+    "main_category": "طرق اكتساب الملكية",
+    "sub_category": "الالتصاق بالعقار",
+    "section": "القسم الثالث"
+  },
+  "text": {
+    "original": "المادة 779: تكون ملكا للدولة الارض التي ينكشف عنها البحر. لا يجوز التعدي على ارض البحر، والارض التي تستخلص بكيفية صناعية من مياه البحر تكون ملكا للدولة.",
+    "language": "ar"
+  },
+  "keywords": ["الالتصاق بالعقار", "البحر", "الدولة", "الارض المستصلحة"],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [778, 780],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_780",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الرابع: طرق اكتساب الملكية",
+  "title": "الالتصاق بالعقار – الاراضي الملاصقة للمياه الراكدة",
+  "article_number": 780,
+  "classification": {
+    "main_category": "طرق اكتساب الملكية",
+    "sub_category": "الالتصاق بالعقار",
+    "section": "القسم الثالث"
+  },
+  "text": {
+    "original": "المادة 780: مالكو الاراضي الملاصقة للمياه الراكدة كمياه البحيرات والبرك لا يملكون الاراضي التي ينكشف عنها هذه المياه ولا تزول ملكيتهم عن الاراضي التي طغت عليها المياه.",
+    "language": "ar"
+  },
+  "keywords": ["الالتصاق بالعقار", "الاراضي الملاصقة", "المياه الراكدة", "الملكية"],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [778, 779, 781],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_781",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الرابع: طرق اكتساب الملكية",
+  "title": "الالتصاق بالعقار – تغييرات الارض والجزر",
+  "article_number": 781,
+  "classification": {
+    "main_category": "طرق اكتساب الملكية",
+    "sub_category": "الالتصاق بالعقار",
+    "section": "القسم الثالث"
+  },
+  "text": {
+    "original": "المادة 781: الاراضي التي يحولها النهر من مكانها او ينكشف عنها والجزر التي تتكون في مجراه تكون ملكيتها خاضعة للقوانين الخاصة بها.",
+    "language": "ar"
+  },
+  "keywords": ["الالتصاق بالعقار", "النهر", "الجزر", "القوانين الخاصة"],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [780, 782],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_782",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الرابع: طرق اكتساب الملكية",
+  "title": "الالتصاق بالعقار – غراس وبناء المنشات",
+  "article_number": 782,
+  "classification": {
+    "main_category": "طرق اكتساب الملكية",
+    "sub_category": "الالتصاق بالعقار",
+    "section": "القسم الثالث"
+  },
+  "text": {
+    "original": "المادة 782: كل ما على الارض او تحتها من غراس او بناء او منشات اخرى يعتبر من عمل صاحب الارض واقامه على نفقته ويكون مملوكا له. يجوز اقامة البينة على ان اجنبي اقام المنشات على نفقته او خوله صاحب الارض الحق في تملكها.",
+    "language": "ar"
+  },
+  "keywords": ["الالتصاق بالعقار", "الغراس", "البناء", "المنشات"],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [783, 784],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_783",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الرابع: طرق اكتساب الملكية",
+  "title": "امتلاك المواد المنصوبة على الارض",
+  "article_number": 783,
+  "classification": {
+    "main_category": "طرق اكتساب الملكية",
+    "sub_category": "الالتصاق بالعقار",
+    "section": "القسم الثالث"
+  },
+  "text": {
+    "original": "المادة 783: يكون ملكا خالصا لصاحب الارض ما يحدثه فيها من غراس او بناء او منشات اخرى يقيمها بمواد مملوكة لغيره اذا لم يكن ممكنا نزع هذه المواد دون الحاق ضرر جسيم او لم ترفع الدعوى بالاسترداد خلال سنة. ويجب دفع قيمتها مع التعويض اذا اقتضى الحال.",
+    "language": "ar"
+  },
+  "keywords": ["الالتصاق بالعقار", "المواد", "المنشات", "الاسترداد", "التعويض"],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [782, 784],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_784",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الرابع: طرق اكتساب الملكية",
+  "title": "اقامة المنشات بمواد ملك الغير دون موافقة",
+  "article_number": 784,
+  "classification": {
+    "main_category": "طرق اكتساب الملكية",
+    "sub_category": "الالتصاق بالعقار",
+    "section": "القسم الثالث"
+  },
+  "text": {
+    "original": "المادة 784: اذا اقام شخص المنشات بمواد يعلم انها ملك لغيره دون رضاء صاحبها فلصاحب الارض ان يطلب خلال سنة ازالة المنشات على نفقة من اقامها مع التعويض، او استبقاءها مقابل دفع قيمتها او ما زاد في قيمة الارض.",
+    "language": "ar"
+  },
+  "keywords": ["الالتصاق بالعقار", "المنشات", "المواد", "الملكية", "التعويض"],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [783, 785],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_785",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الرابع: طرق اكتساب الملكية",
+  "title": "اقامة المنشات بحسن نية",
+  "article_number": 785,
+  "classification": {
+    "main_category": "طرق اكتساب الملكية",
+    "sub_category": "الالتصاق بالعقار",
+    "section": "القسم الثالث"
+  },
+  "text": {
+    "original": "المادة 785: اذا كان من اقام المنشات يعتقد بحسن نية ان له الحق في اقامتها فليس لصاحب الارض ان يطلب الازالة وانما يخير بين دفع قيمة المواد واجرة العمل او مبلغ يعادل ما زاد في قيمة الارض، ما لم يطلب صاحب المنشات نزعها. واذا بلغت المنشات اهمية كبيرة، يجوز طلب تمليك الارض مقابل تعويض عادل.",
+    "language": "ar"
+  },
+  "keywords": ["الالتصاق بالعقار", "المنشات", "حسن النية", "الملكية", "التعويض"],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [784, 786],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_786",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الرابع: طرق اكتساب الملكية",
+  "title": "اقامة المنشات بعد ترخيص المالك",
+  "article_number": 786,
+  "classification": {
+    "main_category": "طرق اكتساب الملكية",
+    "sub_category": "الالتصاق بالعقار",
+    "section": "القسم الثالث"
+  },
+  "text": {
+    "original": "المادة 786: اذا اقام اجنبي منشات بمواد من عنده بعد الترخيص له من مالك الارض فلا يجوز لمالك الارض ان يطلب ازالة المنشات اذا لم يوجد اتفاق، ويجب دفع القيم المنصوص عليها في المادة 785.",
+    "language": "ar"
+  },
+  "keywords": ["الالتصاق بالعقار", "الاجنبي", "المنشات", "ترخيص المالك", "القيم"],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [785, 787],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_787",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الرابع: طرق اكتساب الملكية",
+  "title": "احكام التعويض عن المنشات",
+  "article_number": 787,
+  "classification": {
+    "main_category": "طرق اكتساب الملكية",
+    "sub_category": "الالتصاق بالعقار",
+    "section": "القسم الثالث"
+  },
+  "text": {
+    "original": "المادة 787: تطبق احكام المادة 841 في اداء التعويض المنصوص عليه في المواد 784 و785 و786.",
+    "language": "ar"
+  },
+  "keywords": ["الالتصاق بالعقار", "التعويض", "المواد 784 و785 و786", "اداء التعويض"],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [784, 785, 786],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_788",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الرابع: طرق اكتساب الملكية",
+  "title": "التعدي بحسن نية على الارض الملاصقة",
+  "article_number": 788,
+  "classification": {
+    "main_category": "طرق اكتساب الملكية",
+    "sub_category": "الالتصاق بالعقار",
+    "section": "القسم الثالث"
+  },
+  "text": {
+    "original": "المادة 788: اذا كان مالك الارض وهو يقيم بناء بها قد تعدى بحسن نية على جزء من الارض الملاصقة جاز للمحكمة اجباره على التنازل عن الجزء مقابل تعويض عادل.",
+    "language": "ar"
+  },
+  "keywords": ["الالتصاق بالعقار", "التعدي", "حسن النية", "الارض الملاصقة", "التعويض"],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [786, 787, 789],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_789",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الرابع: طرق اكتساب الملكية",
+  "title": "المنشات الصغيرة على ارض الغير",
+  "article_number": 789,
+  "classification": {
+    "main_category": "طرق اكتساب الملكية",
+    "sub_category": "الالتصاق بالعقار",
+    "section": "القسم الثالث"
+  },
+  "text": {
+    "original": "المادة 789: المنشات الصغيرة كالاكشاك والحوانيت والماوى التي تقام على ارض الغير من دون ان يكون مقصودا بقاؤها على الدوام تكون ملكا لمن اقامها.",
+    "language": "ar"
+  },
+  "keywords": ["الالتصاق بالعقار", "المنشات الصغيرة", "الارض الغير", "الملكية"],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [788, 790],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_790",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الرابع: طرق اكتساب الملكية",
+  "title": "استرداد المنشات المملوكة للغير",
+  "article_number": 790,
+  "classification": {
+    "main_category": "طرق اكتساب الملكية",
+    "sub_category": "الالتصاق بالعقار",
+    "section": "القسم الثالث"
+  },
+  "text": {
+    "original": "المادة 790: اذا اقام اجنبي منشات بمواد مملوكة لغيره فليس لمالك المواد ان يطلب استردادها وانما يكون له ان يرجع بالتعويض على هذا الاجنبي كما له ان يرجع على مالك الارض بما لا يزيد على ما هو باق في ذمته من قيمة تلك المنشات.",
+    "language": "ar"
+  },
+  "keywords": ["الالتصاق بالعقار", "المنشات", "الاجنبي", "الاسترداد", "التعويض"],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [785, 786, 789],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_791",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الرابع: طرق اكتساب الملكية",
+  "title": "التصاق منقولات لمالكين مختلفين",
+  "article_number": 791,
+  "classification": {
+    "main_category": "طرق اكتساب الملكية",
+    "sub_category": "الالتصاق بالعقار",
+    "section": "القسم الثالث"
+  },
+  "text": {
+    "original": "المادة 791: اذا التصق منقولان لمالكين مختلفين بحيث لا يمكن فصلهما دون تلف، قضت المحكمة، في حال عدم وجود اتفاق، مسترشدة بالعدالة وحسن النية والاضرار والحالة لكل طرف.",
+    "language": "ar"
+  },
+  "keywords": ["الالتصاق بالعقار", "المناقولات", "المالكون المختلفون", "التلف", "العدالة", "حسن النية"],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [790, 792],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+    "id": "DZ_CIVIL_ART_792",
+    "country": "Algeria",
+    "law_domain": "Civil Law",
+    "law_name": "القانون المدني",
+    "book": "الكتاب الثالث: الملكية والحقوق العينية",
+    "title": "نقل الملكية بالعقد",
+    "article_number": 792,
+    "classification": {
+      "main_category": "الملكية",
+      "sub_category": "نقل الملكية",
+      "section": "العقود"
+    },
+    "text": {
+      "original": "المادة 792 : تنقل الملكية وغيرها من الحقوق العينية في العقار بالعقد متى كان الشيء مملوكا للمتصرف طبقا المادة 164 وذلك مع مراعاة النصوص التالية.",
+      "language": "ar"
+    },
+    "keywords": [
+      "نقل الملكية",
+      "الحقوق العينية",
+      "العقار",
+      "العقد",
+      "الملكية للمتصرف"
+    ],
+    "legal_type": "تنظيمية",
+    "norm_type": "يجوز الاتفاق عليها ضمن الشروط القانونية",
+    "relations": {
+      "related_articles": [793, 794],
+      "derived_from": [164],
+      "amended_by": null,
+      "repeals": null
+    },
+    "source": {
+      "document": "القانون المدني الجزائري",
+      "year": 2007,
+      "publisher": "الجريدة الرسمية"
+    },
+    "versioning": {
+      "status": "ساري",
+      "version": "v1.0",
+      "last_update": "2007-05-13"
+    }
+  },
+{
+  "id": "DZ_CIVIL_ART_793",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الرابع: طرق اكتساب الملكية",
+  "title": "شروط نقل الملكية والحقوق العينية",
+  "article_number": 793,
+  "classification": {
+    "main_category": "طرق اكتساب الملكية",
+    "sub_category": "عقد الملكية",
+    "section": "القسم الرابع"
+  },
+  "text": {
+    "original": "المادة 793: لا تنقل الملكية والحقوق العينية في العقار، سواء بين المتعاقدين او في حق الغير، الا اذا روعيت الاجراءات القانونية وخصوصا قوانين مصلحة شهر العقار.",
+    "language": "ar"
+  },
+  "keywords": ["عقد الملكية", "الملكية", "الحقوق العينية", "الاجراءات القانونية", "شهر العقار"],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [792],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_794",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الرابع: طرق اكتساب الملكية",
+  "title": "الشفعة – التعريف",
+  "article_number": 794,
+  "classification": {
+    "main_category": "طرق اكتساب الملكية",
+    "sub_category": "الشفعة",
+    "section": "القسم الخامس"
+  },
+  "text": {
+    "original": "المادة 794: الشفعة رخصة تجيز الحلول محل المشتري في بيع العقار ضمن الاحوال والشروط المنصوص عليها في المواد التالية.",
+    "language": "ar"
+  },
+  "keywords": ["الشفعة", "الحل محل المشتري", "العقار", "الرخصة"],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [795, 796],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_795",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الرابع: طرق اكتساب الملكية",
+  "title": "اثبات حق الشفعة",
+  "article_number": 795,
+  "classification": {
+    "main_category": "طرق اكتساب الملكية",
+    "sub_category": "الشفعة",
+    "section": "القسم الخامس"
+  },
+  "text": {
+    "original": "المادة 795: يثبت حق الشفعة وفق احكام الامر المتعلق بالثورة الزراعية: - لمالك الرقبة اذا بيع الكل او بعض حق الانتفاع، - للشريك في الشيوع اذا بيع جزء من العقار المشاع الى اجنبي، - لصاحب حق الانتفاع اذا بيعت الرقبة كلها او بعضها.",
+    "language": "ar"
+  },
+  "keywords": ["الشفعة", "حق الشفعة", "الرقبة", "العقار المشاع", "الانتفاع"],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [794, 796],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_796",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الرابع: طرق اكتساب الملكية",
+  "title": "ترتيب الشفعاء",
+  "article_number": 796,
+  "classification": {
+    "main_category": "طرق اكتساب الملكية",
+    "sub_category": "الشفعة",
+    "section": "القسم الخامس"
+  },
+  "text": {
+    "original": "المادة 796: اذا تعدد الشفعاء يكون استعمال حق الشفعة حسب الترتيب المنصوص عليه: - اذا كان الشفعاء من طبقة واحدة يستحق كل منهم الشفعة بقدر نصيبه، - اذا توافرت شروط الشفيع في الشراء فانه يفضل على الشفعاء من طبقته او من طبقة ادنى، ويتقدمه الشفعاء من طبقة اعلى.",
+    "language": "ar"
+  },
+  "keywords": ["الشفعة", "ترتيب الشفعاء", "الطبقات", "الحق في الشفعة"],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [795, 797],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_797",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الرابع: طرق اكتساب الملكية",
+  "title": "حالات البيع قبل الاعلان بالرغبة في الشفعة",
+  "article_number": 797,
+  "classification": {
+    "main_category": "طرق اكتساب الملكية",
+    "sub_category": "الشفعة",
+    "section": "القسم الخامس"
+  },
+  "text": {
+    "original": "المادة 797: اذا اشترى شخص عقارا تجوز الشفعة فيه ثم باعه قبل اعلان اي رغبة في الاخذ بالشفعة او قبل تسجيل الرغبة وفق المادة 801 فلا يجوز الاخذ بالشفعة الا من المشتري الثاني وبحسب الشروط التي اشترى بها.",
+    "language": "ar"
+  },
+  "keywords": ["الشفعة", "بيع العقار", "الاعلان بالرغبة", "المشتري الثاني"],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [796, 798, 801],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_798",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الرابع: طرق اكتساب الملكية",
+  "title": "حالات عدم وجود الشفعة",
+  "article_number": 798,
+  "classification": {
+    "main_category": "طرق اكتساب الملكية",
+    "sub_category": "الشفعة",
+    "section": "القسم الخامس"
+  },
+  "text": {
+    "original": "المادة 798: لا شفعة في الحالات التالية: - البيع بالمزاد العلني، - البيع بين الاصول والفروع او بين الزوجين او الاقارب حتى الدرجة الرابعة، وبين الاصهار حتى الدرجة الثانية، - اذا كان العقار محل عبادة.",
+    "language": "ar"
+  },
+  "keywords": ["الشفعة", "الاستثناءات", "المزاد العلني", "الاقارب", "محل عبادة"],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [797, 799],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_799",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الرابع: طرق اكتساب الملكية",
+  "title": "اجراءات اعلان الشفعة",
+  "article_number": 799,
+  "classification": {
+    "main_category": "طرق اكتساب الملكية",
+    "sub_category": "الشفعة",
+    "section": "القسم الخامس"
+  },
+  "text": {
+    "original": "المادة 799: على من يريد الاخذ بالشفعة ان يعلن رغبته لكل من البائع والمشتري في اجل 30 يوما من تاريخ الانذار، والا سقط حقه، ويزاد الاجل اذا اقتضت المسافة ذلك.",
+    "language": "ar"
+  },
+  "keywords": ["الشفعة", "الاعلان", "المدة", "البائع", "المشتري"],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [798, 800, 801],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_800",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الرابع: طرق اكتساب الملكية",
+  "title": "محتوى الانذار بالاعلان عن الشفعة",
+  "article_number": 800,
+  "classification": {
+    "main_category": "طرق اكتساب الملكية",
+    "sub_category": "الشفعة",
+    "section": "القسم الخامس"
+  },
+  "text": {
+    "original": "المادة 800: يجب ان يشتمل الانذار المنصوص عليه في المادة 799 على: بيان العقار، بيان الثمن والمصاريف الرسمية، شروط البيع، واسم البائع والمشتري ولقبهم ومهنهم، والاجل المقدر للاعلان وهو 30 يوما.",
+    "language": "ar"
+  },
+  "keywords": ["الشفعة", "الانذار", "بيانات الانذار", "مدة", "المشتري", "البائع"],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [799, 801],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_801",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الرابع: طرق اكتساب الملكية",
+  "title": "تصريح الشفعة",
+  "article_number": 801,
+  "classification": {
+    "main_category": "طرق اكتساب الملكية",
+    "sub_category": "الشفعة",
+    "section": "القسم الخامس"
+  },
+  "text": {
+    "original": "المادة 801: يجب ان يكون التصريح بالرغبة في الشفعة بعقد رسمي يعلن عن طريق كتابة الضبط، وايداع ثمن البيع والمصاريف لدى الموثق خلال 30 يوما من التصريح، والا سقط الحق في الشفعة.",
+    "language": "ar"
+  },
+  "keywords": ["الشفعة", "تصريح رسمي", "ايداع ثمن البيع", "المدة", "كتابة الضبط"],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [799, 800, 802],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+    "id": "DZ_CIVIL_ART_802",
+    "country": "Algeria",
+    "law_domain": "Civil Law",
+    "law_name": "القانون المدني",
+    "book": "الكتاب الثالث: الملكية والحقوق العينية",
+    "title": "دعوى الشفعة",
+    "article_number": 802,
+    "classification": {
+      "main_category": "الملكية",
+      "sub_category": "حقوق الشفعة",
+      "section": "الإجراءات"
+    },
+    "text": {
+      "original": "المادة 802 : يجب رفع دعوى الشفعة على البائع والمشتري أمام المحكمة الواقع في دائرتها العقار في أجل ثلاثين (30) يوما من تاريخ الاعلان المنصوص عليه في المادة 801 والا سقط الحق.",
+      "language": "ar"
+    },
+    "keywords": [
+      "دعوى الشفعة",
+      "البائع والمشتري",
+      "المحكمة",
+      "الاعلان",
+      "مهلة ثلاثين يوما"
+    ],
+    "legal_type": "إجرائية",
+    "norm_type": "لا يجوز الاتفاق على خلافها",
+    "relations": {
+      "related_articles": [801, 803, 804],
+      "derived_from": null,
+      "amended_by": null,
+      "repeals": null
+    },
+    "source": {
+      "document": "القانون المدني الجزائري",
+      "year": 2007,
+      "publisher": "الجريدة الرسمية"
+    },
+    "versioning": {
+      "status": "ساري",
+      "version": "v1.0",
+      "last_update": "2007-05-13"
+    }
+  },
+{
+  "id": "DZ_CIVIL_ART_803",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الرابع: طرق اكتساب الملكية",
+  "title": "حكم الشفعة",
+  "article_number": 803,
+  "classification": {
+    "main_category": "طرق اكتساب الملكية",
+    "sub_category": "الشفعة",
+    "section": "القسم الخامس"
+  },
+  "text": {
+    "original": "المادة 803: يعتبر الحكم الصادر نهائيا بثبوت الشفعة سندا لملكية الشفيع، وذلك دون اخلال بالقواعد المتعلقة بالاشهار العقاري.",
+    "language": "ar"
+  },
+  "keywords": ["الشفعة", "الحكم النهائي", "ملكية الشفيع", "الاشهار العقاري"],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [802, 804],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_804",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الرابع: طرق اكتساب الملكية",
+  "title": "اثار الشفعة على الشفيع",
+  "article_number": 804,
+  "classification": {
+    "main_category": "طرق اكتساب الملكية",
+    "sub_category": "الشفعة",
+    "section": "القسم الخامس"
+  },
+  "text": {
+    "original": "المادة 804: يحل الشفيع محل المشتري في جميع حقوقه والتزاماته، الا انه لا يمكن له الانتفاع بالاجل المضروب للمشتري عن دفع الثمن، ولا يرجع على البائع اذا استرد الغير العقار بعد الشفعة.",
+    "language": "ar"
+  },
+  "keywords": ["الشفعة", "الحقوق والالتزامات", "حل محل المشتري", "التاثير على البائع"],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [803, 805],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_805",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الرابع: طرق اكتساب الملكية",
+  "title": "اثار البناء والغراس على الشفعة",
+  "article_number": 805,
+  "classification": {
+    "main_category": "طرق اكتساب الملكية",
+    "sub_category": "الشفعة",
+    "section": "القسم الخامس"
+  },
+  "text": {
+    "original": "المادة 805: اذا بنى المشتري او غرس اشجارا قبل الاعلان بالرغبة في الشفعة، يجب على الشفيع دفع ما اختاره المشتري: اما المبلغ الذي انفقه او مقدار زيادة قيمة العقار. اما اذا تم البناء بعد الاعلان، للشفيع الحق في ازالة البناء او دفع قيمة ادوات العمل فقط.",
+    "language": "ar"
+  },
+  "keywords": ["الشفعة", "البناء", "الغراس", "القيمة", "الازالة", "الشفيع"],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [804, 806],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_806",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الرابع: طرق اكتساب الملكية",
+  "title": "الحق في الرجوع على الدائنين بعد الشفعة",
+  "article_number": 806,
+  "classification": {
+    "main_category": "طرق اكتساب الملكية",
+    "sub_category": "الشفعة",
+    "section": "القسم الخامس"
+  },
+  "text": {
+    "original": "المادة 806: لا تكون حجة على الشفيع الرهون او الاختصاصات الماخوذة ضد المشتري، وكذلك كل بيع صدر منه او الحقوق العينية التي ترتبت عليه اذا كانت بعد تاريخ اعلان الرغبة في الشفعة، ويظل حق الدائنين محفوظا.",
+    "language": "ar"
+  },
+  "keywords": ["الشفعة", "الرهون", "حقوق الدائنين", "الاعلان بالرغبة"],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [805, 807],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "1983-01-29"
+  }
+},
+{
+  "id": "DZ_CIVIL_ART_807",
+  "country": "Algeria",
+  "law_domain": "Civil Law",
+  "law_name": "القانون المدني",
+  "book": "الكتاب الرابع: طرق اكتساب الملكية",
+  "title": "سقوط حق الشفعة",
+  "article_number": 807,
+  "classification": {
+    "main_category": "طرق اكتساب الملكية",
+    "sub_category": "الشفعة",
+    "section": "القسم الخامس"
+  },
+  "text": {
+    "original": "المادة 807: لا يمارس حق الشفعة في الحالات التالية: - اذا تنازل الشفيع عن حقه قبل البيع، - اذا مرت سنة من يوم تسجيل عقد البيع، - في الاحوال التي نص عليها القانون.",
+    "language": "ar"
+  },
+  "keywords": ["الشفعة", "سقوط الحق", "التنازل", "مدة سنة", "الحالات القانونية"],
+  "legal_type": "تنظيمية",
+  "norm_type": "امرة",
+  "relations": {
+    "related_articles": [806],
+    "derived_from": null,
+    "amended_by": null,
+    "repeals": null
+  },
+  "source": {
+    "document": "القانون المدني الجزائري",
+    "year": 1983,
+    "publisher": "الجريدة الرسمية"
+  },
+  "versioning": {
+    "status": "ساري",
+    "version": "v1.0",
+    "last_update": "1983-01-29"
+  }
+}
+]

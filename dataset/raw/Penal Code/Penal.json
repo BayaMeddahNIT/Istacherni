@@ -3,7 +3,7 @@
         "id": "penal_284",
         "law_type": "قانون العقوبات (الجزائر)",
         "article_number": 284,
-        "title": "التهديد الكتابي أو الرمزي مع شرط",
+        "title": "التهديد الكتابي او الرمزي مع شرط",
         "source": {
         "document": "قانون العقوبات (CODE PENAL) — وزارة العدل الجزائرية — الطبعة الرابعة — مطبوعات/Les Editions de l’O.N.T.E — 2005",
         "amending_text": "Ordonnance n° 75-47",
@@ -12,15 +12,15 @@
         "original_text": "«Quiconque menace, par écrit anonyme ou signé, image, symbole ou emblème…»",
         "original_text_language": "fr",
         "original_text_is_official_arabic": false,
-        "definition": "تجريم التهديد بوسائل كتابية/رمزية بارتكاب اغتيال أو حبس أو اعتداء جسيم على الأشخاص، إذا كان التهديد مصحوبًا بأمر بإيداع مبلغ مالي أو بتنفيذ شرط.",
+        "definition": "تجريم التهديد بوسائل كتابية/رمزية بارتكاب اغتيال او حبس او اعتداء جسيم على الاشخاص، اذا كان التهديد مصحوبا بامر بايداع مبلغ مالي او بتنفيذ شرط.",
         "conditions": [
         { "type": "means", "value": ["كتابة (مجهولة/موقعة)", "صورة", "رمز", "شعار"] },
-        { "type": "threat_subject", "value": ["اغتيال", "حبس", "اعتداء جسيم على الأشخاص"] },
-        { "type": "requirement", "value": "أمر بإيداع مال أو تنفيذ شرط" }
+        { "type": "threat_subject", "value": ["اغتيال", "حبس", "اعتداء جسيم على الاشخاص"] },
+        { "type": "requirement", "value": "امر بايداع مال او تنفيذ شرط" }
         ],
         "classification": "جنحة",
         "legal_element": {
-        "material": "إصدار تهديد بالوسائل المحددة + اقترانه بأمر بإيداع مال أو شرط.",
+        "material": "اصدار تهديد بالوسائل المحددة + اقترانه بامر بايداع مال او شرط.",
         "moral": "القصد الجنائي."
         },
         "penalties": {
@@ -32,14 +32,14 @@
         "ban_of_residence": { "min_years": 1, "max_years": 5 }
         },
         "related_articles": [14, 285, 286, 287],
-        "tags": ["تهديد", "وسائل كتابية", "وسائل رمزية", "شرط", "أمر بإيداع مال", "ابتزاز", "اعتداء على الأشخاص"],
+        "tags": ["تهديد", "وسائل كتابية", "وسائل رمزية", "شرط", "امر بايداع مال", "ابتزاز", "اعتداء على الاشخاص"],
         "language": "ar"
     },
     {
         "id": "penal_285",
         "law_type": "قانون العقوبات (الجزائر)",
         "article_number": 285,
-        "title": "التهديد بدون أمر أو شرط",
+        "title": "التهديد بدون امر او شرط",
         "source": {
         "document": "قانون العقوبات (CODE PENAL) — وزارة العدل الجزائرية — الطبعة الرابعة — مطبوعات/Les Editions de l’O.N.T.E — 2005",
         "amending_text": "Ordonnance n° 75-47",
@@ -48,15 +48,15 @@
         "original_text": "«Si cette menace n’a été accompagnée d’aucun ordre ou condition…»",
         "original_text_language": "fr",
         "original_text_is_official_arabic": false,
-        "definition": "تجريم تهديد من نفس طبيعة المادة 284 عندما لا يكون مصحوبًا بأمر أو شرط.",
+        "definition": "تجريم تهديد من نفس طبيعة المادة 284 عندما لا يكون مصحوبا بامر او شرط.",
         "conditions": [
         { "type": "means", "value": ["كتابة (مجهولة/موقعة)", "صورة", "رمز", "شعار"] },
-        { "type": "threat_subject", "value": ["اغتيال", "حبس", "اعتداء جسيم على الأشخاص"] },
-        { "type": "requirement", "value": "غياب أي أمر أو شرط" }
+        { "type": "threat_subject", "value": ["اغتيال", "حبس", "اعتداء جسيم على الاشخاص"] },
+        { "type": "requirement", "value": "غياب اي امر او شرط" }
         ],
         "classification": "جنحة",
         "legal_element": {
-        "material": "تهديد من نوع 284 دون أمر/شرط.",
+        "material": "تهديد من نوع 284 دون امر/شرط.",
         "moral": "القصد الجنائي."
         },
         "penalties": {
@@ -67,14 +67,14 @@
         "ban_of_residence": { "min_years": 1, "max_years": 5 }
         },
         "related_articles": [284, 286],
-        "tags": ["تهديد", "وسائل كتابية", "وسائل رمزية", "بدون شرط", "اعتداء على الأشخاص"],
+        "tags": ["تهديد", "وسائل كتابية", "وسائل رمزية", "بدون شرط", "اعتداء على الاشخاص"],
         "language": "ar"
     },
     {
         "id": "penal_286",
         "law_type": "قانون العقوبات (الجزائر)",
         "article_number": 286,
-        "title": "التهديد الشفهي مع أمر أو شرط",
+        "title": "التهديد الشفهي مع امر او شرط",
         "source": {
         "document": "قانون العقوبات (CODE PENAL) — وزارة العدل الجزائرية — الطبعة الرابعة — مطبوعات/Les Editions de l’O.N.T.E — 2005",
         "amending_text": null,
@@ -83,15 +83,15 @@
         "original_text": "«Si la menace faite avec ordre ou sous condition a été verbale…»",
         "original_text_language": "fr",
         "original_text_is_official_arabic": false,
-        "definition": "تجريم التهديد إذا كان شفهيًا وكان مصحوبًا بأمر أو موضوعًا تحت شرط.",
+        "definition": "تجريم التهديد اذا كان شفهيا وكان مصحوبا بامر او موضوعا تحت شرط.",
         "conditions": [
         { "type": "means", "value": ["شفهي"] },
         { "type": "threat_subject", "value": ["تهديد (ضمن نطاق القسم)"] },
-        { "type": "requirement", "value": "أمر أو شرط" }
+        { "type": "requirement", "value": "امر او شرط" }
         ],
         "classification": "جنحة",
         "legal_element": {
-        "material": "تهديد شفهي + أمر/شرط.",
+        "material": "تهديد شفهي + امر/شرط.",
         "moral": "القصد الجنائي."
         },
         "penalties": {
@@ -102,14 +102,14 @@
         "ban_of_residence": { "min_years": 1, "max_years": 5 }
         },
         "related_articles": [284, 285, 287],
-        "tags": ["تهديد", "شفهي", "شرط", "أمر", "اعتداء على الأشخاص"],
+        "tags": ["تهديد", "شفهي", "شرط", "امر", "اعتداء على الاشخاص"],
         "language": "ar"
     },
     {
         "id": "penal_287",
         "law_type": "قانون العقوبات (الجزائر)",
         "article_number": 287,
-        "title": "تهديد بالعنف (غير 284) مع أمر أو شرط",
+        "title": "تهديد بالعنف (غير 284) مع امر او شرط",
         "source": {
         "document": "قانون العقوبات (CODE PENAL) — وزارة العدل الجزائرية — الطبعة الرابعة — مطبوعات/Les Editions de l’O.N.T.E — 2005",
         "amending_text": "Loi n° 82-04",
@@ -118,15 +118,15 @@
         "original_text": "«Quiconque a, par l’un des moyens prévus aux articles 284 à 286, menacé de voies de fait…»",
         "original_text_language": "fr",
         "original_text_is_official_arabic": false,
-        "definition": "تجريم التهديد بالعنف/الاعتداءات غير الداخلة في نطاق المادة 284 إذا تم بوسائل المواد 284 إلى 286 وكان مع أمر أو شرط.",
+        "definition": "تجريم التهديد بالعنف/الاعتداءات غير الداخلة في نطاق المادة 284 اذا تم بوسائل المواد 284 الى 286 وكان مع امر او شرط.",
         "conditions": [
-        { "type": "means", "value": ["وسائل 284-286 (كتابة/رمز/شفهي حسب الإحالة)"] },
+        { "type": "means", "value": ["وسائل 284-286 (كتابة/رمز/شفهي حسب الاحالة)"] },
         { "type": "threat_subject", "value": ["عنف", "اعتداءات"] },
-        { "type": "requirement", "value": "أمر أو شرط" }
+        { "type": "requirement", "value": "امر او شرط" }
         ],
         "classification": "جنحة",
         "legal_element": {
-        "material": "تهديد بوسائل 284-286 + موضوعه عنف/اعتداءات + اقترانه بأمر/شرط.",
+        "material": "تهديد بوسائل 284-286 + موضوعه عنف/اعتداءات + اقترانه بامر/شرط.",
         "moral": "القصد الجنائي."
         },
         "penalties": {
@@ -135,7 +135,7 @@
         },
         "additional_penalties": null,
         "related_articles": [284, 285, 286],
-        "tags": ["تهديد", "عنف", "وسائل 284-286", "شرط", "أمر", "اعتداء على الأشخاص"],
+        "tags": ["تهديد", "عنف", "وسائل 284-286", "شرط", "امر", "اعتداء على الاشخاص"],
         "language": "ar"
     },
     {
@@ -151,15 +151,15 @@
         "original_text": "«Toute allégation ou imputation d’un fait… est une diffamation.»",
         "original_text_language": "fr",
         "original_text_is_official_arabic": false,
-        "definition": "القذف/التشهير هو إسناد واقعة تمس الشرف أو الاعتبار، ويعاقب نشره وفق المواد العقابية اللاحقة.",
+        "definition": "القذف/التشهير هو اسناد واقعة تمس الشرف او الاعتبار، ويعاقب نشره وفق المواد العقابية اللاحقة.",
         "conditions": [
-        { "type": "act", "value": ["إسناد واقعة", "ادعاء واقعة"] },
+        { "type": "act", "value": ["اسناد واقعة", "ادعاء واقعة"] },
         { "type": "harm", "value": ["المساس بالشرف", "المساس بالاعتبار"] },
         { "type": "publicity", "value": "تحقق النشر/العلانية" }
         ],
-        "classification": "جنحة (عند توفر أركان التجريم والعقوبة في 298)",
+        "classification": "جنحة (عند توفر اركان التجريم والعقوبة في 298)",
         "legal_element": {
-        "material": "إسناد واقعة ماسّة + نشرها.",
+        "material": "اسناد واقعة ماسة + نشرها.",
         "moral": "القصد الجنائي."
         },
         "penalties": null,
@@ -181,20 +181,20 @@
         "original_text": "«Toute expression outrageante… est une injure.»",
         "original_text_language": "fr",
         "original_text_is_official_arabic": false,
-        "definition": "السب/الشتم هو تعبير مهين لا يتضمن إسناد واقعة.",
+        "definition": "السب/الشتم هو تعبير مهين لا يتضمن اسناد واقعة.",
         "conditions": [
         { "type": "act", "value": ["عبارة مهينة", "ازدراء", "سب/شتم"] },
-        { "type": "fact_imputation", "value": "لا يتضمن إسناد واقعة" }
+        { "type": "fact_imputation", "value": "لا يتضمن اسناد واقعة" }
         ],
         "classification": "جنحة (عند العقوبة وفق 298bis/299)",
         "legal_element": {
-        "material": "ألفاظ/عبارات مهينة دون وقائع.",
+        "material": "الفاظ/عبارات مهينة دون وقائع.",
         "moral": "القصد الجنائي."
         },
         "penalties": null,
         "additional_penalties": null,
         "related_articles": [298.1, 299],
-        "tags": ["سب", "شتم", "إهانة", "كرامة", "ألفاظ"],
+        "tags": ["سب", "شتم", "اهانة", "كرامة", "الفاظ"],
         "language": "ar"
     },
     {
@@ -210,10 +210,10 @@
         "original_text": "«Toute diffamation commise envers les particuliers est punie…»",
         "original_text_language": "fr",
         "original_text_is_official_arabic": false,
-        "definition": "يعاقب القذف/التشهير ضد الأفراد، وتوجد حالة مشددة إذا استهدف مجموعة إثنية/فلسفية/دينية بقصد التحريض على الكراهية.",
+        "definition": "يعاقب القذف/التشهير ضد الافراد، وتوجد حالة مشددة اذا استهدف مجموعة اثنية/فلسفية/دينية بقصد التحريض على الكراهية.",
         "conditions": [
         { "type": "act", "value": ["قذف/تشهير"] },
-        { "type": "target", "value": ["أفراد", "جماعة إثنية/فلسفية/دينية (حالة مشددة)"] },
+        { "type": "target", "value": ["افراد", "جماعة اثنية/فلسفية/دينية (حالة مشددة)"] },
         { "type": "intent", "value": "في الحالة المشددة: التحريض على الكراهية" }
         ],
         "classification": "جنحة",
@@ -225,12 +225,12 @@
         "diffamation_against_individuals": {
             "imprisonment": { "min_days": 5, "max_months": 6 },
             "fine": { "min_dzd": 5000, "max_dzd": 50000 },
-            "alternative": "أو إحدى العقوبتين فقط"
+            "alternative": "او احدى العقوبتين فقط"
         },
         "diffamation_against_group_incitement": {
             "imprisonment": { "min_months": 1, "max_years": 1 },
             "fine": { "min_dzd": 10000, "max_dzd": 100000 },
-            "alternative": "أو إحدى العقوبتين فقط"
+            "alternative": "او احدى العقوبتين فقط"
         }
         },
         "additional_penalties": null,
@@ -251,31 +251,31 @@
         "original_text": "«Toute injure commise envers une ou plusieurs personnes qui appartiennent à un groupe…»",
         "original_text_language": "fr",
         "original_text_is_official_arabic": false,
-        "definition": "يعاقب السب/الشتم إذا وجه لأشخاص ينتمون إلى جماعة إثنية/فلسفية أو ديانة.",
+        "definition": "يعاقب السب/الشتم اذا وجه لاشخاص ينتمون الى جماعة اثنية/فلسفية او ديانة.",
         "conditions": [
         { "type": "act", "value": ["سب/شتم"] },
-        { "type": "target", "value": ["جماعة إثنية", "جماعة فلسفية", "ديانة"] }
+        { "type": "target", "value": ["جماعة اثنية", "جماعة فلسفية", "ديانة"] }
         ],
         "classification": "جنحة",
         "legal_element": {
-        "material": "سب/شتم موجّه للفئة المحددة.",
+        "material": "سب/شتم موجه للفئة المحددة.",
         "moral": "القصد الجنائي."
         },
         "penalties": {
         "imprisonment": { "min_days": 5, "max_months": 6 },
         "fine": { "min_dzd": 5000, "max_dzd": 50000 },
-        "alternative": "أو إحدى العقوبتين فقط"
+        "alternative": "او احدى العقوبتين فقط"
         },
         "additional_penalties": null,
         "related_articles": [297],
-        "tags": ["سب", "شتم", "جماعة", "إثنية", "دين", "عقوبة"],
+        "tags": ["سب", "شتم", "جماعة", "اثنية", "دين", "عقوبة"],
         "language": "ar"
     },
     {
         "id": "penal_299",
         "law_type": "قانون العقوبات (الجزائر)",
         "article_number": 299,
-        "title": "عقوبة السب/الشتم ضد الأشخاص",
+        "title": "عقوبة السب/الشتم ضد الاشخاص",
         "source": {
         "document": "قانون العقوبات (CODE PENAL) — وزارة العدل الجزائرية — الطبعة الرابعة — مطبوعات/Les Editions de l’O.N.T.E — 2005",
         "amending_text": "Loi n° 01-09",
@@ -284,10 +284,10 @@
         "original_text": "«Toute injure commise contre une ou plusieurs personnes est punie…»",
         "original_text_language": "fr",
         "original_text_is_official_arabic": false,
-        "definition": "يعاقب السب/الشتم إذا وقع ضد شخص أو عدة أشخاص.",
+        "definition": "يعاقب السب/الشتم اذا وقع ضد شخص او عدة اشخاص.",
         "conditions": [
         { "type": "act", "value": ["سب/شتم"] },
-        { "type": "target", "value": ["شخص", "عدة أشخاص"] }
+        { "type": "target", "value": ["شخص", "عدة اشخاص"] }
         ],
         "classification": "جنحة",
         "legal_element": {
@@ -297,18 +297,18 @@
         "penalties": {
         "imprisonment": { "min_days": 6, "max_months": 3 },
         "fine": { "min_dzd": 5000, "max_dzd": 50000 },
-        "alternative": "أو إحدى العقوبتين فقط"
+        "alternative": "او احدى العقوبتين فقط"
         },
         "additional_penalties": null,
         "related_articles": [297],
-        "tags": ["سب", "شتم", "أشخاص", "عقوبة", "إهانة"],
+        "tags": ["سب", "شتم", "اشخاص", "عقوبة", "اهانة"],
         "language": "ar"
     },
     {
         "id": "penal_264",
         "law_type": "قانون العقوبات (الجزائر)",
         "article_number": 264,
-        "title": "العنف العمدي المسبب لعجز يفوق 15 يومًا (وتدرج التشديد)",
+        "title": "العنف العمدي المسبب لعجز يفوق 15 يوما (وتدرج التشديد)",
         "source": {
         "document": "قانون العقوبات (CODE PENAL) — وزارة العدل الجزائرية — الطبعة الرابعة — مطبوعات/Les Editions de l’O.N.T.E — 2005",
         "amending_text": "Loi n° 82-04",
@@ -317,17 +317,17 @@
         "original_text": "«Quiconque, volontairement, fait des blessures ou porte des coups à autrui…»",
         "original_text_language": "fr",
         "original_text_is_official_arabic": false,
-        "definition": "كل من أحدث عمدًا جروحًا أو ضربًا أو أي عنف/تعدٍّ، فإذا نتج مرض أو عجز كلي عن العمل لأكثر من 15 يومًا عوقب. وتُشدَّد العقوبة إذا نتجت عاهة دائمة، أو إذا ترتبت الوفاة دون نية القتل.",
+        "definition": "كل من احدث عمدا جروحا او ضربا او اي عنف/تعد، فاذا نتج مرض او عجز كلي عن العمل لاكثر من 15 يوما عوقب. وتشدد العقوبة اذا نتجت عاهة دائمة، او اذا ترتبت الوفاة دون نية القتل.",
         "conditions": [
-        { "type": "act", "value": ["جروح", "ضرب", "عنف", "تعدٍّ/إيذاء"] },
-        { "type": "mens_rea", "value": "عمدي/إرادي" },
-        { "type": "result_base", "value": "مرض أو عجز كلي عن العمل لأكثر من 15 يومًا" },
-        { "type": "result_aggravating", "value": ["عاهة/إعاقة دائمة", "وفاة دون نية القتل"] }
+        { "type": "act", "value": ["جروح", "ضرب", "عنف", "تعد/ايذاء"] },
+        { "type": "mens_rea", "value": "عمدي/ارادي" },
+        { "type": "result_base", "value": "مرض او عجز كلي عن العمل لاكثر من 15 يوما" },
+        { "type": "result_aggravating", "value": ["عاهة/اعاقة دائمة", "وفاة دون نية القتل"] }
         ],
-        "classification": "جنحة (في الحالة الأساسية)، وقد ترتقي إلى وصف أشد عند تحقق النتائج المشددة",
+        "classification": "جنحة (في الحالة الاساسية)، وقد ترتقي الى وصف اشد عند تحقق النتائج المشددة",
         "legal_element": {
-        "material": "فعل عنف عمدي (جروح/ضرب/عنف) + تحقق نتيجة (عجز>15 يومًا) أو نتائج مشددة (عاهة دائمة/وفاة دون نية).",
-        "moral": "القصد الجنائي (إرادة ارتكاب فعل العنف)."
+        "material": "فعل عنف عمدي (جروح/ضرب/عنف) + تحقق نتيجة (عجز>15 يوما) او نتائج مشددة (عاهة دائمة/وفاة دون نية).",
+        "moral": "القصد الجنائي (ارادة ارتكاب فعل العنف)."
         },
         "penalties": {
         "base": {
@@ -345,14 +345,14 @@
         "rights_deprivation_article_14": { "min_years": 1, "max_years": 5 }
         },
         "related_articles": [14, 265, 266],
-        "tags": ["عنف", "ضرب وجرح", "عجز عن العمل", "أكثر من 15 يوم", "عاهة دائمة", "وفاة دون نية القتل"],
+        "tags": ["عنف", "ضرب وجرح", "عجز عن العمل", "اكثر من 15 يوم", "عاهة دائمة", "وفاة دون نية القتل"],
         "language": "ar"
     },
     {
         "id": "penal_265",
         "law_type": "قانون العقوبات (الجزائر)",
         "article_number": 265,
-        "title": "تشديد عقوبة العنف عند سبق الإصرار أو الترصد",
+        "title": "تشديد عقوبة العنف عند سبق الاصرار او الترصد",
         "source": {
         "document": "قانون العقوبات (CODE PENAL) — وزارة العدل الجزائرية — الطبعة الرابعة — مطبوعات/Les Editions de l’O.N.T.E — 2005",
         "amending_text": null,
@@ -361,16 +361,16 @@
         "original_text": "«Lorsqu’il y a eu préméditation ou guet-apens, la peine est…»",
         "original_text_language": "fr",
         "original_text_is_official_arabic": false,
-        "definition": "إذا وُجد سبق الإصرار أو الترصد تُشدَّد العقوبات بحسب النتائج (وفاة/عاهة دائمة/الحالة الأساسية) المرتبطة بالعنف المذكور في المادة 264.",
+        "definition": "اذا وجد سبق الاصرار او الترصد تشدد العقوبات بحسب النتائج (وفاة/عاهة دائمة/الحالة الاساسية) المرتبطة بالعنف المذكور في المادة 264.",
         "conditions": [
-        { "type": "circumstance", "value": ["سبق الإصرار (préméditation)", "الترصد (guet-apens)"] },
+        { "type": "circumstance", "value": ["سبق الاصرار (préméditation)", "الترصد (guet-apens)"] },
         { "type": "act_reference", "value": "عنف عمدي من نوع المادة 264" },
         { "type": "result", "value": ["وفاة", "عاهة دائمة", "حالة 264/1 (عجز>15 يوم)"] }
         ],
-        "classification": "جناية (عند النتائج المشددة التي تقود إلى السجن المؤبد/عقوبات جنائية)، وإلا تبقى ضمن إطار التشديد المنصوص عليه",
+        "classification": "جناية (عند النتائج المشددة التي تقود الى السجن المؤبد/عقوبات جنائية)، والا تبقى ضمن اطار التشديد المنصوص عليه",
         "legal_element": {
-        "material": "عنف عمدي + ظرف سبق الإصرار/الترصد + تحقق إحدى النتائج المذكورة.",
-        "moral": "القصد الجنائي + نية مُسبقة/ترصد (كظرف مشدد)."
+        "material": "عنف عمدي + ظرف سبق الاصرار/الترصد + تحقق احدى النتائج المذكورة.",
+        "moral": "القصد الجنائي + نية مسبقة/ترصد (كظرف مشدد)."
         },
         "penalties": {
         "if_death_results": { "reclusion_perpetuity": true },
@@ -379,14 +379,14 @@
         },
         "additional_penalties": null,
         "related_articles": [264, 266],
-        "tags": ["عنف", "سبق الإصرار", "ترصد", "ظرف مشدد", "عاهة دائمة", "وفاة"],
+        "tags": ["عنف", "سبق الاصرار", "ترصد", "ظرف مشدد", "عاهة دائمة", "وفاة"],
         "language": "ar"
     },
     {
         "id": "penal_266",
         "law_type": "قانون العقوبات (الجزائر)",
         "article_number": 266,
-        "title": "عنف بعجز ≤ 15 يومًا مع سبق الإصرار/الترصد أو حمل سلاح",
+        "title": "عنف بعجز ≤ 15 يوما مع سبق الاصرار/الترصد او حمل سلاح",
         "source": {
         "document": "قانون العقوبات (CODE PENAL) — وزارة العدل الجزائرية — الطبعة الرابعة — مطبوعات/Les Editions de l’O.N.T.E — 2005",
         "amending_text": "Loi n° 82-04",
@@ -395,15 +395,15 @@
         "original_text": "«…n’ayant pas occasionné une maladie ou incapacité… excédant quinze jours… avec préméditation, guet-apens ou port d’armes…»",
         "original_text_language": "fr",
         "original_text_is_official_arabic": false,
-        "definition": "إذا لم تتجاوز مدة العجز 15 يومًا لكن العنف وقع مع سبق الإصرار أو الترصد أو حمل سلاح، يعاقَب الفاعل بعقوبة جنحية مع إمكانية المصادرة.",
+        "definition": "اذا لم تتجاوز مدة العجز 15 يوما لكن العنف وقع مع سبق الاصرار او الترصد او حمل سلاح، يعاقب الفاعل بعقوبة جنحية مع امكانية المصادرة.",
         "conditions": [
-        { "type": "act", "value": ["عنف عمدي", "ضرب/جرح/تعدٍّ"] },
-        { "type": "result", "value": "مرض/عجز كلي عن العمل لا يتجاوز 15 يومًا" },
-        { "type": "circumstance", "value": ["سبق الإصرار", "ترصد", "حمل سلاح"] }
+        { "type": "act", "value": ["عنف عمدي", "ضرب/جرح/تعد"] },
+        { "type": "result", "value": "مرض/عجز كلي عن العمل لا يتجاوز 15 يوما" },
+        { "type": "circumstance", "value": ["سبق الاصرار", "ترصد", "حمل سلاح"] }
         ],
         "classification": "جنحة",
         "legal_element": {
-        "material": "عنف عمدي + نتيجة (≤15 يوم) + ظرف مشدد (سبق الإصرار/الترصد/حمل سلاح).",
+        "material": "عنف عمدي + نتيجة (≤15 يوم) + ظرف مشدد (سبق الاصرار/الترصد/حمل سلاح).",
         "moral": "القصد الجنائي."
         },
         "penalties": {
@@ -412,10 +412,10 @@
         },
         "additional_penalties": {
         "confiscation_possible": true,
-        "confiscation_note": "تجوز مصادرة الأشياء التي استعملت أو كان يُفترض استعمالها، مع مراعاة حقوق الغير حسن النية."
+        "confiscation_note": "تجوز مصادرة الاشياء التي استعملت او كان يفترض استعمالها، مع مراعاة حقوق الغير حسن النية."
         },
         "related_articles": [264, 265],
-        "tags": ["عنف", "عجز ≤ 15 يوم", "سبق الإصرار", "ترصد", "حمل سلاح", "مصادرة"],
+        "tags": ["عنف", "عجز ≤ 15 يوم", "سبق الاصرار", "ترصد", "حمل سلاح", "مصادرة"],
         "language": "ar"
     },
     {
@@ -431,18 +431,18 @@
         "original_text": "«Quiconque soustrait frauduleusement une chose qui ne lui appartient pas est coupable de vol… La tentative… Les mêmes peines s’appliquent aux auteurs des détournements d’eau, de gaz et d’électricité.»",
         "original_text_language": "fr",
         "original_text_is_official_arabic": false,
-        "definition": "كل من يختلس احتيالًا شيئًا لا يملكه يعد مرتكبًا للسرقة، ويعاقب عليها بعقوبة سالبة للحرية وغرامة، ويعاقب الشروع بنفس عقوبة الفعل التام، وتمتد نفس العقوبات لتحويل الماء أو الغاز أو الكهرباء.",
+        "definition": "كل من يختلس احتيالا شيئا لا يملكه يعد مرتكبا للسرقة، ويعاقب عليها بعقوبة سالبة للحرية وغرامة، ويعاقب الشروع بنفس عقوبة الفعل التام، وتمتد نفس العقوبات لتحويل الماء او الغاز او الكهرباء.",
         "conditions": [
-        { "type": "act", "value": ["اختلاس/سلب/أخذ"] },
-        { "type": "unlawfulness", "value": "احتيالًا/بطريق الغش (soustraction frauduleuse)" },
+        { "type": "act", "value": ["اختلاس/سلب/اخذ"] },
+        { "type": "unlawfulness", "value": "احتيالا/بطريق الغش (soustraction frauduleuse)" },
         { "type": "object", "value": "شيء لا يملكه الفاعل" },
         { "type": "attempt", "value": "الشروع يعاقب كالجريمة التامة" },
         { "type": "assimilated_act", "value": ["تحويل الماء", "تحويل الغاز", "تحويل الكهرباء"] }
         ],
         "classification": "جنحة (وفق عقوبة المادة 350)",
         "legal_element": {
-        "material": "سلب/اختلاس شيء مملوك للغير بطريقة احتيالية، أو الشروع في ذلك، أو تحويل الماء/الغاز/الكهرباء.",
-        "moral": "القصد الجنائي (إرادة السلب مع العلم بعدم الملكية)."
+        "material": "سلب/اختلاس شيء مملوك للغير بطريقة احتيالية، او الشروع في ذلك، او تحويل الماء/الغاز/الكهرباء.",
+        "moral": "القصد الجنائي (ارادة السلب مع العلم بعدم الملكية)."
         },
         "penalties": {
         "imprisonment": { "min_years": 1, "max_years": 5 },
@@ -455,14 +455,14 @@
         "ban_of_residence": { "min_years": 1, "max_years": 5 }
         },
         "related_articles": [14, 351],
-        "tags": ["سرقة", "اختلاس", "احتيال", "الشروع", "تحويل الماء", "تحويل الغاز", "تحويل الكهرباء", "حقوق مدنية (م 14)", "منع الإقامة"],
+        "tags": ["سرقة", "اختلاس", "احتيال", "الشروع", "تحويل الماء", "تحويل الغاز", "تحويل الكهرباء", "حقوق مدنية (م 14)", "منع الاقامة"],
         "language": "ar"
     },
     {
         "id": "penal_351",
         "law_type": "قانون العقوبات (الجزائر)",
         "article_number": 351,
-        "title": "السرقة مع حمل سلاح (عقوبة الإعدام)",
+        "title": "السرقة مع حمل سلاح (عقوبة الاعدام)",
         "source": {
         "document": "قانون العقوبات (CODE PENAL) — وزارة العدل الجزائرية — الطبعة الرابعة — مطبوعات/Les Editions de l’O.N.T.E — 2005",
         "amending_text": "Ordonnance n° 75-47",
@@ -471,15 +471,15 @@
         "original_text": "«Sont punis de la peine de mort… si les voleurs ou l’un d’eux étaient porteurs d’une arme apparente ou cachée…»",
         "original_text_language": "fr",
         "original_text_is_official_arabic": false,
-        "definition": "تعاقب السرقة بالإعدام إذا كان السارق أو أحدهم حاملًا لسلاح ظاهر أو مخفي، حتى لو تمت من شخص واحد ودون ظروف مشددة أخرى.",
+        "definition": "تعاقب السرقة بالاعدام اذا كان السارق او احدهم حاملا لسلاح ظاهر او مخفي، حتى لو تمت من شخص واحد ودون ظروف مشددة اخرى.",
         "conditions": [
         { "type": "act", "value": "وقوع سرقة" },
         { "type": "circumstance", "value": ["حمل سلاح ظاهر", "حمل سلاح مخفي"] },
-        { "type": "scope_note", "value": "تنطبق حتى لو كان الفاعل شخصًا واحدًا وبدون ظروف مشددة أخرى" }
+        { "type": "scope_note", "value": "تنطبق حتى لو كان الفاعل شخصا واحدا وبدون ظروف مشددة اخرى" }
         ],
         "classification": "جناية",
         "legal_element": {
-        "material": "سرقة + حمل سلاح (ظاهر/مخفي) من أحد الجناة.",
+        "material": "سرقة + حمل سلاح (ظاهر/مخفي) من احد الجناة.",
         "moral": "القصد الجنائي في السرقة."
         },
         "penalties": {
@@ -487,7 +487,7 @@
         },
         "additional_penalties": null,
         "related_articles": [350],
-        "tags": ["سرقة", "حمل سلاح", "ظرف مشدد", "عقوبة الإعدام"],
+        "tags": ["سرقة", "حمل سلاح", "ظرف مشدد", "عقوبة الاعدام"],
         "language": "ar"
     },
     {
@@ -503,17 +503,17 @@
         "original_text": "«Quiconque… en faisant usage de faux noms ou de fausses qualités… ou en employant des manoeuvres frauduleuses… se fait remettre… et… escroque ou tente d’escroquer… La tentative… est punie des mêmes peines…»",
         "original_text_language": "fr",
         "original_text_is_official_arabic": false,
-        "definition": "الحصول أو محاولة الحصول على أموال/منقولات/سندات… باستعمال اسم كاذب أو صفة كاذبة أو مناورات احتيالية لإيهام الغير بوجود مشاريع أو سلطة أو ائتمان وهمي، أو لإثارة الأمل/الخوف بشأن حدث خيالي، مع معاقبة الشروع بنفس عقوبة الفعل التام.",
+        "definition": "الحصول او محاولة الحصول على اموال/منقولات/سندات… باستعمال اسم كاذب او صفة كاذبة او مناورات احتيالية لايهام الغير بوجود مشاريع او سلطة او ائتمان وهمي، او لاثارة الامل/الخوف بشان حدث خيالي، مع معاقبة الشروع بنفس عقوبة الفعل التام.",
         "conditions": [
         { "type": "means", "value": ["اسم كاذب", "صفة كاذبة", "مناورات/حيل احتيالية"] },
-        { "type": "deception_forms", "value": ["إيهام بوجود مشاريع وهمية", "إيهام بسلطة/نفوذ", "إيهام باعتماد/ائتمان وهمي", "إثارة الأمل/الخوف بشأن حدث خيالي"] },
-        { "type": "result", "value": ["تسلّم/استلام أموال", "تسلّم منقولات", "تسلّم سندات/التزامات/كمبيالات/وعود/مخالصات/براءات ذمة", "أو محاولة ذلك"] },
-        { "type": "harm", "value": "الاستيلاء/محاولة الاستيلاء على كل أو جزء من مال الغير" },
+        { "type": "deception_forms", "value": ["ايهام بوجود مشاريع وهمية", "ايهام بسلطة/نفوذ", "ايهام باعتماد/ائتمان وهمي", "اثارة الامل/الخوف بشان حدث خيالي"] },
+        { "type": "result", "value": ["تسلم/استلام اموال", "تسلم منقولات", "تسلم سندات/التزامات/كمبيالات/وعود/مخالصات/براءات ذمة", "او محاولة ذلك"] },
+        { "type": "harm", "value": "الاستيلاء/محاولة الاستيلاء على كل او جزء من مال الغير" },
         { "type": "attempt", "value": "الشروع يعاقب كالجريمة التامة" }
         ],
         "classification": "جنحة",
         "legal_element": {
-        "material": "استعمال وسائل احتيالية محددة قانونًا + تسلّم/محاولة تسلّم مال أو سندات… + مساس بثروة الغير.",
+        "material": "استعمال وسائل احتيالية محددة قانونا + تسلم/محاولة تسلم مال او سندات… + مساس بثروة الغير.",
         "moral": "القصد الجنائي (نية الاحتيال والاستيلاء)."
         },
         "penalties": {
@@ -526,7 +526,7 @@
         "ban_of_residence": { "min_years": 1, "max_years": 5 }
         },
         "related_articles": [373],
-        "tags": ["نصب", "احتيال", "مناورات احتيالية", "اسم كاذب", "صفة كاذبة", "استيلاء على مال الغير", "الشروع", "حقوق مدنية (م 14)", "منع الإقامة"],
+        "tags": ["نصب", "احتيال", "مناورات احتيالية", "اسم كاذب", "صفة كاذبة", "استيلاء على مال الغير", "الشروع", "حقوق مدنية (م 14)", "منع الاقامة"],
         "language": "ar"
     }
 ]
