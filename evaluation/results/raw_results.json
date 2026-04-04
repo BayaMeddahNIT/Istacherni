@@ -1,0 +1,352 @@
+{
+  "bm25": {
+    "model": "BM25 RAG (Lexical)",
+    "retrieval": {
+      "model": "BM25 RAG (Lexical)",
+      "recall_at_1": 0.4,
+      "recall_at_3": 0.6,
+      "recall_at_5": 0.8,
+      "mrr": 0.5067,
+      "per_case": [
+        {
+          "tc_id": "TC01",
+          "question": "ما هي عقوبة السرقة في القانون الجزائري؟",
+          "domain": "Penal Law",
+          "expected_ids": [
+            "DZ_PENAL_ART_350",
+            "DZ_PENAL_ART_351"
+          ],
+          "retrieved_ids": [
+            "DZ_PENAL_ART_351",
+            "DZ_PENAL_ART_350",
+            "DZ_CIVIL_ART_836",
+            "DZ_CIVIL_ART_685",
+            "DZ_CIVIL_ART_682"
+          ],
+          "recall_at_1": 1.0,
+          "recall_at_3": 1.0,
+          "recall_at_5": 1.0,
+          "reciprocal_rank": 1.0
+        },
+        {
+          "tc_id": "TC02",
+          "question": "ما هي عقوبة القتل العمد في القانون الجزائري؟",
+          "domain": "Penal Law",
+          "expected_ids": [
+            "DZ_PENAL_ART_264",
+            "DZ_PENAL_ART_265",
+            "DZ_PENAL_ART_287"
+          ],
+          "retrieved_ids": [
+            "DZ_PENAL_ART_264",
+            "DZ_CIVIL_ART_685",
+            "DZ_CIVIL_ART_682",
+            "DZ_CIVIL_ART_172",
+            "DZ_CIVIL_ART_83"
+          ],
+          "recall_at_1": 1.0,
+          "recall_at_3": 1.0,
+          "recall_at_5": 1.0,
+          "reciprocal_rank": 1.0
+        },
+        {
+          "tc_id": "TC03",
+          "question": "ما هي عقوبة جريمة الاحتيال؟",
+          "domain": "Penal Law",
+          "expected_ids": [
+            "DZ_PENAL_ART_372"
+          ],
+          "retrieved_ids": [
+            "DZ_PENAL_ART_299",
+            "DZ_PENAL_ART_351",
+            "DZ_PENAL_ART_298.1",
+            "DZ_PENAL_ART_298",
+            "DZ_CIVIL_ART_685"
+          ],
+          "recall_at_1": 0.0,
+          "recall_at_3": 0.0,
+          "recall_at_5": 0.0,
+          "reciprocal_rank": 0.0
+        },
+        {
+          "tc_id": "TC04",
+          "question": "ما هي عقوبة الاغتصاب في القانون الجزائري؟",
+          "domain": "Penal Law",
+          "expected_ids": [
+            "DZ_PENAL_ART_265",
+            "DZ_PENAL_ART_287",
+            "DZ_PENAL_ART_299"
+          ],
+          "retrieved_ids": [
+            "DZ_CIVIL_ART_685",
+            "DZ_CIVIL_ART_682",
+            "DZ_CIVIL_ART_172",
+            "DZ_CIVIL_ART_83",
+            "DZ_PENAL_ART_299"
+          ],
+          "recall_at_1": 0.0,
+          "recall_at_3": 0.0,
+          "recall_at_5": 1.0,
+          "reciprocal_rank": 0.2
+        },
+        {
+          "tc_id": "TC05",
+          "question": "ما هي عقوبة تزوير الوثائق الرسمية؟",
+          "domain": "Penal Law",
+          "expected_ids": [
+            "DZ_PENAL_ART_299",
+            "DZ_PENAL_ART_298.1",
+            "DZ_PENAL_ART_298"
+          ],
+          "retrieved_ids": [
+            "DZ_CIVPROC_ART_023",
+            "DZ_CIVPROC_ART_311",
+            "DZ_PENAL_ART_299",
+            "DZ_PENAL_ART_351",
+            "DZ_CIVIL_ART_324_BIS_6"
+          ],
+          "recall_at_1": 0.0,
+          "recall_at_3": 1.0,
+          "recall_at_5": 1.0,
+          "reciprocal_rank": 0.3333333333333333
+        }
+      ]
+    },
+    "retrieval_time_s": 0.0,
+    "generation": {
+      "model": "BM25 RAG (Lexical)",
+      "faithfulness": 0.0,
+      "relevance": 0.0,
+      "completeness": 0.0,
+      "gen_score": 0.0,
+      "per_case": [
+        {
+          "tc_id": "TC01",
+          "question": "ما هي عقوبة السرقة في القانون الجزائري؟",
+          "domain": "Penal Law",
+          "answer_preview": "تختلف عقوبة السرقة في القانون الجزائري حسب الظروف المحيطة بالجريمة:\n\n1.  **السرقة العادية أو الشروع فيها أو تحويل الماء/الغاز/الكهرباء**: يعاقب عليها بالحبس من سنة إلى 5 سنوات، وغرامة من 500 إلى 20000",
+          "faithfulness": 0,
+          "relevance": 0,
+          "completeness": 0,
+          "reasoning": "error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}"
+        },
+        {
+          "tc_id": "TC02",
+          "question": "ما هي عقوبة القتل العمد في القانون الجزائري؟",
+          "domain": "Penal Law",
+          "answer_preview": "لا تتوفر معلومات كافية في المواد المقدمة. المادة 264 من قانون العقوبات تتناول حالة الوفاة التي تترتب عن عنف عمدي دون نية القتل، وليس القتل العمد.",
+          "faithfulness": 0,
+          "relevance": 0,
+          "completeness": 0,
+          "reasoning": "error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}"
+        },
+        {
+          "tc_id": "TC03",
+          "question": "ما هي عقوبة جريمة الاحتيال؟",
+          "domain": "Penal Law",
+          "answer_preview": "لا تتوفر معلومات كافية في المواد المقدمة.",
+          "faithfulness": 0,
+          "relevance": 0,
+          "completeness": 0,
+          "reasoning": "error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}"
+        },
+        {
+          "tc_id": "TC04",
+          "question": "ما هي عقوبة الاغتصاب في القانون الجزائري؟",
+          "domain": "Penal Law",
+          "answer_preview": "لا تتوفر معلومات كافية في المواد المقدمة.",
+          "faithfulness": 0,
+          "relevance": 0,
+          "completeness": 0,
+          "reasoning": "error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}"
+        },
+        {
+          "tc_id": "TC05",
+          "question": "ما هي عقوبة تزوير الوثائق الرسمية؟",
+          "domain": "Penal Law",
+          "answer_preview": "لا تتوفر معلومات كافية في المواد المقدمة.",
+          "faithfulness": 0,
+          "relevance": 0,
+          "completeness": 0,
+          "reasoning": "error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}"
+        }
+      ]
+    },
+    "generation_time_s": 70.4
+  },
+  "graph": {
+    "model": "Graph RAG",
+    "retrieval": {
+      "model": "Graph RAG",
+      "recall_at_1": 0.2,
+      "recall_at_3": 0.4,
+      "recall_at_5": 0.6,
+      "mrr": 0.35,
+      "per_case": [
+        {
+          "tc_id": "TC01",
+          "question": "ما هي عقوبة السرقة في القانون الجزائري؟",
+          "domain": "Penal Law",
+          "expected_ids": [
+            "DZ_PENAL_ART_350",
+            "DZ_PENAL_ART_351"
+          ],
+          "retrieved_ids": [
+            "DZ_PENAL_ART_351",
+            "DZ_CIVIL_ART_333",
+            "DZ_PENAL_ART_350",
+            "DZ_CIVIL_ART_306",
+            "DZ_CIVIL_ART_337"
+          ],
+          "recall_at_1": 1.0,
+          "recall_at_3": 1.0,
+          "recall_at_5": 1.0,
+          "reciprocal_rank": 1.0
+        },
+        {
+          "tc_id": "TC02",
+          "question": "ما هي عقوبة القتل العمد في القانون الجزائري؟",
+          "domain": "Penal Law",
+          "expected_ids": [
+            "DZ_PENAL_ART_264",
+            "DZ_PENAL_ART_265",
+            "DZ_PENAL_ART_287"
+          ],
+          "retrieved_ids": [
+            "DZ_CIVIL_ART_333",
+            "DZ_PENAL_ART_264",
+            "DZ_CIVIL_ART_306",
+            "DZ_CIVIL_ART_337",
+            "DZ_CIVIL_ART_217"
+          ],
+          "recall_at_1": 0.0,
+          "recall_at_3": 1.0,
+          "recall_at_5": 1.0,
+          "reciprocal_rank": 0.5
+        },
+        {
+          "tc_id": "TC03",
+          "question": "ما هي عقوبة جريمة الاحتيال؟",
+          "domain": "Penal Law",
+          "expected_ids": [
+            "DZ_PENAL_ART_372"
+          ],
+          "retrieved_ids": [
+            "DZ_PENAL_ART_350",
+            "DZ_PENAL_ART_351",
+            "DZ_PENAL_ART_299",
+            "DZ_PENAL_ART_372",
+            "DZ_PENAL_ART_298"
+          ],
+          "recall_at_1": 0.0,
+          "recall_at_3": 0.0,
+          "recall_at_5": 1.0,
+          "reciprocal_rank": 0.25
+        },
+        {
+          "tc_id": "TC04",
+          "question": "ما هي عقوبة الاغتصاب في القانون الجزائري؟",
+          "domain": "Penal Law",
+          "expected_ids": [
+            "DZ_PENAL_ART_265",
+            "DZ_PENAL_ART_287",
+            "DZ_PENAL_ART_299"
+          ],
+          "retrieved_ids": [
+            "DZ_CIVIL_ART_333",
+            "DZ_CIVIL_ART_306",
+            "DZ_CIVIL_ART_337",
+            "DZ_CIVIL_ART_217",
+            "DZ_CIVIL_ART_481"
+          ],
+          "recall_at_1": 0.0,
+          "recall_at_3": 0.0,
+          "recall_at_5": 0.0,
+          "reciprocal_rank": 0.0
+        },
+        {
+          "tc_id": "TC05",
+          "question": "ما هي عقوبة تزوير الوثائق الرسمية؟",
+          "domain": "Penal Law",
+          "expected_ids": [
+            "DZ_PENAL_ART_299",
+            "DZ_PENAL_ART_298.1",
+            "DZ_PENAL_ART_298"
+          ],
+          "retrieved_ids": [
+            "DZ_CIVPROC_ART_023",
+            "DZ_CIVIL_ART_324_BIS_6",
+            "DZ_CIVIL_ART_324_BIS_5",
+            "DZ_CIVPROC_ART_311",
+            "DZ_PENAL_ART_351"
+          ],
+          "recall_at_1": 0.0,
+          "recall_at_3": 0.0,
+          "recall_at_5": 0.0,
+          "reciprocal_rank": 0.0
+        }
+      ]
+    },
+    "retrieval_time_s": 0.9,
+    "generation": {
+      "model": "Graph RAG",
+      "faithfulness": 0.0,
+      "relevance": 0.0,
+      "completeness": 0.0,
+      "gen_score": 0.0,
+      "per_case": [
+        {
+          "tc_id": "TC01",
+          "question": "ما هي عقوبة السرقة في القانون الجزائري؟",
+          "domain": "Penal Law",
+          "answer_preview": "وفقًا للقانون الجزائري، تختلف عقوبة السرقة بناءً على ظروف ارتكابها:\n\n1.  **السرقة العادية والشروع فيها وتحويل الماء/الغاز/الكهرباء:**\n    *   يُعد مرتكبًا للسرقة كل من يختلس احتيالاً شيئًا لا يملكه، و",
+          "faithfulness": 0,
+          "relevance": 0,
+          "completeness": 0,
+          "reasoning": "error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}"
+        },
+        {
+          "tc_id": "TC02",
+          "question": "ما هي عقوبة القتل العمد في القانون الجزائري؟",
+          "domain": "Penal Law",
+          "answer_preview": "بناءً على المواد القانونية المسترجعة، لا توجد مادة قانونية تحدد عقوبة القتل العمد في القانون الجزائري.\n\nالمادة 264 من قانون العقوبات تتناول العنف العمدي الذي ينتج عنه الوفاة دون نية القتل، وليس القتل ",
+          "faithfulness": 0,
+          "relevance": 0,
+          "completeness": 0,
+          "reasoning": "error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}"
+        },
+        {
+          "tc_id": "TC03",
+          "question": "ما هي عقوبة جريمة الاحتيال؟",
+          "domain": "Penal Law",
+          "answer_preview": "عقوبة جريمة الاحتيال هي الحبس من سنة إلى 5 سنوات، وغرامة من 500 إلى 20000 دج. ويعاقب الشروع في الاحتيال بنفس عقوبة الجريمة التامة (قانون العقوبات — المادة 372).",
+          "faithfulness": 0,
+          "relevance": 0,
+          "completeness": 0,
+          "reasoning": "error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}"
+        },
+        {
+          "tc_id": "TC04",
+          "question": "ما هي عقوبة الاغتصاب في القانون الجزائري؟",
+          "domain": "Penal Law",
+          "answer_preview": "المواد القانونية المسترجعة لا تتضمن أي معلومات بخصوص عقوبة الاغتصاب في القانون الجزائري. هذه المواد تتعلق بالقانون المدني وتتناول مواضيع مثل الإثبات بالشهود، الإبراء، القرينة القانونية، التضامن، وهلاك",
+          "faithfulness": 0,
+          "relevance": 0,
+          "completeness": 0,
+          "reasoning": "error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}"
+        },
+        {
+          "tc_id": "TC05",
+          "question": "ما هي عقوبة تزوير الوثائق الرسمية؟",
+          "domain": "Penal Law",
+          "answer_preview": "لا توجد في المواد القانونية المسترجعة معلومات تحدد عقوبة تزوير الوثائق الرسمية. المواد المتاحة تتناول حجية العقد الرسمي في حالة التزوير وإمكانية وقف تنفيذه (المادة 324 مكرر 5 والمادة 324 مكرر 6 من الق",
+          "faithfulness": 0,
+          "relevance": 0,
+          "completeness": 0,
+          "reasoning": "error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}"
+        }
+      ]
+    },
+    "generation_time_s": 51.6
+  }
+}

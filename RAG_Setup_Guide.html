@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Istacherni — RAG Chatbot Setup Guide</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Fira+Code:wght@400;500&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: #1a1a2e;
+    background: #fff;
+    direction: ltr;
+  }
+
+  /* ── Cover Page ───────────────────────────────────────────── */
+  .cover {
+    height: 100vh;
+    background: linear-gradient(135deg, #0f3460 0%, #16213e 60%, #1a1a2e 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    page-break-after: always;
+    padding: 40px;
+  }
+  .cover .badge {
+    background: rgba(83, 195, 255, 0.15);
+    border: 1px solid rgba(83, 195, 255, 0.4);
+    color: #53c3ff;
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .cover h1 {
+    color: #fff;
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .cover h2 {
+    color: #53c3ff;
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 32px;
+  }
+  .cover .desc {
+    color: rgba(255,255,255,0.6);
+    font-size: 13px;
+    max-width: 500px;
+    line-height: 1.8;
+    margin-bottom: 48px;
+  }
+  .cover .meta {
+    display: flex;
+    gap: 32px;
+    color: rgba(255,255,255,0.5);
+    font-size: 12px;
+  }
+  .cover .meta span { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .cover .meta strong { color: #fff; font-size: 16px; }
+
+  /* ── Main Content ─────────────────────────────────────────── */
+  .content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 48px;
+  }
+
+  /* TOC */
+  .toc {
+    background: #f8faff;
+    border: 1px solid #e0eaff;
+    border-radius: 10px;
+    padding: 24px 32px;
+    margin-bottom: 40px;
+    page-break-after: always;
+  }
+  .toc h3 { font-size: 14px; color: #0f3460; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px; }
+  .toc ol { padding-left: 20px; }
+  .toc li { margin-bottom: 8px; color: #333; font-size: 13px; line-height: 1.6; }
+  .toc li strong { color: #0f3460; }
+
+  /* Steps */
+  .step {
+    margin-bottom: 40px;
+    page-break-inside: avoid;
+  }
+  .step-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .step-num {
+    width: 38px; height: 38px;
+    background: linear-gradient(135deg, #0f3460, #e94560);
+    color: #fff;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+  .step h2 {
+    font-size: 17px;
+    color: #0f3460;
+    font-weight: 700;
+  }
+  .step h2 .sub {
+    font-size: 12px;
+    color: #888;
+    font-weight: 400;
+    margin-left: 8px;
+  }
+  .step p { color: #444; line-height: 1.8; margin-bottom: 12px; }
+
+  /* Code blocks */
+  pre {
+    background: #0d1117;
+    color: #e6edf3;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 12px 0;
+    overflow-x: auto;
+    font-family: 'Fira Code', monospace;
+    font-size: 12px;
+    line-height: 1.7;
+    border-left: 3px solid #e94560;
+  }
+  code { font-family: 'Fira Code', monospace; font-size: 12px; }
+  p code {
+    background: #eef2ff;
+    color: #0f3460;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  /* Callout boxes */
+  .callout {
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 12.5px;
+    line-height: 1.7;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .callout .icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+  .callout.warning  { background: #fff8e1; border-left: 4px solid #f59e0b; color: #7c5600; }
+  .callout.success  { background: #e8f5e9; border-left: 4px solid #4caf50; color: #1b5e20; }
+  .callout.info     { background: #e3f2fd; border-left: 4px solid #2196f3; color: #0d47a1; }
+  .callout.error    { background: #fce4ec; border-left: 4px solid #e91e63; color: #880e4f; }
+
+  /* Table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 12px;
+  }
+  th {
+    background: #0f3460;
+    color: #fff;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 14px; border-bottom: 1px solid #e8edf5; color: #333; vertical-align: top; }
+  tr:nth-child(even) td { background: #f8faff; }
+
+  /* Section divider */
+  .divider {
+    border: none;
+    border-top: 2px solid #eef2ff;
+    margin: 36px 0;
+  }
+
+  /* Inline highlight */
+  .hl { background: #fff3cd; padding: 1px 4px; border-radius: 3px; font-weight: 600; }
+
+  /* Summary box */
+  .summary {
+    background: linear-gradient(135deg, #0f3460, #16213e);
+    color: #fff;
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 32px 0;
+  }
+  .summary h3 { color: #53c3ff; margin-bottom: 14px; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
+  .summary .cmd { background: rgba(255,255,255,0.1); border-radius: 6px; padding: 10px 16px; margin: 8px 0; font-family: 'Fira Code', monospace; font-size: 12px; color: #a8d8ff; }
+  .summary .label { color: rgba(255,255,255,0.5); font-size: 11px; margin-top: 4px; }
+
+  /* Print */
+  @media print {
+    .cover { height: 100vh; }
+    .step { page-break-inside: avoid; }
+    pre { white-space: pre-wrap; word-break: break-all; }
+    a { color: inherit; text-decoration: none; }
+  }
+
+  /* Print button */
+  .print-btn {
+    position: fixed;
+    bottom: 28px; right: 28px;
+    background: linear-gradient(135deg, #0f3460, #e94560);
+    color: #fff;
+    border: none;
+    padding: 14px 24px;
+    border-radius: 50px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(233,69,96,0.4);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.2s;
+    z-index: 999;
+  }
+  .print-btn:hover { transform: translateY(-2px); }
+  @media print { .print-btn { display: none; } }
+</style>
+</head>
+<body>
+
+<!-- ── COVER ─────────────────────────────────────────────────── -->
+<div class="cover">
+  <div class="badge">📖 Technical Documentation</div>
+  <h1>Istacherni</h1>
+  <h2>RAG Chatbot — Full Setup Guide</h2>
+  <p class="desc">
+    A complete step-by-step guide for setting up and running the
+    Retrieval-Augmented Generation (RAG) legal chatbot pipeline
+    over Algerian law JSON datasets.
+  </p>
+  <div class="meta">
+    <span><strong>7</strong>Steps</span>
+    <span><strong>777</strong>Articles</span>
+    <span><strong>Gemini</strong>Powered</span>
+    <span><strong>FastAPI</strong>Backend</span>
+  </div>
+</div>
+
+<!-- ── CONTENT ──────────────────────────────────────────────── -->
+<div class="content">
+
+  <!-- TOC -->
+  <div class="toc">
+    <h3>📋 Table of Contents</h3>
+    <ol>
+      <li><strong>Architecture Overview</strong> — How the RAG pipeline works</li>
+      <li><strong>Prerequisites</strong> — Install Python dependencies</li>
+      <li><strong>API Key Setup</strong> — Create the <code>.env</code> file</li>
+      <li><strong>Build the Vector Store</strong> — Run ingestion pipeline (once)</li>
+      <li><strong>Test the Pipeline</strong> — Verify retrieval + generation</li>
+      <li><strong>Start the API Server</strong> — FastAPI on port 8000</li>
+      <li><strong>Call the Chatbot</strong> — API requests and response format</li>
+      <li><strong>Troubleshooting</strong> — Common errors and fixes</li>
+      <li><strong>Daily Workflow Summary</strong> — Quick reference</li>
+    </ol>
+  </div>
+
+  <!-- ── STEP 0: Architecture ─────────────────────────────── -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num">⚙</div>
+      <h2>Architecture Overview</h2>
+    </div>
+    <p>The RAG pipeline works in two phases:</p>
+
+    <table>
+      <tr><th>Phase</th><th>When</th><th>What Happens</th></tr>
+      <tr>
+        <td><strong>Ingestion</strong></td>
+        <td>Once (offline)</td>
+        <td>Load all JSON law articles → Chunk them → Embed with Gemini → Store in ChromaDB</td>
+      </tr>
+      <tr>
+        <td><strong>Query</strong></td>
+        <td>Every user question</td>
+        <td>Embed the question → Search ChromaDB → Retrieve top-5 articles → Generate Arabic answer with Gemini</td>
+      </tr>
+    </table>
+
+    <p><strong>File structure:</strong></p>
+    <pre>Istacherni/
+├── .env                                   ← API key (you create this)
+├── requirements.txt                       ← Python packages
+├── test_rag.py                            ← Quick test script
+├── dataset/raw/**/*.json                  ← Law data (already exists)
+└── backend/
+    ├── app.py                             ← FastAPI server  POST /chat
+    ├── vectorstore/                       ← ChromaDB database (auto-created)
+    └── rag/
+        ├── preprocessing/normalize_arabic.py
+        ├── ingestion/load_articles.py
+        ├── chunking/chunk_articles.py
+        ├── embedding/embed_articles.py    ← Run once to build vector store
+        ├── retrieval/retriever.py
+        └── generation/generator.py</pre>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ── STEP 1: Prerequisites ────────────────────────────── -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num">1</div>
+      <h2>Prerequisites <span class="sub">— do this once</span></h2>
+    </div>
+    <p>Open PowerShell and navigate to your project folder:</p>
+    <pre>cd "c:\Users\pc cam\Desktop\L3\pfe baya\Istacherni"</pre>
+    <p>Verify Python is installed:</p>
+    <pre>python --version
+# Expected: Python 3.11+ or 3.13</pre>
+    <p>Install all required packages:</p>
+    <pre>pip install -r requirements.txt</pre>
+    <div class="callout success">
+      <span class="icon">✅</span>
+      <span>Wait for the install to finish. You should see <strong>"Successfully installed..."</strong> at the end. This installs: <code>google-genai</code>, <code>chromadb</code>, <code>fastapi</code>, <code>uvicorn</code>, <code>python-dotenv</code>.</span>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ── STEP 2: API Key ──────────────────────────────────── -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num">2</div>
+      <h2>API Key Setup <span class="sub">— do this once</span></h2>
+    </div>
+    <p>The chatbot uses Google's Gemini AI. You need a free API key.</p>
+    <p><strong>1.</strong> Go to: <strong>https://aistudio.google.com/app/apikey</strong></p>
+    <p><strong>2.</strong> Click "Create API Key" and copy it.</p>
+    <p><strong>3.</strong> Create a file named <code>.env</code> in the project root:</p>
+    <pre>GEMINI_API_KEY=your_actual_key_here</pre>
+    <p><strong>4.</strong> Verify it works:</p>
+    <pre>python -c "from dotenv import load_dotenv; load_dotenv(); import os; print('Key OK:', bool(os.getenv('GEMINI_API_KEY')))"
+# Expected: Key OK: True</pre>
+    <div class="callout warning">
+      <span class="icon">⚠️</span>
+      <span>Never share or commit your <code>.env</code> file. It is already listed in <code>.gitignore</code>.</span>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ── STEP 3: Build Vector Store ──────────────────────── -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num">3</div>
+      <h2>Build the Vector Store <span class="sub">— run once, or when data changes</span></h2>
+    </div>
+    <p>This reads all your JSON law files, converts them to embeddings, and saves them in ChromaDB:</p>
+    <pre>cd "c:\Users\pc cam\Desktop\L3\pfe baya\Istacherni"
+python backend/rag/embedding/embed_articles.py</pre>
+
+    <p><strong>Expected output:</strong></p>
+    <pre style="color:#aaffaa">============================================================
+  Algerian Law RAG — Ingestion Pipeline
+============================================================
+
+[1/3] Loading articles from dataset...
+[INFO] Loaded  36 articles from Civil-law\Awsaf.json
+[INFO] Loaded  48 articles from Civil-law\Contrat_d'entreprise.json
+...
+[INFO] Unique articles: 777
+
+[2/3] Chunking articles...
+[INFO] Chunked 777 articles (41 skipped)
+
+[3/3] Embedding and upserting in batches of 20...
+  → Indexed 20/607 (3.3%)
+  → Indexed 40/607 (6.6%)
+  ...
+  → Indexed 607/607 (100.0%)
+
+✓ Ingestion complete! 607 articles indexed.
+  Collection 'algerian_law' now has 777 total documents.</pre>
+
+    <div class="callout warning">
+      <span class="icon">⚠️</span>
+      <span><strong>Rate limit warnings are normal.</strong> You may see: <br>
+      <code>[WARN] API error (attempt 1/6), waiting 30s...</code><br>
+      The script retries automatically. Let it run — it takes 10–20 minutes on the free tier. <strong>Do not interrupt it.</strong></span>
+    </div>
+    <div class="callout success">
+      <span class="icon">♻️</span>
+      <span><strong>Safe to re-run.</strong> Already-indexed articles are automatically skipped. Re-run only when you add new JSON files to <code>dataset/raw/</code>.</span>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ── STEP 4: Test ─────────────────────────────────────── -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num">4</div>
+      <h2>Test the Pipeline <span class="sub">— optional sanity check</span></h2>
+    </div>
+    <p>Run the quick end-to-end test to confirm retrieval and generation both work:</p>
+    <pre>python test_rag.py</pre>
+    <p><strong>Expected output:</strong></p>
+    <pre style="color:#aaffaa">Step 1: Testing retrieval...
+  Retrieved 3 articles:
+    - قانون العقوبات  المادة 351  score=0.27
+    - قانون العقوبات  المادة 350  score=0.28
+    - القانون المدني  المادة 765  score=0.34
+
+Step 2: Testing generation...
+Answer:
+وفقاً لقانون العقوبات الجزائري، تنص المادة 350 على أن السرقة...
+
+SUCCESS — full RAG pipeline works end-to-end!</pre>
+
+    <div class="callout info">
+      <span class="icon">ℹ️</span>
+      <span>If generation shows <strong>429 rate-limited, waiting…</strong> — the script handles it automatically and retries. If it fails after 5 retries, your free API key has hit its <strong>daily generation limit</strong>. Wait until the next day and try again.</span>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ── STEP 5: Start Server ─────────────────────────────── -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num">5</div>
+      <h2>Start the API Server <span class="sub">— every session</span></h2>
+    </div>
+    <pre>cd "c:\Users\pc cam\Desktop\L3\pfe baya\Istacherni"
+python -m uvicorn backend.app:app --port 8000 --reload</pre>
+
+    <div class="callout error">
+      <span class="icon">❌</span>
+      <span>Do <strong>NOT</strong> use <code>uvicorn backend.app:app</code> directly — it's not on your PATH and will show <em>"command not found"</em>. Always use <code>python -m uvicorn</code>.</span>
+    </div>
+
+    <p><strong>Expected output:</strong></p>
+    <pre style="color:#aaffaa">INFO:     Started server process [XXXX]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)</pre>
+
+    <div class="callout success">
+      <span class="icon">🌐</span>
+      <span>Once running, open your browser at: <strong>http://localhost:8000/docs</strong> for the interactive Swagger UI to test all endpoints visually.</span>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ── STEP 6: Call the API ─────────────────────────────── -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num">6</div>
+      <h2>Call the Chatbot API</h2>
+    </div>
+
+    <p><strong>Health check:</strong></p>
+    <pre>Invoke-WebRequest -Uri "http://localhost:8000/health" -Method GET |
+  Select-Object -ExpandProperty Content</pre>
+    <p>Expected: <code>{"status":"ok","indexed_articles":777,...}</code></p>
+
+    <p><strong>Ask a legal question (PowerShell):</strong></p>
+    <pre>$body = '{"question": "ما هي عقوبة السرقة في القانون الجزائري؟"}'
+
+Invoke-WebRequest -Uri "http://localhost:8000/chat" `
+  -Method POST `
+  -ContentType "application/json" `
+  -Body $body | Select-Object -ExpandProperty Content</pre>
+
+    <p><strong>Response format:</strong></p>
+    <pre style="color:#aaffaa">{
+  "question": "ما هي عقوبة السرقة في القانون الجزائري؟",
+  "answer": "وفقاً لقانون العقوبات الجزائري، تنص المادة 350 على أن السرقة...",
+  "sources": [
+    {
+      "id": "DZ_PENAL_ART_350",
+      "law_name": "قانون العقوبات",
+      "law_domain": "Penal Code",
+      "article_number": "350",
+      "title": "تعريف السرقة",
+      "text_original": "المادة 350: ...",
+      "score": 0.2747
+    }
+  ]
+}</pre>
+
+    <p><strong>Control the number of source articles returned:</strong></p>
+    <pre>$body = '{"question": "ما هي شروط عقد البيع؟", "top_k": 10}'
+# top_k: 1 to 20 (default: 5)</pre>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ── STEP 7: Troubleshooting ──────────────────────────── -->
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num">7</div>
+      <h2>Troubleshooting</h2>
+    </div>
+    <table>
+      <tr>
+        <th>Error</th>
+        <th>Cause</th>
+        <th>Fix</th>
+      </tr>
+      <tr>
+        <td><code>uvicorn not found</code></td>
+        <td>uvicorn not on PATH</td>
+        <td>Use <code>python -m uvicorn ...</code></td>
+      </tr>
+      <tr>
+        <td><code>GEMINI_API_KEY not set</code></td>
+        <td>No .env file</td>
+        <td>Create <code>.env</code> with your key</td>
+      </tr>
+      <tr>
+        <td><code>Vector store not found</code></td>
+        <td>Step 3 not run yet</td>
+        <td>Run <code>embed_articles.py</code> first</td>
+      </tr>
+      <tr>
+        <td><code>429 RESOURCE_EXHAUSTED</code> (embedding)</td>
+        <td>Per-minute quota hit</td>
+        <td>Script retries automatically — wait</td>
+      </tr>
+      <tr>
+        <td><code>429 RESOURCE_EXHAUSTED</code> (generation)</td>
+        <td>Daily free limit hit</td>
+        <td>Wait until tomorrow OR change model to <code>gemini-1.5-flash</code></td>
+      </tr>
+      <tr>
+        <td>Ingestion stuck / no progress</td>
+        <td>Waiting on rate-limit retry</td>
+        <td>Normal — do not interrupt. Check terminal for <code>[WARN] waiting Xs...</code></td>
+      </tr>
+      <tr>
+        <td><code>ModuleNotFoundError</code></td>
+        <td>Wrong working directory</td>
+        <td>Always run from the project root: <code>cd "…\Istacherni"</code></td>
+      </tr>
+    </table>
+
+    <p style="margin-top:16px"><strong>Switch generation model (if hitting daily limits):</strong></p>
+    <p>In <code>backend/rag/generation/generator.py</code> line 30, change:</p>
+    <pre>GENERATION_MODEL = "gemini-1.5-flash"   # separate free quota from 2.0-flash</pre>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ── Daily Workflow Summary ───────────────────────────── -->
+  <div class="summary">
+    <h3>📋 Daily Workflow — Quick Reference</h3>
+
+    <div class="cmd">cd "c:\Users\pc cam\Desktop\L3\pfe baya\Istacherni"</div>
+    <div class="label">👆 Always start here</div>
+
+    <br>
+    <div class="cmd">python -m uvicorn backend.app:app --port 8000</div>
+    <div class="label">▶ Start the server (every session)</div>
+
+    <br>
+    <div class="cmd">python backend/rag/embedding/embed_articles.py</div>
+    <div class="label">🔄 Re-index only when you add new JSON files</div>
+
+    <br>
+    <div class="cmd">python test_rag.py</div>
+    <div class="label">🧪 Test the full pipeline end-to-end</div>
+
+    <br>
+    <p style="color:rgba(255,255,255,0.6); font-size:12px; margin-top:12px">
+      API endpoint: <strong style="color:#53c3ff">POST http://localhost:8000/chat</strong>
+      &nbsp;|&nbsp;
+      Interactive docs: <strong style="color:#53c3ff">http://localhost:8000/docs</strong>
+    </p>
+  </div>
+
+</div>
+
+<!-- Print Button -->
+<button class="print-btn" onclick="window.print()">
+  🖨️ Save as PDF
+</button>
+
+</body>
+</html>

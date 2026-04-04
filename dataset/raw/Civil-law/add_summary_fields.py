@@ -21,18 +21,36 @@ def add_null_fields_after_summary(obj):
         return new_obj
     return obj
 
-json_files = [f for f in os.listdir(CIVIL_LAW_DIR) if f.endswith(".json")]
+json_files = [f for f in os.listdir(CIVIL_LAW_DIR) if f.endswith(".json") or f.endswith(".jsonl")]
 
 for filename in json_files:
     filepath = os.path.join(CIVIL_LAW_DIR, filename)
     try:
-        with open(filepath, "r", encoding="utf-8") as f:
-            data = json.load(f)
+        if filename.endswith(".jsonl"):
+            # JSONL: read line by line, process each object, write back
+            with open(filepath, "r", encoding="utf-8") as f:
+                lines = f.readlines()
 
-        updated = add_null_fields_after_summary(data)
+            updated_lines = []
+            for line in lines:
+                line = line.strip()
+                if not line:
+                    continue
+                obj = json.loads(line)
+                updated_obj = add_null_fields_after_summary(obj)
+                updated_lines.append(json.dumps(updated_obj, ensure_ascii=False))
 
-        with open(filepath, "w", encoding="utf-8") as f:
-            json.dump(updated, f, ensure_ascii=False, indent=4)
+            with open(filepath, "w", encoding="utf-8") as f:
+                f.write("\n".join(updated_lines) + "\n")
+        else:
+            # Regular JSON
+            with open(filepath, "r", encoding="utf-8") as f:
+                data = json.load(f)
+
+            updated = add_null_fields_after_summary(data)
+
+            with open(filepath, "w", encoding="utf-8") as f:
+                json.dump(updated, f, ensure_ascii=False, indent=4)
 
         print(f"✓ Updated: {filename}")
     except Exception as e:

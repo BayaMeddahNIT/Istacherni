@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Istacherni — RAG Models Run Guide</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
+
+    :root {
+      --bg:       #0f1117;
+      --surface:  #1a1d2e;
+      --border:   #2a2d3e;
+      --accent1:  #6c63ff;   /* BM25  — purple */
+      --accent2:  #00c896;   /* Graph — teal   */
+      --accent3:  #ff7043;   /* Agentic — orange */
+      --text:     #e2e8f0;
+      --muted:    #8891a5;
+      --code-bg:  #0d1017;
+      --badge-r:  6px;
+      --card-r:   14px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      padding: 40px 20px 80px;
+    }
+
+    /* ── Cover header ─────────────────────────────────────────── */
+    .cover {
+      text-align: center;
+      margin-bottom: 60px;
+      padding: 60px 30px;
+      background: linear-gradient(135deg, #1a1d2e 0%, #12151f 100%);
+      border-radius: var(--card-r);
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    .cover::before {
+      content: '';
+      position: absolute;
+      top: -80px; left: -80px;
+      width: 280px; height: 280px;
+      background: radial-gradient(circle, rgba(108,99,255,.25) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cover::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; right: -80px;
+      width: 280px; height: 280px;
+      background: radial-gradient(circle, rgba(0,200,150,.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cover-logo {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+    .cover h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, #6c63ff, #00c896, #ff7043);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 12px;
+    }
+    .cover p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .cover .badges {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 22px;
+      flex-wrap: wrap;
+    }
+    .badge {
+      font-size: .75rem;
+      font-weight: 600;
+      padding: 4px 14px;
+      border-radius: 99px;
+      border: 1px solid;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .badge-purple { color: var(--accent1); border-color: var(--accent1); }
+    .badge-teal   { color: var(--accent2); border-color: var(--accent2); }
+    .badge-orange { color: var(--accent3); border-color: var(--accent3); }
+
+    /* ── Shared card ─────────────────────────────────────────────── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--card-r);
+      padding: 36px 40px;
+      margin-bottom: 40px;
+    }
+
+    /* Section divider */
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .section-label .icon {
+      width: 46px; height: 46px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+    .icon-purple { background: rgba(108,99,255,.15); }
+    .icon-teal   { background: rgba(0,200,150,.15);  }
+    .icon-orange { background: rgba(255,112,67,.15); }
+    .icon-gray   { background: rgba(136,145,165,.12); }
+
+    .section-label h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    .section-label .tag {
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* Steps */
+    .steps { counter-reset: steps; }
+    .step {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 28px;
+      counter-increment: steps;
+    }
+    .step-num {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .85rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .num-purple { background: rgba(108,99,255,.2); color: var(--accent1); border: 1px solid var(--accent1); }
+    .num-teal   { background: rgba(0,200,150,.2);  color: var(--accent2); border: 1px solid var(--accent2); }
+    .num-orange { background: rgba(255,112,67,.2); color: var(--accent3); border: 1px solid var(--accent3); }
+    .num-gray   { background: rgba(136,145,165,.15); color: var(--muted); border: 1px solid var(--border); }
+
+    .step-body h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .step-body p {
+      color: var(--muted);
+      font-size: .92rem;
+      margin-bottom: 10px;
+    }
+
+    /* Code blocks */
+    pre {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--badge-r);
+      padding: 14px 18px;
+      overflow-x: auto;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .84rem;
+      color: #c9d1d9;
+      line-height: 1.6;
+      margin-top: 8px;
+    }
+    pre .comment { color: #5c6370; }
+    pre .cmd     { color: #7ec8e3; }
+    pre .flag    { color: #c3e88d; }
+    pre .path    { color: #ffcb6b; }
+
+    /* Info / warning boxes */
+    .info-box {
+      display: flex;
+      gap: 12px;
+      padding: 14px 18px;
+      border-radius: var(--badge-r);
+      margin-top: 10px;
+      font-size: .9rem;
+    }
+    .info-box .ico { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+    .box-note   { background: rgba(108,99,255,.1); border: 1px solid rgba(108,99,255,.3); }
+    .box-warn   { background: rgba(255,193,7,.08); border: 1px solid rgba(255,193,7,.3); color: #ffe082; }
+    .box-tip    { background: rgba(0,200,150,.08); border: 1px solid rgba(0,200,150,.3); }
+
+    /* shared prereq card */
+    .prereq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 16px;
+    }
+    .prereq-item {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--badge-r);
+      padding: 12px 16px;
+      font-size: .88rem;
+    }
+    .prereq-item strong { display: block; color: var(--text); margin-bottom: 2px; }
+    .prereq-item span   { color: var(--muted); }
+
+    /* Table of contents */
+    .toc {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+    .toc-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--badge-r);
+      padding: 10px 20px;
+      font-size: .88rem;
+      font-weight: 500;
+      text-decoration: none;
+      color: var(--text);
+      transition: border-color .2s;
+    }
+    .toc-item:hover { border-color: var(--accent1); color: var(--accent1); }
+
+    /* Divider */
+    hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
+
+    /* Print / PDF tweaks */
+    @media print {
+      body { background: #fff; color: #111; padding: 20px; }
+      .cover { background: #f4f4f8 !important; }
+      pre { background: #f0f0f0 !important; color: #222 !important; }
+      .card { border: 1px solid #ddd !important; background: #fafafa !important; }
+      a { color: inherit; text-decoration: none; }
+    }
+
+    .page-break { page-break-before: always; }
+
+    .output-preview {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-left: 3px solid;
+      border-radius: var(--badge-r);
+      padding: 14px 18px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .8rem;
+      color: #8891a5;
+      line-height: 1.8;
+      margin-top: 10px;
+      white-space: pre;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ════════════════════════════ COVER ════════════════════════════ -->
+<div class="cover">
+  <div class="cover-logo">⚖️</div>
+  <h1>Istacherni RAG Run Guide</h1>
+  <p>Step-by-step instructions to run the BM25, Graph, and Agentic RAG pipelines for the Algerian Law chatbot.</p>
+  <div class="badges">
+    <span class="badge badge-purple">BM25 RAG</span>
+    <span class="badge badge-teal">Graph RAG</span>
+    <span class="badge badge-orange">Agentic RAG</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════ PREREQUISITES ════════════════════════════ -->
+<div class="card">
+  <div class="section-label">
+    <div class="icon icon-gray">⚙️</div>
+    <div>
+      <div class="tag">Before You Start</div>
+      <h2>Common Prerequisites</h2>
+    </div>
+  </div>
+
+  <p style="color:var(--muted); margin-bottom:16px;">These steps apply to <strong style="color:var(--text)">all three RAG models</strong>. Complete them once before running any pipeline.</p>
+
+  <div class="steps">
+
+    <div class="step">
+      <div class="step-num num-gray">1</div>
+      <div class="step-body">
+        <h3>Open a Terminal in the Project Root</h3>
+        <p>Navigate to the Istacherni project folder.</p>
+        <pre><span class="comment"># On Windows (PowerShell)</span>
+<span class="cmd">cd</span> <span class="path">"c:\Users\pc cam\Desktop\L3\pfe baya\Istacherni"</span></pre>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num num-gray">2</div>
+      <div class="step-body">
+        <h3>Activate the Virtual Environment</h3>
+        <p>Always activate <code>.venv</code> first so the correct packages are used.</p>
+        <pre><span class="cmd">.venv\Scripts\activate</span>
+<span class="comment"># Your prompt should show (.venv) when activated</span></pre>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num num-gray">3</div>
+      <div class="step-body">
+        <h3>Install All Dependencies (First Time Only)</h3>
+        <pre><span class="cmd">pip install</span> <span class="flag">rank-bm25 networkx numpy python-dotenv google-generativeai</span></pre>
+        <div class="info-box box-note">
+          <span class="ico">ℹ️</span>
+          <span><strong>rank-bm25</strong> is required by BM25 RAG and Agentic RAG. <strong>networkx</strong> is required by Graph RAG only.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num num-gray">4</div>
+      <div class="step-body">
+        <h3>Verify the <code>.env</code> File</h3>
+        <p>Make sure the following keys are present in <code>.env</code> at the project root:</p>
+        <div class="prereq-grid">
+          <div class="prereq-item">
+            <strong>BM25_GEMINI_API_KEY</strong>
+            <span>Used by BM25 generator</span>
+          </div>
+          <div class="prereq-item">
+            <strong>GRAPH_GEMINI_API_KEY</strong>
+            <span>Used by Graph generator</span>
+          </div>
+          <div class="prereq-item">
+            <strong>AGENTIC_GEMINI_API_KEY</strong>
+            <span>Used by Agentic agent</span>
+          </div>
+          <div class="prereq-item">
+            <strong>GEMINI_API_KEY</strong>
+            <span>Standard RAG key</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<hr/>
+
+<!-- ════════════════════════════ BM25 RAG ════════════════════════════ -->
+<div class="card" id="bm25">
+  <div class="section-label">
+    <div class="icon icon-purple">🔍</div>
+    <div>
+      <div class="tag">Pipeline 1</div>
+      <h2 style="color:var(--accent1)">BM25 RAG</h2>
+    </div>
+  </div>
+
+  <p style="color:var(--muted); margin-bottom:24px;">
+    Uses <strong style="color:var(--text)">BM25Okapi</strong> keyword ranking to retrieve law articles, then generates an Arabic answer with Gemini.
+    Retrieval is offline — only generation uses the API.
+  </p>
+
+  <div class="steps">
+
+    <div class="step">
+      <div class="step-num num-purple">1</div>
+      <div class="step-body">
+        <h3>Build the BM25 Index <span style="color:var(--muted); font-weight:400; font-size:.85rem;">(Run Once)</span></h3>
+        <p>Reads all law articles from <code>dataset/raw/</code>, tokenizes them with the Arabic tokenizer, and saves the index to disk.</p>
+        <pre><span class="cmd">python</span> bm25_rag/bm25_indexer.py</pre>
+        <p style="margin-top:10px;">Expected output:</p>
+        <div class="output-preview" style="border-left-color: var(--accent1);">[BM25-Indexer] Loading articles…
+[BM25-Indexer] Tokenising corpus…
+[BM25-Indexer] Building BM25Okapi over XXXX docs…
+[BM25-Indexer] ✓ Index saved → bm25_rag/index/bm25_index.pkl
+[BM25-Indexer] ✓ Corpus saved → bm25_rag/index/bm25_corpus.pkl
+Corpus size : XXXX articles
+Vocab size  : XXXXX terms</div>
+        <div class="info-box box-tip" style="margin-top:12px;">
+          <span class="ico">✅</span>
+          <span>Two files are created: <code>bm25_rag/index/bm25_index.pkl</code> and <code>bm25_rag/index/bm25_corpus.pkl</code>. Next time you run the test, they are loaded automatically.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num num-purple">2</div>
+      <div class="step-body">
+        <h3>Run the End-to-End Test</h3>
+        <p>Retrieves top-5 articles for 3 Arabic queries and generates answers using Gemini.</p>
+        <pre><span class="cmd">python</span> test_bm25_rag.py</pre>
+        <p style="margin-top:10px;">Expected output:</p>
+        <div class="output-preview" style="border-left-color: var(--accent1);">================================================================
+   BM25 RAG — End-to-End Test
+================================================================
+
+================================================================
+  QUERY: ما هي عقوبة السرقة في القانون الجزائري؟
+================================================================
+
+🔎 Step 1 — BM25 Retrieval
+  Retrieved 5 articles:
+    ├─ [القانون...] المادة 350   score=12.3456  | ...
+
+🤖 Step 2 — Answer Generation (Gemini 2.5 Flash)
+
+  ✅ Answer:
+  ------------------------------------------------------------
+  ...Arabic answer...
+  ------------------------------------------------------------
+
+🏁 Test complete.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num num-purple">3</div>
+      <div class="step-body">
+        <h3>Optional: Skip Generation (No API Calls)</h3>
+        <p>Open <code>test_bm25_rag.py</code> and set line 25:</p>
+        <pre>USE_GENERATION = <span class="flag">False</span>   <span class="comment"># Change from True to False</span></pre>
+        <p style="margin-top:8px;">Then re-run the test — it will only test BM25 retrieval without using the Gemini API.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- ════════════════════════════ GRAPH RAG ════════════════════════════ -->
+<div class="card" id="graph">
+  <div class="section-label">
+    <div class="icon icon-teal">🕸️</div>
+    <div>
+      <div class="tag">Pipeline 2</div>
+      <h2 style="color:var(--accent2)">Graph RAG</h2>
+    </div>
+  </div>
+
+  <p style="color:var(--muted); margin-bottom:24px;">
+    Builds a <strong style="color:var(--text)">Knowledge Graph</strong> (NetworkX DiGraph) from law metadata — no API needed for the graph.
+    Retrieval uses <em>graph traversal</em> (keyword → article → related article) ranked by <strong style="color:var(--text)">PageRank + hit count</strong>.
+  </p>
+
+  <div class="steps">
+
+    <div class="step">
+      <div class="step-num num-teal">1</div>
+      <div class="step-body">
+        <h3>Build the Knowledge Graph <span style="color:var(--muted); font-weight:400; font-size:.85rem;">(Run Once)</span></h3>
+        <p>Builds the graph from JSON metadata in <code>dataset/raw/</code>. No API calls needed.</p>
+        <pre><span class="cmd">python -m</span> graph_rag.graph_builder</pre>
+        <p style="margin-top:10px;">Expected output:</p>
+        <div class="output-preview" style="border-left-color: var(--accent2);">[GraphBuilder] Loading articles from dataset…
+[GraphBuilder] XXXX articles loaded.
+[GraphBuilder] Phase 1 — Adding nodes…
+[GraphBuilder] Phase 2 — Adding edges…
+[GraphBuilder] Graph complete:
+  Nodes : XXXXX (XXXX articles + concept/domain/penalty nodes)
+  Edges : XXXXXXXX
+[GraphBuilder] ✓ Saved → graph_rag/cache/law_graph.pkl
+
+── Node type counts ──
+  article  : XXXX
+  concept  : XXXX
+  domain   : XX
+  penalty  : X
+
+── Top 10 most connected article nodes ──
+  degree=XXXX  ART_XX  [...]</div>
+        <div class="info-box box-tip" style="margin-top:12px;">
+          <span class="ico">✅</span>
+          <span>Two cache files are created: <code>graph_rag/cache/law_graph.pkl</code> and <code>graph_rag/cache/graph_corpus.pkl</code>. They are reloaded automatically on future runs.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num num-teal">2</div>
+      <div class="step-body">
+        <h3>Run the End-to-End Test</h3>
+        <p>Traverses the knowledge graph for 3 Arabic queries and generates answers with Gemini.</p>
+        <pre><span class="cmd">python</span> test_graph_rag.py</pre>
+        <p style="margin-top:10px;">Expected output:</p>
+        <div class="output-preview" style="border-left-color: var(--accent2);">====================================================================
+   GRAPH RAG — End-to-End Test
+====================================================================
+
+====================================================================
+  QUERY : ما هي عقوبة السرقة في القانون الجزائري؟
+====================================================================
+
+🕸️  Step 1 — Knowledge Graph Traversal
+  Retrieved 5 articles:
+    ├─ [القانون...] المادة 350   graph=0.854  pr=0.000123  | ...
+
+🤖 Step 2 — Answer Generation (Gemini 2.5 Flash)
+
+  ✅ Answer:
+  ──────────────────────────────────────────────────────────────
+  ...Arabic answer...
+  ──────────────────────────────────────────────────────────────
+
+🏁 All tests complete.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num num-teal">3</div>
+      <div class="step-body">
+        <h3>Optional: Skip Generation (No API Calls)</h3>
+        <p>Open <code>test_graph_rag.py</code> and set line 25:</p>
+        <pre>USE_GENERATION = <span class="flag">False</span>   <span class="comment"># Change from True to False</span></pre>
+        <p style="margin-top:8px;">This tests only the graph traversal and ranking without any Gemini calls.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num num-teal">4</div>
+      <div class="step-body">
+        <h3>How Graph Retrieval Works</h3>
+        <p>Understanding the retrieval logic:</p>
+        <div class="prereq-grid">
+          <div class="prereq-item">
+            <strong>🔑 HAS_KEYWORD</strong>
+            <span>Article → Concept (keyword)</span>
+          </div>
+          <div class="prereq-item">
+            <strong>🔗 RELATED_TO</strong>
+            <span>Article → Article (related)</span>
+          </div>
+          <div class="prereq-item">
+            <strong>📂 IN_DOMAIN</strong>
+            <span>Article → Law Domain</span>
+          </div>
+          <div class="prereq-item">
+            <strong>⚖️ HAS_PENALTY</strong>
+            <span>Article → Penalty Class</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- ════════════════════════════ AGENTIC RAG ════════════════════════════ -->
+<div class="card" id="agentic">
+  <div class="section-label">
+    <div class="icon icon-orange">🤖</div>
+    <div>
+      <div class="tag">Pipeline 3</div>
+      <h2 style="color:var(--accent3)">Agentic RAG</h2>
+    </div>
+  </div>
+
+  <p style="color:var(--muted); margin-bottom:24px;">
+    A Gemini-powered agent that <strong style="color:var(--text)">autonomously decides</strong> which search tools to call, may search multiple times
+    (broad → domain-specific), and produces a richer, self-consistent Arabic answer.
+  </p>
+
+  <div class="steps">
+
+    <div class="step">
+      <div class="step-num num-orange">1</div>
+      <div class="step-body">
+        <h3>No Manual Index Build Needed</h3>
+        <p>The Agentic RAG builds its BM25 index <strong>automatically</strong> the first time it runs. The index is cached in <code>agentic_rag/cache/</code>.</p>
+        <div class="info-box box-note">
+          <span class="ico">ℹ️</span>
+          <span>The agent's 3 built-in tools: <code>search_articles(query, top_k)</code>, <code>filter_by_domain(domain, query, top_k)</code>, <code>get_article_by_id(article_id)</code></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num num-orange">2</div>
+      <div class="step-body">
+        <h3>Run the End-to-End Test</h3>
+        <p>The agent runs autonomously, deciding how many search rounds are needed for each query.</p>
+        <pre><span class="cmd">python</span> test_agentic_rag.py</pre>
+        <p style="margin-top:10px;">Expected output (first run builds the cache):</p>
+        <div class="output-preview" style="border-left-color: var(--accent3);">[AgentKB] Building index from dataset…
+[AgentKB] Index built: XXXX docs, XXXXX terms.
+====================================================================
+   AGENTIC RAG — End-to-End Test
+====================================================================
+
+====================================================================
+  QUERY : ما هي عقوبة السرقة في القانون الجزائري؟
+====================================================================
+
+  📊 Agent used 2 round(s), called 3 tool(s):
+     ├─ Round 1 | search_articles({'query': '...', 'top_k': 5})  → X results
+     ├─ Round 1 | filter_by_domain({'domain': 'جنائي', ...})     → X results
+     ├─ Round 2 | get_article_by_id({'id': 'ART_350'})           → found
+
+  ✅ Final Answer:
+  ────────────────────────────────────────────────────────────
+  ...Rich Arabic answer...
+  ────────────────────────────────────────────────────────────
+
+🏁 All tests complete.</div>
+        <div class="info-box box-warn" style="margin-top:12px;">
+          <span class="ico">⚠️</span>
+          <span>Agentic RAG makes <strong>multiple Gemini API calls per query</strong> (one per reasoning round). This consumes more quota than BM25 or Graph RAG.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num num-orange">3</div>
+      <div class="step-body">
+        <h3>Optional: Disable Verbose Reasoning</h3>
+        <p>Open <code>test_agentic_rag.py</code> and set line 29:</p>
+        <pre>VERBOSE = <span class="flag">False</span>   <span class="comment"># Hides the agent's internal reasoning steps</span></pre>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num num-orange">4</div>
+      <div class="step-body">
+        <h3>Agent Architecture</h3>
+        <div class="prereq-grid">
+          <div class="prereq-item">
+            <strong>🧠 Multi-Round Reasoning</strong>
+            <span>Agent may loop across multiple search rounds</span>
+          </div>
+          <div class="prereq-item">
+            <strong>🔧 Tool Autonomy</strong>
+            <span>Selects tools independently per query</span>
+          </div>
+          <div class="prereq-item">
+            <strong>📊 BM25 Backend</strong>
+            <span>Underlying search still uses BM25Okapi</span>
+          </div>
+          <div class="prereq-item">
+            <strong>⚡ Auto Cache</strong>
+            <span>Index built once, reloaded on next runs</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════ QUICK REFERENCE ════════════════════════════ -->
+<div class="card">
+  <div class="section-label">
+    <div class="icon icon-gray">📋</div>
+    <div>
+      <div class="tag">Quick Reference</div>
+      <h2>Command Cheat Sheet</h2>
+    </div>
+  </div>
+
+  <table style="width:100%; border-collapse:collapse; font-size:.9rem;">
+    <thead>
+      <tr style="border-bottom:1px solid var(--border);">
+        <th style="text-align:left; padding:10px 14px; color:var(--muted); font-weight:500;">Pipeline</th>
+        <th style="text-align:left; padding:10px 14px; color:var(--muted); font-weight:500;">Build Index (Once)</th>
+        <th style="text-align:left; padding:10px 14px; color:var(--muted); font-weight:500;">Run Test</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="border-bottom:1px solid var(--border);">
+        <td style="padding:12px 14px;"><span class="badge badge-purple">BM25 RAG</span></td>
+        <td style="padding:12px 14px; font-family:'JetBrains Mono',monospace; font-size:.83rem; color:#7ec8e3;">python bm25_rag/bm25_indexer.py</td>
+        <td style="padding:12px 14px; font-family:'JetBrains Mono',monospace; font-size:.83rem; color:#7ec8e3;">python test_bm25_rag.py</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border);">
+        <td style="padding:12px 14px;"><span class="badge badge-teal">Graph RAG</span></td>
+        <td style="padding:12px 14px; font-family:'JetBrains Mono',monospace; font-size:.83rem; color:#7ec8e3;">python -m graph_rag.graph_builder</td>
+        <td style="padding:12px 14px; font-family:'JetBrains Mono',monospace; font-size:.83rem; color:#7ec8e3;">python test_graph_rag.py</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 14px;"><span class="badge badge-orange">Agentic RAG</span></td>
+        <td style="padding:12px 14px; color:var(--muted); font-style:italic; font-size:.85rem;">Auto (first run)</td>
+        <td style="padding:12px 14px; font-family:'JetBrains Mono',monospace; font-size:.83rem; color:#7ec8e3;">python test_agentic_rag.py</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="info-box box-note" style="margin-top:20px;">
+    <span class="ico">💡</span>
+    <span>Always run commands from the <strong>project root</strong> (<code>Istacherni/</code>) with the virtual environment activated: <code>.venv\Scripts\activate</code></span>
+  </div>
+</div>
+
+<p style="text-align:center; color:var(--muted); font-size:.8rem; margin-top:30px;">
+  Istacherni — Algerian Law RAG Chatbot &nbsp;|&nbsp; Generated 2026-04-02
+</p>
+
+</body>
+</html>

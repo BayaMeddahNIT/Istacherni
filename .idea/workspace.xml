@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="170ff9df-3448-49a4-a55d-051b7cdfba71" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/backend/rag/chunking/chunk_articles.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/rag/chunking/chunk_articles.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/rag/embedding/embed_articles.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/rag/embedding/embed_articles.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/rag/generation/generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/rag/generation/generator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/rag/ingestion/load_articles.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/rag/ingestion/load_articles.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/rag/preprocessing/normalize_arabic.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/rag/preprocessing/normalize_arabic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/rag/retrieval/retriever.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/rag/retrieval/retriever.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 1,
+  "fromUser": false
+}]]></component>
+  <component name="ProjectId" id="3BdZxA4L2oGjdofXJCPCsT9cCYY" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "javascript.preferred.runtime.type.id": "node",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "C:/Users/pc cam/Desktop/L3/pfe baya/Istacherni",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-3bd3a6803838-JavaScript-WS-261.22158.274" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="170ff9df-3448-49a4-a55d-051b7cdfba71" name="Changes" comment="" />
+      <created>1774821155165</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1774821155165</updated>
+      <workItem from="1774821157303" duration="792000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
