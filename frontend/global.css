@@ -1,0 +1,64 @@
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/preflight.css" layer(base);
+@import "tailwindcss/utilities.css";
+ 
+@import "nativewind/theme";
+
+@theme {
+    --color-background: #DAD6D1;
+    --color-primary: #807261;
+    --color-secondary: #9A8E7F;
+    --color-third: #9A8E7F;
+    --color-button: #807261;
+    --color-t-button: #DAD7D2;
+    --color-text-secondary: #10120D;
+
+    --font-inter: inter;
+    --font-inter-bold: inter-bold;
+    --font-inter-italic: inter-italic;
+    --font-inter-medium: inter-medium;
+    --font-inter-light: inter-light;
+    --font-inter-regular: inter-regular;
+    --font-inter-semibold: inter-semibold;
+    --font-inter-thin: inter-thin;
+}
+
+
+@layer components {
+
+    .bg-call{
+        @apply flex-1 bg-background;
+    }
+
+    .btn-primary {
+        @apply bg-button rounded-full px-15 py-5 items-center justify-center;
+    }
+
+    .btn-primary:active {
+        @apply bg-secondary text-primary;
+    }
+
+    .text-button {
+        @apply text-t-button font-inter-semibold;
+    }
+
+    .img-logo {
+        @apply w-50 h-50;
+    }
+
+    .img-logo-2{
+        @apply w-25 h-25;
+    }
+
+    .img-loading{
+        @apply w-120 h-100;
+    }
+
+    .text-title{
+        @apply text-2xl font-inter-semibold text-center mb-4 text-primary;
+    }
+
+    .text-desc{
+        @apply text-lg font-inter-regular text-center text-text-secondary opacity-77;
+    }
+}
