@@ -46,18 +46,28 @@ CORPUS_FILE  = CACHE_DIR / "graph_corpus.pkl"
 # ═══════════════════════════════════════════════════════════════════════
 
 def _extract_text(article: dict) -> str:
-    if isinstance(article.get("text"), dict):
-        return article["text"].get("original", "")
-    if isinstance(article.get("text"), str):
-        return article["text"]
-    return article.get("text_original", "")
+    text_field = article.get("text")
+    if isinstance(text_field, dict):
+        original = text_field.get("original") or text_field.get("content") or ""
+        # Handle multi-article format: {"original": {"1": "...", "4": "..."}}
+        if isinstance(original, dict):
+            return " ".join(str(v) for v in original.values() if v)
+        return str(original)
+    if isinstance(text_field, str):
+        return text_field
+    return str(article.get("text_original", "") or "")
 
 
 def _normalize(raw: dict) -> Optional[dict]:
     text = _extract_text(raw).strip()
     if not text:
         return None
-    art_num = str(raw.get("article_number", ""))
+    # article_number may be an int, str, or list — normalise to string
+    art_num_raw = raw.get("article_number", "")
+    if isinstance(art_num_raw, list):
+        art_num = "-".join(str(x) for x in art_num_raw)
+    else:
+        art_num = str(art_num_raw)
 
     # Collect related article numbers (may be stored as ints or strings)
     relations = raw.get("relations", {}) or {}
@@ -79,10 +89,17 @@ def _normalize(raw: dict) -> Optional[dict]:
     }
 
 
+def _remove_trailing_commas(text: str) -> str:
+    """Remove trailing commas before ] or } to handle minor JSON formatting issues."""
+    text = re.sub(r",\s*(\})", r"\1", text)
+    text = re.sub(r",\s*(\])", r"\1", text)
+    return text
+
+
 def _load_articles(data_dir: Path = RAW_DATA_DIR) -> list[dict]:
-    print(f"[Debug] Searching for files in: {data_dir.absolute()}") # Add this line
+    print(f"[Debug] Searching for files in: {data_dir.absolute()}")
     seen, articles = set(), []
-    files = sorted(data_dir.rglob("*.json")) + sorted(data_dir.rglob("*.jsonl"))
+    files = sorted(data_dir.rglob("*.json"))
     for path in files:
         if path.name.startswith("add_") or path.name.startswith("test"):
             continue
@@ -95,29 +112,25 @@ def _load_articles(data_dir: Path = RAW_DATA_DIR) -> list[dict]:
                 continue
         if content is None:
             continue
-        if path.suffix == ".jsonl":
-            raw_list = []
-            for line in content.splitlines():
-                line = line.strip()
-                if not line:
-                    continue
-                try:
-                    raw_list.append(json.loads(line))
-                except json.JSONDecodeError:
-                    pass
-            # If no valid lines parsed, try the whole content as JSON array
-            if not raw_list:
-                try:
-                    data = json.loads(content)
-                    raw_list = data if isinstance(data, list) else [data]
-                except json.JSONDecodeError:
-                    pass
-        else:
+
+        raw_list = []
+        for attempt, text in enumerate([content, _remove_trailing_commas(content)]):
             try:
-                data = json.loads(content)
-                raw_list = data if isinstance(data, list) else [data]
+                data = json.loads(text)
+                if isinstance(data, list):
+                    # Flatten [[{...}]] → [{...}]
+                    while len(data) == 1 and isinstance(data[0], list):
+                        data = data[0]
+                    raw_list = [item for item in data if isinstance(item, dict)]
+                elif isinstance(data, dict):
+                    raw_list = [data]
+                break
             except json.JSONDecodeError:
-                continue
+                if attempt == 0:
+                    continue
+                # Both attempts failed — skip file
+                break
+
         for raw in raw_list:
             if not isinstance(raw, dict):
                 continue

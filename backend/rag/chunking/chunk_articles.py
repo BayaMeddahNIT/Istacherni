@@ -109,8 +109,23 @@ def chunk_articles(articles: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
 
         chunks.append(chunk)
 
-    print(f"[INFO] Chunked {len(chunks)} articles ({skipped} skipped)")
-    return chunks
+    # Deduplicate by chunk ID — multiple source files can produce the same ID
+    seen_ids: dict = {}
+    unique_chunks = []
+    dup_ids = []
+    for chunk in chunks:
+        cid = chunk["id"]
+        if cid not in seen_ids:
+            seen_ids[cid] = True
+            unique_chunks.append(chunk)
+        else:
+            dup_ids.append(cid)
+
+    if dup_ids:
+        print(f"[WARN] Removed {len(dup_ids)} duplicate chunk IDs: {', '.join(sorted(set(dup_ids)))}")
+
+    print(f"[INFO] Chunked {len(unique_chunks)} articles ({skipped} skipped, {len(dup_ids)} duplicate IDs removed)")
+    return unique_chunks
 
 
 if __name__ == "__main__":

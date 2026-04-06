@@ -1,0 +1,42 @@
+﻿[INFO] Loaded   16 articles from Civil-law\Ahkam.json
+[INFO] Loaded   36 articles from Civil-law\Awsaf.json
+[INFO] Loaded   19 articles from Civil-law\Contrat_d'agence.json
+[INFO] Loaded   48 articles from Civil-law\Contrat_d'entreprise.json
+[INFO] Loaded   69 articles from Civil-law\Contrat_de_location.json
+[INFO] Loaded   62 articles from Civil-law\Contrat_de_vente.json
+[INFO] Loaded   23 articles from Civil-law\Droits.json
+[INFO] Loaded   40 articles from Civil-law\Iltizam.json
+[INFO] Loaded   65 articles from Civil-law\inkidaa.json
+[INFO] Loaded   33 articles from Civil-law\Madani.json
+[INFO] Loaded  142 articles from Civil-law\Melkia.json
+[INFO] Loaded   35 articles from Civil-law\Okod.json
+[INFO] Loaded   36 articles from Civil-law\Possession.json
+[INFO] Loaded   39 articles from Civil-law\Preuve.json
+[INFO] Loaded   23 articles from Civil-law\Takadom.json
+[WARN] No articles loaded from Admin.json
+[INFO] Loaded   90 articles from Code-of-Civil-and-Administrative-Procedures\Judiciaire.json
+[INFO] Loaded   51 articles from Code-of-Civil-and-Administrative-Procedures\Judiciaire2.json
+[INFO] Loaded   12 articles from Commercial-law\commercial.json
+[INFO] Loaded   10 articles from Labor-law\Labbor-Law.json
+[INFO] Loaded    7 articles from Labor-law\Labbor2-Law.json
+[INFO] Loaded   41 articles from Penal Code\Jinayat.json
+[INFO] Loaded   10 articles from Penal Code\Mokhalafat.json
+[INFO] Loaded   57 articles from Penal Code\Penal-final.json
+[INFO] Loaded   15 articles from Penal Code\Penal-Law-arabic.json
+[INFO] Loaded   15 articles from Penal Code\Penal.json
+[INFO] Loaded   43 articles from Penal Code\Tzwir.json
+
+[INFO] Total articles loaded: 1037
+[INFO] Removed 5 duplicate articles (identical content across files)
+[INFO] Unique articles: 1032
+[BM25-Loader] Found 29 JSON files in C:\Users\pc cam\Desktop\L3\pfe baya\Istacherni\dataset\raw
+[Debug] Searching for files in: C:\Users\pc cam\Desktop\L3\pfe baya\Istacherni\dataset\raw
+
+=======================================================
+  RAG LOADER TEST RESULTS
+=======================================================
+  [Standard RAG]  OK ù 1032 articles loaded
+  [BM25 RAG]      FAIL ù 'charmap' codec can't encode character '\u2713' in position 2: character maps to <undefined>
+  [Graph RAG]     OK ù 954 articles loaded
+  [Agentic RAG]   OK ù 954 articles loaded
+=======================================================

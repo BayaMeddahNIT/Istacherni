@@ -2,9 +2,8 @@
 load_articles.py
 ----------------
 Ingestion module: walks all subdirectories of dataset/raw/ and loads
-every .json and .jsonl file.
-  - .json  files are expected to be a JSON array of article dicts.
-  - .jsonl files are expected to have one JSON object per line (JSON Lines).
+every .json file.
+  - All .json files must be a JSON array of article dicts: [{...}, {...}, ...]
 
 Returns a flat list of article dicts with all fields preserved.
 """
@@ -22,42 +21,40 @@ _PROJECT_ROOT = Path(__file__).resolve().parents[3]
 DATASET_DIR = _PROJECT_ROOT / "dataset" / "raw"
 
 
+def _remove_trailing_commas(text: str) -> str:
+    """Remove trailing commas before ] or } to recover from minor JSON formatting issues."""
+    import re
+    text = re.sub(r",\s*(\})", r"\1", text)
+    text = re.sub(r",\s*(\])", r"\1", text)
+    return text
+
+
 def _load_file(path: Path) -> List[Dict[str, Any]]:
-    """Load a .json or .jsonl file and return a list of article dicts."""
+    """Load a .json file (JSON array format) and return a list of article dicts."""
     try:
         content = path.read_text(encoding="utf-8")
     except Exception as e:
         print(f"[ERROR] Could not read {path.name}: {e}")
         return []
 
-    # JSONL format: one JSON object per line
-    if path.suffix == ".jsonl":
-        articles = []
-        for line_num, line in enumerate(content.splitlines(), 1):
-            line = line.strip()
-            if not line:
+    # Primary: parse as JSON array
+    for attempt, text in enumerate([content, _remove_trailing_commas(content)]):
+        try:
+            data = json.loads(text)
+            if isinstance(data, list):
+                # Flatten nested arrays [[{...}]] → [{...}]
+                while len(data) == 1 and isinstance(data[0], list):
+                    data = data[0]
+                return [item for item in data if isinstance(item, dict)]
+            if isinstance(data, dict):
+                for v in data.values():
+                    if isinstance(v, list):
+                        return [item for item in v if isinstance(item, dict)]
+                return [data]
+        except json.JSONDecodeError:
+            if attempt == 0:
                 continue
-            try:
-                obj = json.loads(line)
-                if isinstance(obj, dict):
-                    articles.append(obj)
-            except json.JSONDecodeError as e:
-                print(f"[WARN] {path.name} line {line_num}: JSON parse error: {e}")
-        return articles
-
-    # Regular JSON: expect a list of dicts
-    try:
-        data = json.loads(content)
-        if isinstance(data, list):
-            return data
-        if isinstance(data, dict):
-            # Some files wrap a list under a key
-            for v in data.values():
-                if isinstance(v, list):
-                    return v
-            return [data]
-    except json.JSONDecodeError as e:
-        print(f"[ERROR] Failed to parse {path.name}: {e}")
+            print(f"[ERROR] Failed to parse {path.name}")
     return []
 
 
@@ -72,10 +69,10 @@ def load_all_articles(dataset_dir: Path = DATASET_DIR) -> List[Dict[str, Any]]:
     if not dataset_dir.exists():
         raise FileNotFoundError(f"Dataset directory not found: {dataset_dir}")
 
-    data_files = sorted(dataset_dir.rglob("*.json")) + sorted(dataset_dir.rglob("*.jsonl"))
+    data_files = sorted(dataset_dir.rglob("*.json"))
 
     if not data_files:
-        raise FileNotFoundError(f"No .json or .jsonl files found under: {dataset_dir}")
+        raise FileNotFoundError(f"No .json files found under: {dataset_dir}")
 
     for file_path in data_files:
         # Skip helper scripts stored alongside the data

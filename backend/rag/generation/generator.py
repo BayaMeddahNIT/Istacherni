@@ -41,7 +41,7 @@ def _get_genai_client():
         _genai_client = genai.Client(api_key=GEMINI_API_KEY)
         _generation_config = genai_types.GenerateContentConfig(
             temperature=0.2,
-            max_output_tokens=1024,
+            max_output_tokens=4096,
         )
     return _genai_client
 

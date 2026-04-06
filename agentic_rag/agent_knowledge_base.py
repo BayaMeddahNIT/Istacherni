@@ -48,18 +48,28 @@ def _tokenize(text: str) -> list[str]:
 # ═══════════════════════════════════════════════════════════════════════
 
 def _extract_text(article: dict) -> str:
-    if isinstance(article.get("text"), dict):
-        return article["text"].get("original", "")
-    if isinstance(article.get("text"), str):
-        return article["text"]
-    return article.get("text_original", "")
+    text_field = article.get("text")
+    if isinstance(text_field, dict):
+        original = text_field.get("original") or text_field.get("content") or ""
+        # Multi-article format: {"original": {"1": "...", "4": "..."}}
+        if isinstance(original, dict):
+            return " ".join(str(v) for v in original.values() if v)
+        return str(original)
+    if isinstance(text_field, str):
+        return text_field
+    return str(article.get("text_original", "") or "")
 
 
 def _normalize(raw: dict) -> Optional[dict]:
     text = _extract_text(raw).strip()
     if not text:
         return None
-    art_num = str(raw.get("article_number", ""))
+    # article_number may be an int, str, or list
+    art_num_raw = raw.get("article_number", "")
+    if isinstance(art_num_raw, list):
+        art_num = "-".join(str(x) for x in art_num_raw)
+    else:
+        art_num = str(art_num_raw)
     return {
         "id":                       raw.get("id") or f"ART_{art_num}",
         "law_domain":               raw.get("law_domain", ""),
@@ -74,10 +84,17 @@ def _normalize(raw: dict) -> Optional[dict]:
     }
 
 
+def _remove_trailing_commas(text: str) -> str:
+    """Remove trailing commas before ] or } to handle minor JSON formatting issues."""
+    text = re.sub(r",\s*(\})", r"\1", text)
+    text = re.sub(r",\s*(\])", r"\1", text)
+    return text
+
+
 def _load_raw_articles(data_dir: Path) -> list[dict]:
-    """Load and normalise every *.json / *.jsonl in data_dir recursively."""
+    """Load and normalise every *.json file in data_dir recursively (JSON array format)."""
     seen, articles = set(), []
-    files = sorted(data_dir.rglob("*.json")) + sorted(data_dir.rglob("*.jsonl"))
+    files = sorted(data_dir.rglob("*.json"))
     for path in files:
         if path.name.startswith("add_") or path.name.startswith("test"):
             continue
@@ -86,14 +103,22 @@ def _load_raw_articles(data_dir: Path) -> list[dict]:
         except Exception:
             continue
 
-        if path.suffix == ".jsonl":
-            raw_list = [json.loads(l) for l in content.splitlines() if l.strip()]
-        else:
+        raw_list = []
+        for attempt, text in enumerate([content, _remove_trailing_commas(content)]):
             try:
-                data = json.loads(content)
-                raw_list = data if isinstance(data, list) else [data]
+                data = json.loads(text)
+                if isinstance(data, list):
+                    # Flatten [[{...}]] → [{...}]
+                    while len(data) == 1 and isinstance(data[0], list):
+                        data = data[0]
+                    raw_list = [item for item in data if isinstance(item, dict)]
+                elif isinstance(data, dict):
+                    raw_list = [data]
+                break
             except json.JSONDecodeError:
-                continue
+                if attempt == 0:
+                    continue
+                break  # Both attempts failed — skip file
 
         for raw in raw_list:
             if not isinstance(raw, dict):

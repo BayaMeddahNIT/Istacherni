@@ -1,0 +1,44 @@
+﻿python : Traceback (most 
+recent call last):
+At line:1 char:1
++ python -c "
++ ~~~~~~~~~~~
+    + CategoryInfo        
+      : NotSpecified: (T  
+  raceback (most recent   
+  call last)::String)     
+[], RemoteException
+    + FullyQualifiedError 
+   Id : NativeCommandErr  
+  or
+ 
+  File "<string>", line 
+4, in <module>
+    arts = 
+load_all_articles()
+  File "C:\Users\pc 
+cam\Desktop\L3\pfe baya\Is
+tacherni\bm25_rag\bm25_loa
+der.py", line 148, in 
+load_all_articles
+    print(f"  \u2713 
+{path.name:45s}  
+({file_count} articles)")
+    ~~~~~^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^
+  File "C:\Python313\Lib\e
+ncodings\cp1252.py", line 
+19, in encode
+    return codecs.charmap_
+encode(input,self.errors,e
+ncoding_table)[0]
+           ~~~~~~~~~~~~~~~
+~~~~~~^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^
+UnicodeEncodeError: 
+'charmap' codec can't 
+encode character '\u2713' 
+in position 2: character 
+maps to <undefined>
+[BM25-Loader] Found 29 JSON files in C:\Users\pc cam\Desktop\L3\pfe baya\Istacherni\dataset\raw

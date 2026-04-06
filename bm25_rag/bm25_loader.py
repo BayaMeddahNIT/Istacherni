@@ -2,7 +2,7 @@
 bm25_loader.py
 --------------
 Standalone data loader for BM25 RAG.
-Reads ALL *.json and *.jsonl files from dataset/raw/** and returns
+Reads ALL *.json files from dataset/raw/** (JSON arrays) and returns
 a flat list of article dicts — completely independent of the rest of the project.
 
 Each article dict is guaranteed to have:
@@ -26,8 +26,11 @@ def _extract_text(article: dict) -> str:
 
     # Structure A: {"text": {"original": "..."}} or {"text": {"content": "..."}}
     if isinstance(text_field, dict):
-        # Try 'original', then 'content', then 'text', otherwise default to empty string
-        return str(text_field.get("original") or text_field.get("content") or text_field.get("text") or "")
+        original = text_field.get("original") or text_field.get("content") or text_field.get("text") or ""
+        # Multi-article format: {"original": {"1": "...", "4": "..."}}
+        if isinstance(original, dict):
+            return " ".join(str(v) for v in original.values() if v)
+        return str(original)
 
     # Structure B: {"text": "..."} (flat string)
     if isinstance(text_field, str):
@@ -38,8 +41,6 @@ def _extract_text(article: dict) -> str:
     if isinstance(text_original, str):
         return text_original
 
-    # Final Safety Net: If it's None or something weird, return empty string
-    # This prevents the '.strip()' AttributeError on the calling side.
     return ""
 
 
@@ -52,7 +53,12 @@ def _normalize_article(raw: dict) -> dict | None:
     if not text:
         return None
 
-    article_num = raw.get("article_number", "")
+    # article_number may be an int, str, or list
+    art_num_raw = raw.get("article_number", "")
+    if isinstance(art_num_raw, list):
+        article_num = "-".join(str(x) for x in art_num_raw)
+    else:
+        article_num = art_num_raw
 
     return {
         "id":                       raw.get("id") or f"ART_{article_num}",
@@ -68,14 +74,21 @@ def _normalize_article(raw: dict) -> dict | None:
     }
 
 
-def _load_json_file(path: Path) -> list[dict]:
-    """Load a .json or .jsonl file and return a list of raw article dicts.
+def _remove_trailing_commas(text: str) -> str:
+    """Remove trailing commas before ] or } (common JSON formatting issue)."""
+    import re
+    text = re.sub(r",\s*(\})", r"\1", text)
+    text = re.sub(r",\s*(\])", r"\1", text)
+    return text
 
-    Handles three data layouts:
-      1. Standard JSON  – a single array ``[{…}, {…}]`` or dict-wrapped list.
-      2. True JSONL      – one compact JSON object per line.
-      3. Pretty-printed  – multiple JSON objects separated by whitespace
-         (the actual format used by this project's .jsonl files).
+
+def _load_json_file(path: Path) -> list[dict]:
+    """Load a .json file (JSON array format) and return a list of raw article dicts.
+
+    Handles these data layouts:
+      1. Standard JSON array: ``[{…}, {…}]``
+      2. Dict-wrapped list: ``{"articles": [{…}]}``
+      3. Same as above but with trailing commas (auto-fixed)
     """
     try:
         content = path.read_text(encoding="utf-8")
@@ -83,52 +96,29 @@ def _load_json_file(path: Path) -> list[dict]:
         print(f"  [WARN] Could not read {path.name}: {e}")
         return []
 
-    # ── 1. Try parsing the whole file as a single JSON value ───────────
-    try:
-        data = json.loads(content)
-        if isinstance(data, list):
-            return data
-        if isinstance(data, dict):
-            # Some files wrap a list under a key
-            for v in data.values():
-                if isinstance(v, list):
-                    return v
-            return [data]
-    except json.JSONDecodeError:
-        pass
-
-    # ── 2. Stream-decode concatenated JSON objects ─────────────────────
-    #    Works for both true JSONL *and* pretty-printed objects separated
-    #    by whitespace / blank lines.
-    decoder = json.JSONDecoder()
-    articles: list[dict] = []
-    idx = 0
-    length = len(content)
-    while idx < length:
-        # Skip whitespace between objects
-        while idx < length and content[idx] in ' \t\r\n':
-            idx += 1
-        if idx >= length:
-            break
+    for attempt, text in enumerate([content, _remove_trailing_commas(content)]):
         try:
-            obj, end_idx = decoder.raw_decode(content, idx)
-            if isinstance(obj, dict):
-                articles.append(obj)
-            elif isinstance(obj, list):
-                articles.extend(o for o in obj if isinstance(o, dict))
-            idx = end_idx
+            data = json.loads(text)
+            if isinstance(data, list):
+                # Flatten [[{...}]] → [{...}]
+                while len(data) == 1 and isinstance(data[0], list):
+                    data = data[0]
+                return [item for item in data if isinstance(item, dict)]
+            if isinstance(data, dict):
+                for v in data.values():
+                    if isinstance(v, list):
+                        return [item for item in v if isinstance(item, dict)]
+                return [data]
         except json.JSONDecodeError:
-            # Skip one character and retry (handles stray commas, etc.)
-            idx += 1
-
-    if not articles:
-        print(f"  [WARN] No JSON objects decoded from {path.name}")
-    return articles
+            if attempt == 0:
+                continue
+            print(f"  [WARN] No JSON objects decoded from {path.name}")
+    return []
 
 
 def load_all_articles(data_dir: Path = RAW_DATA_DIR) -> list[dict]:
     """
-    Walk data_dir recursively and load every *.json / *.jsonl file.
+    Walk data_dir recursively and load every *.json file.
     Returns a deduplicated flat list of normalised article dicts.
     Skip helper scripts and non-article files automatically.
     """
@@ -138,8 +128,8 @@ def load_all_articles(data_dir: Path = RAW_DATA_DIR) -> list[dict]:
     seen_ids: set[str] = set()
     articles: list[dict] = []
 
-    files = sorted(data_dir.rglob("*.json")) + sorted(data_dir.rglob("*.jsonl"))
-    print(f"[BM25-Loader] Found {len(files)} JSON/JSONL files in {data_dir}")
+    files = sorted(data_dir.rglob("*.json"))
+    print(f"[BM25-Loader] Found {len(files)} JSON files in {data_dir}")
 
     for path in files:
         # Skip known non-article helper scripts stored in the dataset folder
@@ -161,7 +151,7 @@ def load_all_articles(data_dir: Path = RAW_DATA_DIR) -> list[dict]:
             file_count += 1
 
         if file_count:
-            print(f"  ✓ {path.name:45s}  ({file_count} articles)")
+            print(f"  [ok] {path.name:45s}  ({file_count} articles)")
 
     print(f"\n[BM25-Loader] Total unique articles loaded: {len(articles)}\n")
     return articles
