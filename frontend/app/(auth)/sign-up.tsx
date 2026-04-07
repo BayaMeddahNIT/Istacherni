@@ -1,85 +1,145 @@
-import { Text, View, Image, TextInput, TouchableOpacity, KeyboardAvoidingView, Platform, ScrollView, TouchableWithoutFeedback, Keyboard } from "react-native";
+import {
+  Text,
+  View,
+  Image,
+  TextInput,
+  TouchableOpacity,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  TouchableWithoutFeedback,
+  Keyboard,
+} from "react-native";
 import { useState } from "react";
 import images from "@/constants/images";
 import { Ionicons } from "@expo/vector-icons";
+import { router } from "expo-router";
 
 export default function SignUp() {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
+  const handleSignUp = () => {
+    // TODO: implement sign-up logic
+    console.log("Sign up pressed", { username, email, password, confirmPassword });
+  };
+
   return (
-    <KeyboardAvoidingView 
-      behavior={Platform.OS === "ios" ? "padding" : "height"} 
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
       className="flex-1 bg-background"
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <ScrollView 
+        <ScrollView
           contentContainerClassName="flex-grow items-center justify-center py-10 w-full"
           showsVerticalScrollIndicator={false}
           keyboardShouldPersistTaps="handled"
         >
-          <View className="items-center mb-10 w-full">
-            <Image source={images.logo} className="img-logo-2 mb-2" resizeMode="contain" />
-            <Text className="text-title text-black text-lg mt-4">Sing Up</Text>
+          {/* Logo */}
+          <View className="items-center mb-2 w-full">
+            <Image
+              source={images.logo}
+              className="img-logo-2"
+              resizeMode="contain"
+            />
           </View>
-          
-          <View className="w-[85%] gap-4">
-            <Text className="text-base text-primary font-inter-semibold">Username:</Text>
-            <View className="bg-white rounded-full px-6 h-14 justify-center shadow-sm flex-row items-center gap-2">
-              <Ionicons name="person-circle-outline" size={22} color="#B0B0B0" />
-              <TextInput 
-                placeholder="Enter your username" 
-                placeholderTextColor="#B0B0B0" 
-                className="flex-1 text-base text-black"
+
+          {/* Title */}
+          <Text className="text-2xl font-inter-semibold text-black mb-10 mt-4">
+            S'inscrire
+          </Text>
+
+          {/* Form */}
+          <View className="w-[85%] gap-5">
+            {/* Username */}
+            <View className="bg-white rounded-full px-6 h-14 justify-center shadow-sm flex-row items-center">
+              <TextInput
+                placeholder="Username"
+                placeholderTextColor="#B0ADA8"
+                value={username}
+                onChangeText={setUsername}
+                className="flex-1 text-base text-black font-inter-regular"
                 autoCapitalize="none"
+                autoCorrect={false}
               />
             </View>
 
-            <Text className="text-base text-primary font-inter-semibold">Email or Phone no:</Text> 
-            <View className="bg-white rounded-full px-6 h-14 justify-center shadow-sm flex-row items-center gap-2">
-              <Ionicons name="mail-outline" size={22} color="#B0B0B0" />
-              <TextInput 
-                placeholder="Enter your email or phone number" 
-                placeholderTextColor="#B0B0B0" 
-                className="flex-1 text-base text-black"
+            {/* Email or Phone */}
+            <View className="bg-white rounded-full px-6 h-14 justify-center shadow-sm flex-row items-center">
+              <TextInput
+                placeholder="Email or Phone no."
+                placeholderTextColor="#B0ADA8"
+                value={email}
+                onChangeText={setEmail}
+                className="flex-1 text-base text-black font-inter-regular"
                 keyboardType="email-address"
                 autoCapitalize="none"
+                autoCorrect={false}
               />
             </View>
 
-            <Text className="text-base text-primary font-inter-semibold">Password:</Text>
-            <View className="bg-white rounded-full px-6 h-14 justify-center shadow-sm flex-row items-center gap-2">
-              <Ionicons name="lock-open-outline" size={22} color="#B0B0B0" />
-              <TextInput 
-                placeholder="Password" 
-                placeholderTextColor="#B0B0B0" 
+            {/* Password */}
+            <View className="bg-white rounded-full px-6 h-14 justify-center shadow-sm flex-row items-center">
+              <TextInput
+                placeholder="Password"
+                placeholderTextColor="#B0ADA8"
+                value={password}
+                onChangeText={setPassword}
                 secureTextEntry={true}
-                className="flex-1 text-base text-black"
+                className="flex-1 text-base text-black font-inter-regular"
+                autoCapitalize="none"
               />
-              <TouchableOpacity onPress={() => setShowConfirmPassword(!showConfirmPassword)}>
-                <Ionicons name={showConfirmPassword ? "eye-off" : "eye"} size={22} color="#B0B0B0" />
+            </View>
+
+            {/* Confirm Password */}
+            <View className="bg-white rounded-full px-6 h-14 justify-center shadow-sm flex-row items-center">
+              <TextInput
+                placeholder="Confirm Password"
+                placeholderTextColor="#B0ADA8"
+                value={confirmPassword}
+                onChangeText={setConfirmPassword}
+                secureTextEntry={!showConfirmPassword}
+                className="flex-1 text-base text-black font-inter-regular"
+                autoCapitalize="none"
+              />
+              <TouchableOpacity
+                onPress={() => setShowConfirmPassword(!showConfirmPassword)}
+                hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+              >
+                <Ionicons
+                  name={showConfirmPassword ? "eye-off-outline" : "eye-outline"}
+                  size={22}
+                  color="#B0ADA8"
+                />
               </TouchableOpacity>
             </View>
 
-            <Text className="text-base text-primary font-inter-semibold">Confirm Password:</Text>
-            <View className="bg-white rounded-full px-6 h-14 justify-center shadow-sm flex-row items-center gap-2">
-              <Ionicons name="lock-open-outline" size={22} color="#B0B0B0" />
-              <TextInput 
-                placeholder="Confirm Password" 
-                placeholderTextColor="#B0B0B0" 
-                secureTextEntry={!showConfirmPassword}
-                className="flex-1 text-base text-black"
-              />
-              <TouchableOpacity onPress={() => setShowConfirmPassword(!showConfirmPassword)}>
-                <Ionicons name={showConfirmPassword ? "eye-off" : "eye"} size={22} color="#B0B0B0" />
+            {/* Sign Up Button */}
+            <View className="mt-4">
+              <TouchableOpacity
+                className="btn-primary w-full h-14 items-center justify-center rounded-full"
+                onPress={handleSignUp}
+                activeOpacity={0.85}
+              >
+                <Text className="text-button text-base">Sign up</Text>
               </TouchableOpacity>
             </View>
-            
-            <View className="mt-8 items-center w-full">
-              <TouchableOpacity className="btn-primary w-full items-center justify-center h-14 rounded-full">
-                <Text className="text-button text-white text-base">Sign up</Text>
+
+            {/* Login link */}
+            <View className="flex-row justify-center mt-2">
+              <Text className="text-base text-black font-inter-regular opacity-60">
+                Déjà inscrit?{" "}
+              </Text>
+              <TouchableOpacity onPress={() => router.push("/(auth)/log-in")}>
+                <Text className="text-base text-primary font-inter-semibold">
+                  Se connecter
+                </Text>
               </TouchableOpacity>
             </View>
-          </View>  
+          </View>
         </ScrollView>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>

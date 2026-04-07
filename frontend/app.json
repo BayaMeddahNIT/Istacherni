@@ -38,7 +38,23 @@
             "backgroundColor": "#000000"
           }
         }
-      ]
+      ],
+      "expo-web-browser",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Istacherni a besoin d'accéder à vos photos pour joindre des images.",
+          "cameraPermission": "Istacherni a besoin d'accéder à l'appareil photo pour photographier des documents.",
+          "microphonePermission": "Istacherni a besoin d'accéder au microphone pour les messages vocaux."
+        }
+      ],
+      [
+        "expo-av",
+        {
+          "microphonePermission": "Istacherni a besoin d'accéder au microphone pour enregistrer des messages vocaux."
+        }
+      ],
+      "expo-document-picker"
     ],
     "experiments": {
       "typedRoutes": true,
