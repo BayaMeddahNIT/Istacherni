@@ -60,15 +60,29 @@ def _normalize_article(raw: dict) -> dict | None:
     else:
         article_num = art_num_raw
 
+    # text_explanation: prefer dedicated field, fall back to definition/summary
+    text_explanation = (
+        raw.get("text_explanation")
+        or raw.get("definition")
+        or raw.get("summary")
+        or ""
+    )
+    if isinstance(text_explanation, dict):
+        text_explanation = " ".join(str(v) for v in text_explanation.values() if v)
+
+    # keywords: some files use 'tags' instead of 'keywords'
+    keywords = raw.get("keywords") or raw.get("tags") or []
+
     return {
         "id":                       raw.get("id") or f"ART_{article_num}",
-        "law_domain":               raw.get("law_domain", ""),
-        "law_name":                 raw.get("law_name", ""),
+        "law_domain":               raw.get("law_domain") or raw.get("law_type", ""),
+        "law_name":                 raw.get("law_name") or raw.get("law_type", ""),
         "article_number":           str(article_num),
         "title":                    raw.get("title", ""),
         "text_original":            text,
+        "text_explanation":         str(text_explanation).strip(),
         "summary":                  raw.get("summary", ""),
-        "keywords":                 raw.get("keywords", []),
+        "keywords":                 keywords,
         "penalties_summary":        raw.get("penalties_summary", ""),
         "legal_conditions_summary": raw.get("legal_conditions_summary", ""),
     }

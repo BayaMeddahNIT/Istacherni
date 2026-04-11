@@ -127,12 +127,17 @@ def generate_answer(question: str, retrieved_chunks: List[Dict[str, Any]]) -> st
 
 if __name__ == "__main__":
     # Quick manual test (requires vector store to exist)
-    from backend.rag.retrieval.retriever import retrieve
+
+    #from backend.rag.retrieval.retriever import retrieve
+
+    from backend.rag.retrieval.faiss_retriever import retrieve_hybrid
 
     question = "ما هي شروط المسؤولية المدنية في القانون الجزائري؟"
     print(f"Question: {question}\n")
 
-    chunks = retrieve(question, top_k=3)
+    #chunks = retrieve(question, top_k=3)
+    chunks = retrieve_hybrid(question, top_k=3)
+    
     answer = generate_answer(question, chunks)
 
     print("Answer:\n")

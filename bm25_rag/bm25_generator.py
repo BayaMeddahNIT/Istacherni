@@ -125,11 +125,14 @@ def bm25_generate(question: str, retrieved: list[dict], max_retries: int = 4) ->
 
 
 if __name__ == "__main__":
-    from bm25_rag.bm25_retriever import bm25_retrieve
+    #from bm25_rag.bm25_retriever import bm25_retrieve
+    from bm25_rag.bm25_generator import bm25_generate  # reuse same generator
 
     q = "ما هي عقوبة السرقة في القانون الجزائري؟"
     print(f"Question: {q}\n")
-    chunks = bm25_retrieve(q, top_k=5)
-    answer = bm25_generate(q, chunks)
+    chunks = hybrid_retrieve(question, top_k=5)
+    answer = bm25_generate(question, chunks)  # no changes needed here
+    #chunks = bm25_retrieve(q, top_k=5)
+    #answer = bm25_generate(q, chunks)
     print("Answer:\n")
     print(answer)

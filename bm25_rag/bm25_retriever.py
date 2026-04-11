@@ -29,7 +29,7 @@ def _get_index():
     return _bm25, _corpus
 
 
-def bm25_retrieve(query: str, top_k: int = 5) -> List[Dict[str, Any]]:
+def bm25_retrieve(query: str, top_k: int = 10) -> List[Dict[str, Any]]:
     """
     Retrieve the top-K most relevant law articles for a query using BM25.
 

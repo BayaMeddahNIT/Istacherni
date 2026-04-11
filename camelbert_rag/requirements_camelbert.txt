@@ -1,0 +1,19 @@
+# requirements_camelbert.txt
+# ---------------------------
+# Dependencies for camelbert_rag (dense vector RAG with local CAMeLBERT model).
+# Install with:  pip install -r requirements_camelbert.txt
+#
+# The bm25_rag requirements (rank-bm25, python-dotenv, google-genai …)
+# are assumed to already be installed.
+
+# ── Core ML / NLP ─────────────────────────────────────────────────────────────
+torch>=2.0.0               # PyTorch — CPU build is fine; install GPU build separately if needed
+transformers>=4.40.0       # HuggingFace Transformers (AutoModel / AutoTokenizer)
+sentencepiece>=0.1.99      # Required by CAMeLBERT tokeniser
+
+# ── Vector search ─────────────────────────────────────────────────────────────
+faiss-cpu>=1.7.4           # FAISS exact nearest-neighbour search (CPU)
+#faiss-gpu>=1.7.4         # Uncomment and replace the line above for GPU support
+
+# ── Numeric ───────────────────────────────────────────────────────────────────
+numpy>=1.24.0
