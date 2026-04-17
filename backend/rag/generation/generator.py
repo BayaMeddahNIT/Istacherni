@@ -130,13 +130,13 @@ if __name__ == "__main__":
 
     #from backend.rag.retrieval.retriever import retrieve
 
-    from backend.rag.retrieval.faiss_retriever import retrieve_hybrid
+    from backend.rag.retrieval.bge_retriever import retrieve
 
     question = "ما هي شروط المسؤولية المدنية في القانون الجزائري؟"
     print(f"Question: {question}\n")
 
     #chunks = retrieve(question, top_k=3)
-    chunks = retrieve_hybrid(question, top_k=3)
+    chunks = retrieve(question, top_k=3)
     
     answer = generate_answer(question, chunks)
 

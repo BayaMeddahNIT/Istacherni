@@ -1,7 +1,7 @@
 """
 qwen_retriever.py
 -----------------
-Dense retrieval using Qwen3-Embedding-8B + ChromaDB.
+Dense retrieval using Qwen3-Embedding-0.6B + ChromaDB.
 Drop-in replacement for bm25_retrieve() — same return schema.
 
 Usage (standalone):
@@ -10,19 +10,20 @@ Usage (standalone):
 Programmatic:
     from qwen_rag.qwen_retriever import qwen_retrieve
     results = qwen_retrieve("ما هي عقوبة السرقة؟", top_k=5)
-
-Each result dict contains:
-    id, law_name, law_domain, article_number, title,
-    text_original, penalties_summary, legal_conditions_summary,
-    keywords (list), score (cosine similarity, 0–1)
 """
 
 from __future__ import annotations
 
+# ── Make "qwen_rag" importable when run as a plain script ─────────────────────
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+# ─────────────────────────────────────────────────────────────────────────────
+
 import json
 from typing import Any, Dict, List
 
-# ── Lazy singletons ────────────────────────────────────────────────────────────
+# ── Lazy singleton ─────────────────────────────────────────────────────────────
 _collection = None
 
 
@@ -48,37 +49,34 @@ def qwen_retrieve(
         query:      User's natural-language question (Arabic preferred).
         top_k:      Number of results to return.
         min_score:  Minimum cosine similarity threshold (0–1).
-                    ChromaDB returns *distance* in [0, 2] for cosine space;
-                    we convert: similarity = 1 − distance/2   (since vectors
-                    are L2-normalised, distance ∈ [0, 2]).
 
     Returns:
-        List of article dicts sorted by descending similarity.
+        List of article dicts sorted by descending similarity, each containing:
+        id, law_name, law_domain, article_number, title, text_original,
+        penalties_summary, legal_conditions_summary, keywords (list), score.
     """
     from qwen_rag.qwen_embedder import embed_query
 
     collection = _get_collection()
 
-    # Embed the query with the instruction prefix
     q_vec = embed_query(query).tolist()[0]
 
-    # Query ChromaDB — fetch more than needed so we can apply min_score filter
+    # Fetch a wider set so we can apply min_score filter afterwards
     n_results = min(top_k * 3, collection.count())
-    response = collection.query(
+    response  = collection.query(
         query_embeddings=[q_vec],
         n_results=n_results,
         include=["documents", "metadatas", "distances"],
     )
 
-    results = []
-    ids        = response["ids"][0]
-    documents  = response["documents"][0]
-    metadatas  = response["metadatas"][0]
-    distances  = response["distances"][0]
+    results   = []
+    ids       = response["ids"][0]
+    documents = response["documents"][0]
+    metadatas = response["metadatas"][0]
+    distances = response["distances"][0]
 
     for doc_id, text, meta, dist in zip(ids, documents, metadatas, distances):
-        # Convert ChromaDB cosine distance → similarity
-        # ChromaDB cosine distance = 1 − cosine_sim  (range 0–2 for unit vecs)
+        # ChromaDB cosine distance = 1 − cosine_sim  → invert back
         similarity = round(1.0 - dist, 4)
 
         if similarity < min_score:

@@ -3,25 +3,18 @@ qwen_pipeline.py
 ----------------
 End-to-end Qwen RAG pipeline: question → retrieve → generate → answer.
 
-This is the main entry point for the Qwen RAG system.
-
-Usage
------
-CLI:
+Usage (both forms work):
     python qwen_rag/qwen_pipeline.py
-
-Programmatic:
-    from qwen_rag.qwen_pipeline import qwen_ask
-    answer = qwen_ask("ما هي عقوبة السرقة في القانون الجزائري؟")
-
-First-run setup (run once in order):
-    1. python qwen_rag/qwen_indexer.py        # build ChromaDB index
-    2. ollama serve                            # start Ollama in a terminal
-    3. ollama pull qwen3.5:27b-claude-4.6-opus-reasoning-distilled
-    4. python qwen_rag/qwen_pipeline.py        # test the full pipeline
+    python -m qwen_rag.qwen_pipeline
 """
 
 from __future__ import annotations
+
+# ── Make "qwen_rag" importable when run as a plain script ─────────────────────
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+# ─────────────────────────────────────────────────────────────────────────────
 
 from typing import Any, Dict, List, Optional
 
@@ -61,11 +54,11 @@ def _interactive():
     """Simple interactive REPL for testing the pipeline."""
     from qwen_rag.qwen_generator import check_ollama_health
 
-    print("\n" + "="*65)
+    print("\n" + "=" * 65)
     print("  Qwen Legal RAG — Algerian Law")
-    print("  Embeddings : Qwen3-Embedding-8B  (local)")
-    print("  Generator  : Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled (Ollama)")
-    print("="*65)
+    print("  Embeddings : Qwen3-Embedding-0.6B  (local)")
+    print("  Generator  : Qwen2.5-7B via Ollama")
+    print("=" * 65)
 
     if not check_ollama_health():
         print("\n[!] Fix Ollama setup before continuing.")
@@ -87,7 +80,7 @@ def _interactive():
         print("\n[Retrieving …]", flush=True)
         answer, sources = qwen_ask(question, top_k=5, return_sources=True)
 
-        print(f"\n{'─'*65}")
+        print(f"\n{'─' * 65}")
         print("المصادر المسترجعة:")
         for i, s in enumerate(sources, 1):
             print(
@@ -95,10 +88,10 @@ def _interactive():
                 f"(score={s['score']})"
             )
 
-        print(f"\n{'─'*65}")
+        print(f"\n{'─' * 65}")
         print("الإجابة:\n")
         print(answer)
-        print(f"{'─'*65}\n")
+        print(f"{'─' * 65}\n")
 
 
 # ── Batch evaluation helper ────────────────────────────────────────────────────
@@ -130,9 +123,13 @@ def batch_evaluate(
             "latency_s": elapsed,
         })
         if verbose:
-            print(f"     ✓ {elapsed}s  | top source: "
-                  f"{sources[0]['law_name']} م{sources[0]['article_number']}"
-                  if sources else "     ✓  (no sources)")
+            if sources:
+                print(
+                    f"     ✓ {elapsed}s  | top: "
+                    f"{sources[0]['law_name']} م{sources[0]['article_number']}"
+                )
+            else:
+                print(f"     ✓ {elapsed}s  | (no sources)")
     return results
 
 

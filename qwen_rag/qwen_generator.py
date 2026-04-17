@@ -8,6 +8,12 @@ Takes a question + dense-retrieved articles → calls Qwen2.5-7B via Ollama
 
 from __future__ import annotations
 
+# ── Make "qwen_rag" importable when run as a plain script ─────────────────────
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+# ─────────────────────────────────────────────────────────────────────────────
+
 import os
 import time
 from pathlib import Path
@@ -20,15 +26,11 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 load_dotenv(PROJECT_ROOT / ".env")
 
 # ── Config ─────────────────────────────────────────────────────────────────────
-OLLAMA_BASE_URL:   str   = os.getenv("OLLAMA_BASE_URL",   "http://localhost:11434")
-
-# UPDATED: Using the real model name available on your machine
-# Change the second argument to "qwen2.5:7b"
-OLLAMA_MODEL: str = os.getenv("OLLAMA_MODEL", "qwen2.5:7b")
-
-OLLAMA_TIMEOUT:    int   = int(os.getenv("OLLAMA_TIMEOUT",     "120"))
-OLLAMA_NUM_CTX:    int   = int(os.getenv("OLLAMA_NUM_CTX",     "4096"))
-OLLAMA_TEMP:       float = float(os.getenv("OLLAMA_TEMPERATURE", "0.1"))
+OLLAMA_BASE_URL: str   = os.getenv("OLLAMA_BASE_URL",   "http://localhost:11434")
+OLLAMA_MODEL:    str   = os.getenv("OLLAMA_MODEL",      "qwen2.5:7b")
+OLLAMA_TIMEOUT:  int   = int(os.getenv("OLLAMA_TIMEOUT",      "120"))
+OLLAMA_NUM_CTX:  int   = int(os.getenv("OLLAMA_NUM_CTX",      "4096"))
+OLLAMA_TEMP:     float = float(os.getenv("OLLAMA_TEMPERATURE", "0.1"))
 
 # ── System prompt ──────────────────────────────────────────────────────────────
 _SYSTEM = """أنت مساعد قانوني متخصص في القانون الجزائري.
@@ -52,7 +54,10 @@ def _build_context(retrieved: List[Dict[str, Any]]) -> str:
 
     parts = []
     for art in retrieved:
-        header = f"【{art.get('law_name', 'قانون غير معروف')} — المادة {art.get('article_number', 'N/A')}】"
+        header = (
+            f"【{art.get('law_name', 'قانون غير معروف')} "
+            f"— المادة {art.get('article_number', 'N/A')}】"
+        )
         if art.get("title"):
             header += f" ({art['title']})"
 
@@ -69,16 +74,12 @@ def _build_context(retrieved: List[Dict[str, Any]]) -> str:
 
 # ── Ollama chat call ───────────────────────────────────────────────────────────
 
-def _ollama_chat(
-    system: str,
-    user: str,
-    max_retries: int = 3,
-) -> str:
+def _ollama_chat(system: str, user: str, max_retries: int = 3) -> str:
     import json as _json
     import urllib.request
     import urllib.error
 
-    url     = f"{OLLAMA_BASE_URL.rstrip('/')}/api/chat"
+    url = f"{OLLAMA_BASE_URL.rstrip('/')}/api/chat"
     payload = _json.dumps({
         "model":  OLLAMA_MODEL,
         "stream": False,
@@ -87,8 +88,8 @@ def _ollama_chat(
             "num_ctx":     OLLAMA_NUM_CTX,
         },
         "messages": [
-            {"role": "system",  "content": system},
-            {"role": "user",    "content": user},
+            {"role": "system", "content": system},
+            {"role": "user",   "content": user},
         ],
     }).encode("utf-8")
 
@@ -96,7 +97,7 @@ def _ollama_chat(
 
     for attempt in range(max_retries):
         try:
-            req  = urllib.request.Request(url, data=payload, headers=headers)
+            req = urllib.request.Request(url, data=payload, headers=headers)
             with urllib.request.urlopen(req, timeout=OLLAMA_TIMEOUT) as resp:
                 body = _json.loads(resp.read().decode("utf-8"))
             return body["message"]["content"].strip()
@@ -111,6 +112,7 @@ def _ollama_chat(
                     f"Cannot connect to Ollama at {OLLAMA_BASE_URL}.\n"
                     "Make sure Ollama is running:  ollama serve"
                 ) from e
+
     return "خطأ في الاتصال بالمولد."
 
 
@@ -122,7 +124,10 @@ def qwen_generate(
     max_retries: int = 3,
 ) -> str:
     context = _build_context(retrieved)
-    user_prompt = f"=== المواد القانونية ذات الصلة ===\n\n{context}\n\n=== سؤال المستخدم ===\n\n{question}\n\n=== الإجابة ==="
+    user_prompt = (
+        f"=== المواد القانونية ذات الصلة ===\n\n{context}\n\n"
+        f"=== سؤال المستخدم ===\n\n{question}\n\n=== الإجابة ==="
+    )
     return _ollama_chat(system=_SYSTEM, user=user_prompt, max_retries=max_retries)
 
 
@@ -136,19 +141,28 @@ def check_ollama_health() -> bool:
         url = f"{OLLAMA_BASE_URL.rstrip('/')}/api/tags"
         with urllib.request.urlopen(url, timeout=5) as resp:
             data = _json.loads(resp.read())
-        # Handles both full 'qwen2.5:7b' and short names
+
         available_models = [m["name"] for m in data.get("models", [])]
-        
-        # Check for exact match or version-less match
-        if OLLAMA_MODEL not in available_models and f"{OLLAMA_MODEL}:latest" not in available_models:
-            print(f"[Qwen-Gen] ⚠ Model '{OLLAMA_MODEL}' not found. Available: {available_models}")
+
+        # Accept exact match or ":latest" suffix match
+        if (
+            OLLAMA_MODEL not in available_models
+            and f"{OLLAMA_MODEL}:latest" not in available_models
+        ):
+            print(
+                f"[Qwen-Gen] ⚠  Model '{OLLAMA_MODEL}' not found.\n"
+                f"           Available: {available_models}\n"
+                f"           Run:  ollama pull {OLLAMA_MODEL}"
+            )
             return False
-        
+
         print(f"[Qwen-Gen] ✓ Ollama healthy | model '{OLLAMA_MODEL}' ready.")
         return True
+
     except Exception as e:
         print(f"[Qwen-Gen] ✗ Ollama health check failed: {e}")
         return False
+
 
 if __name__ == "__main__":
     check_ollama_health()

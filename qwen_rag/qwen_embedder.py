@@ -1,5 +1,11 @@
 from __future__ import annotations
 
+# ── Make "qwen_rag" importable when run as a plain script ─────────────────────
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+# ─────────────────────────────────────────────────────────────────────────────
+
 import os
 from pathlib import Path
 from typing import List
@@ -64,19 +70,17 @@ def _get_model():
 
     if USE_QUANTIZATION and _device == "cuda":
         print("[Qwen-Embedder] Applying 4-bit quantization to save VRAM...")
-        # Configure 4-bit loading
         bnb_config = BitsAndBytesConfig(
             load_in_4bit=True,
             bnb_4bit_compute_dtype=torch.float16,
             bnb_4bit_quant_type="nf4",
             bnb_4bit_use_double_quant=True,
         )
-        
         _model = AutoModel.from_pretrained(
             EMBEDDING_MODEL_NAME,
             trust_remote_code=True,
             quantization_config=bnb_config,
-            device_map="auto",  # bnb handles device placement
+            device_map="auto",
         )
     else:
         # Standard loading (for CPU or high-memory GPUs)
@@ -117,7 +121,7 @@ def _encode_batch(texts: List[str]) -> np.ndarray:
             truncation=True,
             max_length=MAX_SEQ_LEN,
             return_tensors="pt",
-        ).to(model.device) # Use model.device as bnb might split layers
+        ).to(model.device)  # use model.device — bnb may split layers
 
         with torch.no_grad():
             outputs = model(**encoded)
@@ -125,7 +129,6 @@ def _encode_batch(texts: List[str]) -> np.ndarray:
         embeddings = _last_token_pool(
             outputs.last_hidden_state, encoded["attention_mask"]
         )
-        # L2 normalise
         embeddings = torch.nn.functional.normalize(embeddings, p=2, dim=1)
         all_embeddings.append(embeddings.cpu().float().numpy())
 
@@ -155,4 +158,4 @@ if __name__ == "__main__":
     d_vec = embed_documents(["يعاقب بالحبس كل من ارتكب جريمة السرقة"])
     sim = float(np.dot(q_vec, d_vec.T))
     print(f"Embedding dim : {q_vec.shape[1]}")
-    print(f"Cosine sim     : {sim:.4f}")
+    print(f"Cosine sim    : {sim:.4f}")

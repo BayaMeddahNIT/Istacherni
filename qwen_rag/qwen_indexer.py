@@ -8,40 +8,34 @@ Run ONCE before querying:
     python qwen_rag/qwen_indexer.py
 
 Output:
-    qwen_rag/chroma_db/   ← persistent ChromaDB directory
+    qwen_rag/chroma_db/   <- persistent ChromaDB directory
 
 The collection is named  COLLECTION_NAME  (see constant below).
 Re-running with  force=True  drops and rebuilds the collection.
-
-Design notes
-------------
-• Documents are embedded with embed_documents() — no instruction prefix.
-• Metadata stored per chunk: id, law_name, law_domain, article_number, title,
-  penalties_summary, legal_conditions_summary, keywords (JSON), score (added at
-  query time).
-• The full text_original is stored as the ChromaDB `document` field so
-  retrievers can return it without a second lookup.
 """
 
 from __future__ import annotations
+
+# ── Make "qwen_rag" importable when run as a plain script ─────────────────────
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+# ─────────────────────────────────────────────────────────────────────────────
 
 import json
 from pathlib import Path
 from typing import List
 
 # ── Config ─────────────────────────────────────────────────────────────────────
-CHROMA_DIR: Path = Path(__file__).parent / "chroma_db"
-COLLECTION_NAME: str = "algerian_law_qwen3"
-UPSERT_BATCH: int = 64   # ChromaDB upsert batch size
+CHROMA_DIR:      Path = Path(__file__).parent / "chroma_db"
+COLLECTION_NAME: str  = "algerian_law_qwen3"
+UPSERT_BATCH:    int  = 64
 
 
 # ── Helpers ────────────────────────────────────────────────────────────────────
 
 def _build_doc_text(article: dict) -> str:
-    """
-    Concatenate rich fields for embedding.
-    Keywords repeated twice (same trick as BM25 indexer) to boost signal.
-    """
+    """Concatenate rich fields for embedding. Keywords repeated ×2 for signal."""
     kw = " ".join(article.get("keywords", []))
     parts = [
         article.get("title", ""),
@@ -58,6 +52,7 @@ def _build_doc_text(article: dict) -> str:
 def _get_collection(client, force: bool = False):
     """Return (or create) the ChromaDB collection."""
     existing = [c.name for c in client.list_collections()]
+
     if force and COLLECTION_NAME in existing:
         print(f"[Qwen-Indexer] Dropping existing collection '{COLLECTION_NAME}' …")
         client.delete_collection(COLLECTION_NAME)
@@ -65,8 +60,6 @@ def _get_collection(client, force: bool = False):
 
     if COLLECTION_NAME not in existing:
         print(f"[Qwen-Indexer] Creating collection '{COLLECTION_NAME}' …")
-        # cosine distance — our embeddings are already L2-normalised so
-        # cosine ≡ dot-product, both work fine here.
         return client.create_collection(
             name=COLLECTION_NAME,
             metadata={"hnsw:space": "cosine"},
@@ -91,10 +84,9 @@ def build_index(force: bool = False):
     from qwen_rag.qwen_embedder import embed_documents
 
     CHROMA_DIR.mkdir(parents=True, exist_ok=True)
-    client = chromadb.PersistentClient(path=str(CHROMA_DIR))
+    client     = chromadb.PersistentClient(path=str(CHROMA_DIR))
     collection = _get_collection(client, force=force)
 
-    # Skip rebuild if already populated and force=False
     if not force and collection.count() > 0:
         print(
             f"[Qwen-Indexer] Collection already has {collection.count()} docs. "
@@ -105,21 +97,18 @@ def build_index(force: bool = False):
     print("[Qwen-Indexer] Loading articles …")
     articles = load_all_articles()
 
-    # Build text corpus
     doc_texts: List[str] = [_build_doc_text(a) for a in articles]
 
-    # Filter empties
     valid = [(t, a) for t, a in zip(doc_texts, articles) if t]
     if not valid:
         raise RuntimeError("No valid documents found in dataset.")
     doc_texts_valid, articles_valid = zip(*valid)
 
     total = len(articles_valid)
-    print(f"[Qwen-Indexer] Embedding {total} articles with Qwen3-Embedding-8B …")
+    print(f"[Qwen-Indexer] Embedding {total} articles …")
 
-    # Upsert in batches
     for batch_start in range(0, total, UPSERT_BATCH):
-        batch_end = min(batch_start + UPSERT_BATCH, total)
+        batch_end   = min(batch_start + UPSERT_BATCH, total)
         batch_texts = list(doc_texts_valid[batch_start:batch_end])
         batch_arts  = list(articles_valid[batch_start:batch_end])
 
@@ -129,13 +118,13 @@ def build_index(force: bool = False):
         documents = [a.get("text_original", "") for a in batch_arts]
         metadatas = [
             {
-                "law_name":                   a.get("law_name", ""),
-                "law_domain":                 a.get("law_domain", ""),
-                "article_number":             str(a.get("article_number", "")),
-                "title":                      a.get("title", ""),
-                "penalties_summary":          a.get("penalties_summary", ""),
-                "legal_conditions_summary":   a.get("legal_conditions_summary", ""),
-                "keywords":                   json.dumps(
+                "law_name":                 a.get("law_name", ""),
+                "law_domain":               a.get("law_domain", ""),
+                "article_number":           str(a.get("article_number", "")),
+                "title":                    a.get("title", ""),
+                "penalties_summary":        a.get("penalties_summary", ""),
+                "legal_conditions_summary": a.get("legal_conditions_summary", ""),
+                "keywords":                 json.dumps(
                     a.get("keywords", []), ensure_ascii=False
                 ),
             }
@@ -166,7 +155,7 @@ def load_collection():
             "Run:  python qwen_rag/qwen_indexer.py"
         )
     client = chromadb.PersistentClient(path=str(CHROMA_DIR))
-    col = client.get_collection(COLLECTION_NAME)
+    col    = client.get_collection(COLLECTION_NAME)
     print(f"[Qwen-Indexer] Loaded collection '{COLLECTION_NAME}' ({col.count()} docs)")
     return col
 
