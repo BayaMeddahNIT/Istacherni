@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hybrid RAG Setup & Run Guide</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9fbff;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        h1 {
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 14px;
+        }
+        code {
+            background-color: #e8eaed;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: Consolas, monospace;
+            color: #e74c3c;
+        }
+        .step {
+            background: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-left: 4px solid #3498db;
+        }
+        .warning {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        .success {
+            background-color: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: #fff;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Hybrid RAG Pipeline (BM25 + BGE-M3 + Qwen2.5:7b)</h1>
+    
+    <div class="success">
+        <p><strong>Overview:</strong> We successfully transitioned the chatbot from relying solely on Gemini to a local/hybrid AI model using <strong>Qwen2.5 (7 Billion Parameters)</strong> via Ollama, combined with a hybrid retrieval strategy consisting of <strong>BM25 (Sparse/Lexical Keyword Match)</strong> and <strong>BAAI BGE-M3 (Dense Semantic Match)</strong>.</p>
+    </div>
+
+    <h2>What Was Built / Changed</h2>
+    <table>
+        <tr>
+            <th>File</th>
+            <th>Purpose</th>
+        </tr>
+        <tr>
+            <td><code>bm25_rag/hybrid_bge_qwen_retriever.py</code></td>
+            <td><strong>Hybrid Retriever:</strong> Uses Reciprocal Rank Fusion (RRF) to merge the top results of BM25 (keyword matching) and BGE-M3 (ChromaDB semantic matching). Also includes a fallback to BM25 if the BGE vector store fails.</td>
+        </tr>
+        <tr>
+            <td><code>bm25_rag/hybrid_bge_qwen_generator.py</code></td>
+            <td><strong>Local Generator:</strong> Connects to your local Ollama server to feed the retrieved documents to the <code>qwen2.5:7b</code> model and streams back an Arabic legal response.</td>
+        </tr>
+        <tr>
+            <td><code>backend/app.py</code></td>
+            <td><strong>New Endpoint:</strong> Mapped <code>POST /chat/hybrid</code> to execute the hybrid retriever and generator. Added a health check for it at <code>GET /health/hybrid</code>. Previously existing <code>/chat</code> with Gemini is left strictly isolated.</td>
+        </tr>
+        <tr>
+            <td><code>frontend/app/(tabs)/chat.tsx</code></td>
+            <td><strong>Frontend Wiring:</strong> Configured <code>BACKEND_URL</code> to point to your physical network IP (<code>192.168.1.9</code>), ensuring mobile devices on the same WiFi can reach the server. The send button and voice recorder now point to <code>/chat/hybrid</code>.</td>
+        </tr>
+    </table>
+
+    <hr/>
+
+    <h2>How to Run Your System From Scratch</h2>
+
+    <div class="step">
+        <h3>Step 1: Start Ollama</h3>
+        <p>You need your local LLM engine running and the specific Qwen model downloaded to your system.</p>
+        <pre><code># Open a command prompt / PowerShell and run:
+ollama serve
+
+# If you haven't pulled the model recently, run in a separate tab:
+ollama pull qwen2.5:7b</code></pre>
+    </div>
+
+    <div class="step">
+        <h3>Step 2: Ensure Data & Indices exist</h3>
+        <p>For the hybrid setup to work, both retrieval databases must be successfully generated beforehand.</p>
+        <ol>
+            <li><strong>BM25 Corpus:</strong> Generates the <code>bm25_corpus.pkl</code> and index files.
+                <pre><code>python -m bm25_rag.bm25_indexer</code></pre>
+            </li>
+            <li><strong>BGE-M3 Embeddings:</strong> Connects to ChromaDB.
+                <pre><code>python rag_bge/bge_embed_articles.py</code></pre>
+            </li>
+        </ol>
+    </div>
+
+    <div class="step">
+        <h3>Step 3: Boot Up the FastAPI Backend</h3>
+        <p>Starts the API. We bind it to <code>0.0.0.0</code> so phones/emulators on the same WiFi network can access it via your PC's IP address.</p>
+        <pre><code>cd "C:\Users\pc cam\Desktop\L3\pfe baya\Istacherni"
+uvicorn backend.app:app --host 0.0.0.0 --port 8000 --reload</code></pre>
+        <p>Verify it is running properly by visiting: <a href="http://192.168.1.9:8000/health/hybrid" target="_blank">http://192.168.1.9:8000/health/hybrid</a> in your browser.</p>
+    </div>
+
+    <div class="step">
+        <h3>Step 4: Start Expo (Frontend)</h3>
+        <p>Launch your React Native App.</p>
+        <pre><code>cd "C:\Users\pc cam\Desktop\L3\pfe baya\Istacherni\frontend"
+npx expo start -c</code></pre>
+        <p><em>Note: The <code>-c</code> clears the metro cache which is helpful after IP address changes in <code>chat.tsx</code>.</em></p>
+    </div>
+
+    <div class="warning">
+        <strong>Important Note on IP Addresses:</strong>
+        <p>In <code>frontend/app/(tabs)/chat.tsx</code>, the <code>BACKEND_URL</code> is hardcoded to <code>http://192.168.1.9:8000</code>. If your router assigns you a new network IP (e.g. <code>192.168.1.15</code>), you must edit <code>chat.tsx</code> and restart Expo. To check your IP, run <code>ipconfig</code> in your terminal.</p>
+    </div>
+
+</body>
+</html>

@@ -56,50 +56,17 @@ def article_to_chunk(article: Dict[str, Any]) -> Dict[str, Any]:
     }
 
 def chunk_articles(articles: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-    raw_chunks = []
     skipped = 0
-
+    unique_chunks = []
     for article in articles:
         chunk = article_to_chunk(article)
         if not chunk["id"] or not chunk["text"]:
             skipped += 1
             continue
-        raw_chunks.append(chunk)
+        unique_chunks.append(chunk)
 
-    # --- Content-Aware Deduplication Logic ---
-    unique_chunks = []
-    # tracks { "ID": [list of hashes for this ID] }
-    id_content_map = {} 
-    # tracks { "ID": counter_integer }
-    id_counters = {} 
-
-    for chunk in raw_chunks:
-        base_id = chunk["id"]
-        # Create a hash of the content to see if it's truly a duplicate
-        content_hash = hashlib.md5(chunk["text"].encode('utf-8')).hexdigest()
-
-        if base_id not in id_content_map:
-            # First time seeing this ID
-            id_content_map[base_id] = [content_hash]
-            id_counters[base_id] = 1
-            chunk["id"] = f"{base_id}_01"
-            unique_chunks.append(chunk)
-        else:
-            # ID exists, check if content is new
-            if content_hash in id_content_map[base_id]:
-                # True duplicate (same ID, same content) -> Skip
-                continue
-            else:
-                # Same ID, DIFFERENT content -> Create new suffix
-                id_counters[base_id] += 1
-                new_count = id_counters[base_id]
-                id_content_map[base_id].append(content_hash)
-                
-                # Update the chunk ID to be unique (e.g., DZ_ART_08_02)
-                chunk["id"] = f"{base_id}_{new_count:02d}"
-                unique_chunks.append(chunk)
-
-    print(f"[INFO] Processed {len(unique_chunks)} unique content-chunks.")
-    print(f"[INFO] Skipped {skipped} invalid and {len(raw_chunks) - len(unique_chunks)} true duplicates.")
+    print(f"[INFO] Processed {len(unique_chunks)} chunks.")
+    if skipped:
+        print(f"[INFO] Skipped {skipped} invalid articles.")
     
     return unique_chunks

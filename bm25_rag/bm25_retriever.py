@@ -49,6 +49,8 @@ def bm25_retrieve(query: str, top_k: int = 10) -> List[Dict[str, Any]]:
 
     scores = bm25.get_scores(tokens)
 
+
+
     # Get top_k indices sorted by descending score
     import numpy as np
     top_indices = np.argsort(scores)[::-1][:top_k]

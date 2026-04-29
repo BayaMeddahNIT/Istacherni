@@ -95,28 +95,61 @@ def load_all_articles(dataset_dir: Path = DATASET_DIR) -> List[Dict[str, Any]]:
 
     print(f"\n[INFO] Total articles loaded: {len(articles)}")
 
-    # Deduplicate by hashing the full article content (excluding _source_file)
-    # This catches articles from different books that share the same ID
-    seen_hashes: set = set()
+    # tracks { "original_id": [(text_original, text_explanation), ...] }
+    id_versions: Dict[str, List[tuple]] = {}
     unique_articles = []
 
     for art in articles:
-        art_hash = hashlib.md5(
-            json.dumps(
-                {k: v for k, v in art.items() if k != "_source_file"},
-                sort_keys=True,
-                ensure_ascii=False
-            ).encode("utf-8")
-        ).hexdigest()
+        # Extract fields for comparison (similar to bm25_loader logic)
+        # text_original
+        text_field = art.get("text")
+        if isinstance(text_field, dict):
+            text_original = text_field.get("original") or text_field.get("content") or text_field.get("text") or ""
+            if isinstance(text_original, dict):
+                text_original = " ".join(str(v) for v in text_original.values() if v)
+        elif isinstance(text_field, str):
+            text_original = text_field
+        else:
+            text_original = art.get("text_original") or ""
+        
+        text_original = str(text_original).strip()
 
-        if art_hash not in seen_hashes:
-            seen_hashes.add(art_hash)
+        # text_explanation
+        text_explanation = (
+            art.get("text_explanation")
+            or art.get("definition")
+            or art.get("summary")
+            or ""
+        )
+        if isinstance(text_explanation, dict):
+            text_explanation = " ".join(str(v) for v in text_explanation.values() if v)
+        
+        text_explanation = str(text_explanation).strip()
+
+        orig_id = str(art.get("id") or "").strip()
+        if not orig_id:
+            # If no ID, use a hash or skip? Let's skip for consistency with BM25
+            continue
+
+        if orig_id not in id_versions:
+            id_versions[orig_id] = [(text_original, text_explanation)]
             unique_articles.append(art)
+        else:
+            # Check if this exact content was already seen for this ID
+            is_duplicate = False
+            for seen_text, seen_expl in id_versions[orig_id]:
+                if text_original == seen_text and text_explanation == seen_expl:
+                    is_duplicate = True
+                    break
+            
+            if not is_duplicate:
+                # Same ID, DIFFERENT content -> Create new suffix
+                version_count = len(id_versions[orig_id])
+                art["id"] = f"{orig_id}_{version_count}"
+                id_versions[orig_id].append((text_original, text_explanation))
+                unique_articles.append(art)
 
-    duplicates = len(articles) - len(unique_articles)
-    if duplicates:
-        print(f"[INFO] Removed {duplicates} duplicate articles (identical content across files)")
-    print(f"[INFO] Unique articles: {len(unique_articles)}")
+    print(f"[INFO] Unique articles (after ID-based deduplication): {len(unique_articles)}")
     return unique_articles
 
 

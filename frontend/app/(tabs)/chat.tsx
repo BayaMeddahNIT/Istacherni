@@ -37,30 +37,28 @@ interface Conversation {
   messages: Message[];
 }
 
-// ─── AI Configuration ────────────────────────────────────────────────────────
+// ─── Backend Configuration ───────────────────────────────────────────────────
 
-const AI_CONFIG = {
-  // Add your OpenAI API key here to enable real AI responses
-  apiKey: "",
-  endpoint: "https://api.openai.com/v1/chat/completions",
-  model: "gpt-3.5-turbo",
-};
+/**
+ * Replace with your machine's LAN IP when testing on a real device.
+ * For Android emulator use: http://10.0.2.2:8000
+ * For iOS simulator or web use: http://localhost:8000
+ * For a real phone on the same WiFi: http://<YOUR_LAN_IP>:8000
+ */
+//const BACKEND_URL = "http://192.168.1.9:8000"; // your machine's LAN IP
+const BACKEND_URL = "https://earthly-backer-obsession.ngrok-free.dev"; // your machine's LAN IP
+const HYBRID_ENDPOINT = `${BACKEND_URL}/chat/hybrid`;
 
-const SYSTEM_PROMPT = `Tu es Istacherni, un assistant juridique expert spécialisé dans la législation algérienne (دستور الجمهورية الجزائرية). Tu maîtrises:
-- Code Civil algérien (Ordonnance n° 75-58)
-- Code Pénal (Ordonnance n° 66-156)  
-- Code du Travail (Loi n° 90-11)
-- Code de Commerce (Ordonnance n° 75-59)
-- Code de la Famille (Loi n° 84-11)
-- Constitution algérienne 2020
-- Procédures administratives et judiciaires algériennes
+// ─── OLD AI Configuration (OpenAI — kept as comment) ─────────────────────────
+//
+// const AI_CONFIG = {
+//   apiKey: "",
+//   endpoint: "https://api.openai.com/v1/chat/completions",
+//   model: "gpt-3.5-turbo",
+// };
+//
+// const SYSTEM_PROMPT = `Tu es Istacherni, un assistant juridique expert...`;
 
-RÈGLES ABSOLUES:
-1. Réponds TOUJOURS dans la langue de l'utilisateur (arabe ↔ français ↔ anglais)
-2. Citations légales précises avec numéros d'articles quand possible
-3. Recommande un avocat pour les cas complexes
-4. Reste professionnel, précis et bienveillant
-5. Ne traduis jamais une réponse — réponds directement dans la langue détectée`;
 
 // ─── Language Detection ───────────────────────────────────────────────────────
 
@@ -382,32 +380,65 @@ Ask me your legal question and I'll respond with the applicable laws.
   return fallbacks[lang];
 }
 
-async function getAIResponse(messages: { role: string; content: string }[]): Promise<string> {
-  if (AI_CONFIG.apiKey) {
-    try {
-      const res = await fetch(AI_CONFIG.endpoint, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${AI_CONFIG.apiKey}`,
-        },
-        body: JSON.stringify({
-          model: AI_CONFIG.model,
-          messages: [{ role: "system", content: SYSTEM_PROMPT }, ...messages],
-          max_tokens: 600,
-          temperature: 0.7,
-        }),
-      });
-      const data = await res.json();
-      return data.choices?.[0]?.message?.content ?? generateLocalResponse(messages[messages.length - 1].content);
-    } catch {
-      return generateLocalResponse(messages[messages.length - 1].content);
+// ─── Backend API Call (Qwen2.5:7b + BM25 + BGE-M3) ─────────────────────────
+
+async function getAIResponseFromBackend(question: string): Promise<string> {
+  /**
+   * Sends the user question to the FastAPI /chat/hybrid endpoint.
+   * Returns Qwen2.5:7b answer retrieved via BM25 + BAAI/BGE-M3 hybrid RAG.
+   *
+   * Falls back to local keyword-matching if the backend is unreachable.
+   */
+  try {
+    const res = await fetch(HYBRID_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ question, top_k: 5 }),
+    });
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({ detail: res.statusText }));
+      console.warn("[Backend] Non-OK response:", err);
+      // fallback to local
+      return generateLocalResponse(question);
     }
+    const data = await res.json();
+    return data.answer as string;
+  } catch (e) {
+    console.warn("[Backend] Unreachable, using local fallback:", e);
+    // Fallback: return local keyword-based response when backend is down
+    return generateLocalResponse(question);
   }
-  // Simulate realistic network delay
-  await new Promise(r => setTimeout(r, 1200 + Math.random() * 800));
-  return generateLocalResponse(messages[messages.length - 1].content);
 }
+
+// ─── OLD getAIResponse (OpenAI + local fallback) — kept as comment ────────────
+//
+// async function getAIResponse(messages: { role: string; content: string }[]): Promise<string> {
+//   if (AI_CONFIG.apiKey) {
+//     try {
+//       const res = await fetch(AI_CONFIG.endpoint, {
+//         method: "POST",
+//         headers: {
+//           "Content-Type": "application/json",
+//           Authorization: `Bearer ${AI_CONFIG.apiKey}`,
+//         },
+//         body: JSON.stringify({
+//           model: AI_CONFIG.model,
+//           messages: [{ role: "system", content: SYSTEM_PROMPT }, ...messages],
+//           max_tokens: 600,
+//           temperature: 0.7,
+//         }),
+//       });
+//       const data = await res.json();
+//       return data.choices?.[0]?.message?.content ?? generateLocalResponse(messages[messages.length - 1].content);
+//     } catch {
+//       return generateLocalResponse(messages[messages.length - 1].content);
+//     }
+//   }
+//   // Simulate realistic network delay
+//   await new Promise(r => setTimeout(r, 1200 + Math.random() * 800));
+//   return generateLocalResponse(messages[messages.length - 1].content);
+// }
+
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
@@ -698,10 +729,16 @@ export default function Chat() {
 
     setIsTyping(true);
     try {
-      const aiCtx = hasText
-        ? [...aiMessages.current]
-        : [...aiMessages.current, { role: "user", content: aiContent }];
-      const reply = await getAIResponse(aiCtx);
+      // ── NEW: call /chat/hybrid backend (Qwen2.5:7b + BM25 + BGE-M3) ──────
+      const questionText = hasText ? text.trim() : aiContent;
+      const reply = await getAIResponseFromBackend(questionText);
+
+      // ── OLD: OpenAI / local fallback call — kept as comment ───────────────
+      // const aiCtx = hasText
+      //   ? [...aiMessages.current]
+      //   : [...aiMessages.current, { role: "user", content: aiContent }];
+      // const reply = await getAIResponse(aiCtx);
+
       const botMsg: Message = { id: makeId(), type: "text", sender: "bot", timestamp: new Date(), text: reply };
       const finalMsgs = [...updated, botMsg];
       setMessages(finalMsgs);
@@ -758,7 +795,7 @@ export default function Chat() {
         setTimeout(() => flatListRef.current?.scrollToEnd({ animated: true }), 100);
         // AI response to voice message
         setIsTyping(true);
-        const reply = await getAIResponse([...aiMessages.current, { role: "user", content: "[Message vocal envoyé]" }]);
+        const reply = await getAIResponseFromBackend("[Message vocal envoyé]");
         const botMsg: Message = { id: makeId(), type: "text", sender: "bot", timestamp: new Date(), text: reply };
         const finalMsgs = [...updated, botMsg];
         setMessages(finalMsgs);

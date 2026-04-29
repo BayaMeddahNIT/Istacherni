@@ -139,7 +139,8 @@ def load_all_articles(data_dir: Path = RAW_DATA_DIR) -> list[dict]:
     if not data_dir.exists():
         raise FileNotFoundError(f"Dataset directory not found: {data_dir}")
 
-    seen_ids: set[str] = set()
+    # tracks { "original_id": [(text_original, text_explanation), ...] }
+    id_versions: dict[str, list[tuple[str, str]]] = {}
     articles: list[dict] = []
 
     files = sorted(data_dir.rglob("*.json"))
@@ -158,11 +159,31 @@ def load_all_articles(data_dir: Path = RAW_DATA_DIR) -> list[dict]:
             doc = _normalize_article(raw)
             if doc is None:
                 continue
-            if doc["id"] in seen_ids:
-                continue
-            seen_ids.add(doc["id"])
-            articles.append(doc)
-            file_count += 1
+            
+            orig_id = doc["id"]
+            text = doc["text_original"]
+            expl = doc["text_explanation"]
+
+            if orig_id not in id_versions:
+                # First time seeing this ID
+                id_versions[orig_id] = [(text, expl)]
+                articles.append(doc)
+                file_count += 1
+            else:
+                # Check if this exact content was already seen for this ID
+                is_duplicate = False
+                for seen_text, seen_expl in id_versions[orig_id]:
+                    if text == seen_text and expl == seen_expl:
+                        is_duplicate = True
+                        break
+                
+                if not is_duplicate:
+                    # Same ID, DIFFERENT content -> Create new suffix
+                    version_count = len(id_versions[orig_id])
+                    doc["id"] = f"{orig_id}_{version_count}"
+                    id_versions[orig_id].append((text, expl))
+                    articles.append(doc)
+                    file_count += 1
 
         if file_count:
             print(f"  [ok] {path.name:45s}  ({file_count} articles)")

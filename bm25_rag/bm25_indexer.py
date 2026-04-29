@@ -6,6 +6,7 @@ Run this ONCE before querying.
 
 Usage:
   python bm25_rag/bm25_indexer.py
+  python -m bm25_rag.bm25_indexer
 
 Output:
   bm25_rag/index/bm25_index.pkl   ← serialised BM25Okapi object
