@@ -6,7 +6,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import chromadb
 from tqdm import tqdm
 from bm25_rag.bm25_loader import load_all_articles
-from dense_rag.bge_embedder import embed_article
+from dense_rag.bge_embedder import embed_article, embed_articles_batch
 
 CHROMA_DIR = Path(__file__).parent / "chroma_db"
 COLLECTION_NAME = "algerian_law"
@@ -41,9 +41,9 @@ def build_vector_index(force: bool = False):
         metadata={"hnsw:space": "cosine"}
     )
 
-    print("[BGE-Indexer] Loading articles…")
+    print("[BGE-Indexer] Loading articles...")
     articles = load_all_articles()
-    print(f"[BGE-Indexer] Embedding {len(articles)} articles…")
+    print(f"[BGE-Indexer] Embedding {len(articles)} articles...")
 
     success = 0
     for i in tqdm(range(0, len(articles), BATCH_SIZE), desc="Indexing"):
@@ -52,19 +52,19 @@ def build_vector_index(force: bool = False):
             ids = [_s(a.get("id")) or f"ARTICLE_{i+j}"
                    for j, a in enumerate(batch)]
 
-            embeddings = [embed_article(a) for a in batch]
+            embeddings = embed_articles_batch(batch)
 
             metadatas = [
                 {
-                    "id":                       _s(a.get("id"), 100),
-                    "law_name":                 _s(a.get("law_name"), 200),
-                    "law_domain":               _s(a.get("law_domain"), 100),
-                    "article_number":           _s(a.get("article_number"), 50),
-                    "title":                    _s(a.get("title"), 200),
-                    "text_original":            _s(a.get("text_original"), 500),
-                    "penalties_summary":        _s(a.get("penalties_summary"), 300),
-                    "legal_conditions_summary": _s(a.get("legal_conditions_summary"), 300),
-                    "keywords":                 _s(a.get("keywords"), 200),
+                    "id":                       _s(a.get("id")),
+                    "law_name":                 _s(a.get("law_name")),
+                    "law_domain":               _s(a.get("law_domain")),
+                    "article_number":           _s(a.get("article_number")),
+                    "title":                    _s(a.get("title")),
+                    "text_original":            _s(a.get("text_original")),
+                    "penalties_summary":        _s(a.get("penalties_summary")),
+                    "legal_conditions_summary": _s(a.get("legal_conditions_summary")),
+                    "keywords":                 _s(a.get("keywords")),
                 }
                 for a in batch
             ]
@@ -73,7 +73,7 @@ def build_vector_index(force: bool = False):
             success += len(batch)
 
         except Exception as e:
-            print(f"\n⚠️  Batch {i}–{i+BATCH_SIZE} failed: {e}")
+            print(f"\nWARNING️  Batch {i}–{i+BATCH_SIZE} failed: {e}")
             # Retry one by one to skip only the bad article
             for j, a in enumerate(batch):
                 try:
@@ -82,22 +82,22 @@ def build_vector_index(force: bool = False):
                         ids=[aid],
                         embeddings=[embed_article(a)],
                         metadatas=[{
-                            "id":                       _s(a.get("id"), 100),
-                            "law_name":                 _s(a.get("law_name"), 200),
-                            "law_domain":               _s(a.get("law_domain"), 100),
-                            "article_number":           _s(a.get("article_number"), 50),
-                            "title":                    _s(a.get("title"), 200),
-                            "text_original":            _s(a.get("text_original"), 500),
-                            "penalties_summary":        _s(a.get("penalties_summary"), 300),
-                            "legal_conditions_summary": _s(a.get("legal_conditions_summary"), 300),
-                            "keywords":                 _s(a.get("keywords"), 200),
+                            "id":                       _s(a.get("id")),
+                            "law_name":                 _s(a.get("law_name")),
+                            "law_domain":               _s(a.get("law_domain")),
+                            "article_number":           _s(a.get("article_number")),
+                            "title":                    _s(a.get("title")),
+                            "text_original":            _s(a.get("text_original")),
+                            "penalties_summary":        _s(a.get("penalties_summary")),
+                            "legal_conditions_summary": _s(a.get("legal_conditions_summary")),
+                            "keywords":                 _s(a.get("keywords")),
                         }]
                     )
                     success += 1
                 except Exception as e2:
-                    print(f"   ✗ Skipped {a.get('id', '?')}: {e2}")
+                    print(f"   [fail] Skipped {a.get('id', '?')}: {e2}")
 
-    print(f"\n[BGE-Indexer] ✓ Indexed {success}/{len(articles)} articles → {CHROMA_DIR}")
+    print(f"\n[BGE-Indexer] [ok] Indexed {success}/{len(articles)} articles -> {CHROMA_DIR}")
     return collection
 
 

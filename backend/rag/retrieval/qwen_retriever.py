@@ -46,15 +46,14 @@ _chroma_collection  = None
 
 
 def _get_model() -> SentenceTransformer:
-    """Load the embedding model once and cache it."""
+    """Load the embedding model once and cache it on CPU."""
     global _embedding_model
     if _embedding_model is None:
-        device = "cuda" if torch.cuda.is_available() else "cpu"
-        print(f"[INFO] Loading embedding model '{MODEL_NAME}' on {device}…")
+        print(f"[INFO] Loading embedding model '{MODEL_NAME}' on CPU…")
         _embedding_model = SentenceTransformer(
             MODEL_NAME,
             trust_remote_code=True,
-            device=device,
+            device="cpu",
         )
     return _embedding_model
 

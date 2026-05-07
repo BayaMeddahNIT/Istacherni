@@ -32,7 +32,7 @@ def tokenize_arabic(text: str) -> list[str]:
     """
     Lightweight Arabic tokeniser for BM25:
     1. Strip diacritics (tashkeel) and tatweel
-    2. Normalise common letter variants  (أ إ آ → ا, ة → ه, ى → ي)
+    2. Normalise common letter variants  (أ إ آ -> ا, ة -> ه, ى -> ي)
     3. Split on whitespace / punctuation
     4. Discard tokens shorter than 2 characters
     """
@@ -53,16 +53,21 @@ def tokenize_arabic(text: str) -> list[str]:
 def build_document_text(article: dict) -> str:
     """
     Combine several article fields into a rich BM25 document string.
-    Keywords are repeated 2× to boost their importance.
+    Keywords are repeated 2x to boost their importance.
     """
+    law_name = article.get("law_name", "")
+    art_num  = article.get("article_number", "")
+    header = f"[{law_name} - المادة {art_num}]" if law_name and art_num else ""
+    
     parts = [
+        header,
         article.get("title", ""),
         article.get("text_original", ""),
         article.get("summary", ""),
         article.get("legal_conditions_summary", ""),
         article.get("penalties_summary", ""),
         " ".join(article.get("keywords", [])),   # first pass
-        " ".join(article.get("keywords", [])),   # second pass (× 2 weight)
+        " ".join(article.get("keywords", [])),   # second pass (x 2 weight)
     ]
     return " ".join(p for p in parts if p)
 
@@ -80,13 +85,13 @@ def build_index(force: bool = False) -> tuple:
     INDEX_DIR.mkdir(parents=True, exist_ok=True)
 
     if not force and BM25_FILE.exists() and CORPUS_FILE.exists():
-        print("[BM25-Indexer] Index already exists. Loading from disk…")
+        print("[BM25-Indexer] Index already exists. Loading from disk...")
         return _load_index()
 
-    print("[BM25-Indexer] Loading articles…")
+    print("[BM25-Indexer] Loading articles...")
     articles = load_all_articles()
 
-    print("[BM25-Indexer] Tokenising corpus…")
+    print("[BM25-Indexer] Tokenising corpus...")
     corpus_texts = [build_document_text(a) for a in articles]
     tokenized = [tokenize_arabic(t) for t in corpus_texts]
 
@@ -94,7 +99,7 @@ def build_index(force: bool = False) -> tuple:
     valid = [(tok, art) for tok, art in zip(tokenized, articles) if tok]
     tokenized_valid, articles_valid = zip(*valid) if valid else ([], [])
 
-    print(f"[BM25-Indexer] Building BM25Okapi over {len(articles_valid)} docs…")
+    print(f"[BM25-Indexer] Building BM25Okapi over {len(articles_valid)} docs...")
     bm25 = BM25Okapi(list(tokenized_valid))
 
     # Persist
@@ -103,8 +108,8 @@ def build_index(force: bool = False) -> tuple:
     with open(CORPUS_FILE, "wb") as f:
         pickle.dump(list(articles_valid), f)
 
-    print(f"[BM25-Indexer] ✓ Index saved → {BM25_FILE}")
-    print(f"[BM25-Indexer] ✓ Corpus saved → {CORPUS_FILE}\n")
+    print(f"[BM25-Indexer] [ok] Index saved -> {BM25_FILE}")
+    print(f"[BM25-Indexer] [ok] Corpus saved -> {CORPUS_FILE}\n")
     return bm25, list(articles_valid)
 
 

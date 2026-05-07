@@ -1,0 +1,52 @@
+Searching for unknown articles in: dataset\raw
+
+----------------------------------------------------------------------------------------------------
+File Path                                          | Article ID/No        | Title/Snippet
+----------------------------------------------------------------------------------------------------
+Civil-law\test.json                                | Index 0              | No content
+Civil-law\test2.json                               | civil_contract_cond_59 | ÏºÏ¿Ï▒Ïº┘à Ïº┘äÏ╣┘éÏ» Ï¿Ï¬Ï¿ÏºÏ»┘ä Ïº┘äÏ¬Ï╣Ï¿┘èÏ▒ Ï╣┘å Ïº┘äÏºÏ▒ÏºÏ»Ï¬┘è┘å
+Civil-law\test2.json                               | civil_contract_cond_60 | ÏÀÏ▒┘é Ïº┘äÏ¬Ï╣Ï¿┘èÏ▒ Ï╣┘å Ïº┘äÏºÏ▒ÏºÏ»Ï®
+Civil-law\test2.json                               | civil_contract_cond_61 | Ï▓┘à┘å ┘å┘üÏºÏ░ Ïº┘äÏ¬Ï╣Ï¿┘èÏ▒ Ï╣┘å Ïº┘äÏºÏ▒ÏºÏ»Ï®
+Civil-law\test2.json                               | civil_contract_cond_62 | ÏºÏ½Ï▒ ┘ê┘üÏºÏ® Ïº┘ê ┘ü┘éÏ» Ïº┘ç┘ä┘èÏ® Ïº┘ä┘àÏ╣Ï¿Ï▒ ┘éÏ¿┘ä ┘å┘üÏºÏ░ Ïº┘äÏ¬Ï╣Ï¿┘èÏ▒
+Civil-law\test2.json                               | civil_contract_cond_63 | Ïº┘äÏºÏ¼┘ä Ïº┘ä┘àÏ¡Ï»Ï» ┘ä┘ä┘éÏ¿┘ê┘ä ┘êÏº┘äÏ¬Ï▓Ïº┘à Ïº┘ä┘à┘êÏ¼Ï¿
+Civil-law\test2.json                               | civil_contract_cond_64 | Ïº┘äÏº┘èÏ¼ÏºÏ¿ ┘ü┘è ┘àÏ¼┘äÏ│ Ïº┘äÏ╣┘éÏ» ┘êÏ¡Ïº┘äÏ® Ïº┘äÏºÏ¬ÏÁÏº┘ä Ïº┘ä┘ü┘êÏ▒┘è
+Civil-law\test2.json                               | civil_contract_cond_65 | Ïº┘äÏºÏ¬┘üÏº┘é Ï╣┘ä┘ë Ïº┘ä┘àÏ│ÏºÏª┘ä Ïº┘äÏ¼┘ê┘çÏ▒┘èÏ® ┘êÏ¬ÏºÏ¼┘è┘ä Ïº┘äÏ¬┘üÏÁ┘è┘ä┘èÏ®
+Civil-law\test2.json                               | civil_contract_cond_66 | Ïº┘ä┘éÏ¿┘ê┘ä Ïº┘ä┘àÏ╣Ï»┘ä ┘èÏ╣Ï» Ïº┘èÏ¼ÏºÏ¿Ïº Ï¼Ï»┘èÏ»Ïº
+Civil-law\test2.json                               | civil_contract_cond_67 | ┘à┘âÏº┘å ┘êÏ▓┘àÏº┘å Ïº┘åÏ╣┘éÏºÏ» Ïº┘äÏ╣┘éÏ» Ï¿┘è┘å Ïº┘äÏ║ÏºÏªÏ¿┘è┘å
+Civil-law\test2.json                               | civil_contract_cond_68 | Ïº┘åÏ╣┘éÏºÏ» Ïº┘äÏ╣┘éÏ» Ï»┘ê┘å Ï¬ÏÁÏ▒┘èÏ¡ Ï¿Ïº┘ä┘éÏ¿┘ê┘ä ┘êÏº┘äÏ│┘â┘êÏ¬ ┘â┘éÏ¿┘ê┘ä
+Civil-law\test2.json                               | civil_contract_cond_69 | Ïº┘åÏ╣┘éÏºÏ» Ïº┘äÏ╣┘éÏ» ┘ü┘è Ïº┘ä┘àÏ▓Ïº┘èÏ»ÏºÏ¬ ┘êÏ│┘é┘êÏÀ Ïº┘ä┘àÏ▓ÏºÏ»
+Civil-law\test2.json                               | civil_contract_cond_70 | Ïº┘ä┘éÏ¿┘ê┘ä ┘ü┘è Ï╣┘éÏ» Ïº┘äÏºÏ░Ï╣Ïº┘å
+Civil-law\test2.json                               | civil_contract_cond_71 | Ïº┘ä┘êÏ╣Ï» Ï¿Ïº┘äÏ¬Ï╣Ïº┘éÏ» ┘êÏ┤Ï▒┘êÏÀ ÏºÏ½Ï▒┘ç ┘êÏº┘äÏ┤┘â┘ä
+Civil-law\test2.json                               | civil_contract_cond_72 | Ïº┘äÏ¡┘â┘à ┘è┘é┘ê┘à ┘à┘éÏº┘à Ïº┘äÏ╣┘éÏ» Ï╣┘åÏ» Ïº┘ä┘å┘â┘ê┘ä
+Civil-law\test2.json                               | civil_contract_cond_72bis | Ïº┘äÏ╣Ï▒Ï¿┘ê┘å ┘êÏ¡┘é Ïº┘äÏ╣Ï»┘ê┘ä ┘êÏºÏ½ÏºÏ▒┘ç
+Civil-law\test2.json                               | civil_contract_cond_73 | ÏºÏ½Ï▒ Ïº┘ä┘å┘èÏºÏ¿Ï® Ï╣┘ä┘ë Ï╣┘è┘êÏ¿ Ïº┘äÏ▒ÏÂÏº ┘êÏº┘äÏ╣┘ä┘à Ï¿Ïº┘äÏ©Ï▒┘ê┘ü
+Civil-law\test2.json                               | civil_contract_cond_74 | ÏºÏÂÏº┘üÏ® ÏºÏ½ÏºÏ▒ Ï╣┘éÏ» Ïº┘ä┘åÏºÏªÏ¿ Ïº┘ä┘ë Ïº┘äÏºÏÁ┘è┘ä
+Civil-law\test2.json                               | civil_contract_cond_75 | ÏºÏ½Ï▒ Ï╣Ï»┘à ÏºÏ╣┘äÏº┘å ÏÁ┘üÏ® Ïº┘ä┘å┘èÏºÏ¿Ï® ┘ê┘éÏ¬ Ïº┘äÏ¬Ï╣Ïº┘éÏ»
+Civil-law\test2.json                               | civil_contract_cond_76 | ÏºÏÂÏº┘üÏ® ÏºÏ½ÏºÏ▒ Ïº┘äÏ╣┘éÏ» ┘ä┘äÏºÏÁ┘è┘ä Ï╣┘åÏ» Ï¼┘ç┘ä Ïº┘å┘éÏÂÏºÏí Ïº┘ä┘å┘èÏºÏ¿Ï®
+Civil-law\test2.json                               | civil_contract_cond_77 | ┘à┘åÏ╣ Ï¬Ï╣Ïº┘éÏ» Ïº┘äÏ┤Ï«ÏÁ ┘àÏ╣ ┘å┘üÏ│┘ç Ï¿ÏºÏ│┘à ┘à┘å ┘è┘å┘êÏ¿ Ï╣┘å┘ç
+Civil-law\test2.json                               | civil_contract_cond_78 | Ïº┘äÏºÏÁ┘ä ┘ü┘è Ïº┘äÏºÏ┤Ï«ÏºÏÁ Ïº┘äÏº┘ç┘ä┘èÏ® ┘ä┘äÏ¬Ï╣Ïº┘éÏ»
+Civil-law\test2.json                               | civil_contract_cond_79 | ┘é┘êÏºÏ╣Ï» Ïº┘ç┘ä┘èÏ® Ïº┘ä┘éÏÁÏ▒ ┘êÏº┘ä┘àÏ¡Ï¼┘êÏ▒ Ï╣┘ä┘è┘ç┘à (ÏºÏ¡Ïº┘äÏ® ┘ä┘éÏº┘å┘ê┘å Ïº┘äÏºÏ│Ï▒Ï®)
+Civil-law\test2.json                               | civil_contract_cond_80 | Ï¬Ï╣┘è┘è┘å ┘àÏ│ÏºÏ╣Ï» ┘éÏÂÏºÏª┘è ┘ê┘éÏºÏ¿┘ä┘èÏ® Ïº┘äÏºÏ¿ÏÀÏº┘ä Ï╣┘åÏ» Ï║┘èÏºÏ¿┘ç
+Civil-law\test2.json                               | civil_contract_cond_81 | ÏºÏ¿ÏÀÏº┘ä Ïº┘äÏ╣┘éÏ» ┘ä┘äÏ║┘äÏÀ Ïº┘äÏ¼┘ê┘çÏ▒┘è
+Civil-law\test2.json                               | civil_contract_cond_82 | ┘àÏ¬┘ë ┘è┘â┘ê┘å Ïº┘äÏ║┘äÏÀ Ï¼┘ê┘çÏ▒┘èÏº
+Civil-law\test2.json                               | civil_contract_cond_83 | ┘éÏºÏ¿┘ä┘èÏ® Ïº┘äÏºÏ¿ÏÀÏº┘ä ┘ä┘äÏ║┘äÏÀ ┘ü┘è Ïº┘ä┘éÏº┘å┘ê┘å
+Civil-law\test2.json                               | civil_contract_cond_84 | Ï║┘äÏÀ Ïº┘äÏ¡Ï│ÏºÏ¿ ┘êÏ║┘äÏÀÏºÏ¬ Ïº┘ä┘é┘ä┘à ┘äÏº Ï¬ÏñÏ½Ï▒ ┘àÏ╣ ┘êÏ¼┘êÏ¿ Ïº┘äÏ¬ÏÁÏ¡┘èÏ¡
+Civil-law\test2.json                               | civil_contract_cond_85 | ┘é┘èÏ» Ï¡Ï│┘å Ïº┘ä┘å┘èÏ® Ï╣┘ä┘ë Ïº┘äÏ¬┘àÏ│┘â Ï¿Ïº┘äÏ║┘äÏÀ
+Civil-law\test2.json                               | civil_contract_cond_86 | ÏºÏ¿ÏÀÏº┘ä Ïº┘äÏ╣┘éÏ» ┘ä┘äÏ¬Ï»┘ä┘èÏ│ ┘êÏº┘äÏ│┘â┘êÏ¬ Ïº┘äÏ╣┘àÏ»┘è
+Civil-law\test2.json                               | civil_contract_cond_87 | Ïº┘äÏ¬Ï»┘ä┘èÏ│ Ïº┘äÏÁÏºÏ»Ï▒ ┘à┘å Ïº┘äÏ║┘èÏ▒ ┘êÏºÏ½Ï▒ Ï╣┘ä┘à Ïº┘ä┘àÏ¬Ï╣Ïº┘éÏ» Ïº┘äÏºÏ«Ï▒
+Civil-law\test2.json                               | civil_contract_cond_88 | ÏºÏ¿ÏÀÏº┘ä Ïº┘äÏ╣┘éÏ» ┘ä┘äÏº┘âÏ▒Ïº┘ç ┘ê┘àÏ╣Ïº┘è┘èÏ▒ Ï¬┘éÏ»┘èÏ▒┘ç
+Civil-law\test2.json                               | civil_contract_cond_89 | Ïº┘äÏº┘âÏ▒Ïº┘ç Ïº┘äÏÁÏºÏ»Ï▒ ┘à┘å Ï║┘èÏ▒ Ïº┘ä┘àÏ¬Ï╣Ïº┘éÏ»┘è┘å ┘êÏºÏ½Ï▒ Ï╣┘ä┘à Ïº┘äÏÀÏ▒┘ü Ïº┘äÏºÏ«Ï▒
+Civil-law\test2.json                               | civil_contract_cond_90 | Ïº┘äÏ║Ï¿┘å Ïº┘ä┘åÏºÏ¬Ï¼ Ï╣┘å ÏºÏ│Ï¬Ï║┘äÏº┘ä ÏÀ┘èÏ┤ Ïº┘ê ┘ç┘ê┘ë: ÏºÏ¿ÏÀÏº┘ä Ïº┘ê Ïº┘å┘éÏºÏÁ Ïº┘äÏº┘äÏ¬Ï▓Ïº┘àÏºÏ¬
+Civil-law\test2.json                               | civil_contract_cond_91 | Ï╣Ï»┘à Ïº┘äÏºÏ«┘äÏº┘ä Ï¿ÏºÏ¡┘âÏº┘à Ïº┘äÏ║Ï¿┘å Ïº┘äÏ«ÏºÏÁÏ®
+Civil-law\test2.json                               | civil_contract_object_92 | ┘àÏ¡┘ä Ïº┘äÏº┘äÏ¬Ï▓Ïº┘à: Ïº┘äÏ┤┘èÏí Ïº┘ä┘àÏ│Ï¬┘éÏ¿┘ä ┘êÏ¿ÏÀ┘äÏº┘å Ïº┘äÏ¬Ï╣Ïº┘à┘ä ┘ü┘è Ï¬Ï▒┘âÏ® Ï¡┘è
+Civil-law\test2.json                               | civil_contract_object_93 | ÏºÏ│Ï¬Ï¡Ïº┘äÏ® Ïº┘ä┘àÏ¡┘ä Ïº┘ê ┘àÏ«Ïº┘ä┘üÏ¬┘ç ┘ä┘ä┘åÏ©Ïº┘à Ïº┘äÏ╣Ïº┘à ┘êÏº┘äÏºÏ»ÏºÏ¿: Ï¿ÏÀ┘äÏº┘å ┘àÏÀ┘ä┘é
+Civil-law\test2.json                               | civil_contract_object_94 | ┘êÏ¼┘êÏ¿ Ï¬Ï╣┘è┘è┘å ┘àÏ¡┘ä Ïº┘äÏº┘äÏ¬Ï▓Ïº┘à ┘ê┘àÏ╣┘èÏºÏ▒ Ïº┘äÏ¼┘êÏ»Ï® Ï╣┘åÏ» Ïº┘äÏ│┘â┘êÏ¬
+Civil-law\test2.json                               | civil_contract_object_95 | ┘àÏ¡┘ä Ïº┘äÏº┘äÏ¬Ï▓Ïº┘à ÏºÏ░Ïº ┘âÏº┘å ┘å┘é┘êÏ»Ïº (Ïº┘äÏºÏ│┘à┘èÏ® ┘êÏ╣Ï»┘à Ï¬ÏºÏ½┘èÏ▒ Ï¬Ï║┘èÏ▒ Ïº┘ä┘é┘è┘àÏ®)
+Civil-law\test2.json                               | civil_contract_cause_96 | ┘à┘äÏ║ÏºÏ®
+Civil-law\test2.json                               | civil_contract_cause_97 | Ï¿ÏÀ┘äÏº┘å Ïº┘äÏ╣┘éÏ» ┘äÏ╣Ï»┘à ┘àÏ┤Ï▒┘êÏ╣┘èÏ® Ïº┘äÏ│Ï¿Ï¿
+Civil-law\test2.json                               | civil_contract_cause_98 | Ïº┘üÏ¬Ï▒ÏºÏÂ ┘àÏ┤Ï▒┘êÏ╣┘èÏ® Ïº┘äÏ│Ï¿Ï¿ ┘êÏºÏ½Ï¿ÏºÏ¬ Ï«┘äÏº┘ü┘ç ┘êÏÁ┘êÏ▒┘èÏ® Ïº┘äÏ│Ï¿Ï¿
+Labor-law\labor.json                               | Index 27             | No content
+Labor-law\labor.json                               | Index 28             | No content
+----------------------------------------------------------------------------------------------------
+Total Unknown Articles Found: 44
+----------------------------------------------------------------------------------------------------

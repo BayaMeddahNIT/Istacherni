@@ -15,16 +15,13 @@ Usage:
   cd <project root>
   pip install sentence-transformers chromadb
   python backend/rag/embedding/embed_articles_local.py
-
-NOTE: On first run the model weights (~120 MB) are downloaded and cached
-      automatically by HuggingFace. Subsequent runs use the local cache.
-
-⚠  This pipeline writes to a SEPARATE collection directory
-   (backend/vectorstore_local/) so it never touches the Gemini-based store.
 """
 
 import sys
+import os
 from pathlib import Path
+
+print("Initializing local embedding pipeline... Please wait while libraries load.", flush=True)
 
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(PROJECT_ROOT))
@@ -45,7 +42,7 @@ VECTORSTORE_DIR      = PROJECT_ROOT / "backend" / "vectorstore_local"
 BATCH_SIZE           = 64   # Local inference is fast; large batches are fine
 
 # ── Setup ─────────────────────────────────────────────────────────────────────
-print(f"[INFO] Loading embedding model: {EMBEDDING_MODEL_NAME}")
+print(f"[INFO] Loading embedding model: {EMBEDDING_MODEL_NAME}", flush=True)
 _embedding_model = SentenceTransformer(EMBEDDING_MODEL_NAME)
 
 VECTORSTORE_DIR.mkdir(parents=True, exist_ok=True)
@@ -65,7 +62,7 @@ def embed_texts(texts: list) -> list:
         texts,
         batch_size=BATCH_SIZE,
         show_progress_bar=False,
-        normalize_embeddings=True,  # unit-normalise for cosine similarity
+        normalize_embeddings=True,
         convert_to_numpy=True,
     )
     return embeddings.tolist()
@@ -77,52 +74,59 @@ def run_ingestion():
     print("  Algerian Law RAG — Ingestion Pipeline (Local Embeddings)")
     print("=" * 60)
 
-    # 1. Load
-    print("\n[1/3] Loading articles from dataset...")
-    articles = load_all_articles()
+    try:
+        # 1. Load
+        print("\n[1/3] Loading articles from dataset...")
+        articles = load_all_articles()
 
-    # 2. Chunk
-    print("\n[2/3] Chunking articles...")
-    chunks = chunk_articles(articles)
+        # 2. Chunk
+        print("\n[2/3] Chunking articles...")
+        chunks = chunk_articles(articles)
 
-    # Resume-safe: skip IDs already present in the collection
-    existing_ids = set(collection.get(include=[])["ids"])
-    new_chunks   = [c for c in chunks if c["id"] not in existing_ids]
+        # Resume-safe: skip IDs already present in the collection
+        print("\n[INFO] Checking existing documents in ChromaDB...")
+        existing_ids = set(collection.get(include=[])["ids"])
+        new_chunks   = [c for c in chunks if c["id"] not in existing_ids]
 
-    print(f"\n[INFO] {len(existing_ids)} articles already in vector store.")
-    print(f"[INFO] {len(new_chunks)} new articles to index.")
+        print(f"[INFO] {len(existing_ids)} articles already in vector store.")
+        print(f"[INFO] {len(new_chunks)} new articles to index.")
 
-    if not new_chunks:
-        print("\n✓ Vector store is already up-to-date. Nothing to do.")
-        return
+        if not new_chunks:
+            print("\n[SUCCESS] Vector store is already up-to-date. Nothing to do.")
+            return
 
-    # 3. Embed + upsert in batches
-    print(f"\n[3/3] Embedding and upserting in batches of {BATCH_SIZE}...")
-    total   = len(new_chunks)
-    indexed = 0
+        # 3. Embed + upsert in batches
+        print(f"\n[3/3] Embedding and upserting {len(new_chunks)} chunks in batches of {BATCH_SIZE}...")
+        total   = len(new_chunks)
+        indexed = 0
 
-    for i in range(0, total, BATCH_SIZE):
-        batch     = new_chunks[i : i + BATCH_SIZE]
-        texts     = [c["text"]     for c in batch]
-        ids       = [c["id"]       for c in batch]
-        metadatas = [c["metadata"] for c in batch]
+        for i in range(0, total, BATCH_SIZE):
+            batch     = new_chunks[i : i + BATCH_SIZE]
+            texts     = [c["text"]     for c in batch]
+            ids       = [c["id"]       for c in batch]
+            metadatas = [c["metadata"] for c in batch]
 
-        embeddings = embed_texts(texts)
+            embeddings = embed_texts(texts)
 
-        collection.upsert(
-            ids        = ids,
-            embeddings = embeddings,
-            documents  = texts,
-            metadatas  = metadatas,
-        )
+            collection.upsert(
+                ids        = ids,
+                embeddings = embeddings,
+                documents  = texts,
+                metadatas  = metadatas,
+            )
 
-        indexed += len(batch)
-        pct      = indexed / total * 100
-        print(f"  → Indexed {indexed}/{total} ({pct:.1f}%)")
+            indexed += len(batch)
+            pct      = indexed / total * 100
+            print(f"  -> Indexed {indexed}/{total} ({pct:.1f}%)", flush=True)
 
-    print(f"\n\n✓ Ingestion complete! {indexed} articles indexed.")
-    print(f"  Collection '{COLLECTION_NAME}' now has {collection.count()} total documents.")
-    print(f"  Vector store: {VECTORSTORE_DIR}")
+        print(f"\n\n[SUCCESS] Ingestion complete! {indexed} articles indexed.")
+        print(f"  Collection '{COLLECTION_NAME}' now has {collection.count()} total documents.")
+        print(f"  Vector store: {VECTORSTORE_DIR}")
+
+    except Exception as e:
+        import traceback
+        print(f"\n[CRITICAL ERROR] Pipeline failed: {e}")
+        traceback.print_exc()
 
 
 if __name__ == "__main__":

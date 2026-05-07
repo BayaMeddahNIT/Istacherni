@@ -35,11 +35,8 @@ DEFAULT_TOP_K   = 5
 MAX_SEQ_LEN     = 512
 
 # ── Device selection ───────────────────────────────────────────────────────────
-DEVICE = (
-    "cuda"  if torch.cuda.is_available()  else
-    "mps"   if torch.backends.mps.is_available() else
-    "cpu"
-)
+# Forced to "cpu" to save VRAM for Gemma 2 9B
+DEVICE = "cpu"
 
 # ── Lazy singletons ────────────────────────────────────────────────────────────
 _tokenizer        = None
@@ -155,7 +152,7 @@ def retrieve(query: str, top_k: int = DEFAULT_TOP_K) -> List[Dict[str, Any]]:
 if __name__ == "__main__":
     test_query = "ما هي عقوبة السرقة في القانون الجزائري؟"
     print(f"Query : {test_query}\n")
-    results = retrieve(test_query, top_k=3)
+    results = retrieve(test_query, top_k=5)
     for i, r in enumerate(results, 1):
         print(f"Result {i}  [score={r['score']}]")
         print(f"  ID     : {r['id']}")

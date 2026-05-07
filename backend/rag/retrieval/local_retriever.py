@@ -21,6 +21,7 @@ from typing import List, Dict, Any
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(PROJECT_ROOT))
 
+import torch
 import chromadb
 from sentence_transformers import SentenceTransformer
 
@@ -38,10 +39,11 @@ _chroma_collection = None
 
 
 def _get_embedding_model() -> SentenceTransformer:
-    """Load the local sentence-transformers model (lazy singleton)."""
+    """Load the local sentence-transformers model on CPU to save GPU VRAM."""
     global _embedding_model
     if _embedding_model is None:
-        _embedding_model = SentenceTransformer(EMBEDDING_MODEL_NAME)
+        print("[INFO] Loading MiniLM embedder on CPU...")
+        _embedding_model = SentenceTransformer(EMBEDDING_MODEL_NAME, device="cpu")
     return _embedding_model
 
 

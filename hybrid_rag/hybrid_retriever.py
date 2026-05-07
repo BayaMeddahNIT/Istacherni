@@ -10,6 +10,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from bm25_rag.bm25_retriever import bm25_retrieve
 from dense_rag.bge_retriever import dense_retrieve
+from hybrid_rag.reranker import rerank_candidates
 
 
 def reciprocal_rank_fusion(
@@ -54,16 +55,21 @@ def reciprocal_rank_fusion(
 def hybrid_retrieve(query: str, top_k: int = 5) -> list[dict]:
     """
     Main retrieval function for production use.
-    Fetches more candidates from each method, then fuses and returns top_k.
+    Fetches 20 candidates from each method, fuses them, and uses a cross-encoder to rerank.
     """
-    # Fetch more candidates than needed before fusion
-    fetch_k = top_k * 3
+    # Fetch top 50 candidates from both sparse (BM25) and dense (Embedding) models
+    fetch_k = 50
 
     bm25_results  = bm25_retrieve(query, top_k=fetch_k)
     dense_results = dense_retrieve(query, top_k=fetch_k)
     
+    # Optional: Initial fusion to remove duplicates and combine scores
     fused = reciprocal_rank_fusion(bm25_results, dense_results)
-    return fused[:top_k]
+    
+    # Apply Cross-Encoder Reranker to the top 35 fused results
+    reranked = rerank_candidates(query, fused[:35], top_k=top_k)
+    
+    return reranked
 
 
 if __name__ == "__main__":
@@ -81,8 +87,8 @@ if __name__ == "__main__":
     for q in test_queries:
         print(f"\n{'='*60}")
         print(f"Query: {q}")
-        results = hybrid_retrieve(q, top_k=3)
+        results = hybrid_retrieve(q, top_k=5)
         for i, r in enumerate(results, 1):
             print(f"  [{i}] {r['law_name']} — المادة {r['article_number']}")
-            print(f"       RRF Score : {r['rrf_score']}")
-            print(f"       Title     : {r.get('title', '')[:80]}")
+            print(f"       Rerank Score: {r.get('rerank_score', 'N/A')} (RRF: {r.get('rrf_score', 'N/A')})")
+            print(f"       Title       : {r.get('title', '')[:80]}")

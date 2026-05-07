@@ -28,6 +28,8 @@ import os
 import sys
 from pathlib import Path
 
+print("Initializing Qwen embedding pipeline... Please wait while heavy libraries load.", flush=True)
+
 # ── Project root on sys.path ───────────────────────────────────────────────────
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(PROJECT_ROOT))

@@ -130,13 +130,13 @@ if __name__ == "__main__":
 
     #from backend.rag.retrieval.retriever import retrieve
 
-    #from backend.rag.retrieval.bge_retriever import retrieve
+    from backend.rag.retrieval.bge_retriever import retrieve
 
     #from backend.rag.retrieval.camelbert_retriever import retrieve
 
     #from backend.rag.retrieval.qwen_retriever import retrieve      # Local Qwen3
 
-    from backend.rag.retrieval.local_retriever import retrieve
+    #from backend.rag.retrieval.local_retriever import retrieve
 
     question = "هل الاحتيال الإلكتروني (online scam) جريمة؟"
     print(f"Question: {question}\n")
