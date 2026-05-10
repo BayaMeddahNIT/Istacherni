@@ -6,23 +6,31 @@ Takes candidates from BM25 and Dense retrievers and re-scores them for higher ac
 
 import os
 import torch
+from pathlib import Path
 from sentence_transformers import CrossEncoder
 
-# Changed to a much smaller multilingual model because bge-reranker-v2-m3 (2.2GB)
-# causes Out Of Memory crashes on 8GB RAM systems when running alongside Gemma2.
-RERANKER_MODEL_NAME = os.getenv("RERANKER_MODEL", "cross-encoder/mmarco-mMiniLMv2-L12-H384-v1")
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+FINETUNED_RERANKER_PATH = PROJECT_ROOT / "models" / "finetuned-cross-encoder"
+
+# Use local finetuned model if it exists, otherwise fallback
+if FINETUNED_RERANKER_PATH.exists():
+    RERANKER_MODEL_NAME = str(FINETUNED_RERANKER_PATH)
+else:
+    RERANKER_MODEL_NAME = os.getenv("RERANKER_MODEL", "BAAI/bge-reranker-v2-m3")
 
 _reranker = None
 
 def _get_reranker():
     global _reranker
     if _reranker is None:
-        print(f"Loading Reranker Model on CPU: {RERANKER_MODEL_NAME} ...")
-        # Explicitly use CPU to save GPU VRAM for Gemma 2 9B
+        # Force CPU so Gemma 2 can use the 6GB GPU
+        device = "cpu"
+        print(f"Loading Reranker Model on {device}: {RERANKER_MODEL_NAME} ...")
+        # Load the fine-tuned CrossEncoder model
         _reranker = CrossEncoder(
             RERANKER_MODEL_NAME, 
             max_length=512,
-            device="cpu"
+            device=device
         )
     return _reranker
 
@@ -49,8 +57,8 @@ def rerank_candidates(query: str, candidates: list[dict], top_k: int = 5) -> lis
             
         pairs.append([query, text])
 
-    # Predict the relevance scores
-    scores = reranker.predict(pairs)
+    # Predict the relevance scores (Added batch_size=4 to prevent VRAM swapping)
+    scores = reranker.predict(pairs, batch_size=4)
 
     # Attach the new scores to the candidates
     for i, candidate in enumerate(candidates):

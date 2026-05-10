@@ -1,0 +1,518 @@
+[
+  {
+    "query": "هل النصب في التجارة يُعاقب عليه القانون؟",
+    "golden_rank": 2,
+    "best_delta": 0.749209,
+    "window": "ranks 1–50"
+  },
+  {
+    "query": "ما هي عقوبة إصدار شيك بدون رصيد؟",
+    "golden_rank": 1,
+    "best_delta": 11.95226,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "هل التزوير في الفواتير يعاقب عليه؟",
+    "golden_rank": 1,
+    "best_delta": 2.024575,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "ما عقوبة سرقة معدات من محل تجاري؟",
+    "golden_rank": 1,
+    "best_delta": 1.840562,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "ما هي عقوبة خيانة الأمانة في التجارة؟",
+    "golden_rank": 1,
+    "best_delta": 7.54367,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "هل نشر معلومات كاذبة عن شركة جريمة؟",
+    "golden_rank": 3,
+    "best_delta": 0.358563,
+    "window": "ranks 2–50"
+  },
+  {
+    "query": "ما عقوبة التهديد في إطار العمل؟",
+    "golden_rank": 1,
+    "best_delta": 1.355742,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "هل الاحتيال الإلكتروني (online scam) جريمة؟",
+    "golden_rank": 1,
+    "best_delta": 5.50908,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "ما هي عقوبة انتحال صفة شركة؟",
+    "golden_rank": 1,
+    "best_delta": 9.652081,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "هل استغلال أموال الشركة بشكل غير قانوني جريمة؟",
+    "golden_rank": 1,
+    "best_delta": 4.245249,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "ما الفرق بين النصب وخيانة الأمانة؟",
+    "golden_rank": 1,
+    "best_delta": 1.57775,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "ما هي الجرائم المرتبطة بالإفلاس؟",
+    "golden_rank": 1,
+    "best_delta": 1.509337,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "ما عقوبة تزوير العقود التجارية؟",
+    "golden_rank": 1,
+    "best_delta": 3.690129,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "ما عقوبة بيع منتجات خطيرة أو فاسدة؟",
+    "golden_rank": 1,
+    "best_delta": 2.107245,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "هل العقد الشفهي ملزم قانونياً؟",
+    "golden_rank": 2,
+    "best_delta": 0.41919,
+    "window": "ranks 1–50"
+  },
+  {
+    "query": "كيف يمكن فسخ عقد بين طرفين؟",
+    "golden_rank": 1,
+    "best_delta": 3.895115,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "ماذا يحدث إذا لم يلتزم أحد بالعقد؟",
+    "golden_rank": 1,
+    "best_delta": 4.865183,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "هل يمكن المطالبة بالتعويض عن الضرر؟",
+    "golden_rank": 1,
+    "best_delta": 2.137855,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "ما هي شروط صحة العقد؟",
+    "golden_rank": 2,
+    "best_delta": 1.686696,
+    "window": "ranks 1–50"
+  },
+  {
+    "query": "هل يمكن تعديل العقد بعد توقيعه؟",
+    "golden_rank": 1,
+    "best_delta": 1.993469,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "هل يمكن إجبار الطرف الآخر على تنفيذ العقد؟",
+    "golden_rank": 1,
+    "best_delta": 3.923665,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "كيف يتم حساب التعويض؟",
+    "golden_rank": 1,
+    "best_delta": 6.085564,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "هل يمكن إلغاء عقد البيع؟",
+    "golden_rank": 2,
+    "best_delta": 0.769716,
+    "window": "ranks 1–50"
+  },
+  {
+    "query": "ما الفرق بين البطلان والفسخ؟",
+    "golden_rank": 1,
+    "best_delta": 2.942852,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "هل يمكن استرجاع عربون؟",
+    "golden_rank": 1,
+    "best_delta": 1.210625,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "هل العقد بدون توثيق قانوني صحيح؟",
+    "golden_rank": 1,
+    "best_delta": 2.369979,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "ما هي القوة القاهرة في العقود؟",
+    "golden_rank": 1,
+    "best_delta": 1.656245,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "هل يمكن فسخ العقد بسبب الغش؟",
+    "golden_rank": 1,
+    "best_delta": 1.664129,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "كيف أثبت وجود اتفاق؟",
+    "golden_rank": 1,
+    "best_delta": 3.018736,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "ما هي آجال التقادم في الديون؟",
+    "golden_rank": 1,
+    "best_delta": 3.083755,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "ماذا يحدث إذا توفي أحد أطراف العقد؟",
+    "golden_rank": 1,
+    "best_delta": 3.217675,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "ما هي التزامات البائع؟",
+    "golden_rank": 1,
+    "best_delta": 5.621343,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "ما هي التزامات المشتري؟",
+    "golden_rank": 2,
+    "best_delta": 1.851261,
+    "window": "ranks 1–50"
+  },
+  {
+    "query": "كيف أحمي نفسي قانونياً في عقد؟",
+    "golden_rank": 1,
+    "best_delta": 2.277864,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "كيف أقدم طعن ضد قرار إداري؟",
+    "golden_rank": 1,
+    "best_delta": 7.253532,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "لماذا تم رفض طلبي لفتح محل؟",
+    "golden_rank": 1,
+    "best_delta": 3.676839,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "كيف أتحصل على رخصة تجارية؟",
+    "golden_rank": 1,
+    "best_delta": 1.433605,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "هل يمكن الطعن في غرامة إدارية؟",
+    "golden_rank": 3,
+    "best_delta": 0.372824,
+    "window": "ranks 2–50"
+  },
+  {
+    "query": "ما هي الوثائق المطلوبة لفتح شركة؟",
+    "golden_rank": 1,
+    "best_delta": 9.539645,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "هل يمكن مقاضاة إدارة عمومية؟",
+    "golden_rank": 1,
+    "best_delta": 5.519267,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "كم تستغرق الإجراءات الإدارية؟",
+    "golden_rank": 1,
+    "best_delta": 2.380398,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "كيف أستخرج سجل تجاري؟",
+    "golden_rank": 1,
+    "best_delta": 6.744702,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "ما هي شروط ممارسة نشاط تجاري؟",
+    "golden_rank": 1,
+    "best_delta": 8.775473,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "هل يمكن لصاحب العمل عدم دفع راتبي؟",
+    "golden_rank": 1,
+    "best_delta": 2.547075,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "هل يمكن طردي بدون سبب؟",
+    "golden_rank": 1,
+    "best_delta": 5.677748,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "ما هي مدة الإشعار قبل الاستقالة؟",
+    "golden_rank": 1,
+    "best_delta": 3.426259,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "هل العقد الشفهي في العمل مقبول؟",
+    "golden_rank": 1,
+    "best_delta": 3.319869,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "هل يمكن العمل بدون تصريح؟",
+    "golden_rank": 1,
+    "best_delta": 2.293971,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "ما هي ساعات العمل القانونية؟",
+    "golden_rank": 1,
+    "best_delta": 7.035336,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "هل يحق لي عطلة مدفوعة؟",
+    "golden_rank": 1,
+    "best_delta": 1.593812,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "كيف أرفع دعوى ضد صاحب العمل؟",
+    "golden_rank": 2,
+    "best_delta": 1.131732,
+    "window": "ranks 1–50"
+  },
+  {
+    "query": "هل يمكنني ترك العمل فوراً؟",
+    "golden_rank": 1,
+    "best_delta": 2.337267,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "هل يمكن لصاحب العمل تغيير العقد؟",
+    "golden_rank": 1,
+    "best_delta": 1.648268,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "ما هي حقوق المرأة العاملة؟",
+    "golden_rank": 1,
+    "best_delta": 4.104126,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "هل يمكن العمل في أكثر من وظيفة؟",
+    "golden_rank": 1,
+    "best_delta": 3.064341,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "هل يمكن خصم الراتب بدون سبب؟",
+    "golden_rank": 1,
+    "best_delta": 4.495402,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "هل يمكن رفض العمل الإضافي؟",
+    "golden_rank": 3,
+    "best_delta": 0.319306,
+    "window": "ranks 2–50"
+  },
+  {
+    "query": "كيف يتم حساب الأجر؟",
+    "golden_rank": 1,
+    "best_delta": 2.567119,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "هل يمكن فسخ عقد العمل؟",
+    "golden_rank": 1,
+    "best_delta": 2.539146,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "ما هي أنواع عقود العمل؟",
+    "golden_rank": 1,
+    "best_delta": 6.047192,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "هل يمكن رفع شكوى لمفتشية العمل؟",
+    "golden_rank": 2,
+    "best_delta": 0.430117,
+    "window": "ranks 1–50"
+  },
+  {
+    "query": "كيف أفتح شركة في الجزائر؟",
+    "golden_rank": 1,
+    "best_delta": 11.042087,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "ما الفرق بين SARL و SPA؟",
+    "golden_rank": 1,
+    "best_delta": 3.316494,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "ما هي شروط إنشاء شركة؟",
+    "golden_rank": 1,
+    "best_delta": 3.600029,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "كيف أكتب عقد شراكة؟",
+    "golden_rank": 1,
+    "best_delta": 2.295053,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "ماذا يحدث إذا انسحب شريك؟",
+    "golden_rank": 1,
+    "best_delta": 3.562613,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "كيف يتم تقسيم الأرباح؟",
+    "golden_rank": 1,
+    "best_delta": 2.239197,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "هل يمكن بيع حصتي في الشركة؟",
+    "golden_rank": 1,
+    "best_delta": 2.761937,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "ما هي مسؤولية المدير؟",
+    "golden_rank": 1,
+    "best_delta": 7.175857,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "هل يمكن فتح نشاط بدون سجل تجاري؟",
+    "golden_rank": 1,
+    "best_delta": 4.838255,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "ما هي التزامات التاجر؟",
+    "golden_rank": 1,
+    "best_delta": 2.7596,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "كيف يتم تسجيل شركة؟",
+    "golden_rank": 1,
+    "best_delta": 1.62727,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "ما هي الضرائب على الشركات؟",
+    "golden_rank": 1,
+    "best_delta": 3.029384,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "كيف أتعامل مع زبون لم يدفع؟",
+    "golden_rank": 1,
+    "best_delta": 1.703283,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "هل يمكن إغلاق الشركة بسهولة؟",
+    "golden_rank": 1,
+    "best_delta": 3.671862,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "ما الفرق بين التاجر والشركة؟",
+    "golden_rank": 1,
+    "best_delta": 2.407051,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "هل يمكن لشخص أجنبي فتح شركة؟",
+    "golden_rank": 1,
+    "best_delta": 2.253683,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "ما هي شروط التجارة الإلكترونية؟",
+    "golden_rank": 1,
+    "best_delta": 9.833993,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "هل البيع عبر الإنترنت قانوني؟",
+    "golden_rank": 1,
+    "best_delta": 9.575304,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "كيف أحمي علامتي التجارية؟",
+    "golden_rank": 1,
+    "best_delta": 0.799933,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "ما هي المنافسة غير المشروعة؟",
+    "golden_rank": 1,
+    "best_delta": 6.446759,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "ما هي أنواع الشركات في الجزائر؟",
+    "golden_rank": 1,
+    "best_delta": 8.767743,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "كيف يتم حل النزاعات التجارية؟",
+    "golden_rank": 2,
+    "best_delta": 0.406844,
+    "window": "ranks 1–50"
+  },
+  {
+    "query": "هل يمكن تغيير نشاط الشركة؟",
+    "golden_rank": 1,
+    "best_delta": 2.084261,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "ما هي مسؤولية الشركاء؟",
+    "golden_rank": 1,
+    "best_delta": 4.007611,
+    "window": "ranks 10–50"
+  },
+  {
+    "query": "كيف أتعامل مع ديون الشركة؟",
+    "golden_rank": 1,
+    "best_delta": 1.058823,
+    "window": "ranks 10–50"
+  }
+]

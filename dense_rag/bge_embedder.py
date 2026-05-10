@@ -2,43 +2,44 @@
 import sys
 import os
 import json
-import urllib.request
-import urllib.error
 from pathlib import Path
 from typing import List
 
-# ── Config (Use Ollama for embeddings to avoid library crashes) ────────────────
-OLLAMA_BASE_URL: str = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
-EMBED_MODEL: str     = "bge-m3" # You already have this in Ollama
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+MODEL_PATH = PROJECT_ROOT / "models" / "finetuned-bge-m3"
 
-from concurrent.futures import ThreadPoolExecutor
+# We use sentence-transformers to load our newly fine-tuned model
+import torch
+from sentence_transformers import SentenceTransformer
+
+# Global model instance
+_model = None
+
+def get_model():
+    global _model
+    if _model is None:
+        # Force CPU so Gemma 2 can use the 6GB GPU
+        device = "cpu"
+        if MODEL_PATH.exists():
+            _model = SentenceTransformer(str(MODEL_PATH), device=device)
+        else:
+            print("Warning: Fine-tuned model not found. Falling back to base BAAI/bge-m3")
+            _model = SentenceTransformer("BAAI/bge-m3", device=device)
+    return _model
 
 def _ollama_embed(text: str) -> List[float]:
-    """Get embeddings from local Ollama API."""
-    url = f"{OLLAMA_BASE_URL.rstrip('/')}/api/embeddings"
-    payload = json.dumps({
-        "model": EMBED_MODEL,
-        "prompt": text
-    }).encode("utf-8")
-    
-    headers = {"Content-Type": "application/json"}
-    
-    try:
-        req = urllib.request.Request(url, data=payload, headers=headers)
-        with urllib.request.urlopen(req, timeout=60) as resp:
-            data = json.loads(resp.read().decode("utf-8"))
-            return data["embedding"]
-    except Exception as e:
-        print(f"[Ollama-Embed] Error: {e}", flush=True)
-        return [0.0] * 1024 
+    """Legacy wrapper, now uses local model."""
+    model = get_model()
+    # Ensure float lists
+    embedding = model.encode(text, normalize_embeddings=True)
+    return embedding.tolist()
 
-def embed_articles_batch(articles: List[dict], max_workers: int = 10) -> List[List[float]]:
-    """Batch embed articles in parallel for much better performance."""
+def embed_articles_batch(articles: List[dict], batch_size: int = 16) -> List[List[float]]:
+    """Batch embed articles efficiently."""
     texts = [build_searchable_string(a) for a in articles]
-    with ThreadPoolExecutor(max_workers=max_workers) as executor:
-        # Use map to keep results in the same order as input
-        results = list(executor.map(_ollama_embed, texts))
-    return results
+    model = get_model()
+    embeddings = model.encode(texts, batch_size=batch_size, normalize_embeddings=True, show_progress_bar=True)
+    return embeddings.tolist()
 
 def _safe_str(value) -> str:
     if value is None: return ""
@@ -63,12 +64,12 @@ def build_searchable_string(article: dict) -> str:
     return " | ".join(parts).strip() or "unknown"
 
 def embed_article(article: dict) -> List[float]:
-    """Embed article using Ollama."""
+    """Embed article using local finetuned model."""
     text = build_searchable_string(article)
     return _ollama_embed(text)
 
 def embed_query(query: str) -> List[float]:
-    """Embed query using Ollama."""
+    """Embed query using local finetuned model."""
     # BGE-M3 likes a prefix for queries
     prefixed = f"Represent this query for retrieving relevant documents: {query}"
     return _ollama_embed(prefixed)
