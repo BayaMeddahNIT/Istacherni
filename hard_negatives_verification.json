@@ -2,31 +2,51 @@
   {
     "query": "شخص باعني منتج مزور، هل هذا يعتبر جريمة؟",
     "score_summary": {
-      "golden_rank": 7,
-      "golden_rerank": -3.900166,
-      "golden_rrf": 0.009333,
+      "golden_rank": 1,
+      "golden_rerank": 0.487038,
+      "golden_rrf": 0.0,
       "golden_id": "قانون العقوبات__art__203",
       "golden_code": "penal",
-      "window": "ranks 6–50",
+      "window": "ranks 10–100",
       "hard_negatives": [
         {
-          "rank": 8,
-          "id": "قانون العقوبات__art__198",
-          "rerank_score": -3.903716,
-          "rrf_score": 0.008333,
+          "rank": 10,
+          "id": "قانون العقوبات__art__231",
+          "rerank_score": 0.398109,
+          "rrf_score": 0.0,
           "law_name": "قانون العقوبات",
-          "article_num": "198",
-          "delta_rerank": 0.00355,
+          "article_num": "231",
+          "delta_rerank": 0.08893,
           "cross_code": false
         },
         {
-          "rank": 6,
-          "id": "قانون العقوبات__art__218",
-          "rerank_score": -3.818999,
-          "rrf_score": 0.01,
+          "rank": 11,
+          "id": "قانون العقوبات__art__230",
+          "rerank_score": 0.393593,
+          "rrf_score": 0.0,
           "law_name": "قانون العقوبات",
-          "article_num": "218",
-          "delta_rerank": 0.081167,
+          "article_num": "230",
+          "delta_rerank": 0.093446,
+          "cross_code": false
+        },
+        {
+          "rank": 12,
+          "id": "قانون العقوبات__art__383",
+          "rerank_score": 0.388952,
+          "rrf_score": 0.0,
+          "law_name": "قانون العقوبات",
+          "article_num": "383",
+          "delta_rerank": 0.098086,
+          "cross_code": false
+        },
+        {
+          "rank": 13,
+          "id": "قانون العقوبات__art__366",
+          "rerank_score": 0.387644,
+          "rrf_score": 0.0,
+          "law_name": "قانون العقوبات",
+          "article_num": "366",
+          "delta_rerank": 0.099395,
           "cross_code": false
         }
       ]
@@ -35,22 +55,42 @@
   {
     "query": "ما هي عقوبة الغش في بيع السلع؟",
     "score_summary": {
-      "golden_rank": 3,
-      "golden_rerank": 0.703858,
-      "golden_rrf": 0.010606,
-      "golden_id": "قانون العقوبات__art__433",
+      "golden_rank": 2,
+      "golden_rerank": 0.511831,
+      "golden_rrf": 0.0,
+      "golden_id": "قانون العقوبات__art__432",
       "golden_code": "penal",
-      "window": "ranks 2–50",
+      "window": "ranks 1–100",
       "hard_negatives": [
         {
-          "rank": 2,
+          "rank": 7,
+          "id": "قانون العقوبات__art__219",
+          "rerank_score": 0.4146,
+          "rrf_score": 0.0,
+          "law_name": "قانون العقوبات",
+          "article_num": "219",
+          "delta_rerank": 0.097232,
+          "cross_code": false
+        },
+        {
+          "rank": 3,
           "id": "القانون رقم 09-03 المتعلق بحماية المستهلك وقمع الغش__art__68",
-          "rerank_score": 0.887266,
-          "rrf_score": 0.014147,
+          "rerank_score": 0.449917,
+          "rrf_score": 0.0,
           "law_name": "القانون رقم 09-03 المتعلق بحماية المستهلك وقمع الغش",
           "article_num": "68",
-          "delta_rerank": 0.183409,
+          "delta_rerank": 0.061915,
           "cross_code": true
+        },
+        {
+          "rank": 6,
+          "id": "قانون العقوبات__art__198",
+          "rerank_score": 0.431342,
+          "rrf_score": 0.0,
+          "law_name": "قانون العقوبات",
+          "article_num": "198",
+          "delta_rerank": 0.08049,
+          "cross_code": false
         }
       ]
     }
@@ -58,62 +98,102 @@
   {
     "query": "هل يمكنني رفع شكوى ضد تاجر خدعني؟",
     "score_summary": {
-      "golden_rank": 6,
-      "golden_rerank": -3.63526,
-      "golden_rrf": 0.008974,
-      "golden_id": "القانون المدني__art__372",
-      "golden_code": "civil",
-      "window": "ranks 5–50",
+      "golden_rank": 2,
+      "golden_rerank": 0.418744,
+      "golden_rrf": 0.0,
+      "golden_id": "قانون العقوبات__art__429",
+      "golden_code": "penal",
+      "window": "ranks 1–100",
       "hard_negatives": [
         {
-          "rank": 7,
-          "id": "قانون العقوبات__art__369",
-          "rerank_score": -3.771955,
-          "rrf_score": 0.011837,
+          "rank": 15,
+          "id": "قانون العقوبات__art__219",
+          "rerank_score": 0.347046,
+          "rrf_score": 0.0,
           "law_name": "قانون العقوبات",
-          "article_num": "369",
-          "delta_rerank": 0.136694,
+          "article_num": "219",
+          "delta_rerank": 0.071699,
+          "cross_code": false
+        },
+        {
+          "rank": 4,
+          "id": "قانون الإجراءات المدنية والإدارية__art__829",
+          "rerank_score": 0.39839,
+          "rrf_score": 0.0,
+          "law_name": "قانون الإجراءات المدنية والإدارية",
+          "article_num": "829",
+          "delta_rerank": 0.020355,
+          "cross_code": true
+        },
+        {
+          "rank": 1,
+          "id": "القانون رقم 09-03 المتعلق بحماية المستهلك وقمع الغش__art__68",
+          "rerank_score": 0.449434,
+          "rrf_score": 0.0,
+          "law_name": "القانون رقم 09-03 المتعلق بحماية المستهلك وقمع الغش",
+          "article_num": "68",
+          "delta_rerank": 0.03069,
+          "cross_code": true
+        },
+        {
+          "rank": 6,
+          "id": "القانون المدني__art__284",
+          "rerank_score": 0.3757,
+          "rrf_score": 0.0,
+          "law_name": "القانون المدني",
+          "article_num": "284",
+          "delta_rerank": 0.043044,
           "cross_code": true
         },
         {
           "rank": 8,
-          "id": "القانون التجاري__art__94",
-          "rerank_score": -3.781023,
-          "rrf_score": 0.013894,
+          "id": "القانون التجاري__art__588",
+          "rerank_score": 0.366937,
+          "rrf_score": 0.0,
           "law_name": "القانون التجاري",
-          "article_num": "94",
-          "delta_rerank": 0.145763,
+          "article_num": "588",
+          "delta_rerank": 0.051808,
           "cross_code": true
         },
         {
           "rank": 9,
-          "id": "القانون التجاري__art__109",
-          "rerank_score": -3.884762,
-          "rrf_score": 0.012335,
+          "id": "القانون التجاري__art__176",
+          "rerank_score": 0.36271,
+          "rrf_score": 0.0,
           "law_name": "القانون التجاري",
-          "article_num": "109",
-          "delta_rerank": 0.249502,
+          "article_num": "176",
+          "delta_rerank": 0.056035,
           "cross_code": true
         },
         {
-          "rank": 5,
-          "id": "القانون المدني__art__484",
-          "rerank_score": -3.582101,
-          "rrf_score": 0.006306,
-          "law_name": "القانون المدني",
-          "article_num": "484",
-          "delta_rerank": 0.053159,
-          "cross_code": false
+          "rank": 10,
+          "id": "القانون التجاري__art__24",
+          "rerank_score": 0.362334,
+          "rrf_score": 0.0,
+          "law_name": "القانون التجاري",
+          "article_num": "24",
+          "delta_rerank": 0.05641,
+          "cross_code": true
         },
         {
-          "rank": 10,
-          "id": "القانون المدني__art__374",
-          "rerank_score": -3.915247,
-          "rrf_score": 0.006667,
-          "law_name": "القانون المدني",
-          "article_num": "374",
-          "delta_rerank": 0.279987,
-          "cross_code": false
+          "rank": 11,
+          "id": "القانون التجاري__art__94",
+          "rerank_score": 0.362163,
+          "rrf_score": 0.0,
+          "law_name": "القانون التجاري",
+          "article_num": "94",
+          "delta_rerank": 0.056581,
+          "cross_code": true
+        },
+        {
+          "rank": 13,
+          "id": "القانون التجاري__art__81",
+          "rerank_score": 0.354306,
+          "rrf_score": 0.0,
+          "law_name": "القانون التجاري",
+          "article_num": "81",
+          "delta_rerank": 0.064438,
+          "cross_code": true
         }
       ]
     }
@@ -121,22 +201,125 @@
   {
     "query": "هل عدم تسليم السلعة بعد الدفع يعتبر جريمة؟",
     "score_summary": {
-      "golden_rank": 3,
-      "golden_rerank": -2.184897,
-      "golden_rrf": 0.012491,
-      "golden_id": "القانون التجاري__art__374",
-      "golden_code": "commercial",
-      "window": "ranks 2–50",
+      "golden_rank": 6,
+      "golden_rerank": 0.454854,
+      "golden_rrf": 0.0,
+      "golden_id": "القانون المدني__art__168",
+      "golden_code": "civil",
+      "window": "ranks 5–100",
       "hard_negatives": [
         {
-          "rank": 2,
-          "id": "القانون المدني__art__392",
-          "rerank_score": -2.041919,
-          "rrf_score": 0.007692,
-          "law_name": "القانون المدني",
-          "article_num": "392",
-          "delta_rerank": 0.142978,
+          "rank": 10,
+          "id": "قانون العقوبات__art__372",
+          "rerank_score": 0.426036,
+          "rrf_score": 0.0,
+          "law_name": "قانون العقوبات",
+          "article_num": "372",
+          "delta_rerank": 0.028819,
           "cross_code": true
+        },
+        {
+          "rank": 16,
+          "id": "القانون التجاري__art__588",
+          "rerank_score": 0.40445,
+          "rrf_score": 0.0,
+          "law_name": "القانون التجاري",
+          "article_num": "588",
+          "delta_rerank": 0.050405,
+          "cross_code": true
+        },
+        {
+          "rank": 20,
+          "id": "قانون العقوبات__art__350",
+          "rerank_score": 0.399335,
+          "rrf_score": 0.0,
+          "law_name": "قانون العقوبات",
+          "article_num": "350",
+          "delta_rerank": 0.05552,
+          "cross_code": true
+        },
+        {
+          "rank": 24,
+          "id": "القانون التجاري__art__176",
+          "rerank_score": 0.391111,
+          "rrf_score": 0.0,
+          "law_name": "القانون التجاري",
+          "article_num": "176",
+          "delta_rerank": 0.063744,
+          "cross_code": true
+        },
+        {
+          "rank": 30,
+          "id": "قانون العقوبات__art__387",
+          "rerank_score": 0.374759,
+          "rrf_score": 0.0,
+          "law_name": "قانون العقوبات",
+          "article_num": "387",
+          "delta_rerank": 0.080095,
+          "cross_code": true
+        },
+        {
+          "rank": 31,
+          "id": "قانون العقوبات__art__369",
+          "rerank_score": 0.374259,
+          "rrf_score": 0.0,
+          "law_name": "قانون العقوبات",
+          "article_num": "369",
+          "delta_rerank": 0.080596,
+          "cross_code": true
+        },
+        {
+          "rank": 33,
+          "id": "قانون العقوبات__art__203",
+          "rerank_score": 0.368101,
+          "rrf_score": 0.0,
+          "law_name": "قانون العقوبات",
+          "article_num": "203",
+          "delta_rerank": 0.086753,
+          "cross_code": true
+        },
+        {
+          "rank": 34,
+          "id": "قانون العقوبات__art__48",
+          "rerank_score": 0.364889,
+          "rrf_score": 0.0,
+          "law_name": "قانون العقوبات",
+          "article_num": "48",
+          "delta_rerank": 0.089965,
+          "cross_code": true
+        },
+        {
+          "rank": 37,
+          "id": "القانون التجاري__art__91",
+          "rerank_score": 0.362507,
+          "rrf_score": 0.0,
+          "law_name": "القانون التجاري",
+          "article_num": "91",
+          "delta_rerank": 0.092347,
+          "cross_code": true
+        }
+      ]
+    }
+  },
+  {
+    "query": "هل التزوير في الفواتير يعاقب عليه؟",
+    "score_summary": {
+      "golden_rank": 1,
+      "golden_rerank": 0.578378,
+      "golden_rrf": 0.0,
+      "golden_id": "قانون العقوبات__art__219",
+      "golden_code": "penal",
+      "window": "ranks 10–100",
+      "hard_negatives": [
+        {
+          "rank": 10,
+          "id": "قانون العقوبات__art__228",
+          "rerank_score": 0.482941,
+          "rrf_score": 0.0,
+          "law_name": "قانون العقوبات",
+          "article_num": "228",
+          "delta_rerank": 0.095437,
+          "cross_code": false
         }
       ]
     }
@@ -144,101 +327,21 @@
   {
     "query": "هل يمكن متابعة موظف سرق من الشركة؟",
     "score_summary": {
-      "golden_rank": 12,
-      "golden_rerank": -5.10666,
-      "golden_rrf": 0.004615,
-      "golden_id": "قانون العقوبات__art__215",
+      "golden_rank": 1,
+      "golden_rerank": 0.483206,
+      "golden_rrf": 0.0,
+      "golden_id": "قانون العقوبات__art__352",
       "golden_code": "penal",
-      "window": "ranks 1–50",
+      "window": "ranks 10–100",
       "hard_negatives": [
         {
-          "rank": 11,
-          "id": "القانون التجاري__art__13",
-          "rerank_score": -5.09019,
-          "rrf_score": 0.00814,
-          "law_name": "القانون التجاري",
-          "article_num": "13",
-          "delta_rerank": 0.01647,
-          "cross_code": true
-        },
-        {
           "rank": 10,
-          "id": "القانون التجاري__art__14",
-          "rerank_score": -5.08947,
-          "rrf_score": 0.009518,
+          "id": "القانون التجاري__art__811",
+          "rerank_score": 0.389214,
+          "rrf_score": 0.0,
           "law_name": "القانون التجاري",
-          "article_num": "14",
-          "delta_rerank": 0.01719,
-          "cross_code": true
-        },
-        {
-          "rank": 13,
-          "id": "قانون الاجراءات المدنية والادارية__art__217",
-          "rerank_score": -5.132342,
-          "rrf_score": 0.005833,
-          "law_name": "قانون الاجراءات المدنية والادارية",
-          "article_num": "217",
-          "delta_rerank": 0.025681,
-          "cross_code": true
-        },
-        {
-          "rank": 14,
-          "id": "القانون المدني__art__764",
-          "rerank_score": -5.158566,
-          "rrf_score": 0.010493,
-          "law_name": "القانون المدني",
-          "article_num": "764",
-          "delta_rerank": 0.051906,
-          "cross_code": true
-        },
-        {
-          "rank": 15,
-          "id": "القانون المدني__art__137",
-          "rerank_score": -5.161968,
-          "rrf_score": 0.006422,
-          "law_name": "القانون المدني",
-          "article_num": "137",
-          "delta_rerank": 0.055307,
-          "cross_code": true
-        },
-        {
-          "rank": 16,
-          "id": "القانون المدني__art__764",
-          "rerank_score": -5.168314,
-          "rrf_score": 0.008411,
-          "law_name": "القانون المدني",
-          "article_num": "764",
-          "delta_rerank": 0.061654,
-          "cross_code": true
-        },
-        {
-          "rank": 17,
-          "id": "القانون التجاري__art__800",
-          "rerank_score": -5.194297,
-          "rrf_score": 0.006306,
-          "law_name": "القانون التجاري",
-          "article_num": "800",
-          "delta_rerank": 0.087636,
-          "cross_code": true
-        },
-        {
-          "rank": 18,
-          "id": "القانون التجاري__art__204",
-          "rerank_score": -5.237128,
-          "rrf_score": 0.005426,
-          "law_name": "القانون التجاري",
-          "article_num": "204",
-          "delta_rerank": 0.130468,
-          "cross_code": true
-        },
-        {
-          "rank": 9,
-          "id": "القانون التجاري__art__17",
-          "rerank_score": -4.886563,
-          "rrf_score": 0.010145,
-          "law_name": "القانون التجاري",
-          "article_num": "17",
-          "delta_rerank": 0.220098,
+          "article_num": "811",
+          "delta_rerank": 0.093992,
           "cross_code": true
         }
       ]

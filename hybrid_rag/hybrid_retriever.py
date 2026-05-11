@@ -26,68 +26,60 @@ def min_max_normalize(scores: dict[str, float]) -> dict[str, float]:
     return {k: (v - min_val) / (max_val - min_val) for k, v in scores.items()}
 
 
-def weighted_linear_combination(
+def reciprocal_rank_fusion(
     bm25_results: list[dict],
     dense_results: list[dict],
-    bm25_weight: float = 0.3,
-    dense_weight: float = 0.7,
+    k: int = 60,
+    bm25_weight: float = 1.0,
+    dense_weight: float = 1.0,
 ) -> list[dict]:
     """
-    Merge two ranked lists using Weighted Linear Combination.
-    Score = alpha * DenseScore + (1 - alpha) * BM25Score.
-    Scores are Min-Max normalized before combination.
+    Fuses results from two retrievers using Reciprocal Rank Fusion.
+    Formula: score(d) = sum_{r in rankers} weight(r) * (1 / (k + rank(d, r)))
     """
-    bm25_scores = {}
-    dense_scores = {}
+    combined_scores = {}
     article_map = {}
 
-    # Extract raw scores
-    for article in bm25_results:
+    # Process BM25 results
+    for rank, article in enumerate(bm25_results, 1):
         aid = article.get("id") or f"{article['law_name']}_{article['article_number']}"
-        bm25_scores[aid] = article.get("score", 0.0)
+        combined_scores[aid] = combined_scores.get(aid, 0.0) + bm25_weight * (1.0 / (k + rank))
         article_map[aid] = article
 
-    for article in dense_results:
+    # Process Dense results
+    for rank, article in enumerate(dense_results, 1):
         aid = article.get("id") or f"{article['law_name']}_{article['article_number']}"
-        dense_scores[aid] = article.get("score", 0.0)
+        combined_scores[aid] = combined_scores.get(aid, 0.0) + dense_weight * (1.0 / (k + rank))
         if aid not in article_map:
             article_map[aid] = article
 
-    # Normalize scores
-    norm_bm25 = min_max_normalize(bm25_scores)
-    norm_dense = min_max_normalize(dense_scores)
-
-    # Combine scores
-    combined_scores = {}
-    for aid in article_map:
-        score_bm25 = norm_bm25.get(aid, 0.0)
-        score_dense = norm_dense.get(aid, 0.0)
-        combined_scores[aid] = (bm25_weight * score_bm25) + (dense_weight * score_dense)
-
-    # Sort by combined score descending
+    # Sort by RRF score descending
     sorted_ids = sorted(combined_scores, key=lambda x: combined_scores[x], reverse=True)
     
     fused = []
     for aid in sorted_ids:
         article = article_map[aid].copy()
         article["fusion_score"] = round(combined_scores[aid], 6)
-        article["norm_bm25"] = round(norm_bm25.get(aid, 0.0), 6)
-        article["norm_dense"] = round(norm_dense.get(aid, 0.0), 6)
-        article["retrieval_method"] = "hybrid"
+        article["retrieval_method"] = "hybrid_rrf"
         fused.append(article)
     
     return fused
 
 
-def hybrid_retrieve(query: str, top_k: int = 5, bm25_weight: float = 0.3, dense_weight: float = 0.7) -> list[dict]:
+def hybrid_retrieve(query: str, top_k: int = 30, bm25_weight: float = 1.0, dense_weight: float = 1.0) -> list[dict]:
     """
     Main retrieval function for production use.
-    Fetches candidates from each method, fuses them with given weights, and reranks.
+    Fetches candidates from each method, fuses them with RRF, and reranks.
     """
     fetch_k = 100
     bm25_results = bm25_retrieve(query, top_k=fetch_k)
     dense_results = dense_retrieve(query, top_k=fetch_k)
-    fused = weighted_linear_combination(bm25_results, dense_results, bm25_weight=bm25_weight, dense_weight=dense_weight)
+    fused = reciprocal_rank_fusion(
+        bm25_results, 
+        dense_results, 
+        bm25_weight=bm25_weight, 
+        dense_weight=dense_weight
+    )
     reranked = rerank_candidates(query, fused[:100], top_k=top_k)
     return reranked
 

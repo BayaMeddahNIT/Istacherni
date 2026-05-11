@@ -95,8 +95,8 @@ def main():
             continue
             
         try:
-            # Retrieve top 5 chunks
-            chunks = hybrid_retrieve(question, top_k=5)
+            # Retrieve top 30 chunks
+            chunks = hybrid_retrieve(question, top_k=30)
             
             # Match chunks against ground truth
             matched_count, is_hit, matched_details, rank_of_first_hit = match_articles(gt_articles, chunks)
@@ -117,7 +117,7 @@ def main():
             total_recall += recall
             total_reciprocal_rank += reciprocal_rank
             
-            print(f"  -> Expected: {len(gt_articles)} | Found: {matched_count} | Recall@5: {recall:.2f} | Rank: {rank_of_first_hit}")
+            print(f"  -> Expected: {len(gt_articles)} | Found: {matched_count} | Recall@30: {recall:.2f} | Rank: {rank_of_first_hit}")
             if is_hit:
                 print(f"  -> Matched: {', '.join(matched_details)}")
                 
@@ -129,7 +129,7 @@ def main():
                 "matched_count": matched_count,
                 "total_expected": len(gt_articles),
                 "is_hit": is_hit,
-                "recall_at_5": round(recall, 4),
+                "recall_at_30": round(recall, 4),
                 "rank_of_first_hit": rank_of_first_hit,
                 "reciprocal_rank": round(reciprocal_rank, 4),
                 "precision_at_1": precision_at_1
@@ -152,7 +152,7 @@ def main():
         with open(OUTPUT_CSV, 'w', newline='', encoding='utf-8-sig') as f:
             writer = csv.DictWriter(f, fieldnames=[
                 "question", "expected_articles", "retrieved_articles", 
-                "matched_count", "total_expected", "is_hit", "recall_at_5",
+                "matched_count", "total_expected", "is_hit", "recall_at_30",
                 "rank_of_first_hit", "reciprocal_rank", "precision_at_1"
             ])
             writer.writeheader()
@@ -166,8 +166,8 @@ def main():
     print(f"Total Questions Evaluated : {num_evaluated}")
     print(f"MRR (Mean Reciprocal Rank): {final_mrr:.4f}")
     print(f"Precision@1 (Top-1 Acc)   : {final_precision_at_1:.2%}")
-    print(f"Hit Rate (Top 5)          : {final_hit_rate:.2%}")
-    print(f"Average Recall@5          : {final_recall:.2%}")
+    print(f"Hit Rate (Top 30)         : {final_hit_rate:.2%}")
+    print(f"Average Recall@30         : {final_recall:.2%}")
     print(f"Total Time Taken          : {elapsed:.2f} seconds")
     print(f"Results saved to          : {OUTPUT_CSV.name}")
     print("=" * 60)

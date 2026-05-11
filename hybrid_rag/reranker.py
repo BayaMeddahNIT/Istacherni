@@ -8,28 +8,26 @@ import os
 import torch
 from pathlib import Path
 from sentence_transformers import CrossEncoder
+from FlagEmbedding import BGEM3FlagModel
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 FINETUNED_RERANKER_PATH = PROJECT_ROOT / "models" / "finetuned-cross-encoder"
 
-# Use local finetuned model if it exists, otherwise fallback
-if FINETUNED_RERANKER_PATH.exists():
-    RERANKER_MODEL_NAME = str(FINETUNED_RERANKER_PATH)
-else:
-    RERANKER_MODEL_NAME = os.getenv("RERANKER_MODEL", "BAAI/bge-reranker-v2-m3")
+# Use Unified Multi-head BGE-M3 model as reranker
+RERANKER_MODEL_NAME = "D:\\pfe_baya_models\\bge-m3-unified"
 
 _reranker = None
 
 def _get_reranker():
     global _reranker
     if _reranker is None:
-        # Force CPU so Gemma 2 can use the 6GB GPU
-        device = "cpu"
-        print(f"Loading Reranker Model on {device}: {RERANKER_MODEL_NAME} ...")
-        # Load the fine-tuned CrossEncoder model
-        _reranker = CrossEncoder(
+        # Use GPU for fast indexing and evaluation
+        device = "cuda" if torch.cuda.is_available() else "cpu"
+        print(f"Loading Unified BGE-M3 Reranker on {device}: {RERANKER_MODEL_NAME} ...")
+        # Load the fine-tuned Multi-head model
+        _reranker = BGEM3FlagModel(
             RERANKER_MODEL_NAME, 
-            max_length=512,
+            use_fp16=True if device == "cuda" else False,
             device=device
         )
     return _reranker
@@ -57,8 +55,10 @@ def rerank_candidates(query: str, candidates: list[dict], top_k: int = 5) -> lis
             
         pairs.append([query, text])
 
-    # Predict the relevance scores (Added batch_size=4 to prevent VRAM swapping)
-    scores = reranker.predict(pairs, batch_size=4)
+    # Predict the relevance scores using unified multi-head scoring
+    # Weights: Dense(0.4), Sparse(0.2), ColBERT(0.4)
+    scores_dict = reranker.compute_score(pairs, max_passage_length=512, weights_for_different_modes=[0.4, 0.2, 0.4])
+    scores = scores_dict["colbert+sparse+dense"]
 
     # Attach the new scores to the candidates
     for i, candidate in enumerate(candidates):

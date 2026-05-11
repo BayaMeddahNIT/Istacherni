@@ -6,7 +6,7 @@ from pathlib import Path
 from typing import List
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
-MODEL_PATH = PROJECT_ROOT / "models" / "finetuned-bge-m3"
+MODEL_PATH = Path("D:\\pfe_baya_models\\bge-m3-unified")
 
 # We use sentence-transformers to load our newly fine-tuned model
 import torch
@@ -18,7 +18,7 @@ _model = None
 def get_model():
     global _model
     if _model is None:
-        # Force CPU so Gemma 2 can use the 6GB GPU
+        # Use CPU to save VRAM for reranker
         device = "cpu"
         if MODEL_PATH.exists():
             _model = SentenceTransformer(str(MODEL_PATH), device=device)

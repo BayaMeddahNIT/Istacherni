@@ -51,8 +51,8 @@ OUTPUT_JSONL        = PROJECT_ROOT / "hard_negatives.jsonl"
 FLAGGED_JSON        = PROJECT_ROOT / "hard_negatives_flagged.json"
 VERIFICATION_JSON   = PROJECT_ROOT / "hard_negatives_verification.json"
 
-RETRIEVE_TOP_K      = 100   # v2: raised from 20 → 100
-MAX_NEG_SCAN_RANK   = 50    # never look beyond rank 50 for negatives
+RETRIEVE_TOP_K      = 200   # Raised to 200 for deeper mining
+MAX_NEG_SCAN_RANK   = 100   # Scan deeper for negatives
 DEFAULT_SAMPLE      = 10
 DELTA_THRESHOLD     = 0.10  # strict filter (Δ ≤ 0.10 passes)
 BM25_WEIGHT         = 0.3
@@ -100,6 +100,16 @@ def law_code(doc: dict) -> str:
     if "18-05" in name:              return "ecommerce"
     if "03-03" in name:              return "competition"
     return name[:40]
+
+
+def is_new_article(doc: dict) -> bool:
+    """Check if the article is one of the 23 newly added penal articles."""
+    aid = doc.get("id", "")
+    # New IDs follow the pattern DZ_PENAL_ART_2xx
+    import re
+    if re.match(r"DZ_PENAL_ART_2(0[8-9]|1[0-9]|2[0-9]|3[0-1])", aid):
+        return True
+    return False
 
 
 def is_golden(doc: dict, gt_articles: list[str]) -> bool:
@@ -207,11 +217,12 @@ def mine_query(
             "article_num" : doc.get("article_number", ""),
         })
 
-    # ── Apply Δ ≤ threshold filter ─────────────────────────────────────────────
+    # Apply Δ ≤ threshold filter
     strict_negs = [c for c in candidate_negs if c["delta"] <= delta_threshold]
 
-    # Cross-code bonus: sort strict negs so cross-code come first
-    strict_negs.sort(key=lambda x: (not x["cross_code"], x["delta"]))
+    # Cross-code bonus + New-article bonus: 
+    # Sort strict negs so cross-code and new articles come first
+    strict_negs.sort(key=lambda x: (not is_new_article(x["doc"]), not x["cross_code"], x["delta"]))
 
     flagged = False
     if not strict_negs:
