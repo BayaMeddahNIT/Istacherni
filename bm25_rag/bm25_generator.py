@@ -24,7 +24,7 @@ load_dotenv(PROJECT_ROOT / ".env")
 
 # Uses BM25_GEMINI_API_KEY if present, otherwise falls back to GEMINI_API_KEY
 _API_KEY = os.getenv("BM25_GEMINI_API_KEY") or os.getenv("GEMINI_API_KEY")
-GENERATION_MODEL = "gemini-2.5-flash"
+GENERATION_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
 
 # ── Lazy singleton ─────────────────────────────────────────────────────────────
 _client = None
@@ -75,26 +75,36 @@ def _build_context(retrieved: list[dict]) -> str:
     return "\n\n---\n\n".join(parts)
 
 
-def bm25_generate(question: str, retrieved: list[dict], max_retries: int = 4) -> str:
+def bm25_generate(question: str, retrieved: list[dict], chat_history: list[dict] = None, max_retries: int = 4) -> str:
     """
     Generate a legal answer using Gemini based on BM25-retrieved articles.
 
     Args:
         question:   The user's question.
         retrieved:  List of dicts from bm25_retrieve().
+        chat_history: Optional list of previous interactions.
         max_retries: Number of 429 retries before giving up.
 
     Returns:
         The generated Arabic answer string.
     """
     context = _build_context(retrieved)
+    
+    chat_history_text = ""
+    if chat_history:
+        lines = []
+        for msg in chat_history:
+            role = "المستخدم" if msg.get("role") == "user" else "المساعد"
+            lines.append(f"{role}: {msg.get('content', '')}")
+        chat_history_text = "=== السياق السابق للمحادثة ===\n" + "\n".join(lines) + "\n\n"
+
     prompt = f"""{_SYSTEM}
 
 === المواد القانونية ذات الصلة ===
 
 {context}
 
-=== سؤال المستخدم ===
+{chat_history_text}=== سؤال المستخدم الحالي ===
 
 {question}
 
@@ -113,10 +123,11 @@ def bm25_generate(question: str, retrieved: list[dict], max_retries: int = 4) ->
 
         except Exception as e:
             err = str(e)
-            if "429" in err and attempt < max_retries - 1:
+            if ("429" in err or "503" in err) and attempt < max_retries - 1:
                 m = re.search(r"retryDelay['\"]?\s*[:'\"]+\s*['\"]?(\d+)s", err)
-                wait = int(m.group(1)) + 3 if m else 30 * (2 ** attempt)
-                print(f"[BM25-Gen] Rate-limited, waiting {wait}s…")
+                wait = int(m.group(1)) + 3 if m else 5 * (2 ** attempt)
+                label = "rate-limited" if "429" in err else "high demand"
+                print(f"[BM25-Gen] {label}, waiting {wait}s…")
                 time.sleep(wait)
             else:
                 raise

@@ -22,12 +22,14 @@ sys.path.insert(0, str(PROJECT_ROOT))
 from dotenv import load_dotenv
 load_dotenv(PROJECT_ROOT / ".env")
 
+import time
+import re
 from google import genai
 from google.genai import types as genai_types
 
 # ── Configuration ─────────────────────────────────────────────────────────────
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-GENERATION_MODEL = "gemini-2.5-flash"
+GENERATION_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
 
 # Lazy singleton — initialized on first call, not at import time
 _genai_client = None
@@ -79,18 +81,27 @@ def _build_context(retrieved_chunks: List[Dict[str, Any]]) -> str:
     return "\n\n---\n\n".join(parts)
 
 
-def generate_answer(question: str, retrieved_chunks: List[Dict[str, Any]]) -> str:
+def generate_answer(question: str, retrieved_chunks: List[Dict[str, Any]], chat_history: list[dict] = None) -> str:
     """
     Generate a legal answer using Gemini based on retrieved article chunks.
 
     Args:
         question:         The user's question (Arabic or French)
         retrieved_chunks: List of dicts from retriever.retrieve()
+        chat_history:     Optional list of previous interactions.
 
     Returns:
         A string containing the generated Arabic answer.
     """
     context = _build_context(retrieved_chunks)
+    
+    chat_history_text = ""
+    if chat_history:
+        lines = []
+        for msg in chat_history:
+            role = "المستخدم" if msg.get("role") == "user" else "المساعد"
+            lines.append(f"{role}: {msg.get('content', '')}")
+        chat_history_text = "=== السياق السابق للمحادثة ===\n" + "\n".join(lines) + "\n\n"
 
     prompt = f"""{SYSTEM_INSTRUCTION}
 
@@ -98,7 +109,7 @@ def generate_answer(question: str, retrieved_chunks: List[Dict[str, Any]]) -> st
 
 {context}
 
-=== سؤال المستخدم ===
+{chat_history_text}=== سؤال المستخدم الحالي ===
 
 {question}
 
@@ -115,10 +126,11 @@ def generate_answer(question: str, retrieved_chunks: List[Dict[str, Any]]) -> st
             return response.text.strip()
         except Exception as e:
             err = str(e)
-            if "429" in err and attempt < 4:
+            if ("429" in err or "503" in err) and attempt < 4:
                 m = re.search(r"retryDelay['\"]?\s*[:'\"]+\s*['\"]?(\d+)s", err)
-                wait = int(m.group(1)) + 3 if m else 30 * (2 ** attempt)
-                print(f"[WARN] generation rate-limited, waiting {wait}s...")
+                wait = int(m.group(1)) + 3 if m else 5 * (2 ** attempt)
+                label = "rate-limited" if "429" in err else "high demand"
+                print(f"[WARN] generation {label}, waiting {wait}s...")
                 _time.sleep(wait)
             else:
                 raise

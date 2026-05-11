@@ -140,7 +140,6 @@ export default function Settings() {
           <View style={cardStyle(theme)}>
             {[
               { icon: "lock-closed-outline", key: "changePassword", route: "/change-password", danger: false },
-              { icon: "shield-checkmark-outline", key: "privacySecurity", route: "/privacy-security", danger: false },
               { icon: "trash-outline", key: "deleteAccount", route: "/delete-account", danger: true },
             ].map((item: any, i, arr) => (
               <TouchableOpacity

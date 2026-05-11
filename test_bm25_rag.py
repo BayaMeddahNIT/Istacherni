@@ -34,9 +34,9 @@ TEST_QUERIES = [
 
     # Civil Law (القانون المدني)
 
-    #"هل العقد الشفهي ملزم قانونياً؟",
-    "ما هي شروط صحة العقد؟",
-    "ما هي القوة القاهرة في العقود؟",
+    "هل العقد الشفهي ملزم قانونياً؟",
+    #"ما هي شروط صحة العقد؟",
+    #"ما هي القوة القاهرة في العقود؟",
 
     # Administrative Law (القانون الإداري)
 
@@ -46,7 +46,7 @@ TEST_QUERIES = [
 
     # Labor Law (قانون العمل)
 
-    #"ما هي حقوق العامل في الجزائر؟",
+    "ما هي حقوق العامل في الجزائر؟",
     #"هل يمكن طردي بدون سبب؟",
     #"ما هي ساعات العمل القانونية؟",
 
@@ -80,7 +80,7 @@ def run_test(query: str):
         print("\n  ⚠️  Generation skipped (USE_GENERATION=False)")
         return
 
-    print("\n🤖 Step 2 — Answer Generation (Gemini 2.5 Flash)")
+    print("\n🤖 Step 2 — Answer Generation (Gemini 1.5 Flash)")
     try:
         answer = bm25_generate(query, results)
         print("\n  ✅ Answer:")

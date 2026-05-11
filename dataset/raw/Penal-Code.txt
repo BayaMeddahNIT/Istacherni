@@ -1,0 +1,1541 @@
+[
+    {
+        "id": "DZ_PENAL_ART_264",
+        "country": "Algeria",
+        "law_domain": "Penal Law",
+        "law_name": "قانون العقوبات",
+        "book": "الكتاب الثالث: في الجنايات والجنح وعقوباتها - الباب الثاني: الجنايات والجنح ضد الافراد - الفصل الاول: الجنايات والجنح ضد الاشخاص",
+        "title": "العنف العمدي المسبب لعجز يفوق 15 يوما (وتدرج التشديد)",
+        "article_number": 264,
+        "classification": {
+            "main_category": "الجرائم ضد الاشخاص",
+            "sub_category": "الضرب والجرح العمدي",
+            "section": "العنف العمدي"
+        },
+        "text": {
+            "original": "كل من احدث عمدا جروحا او ضربا او اي عنف او تعد على الاشخاص فاذا نتج عن ذلك مرض او عجز كلي عن العمل لاكثر من خمسة عشر يوما عوقب.",
+            "language": "ar",
+            "is_official_arabic": true
+        },
+        "definition": "كل من احدث عمدا جروحا او ضربا او اي عنف/تعد، فاذا نتج مرض او عجز كلي عن العمل لاكثر من 15 يوما عوقب. وتشدد العقوبة اذا نتجت عاهة دائمة او اذا ترتبت الوفاة دون نية القتل.",
+        "conditions": [
+            {
+                "type": "act",
+                "value": [
+                    "جروح",
+                    "ضرب",
+                    "عنف",
+                    "تعد/ايذاء"
+                ]
+            },
+            {
+                "type": "mens_rea",
+                "value": "عمدي/ارادي"
+            },
+            {
+                "type": "result_base",
+                "value": "مرض او عجز كلي عن العمل لاكثر من 15 يوما"
+            },
+            {
+                "type": "result_aggravating",
+                "value": [
+                    "عاهة/اعاقة دائمة",
+                    "وفاة دون نية القتل"
+                ]
+            }
+        ],
+        "keywords": [
+            "عنف",
+            "ضرب وجرح",
+            "عجز عن العمل",
+            "اكثر من 15 يوم",
+            "عاهة دائمة",
+            "وفاة دون نية القتل"
+        ],
+        "legal_type": "تجريمية",
+        "norm_type": "لا يجوز الاتفاق على خلافها",
+        "legal_element": {
+            "material": "فعل عنف عمدي (جروح/ضرب/عنف) + تحقق نتيجة (عجز>15 يوما) او نتائج مشددة (عاهة دائمة/وفاة دون نية).",
+            "moral": "القصد الجنائي (ارادة ارتكاب فعل العنف)."
+        },
+        "penalties": {
+            "base": {
+                "imprisonment": {
+                    "min_months": 2,
+                    "max_years": 5
+                },
+                "fine": {
+                    "min_dzd": 500,
+                    "max_dzd": 10000
+                }
+            },
+            "if_permanent_disability": {
+                "reclusion": {
+                    "min_years": 5,
+                    "max_years": 10
+                }
+            },
+            "if_death_without_intent": {
+                "reclusion": {
+                    "min_years": 10,
+                    "max_years": 20
+                }
+            }
+        },
+        "additional_penalties": {
+            "rights_deprivation_article_14": {
+                "min_years": 1,
+                "max_years": 5
+            }
+        },
+        "effects": null,
+        "termination": null,
+        "nullity": null,
+        "damages": {
+            "allowed": true,
+            "scope": "تقوم المسؤولية المدنية عن الضرر الجسدي الناتج عن العنف بالتوازي مع المسؤولية الجزائية."
+        },
+        "relations": {
+            "related_articles": [
+                14,
+                265,
+                266
+            ],
+            "derived_from": null,
+            "amended_by": "القانون 82-04",
+            "repeals": null
+        },
+        "source": {
+            "document": "قانون العقوبات الجزائري",
+            "year": 2005,
+            "publisher": "الجريدة الرسمية"
+        },
+        "versioning": {
+            "status": "ساري",
+            "version": "v2.0",
+            "last_update": "1982-02-13"
+        },
+        "tags": [
+            "عنف",
+            "ضرب وجرح",
+            "عجز عن العمل",
+            "اكثر من 15 يوم",
+            "عاهة دائمة",
+            "وفاة دون نية القتل"
+        ],
+        "language": "ar"
+    },
+    {
+        "id": "DZ_PENAL_ART_265",
+        "country": "Algeria",
+        "law_domain": "Penal Law",
+        "law_name": "قانون العقوبات",
+        "book": "الكتاب الثالث: في الجنايات والجنح وعقوباتها - الباب الثاني: الجنايات والجنح ضد الافراد - الفصل الاول: الجنايات والجنح ضد الاشخاص",
+        "title": "تشديد عقوبة العنف عند سبق الاصرار او الترصد",
+        "article_number": 265,
+        "classification": {
+            "main_category": "الجرائم ضد الاشخاص",
+            "sub_category": "الضرب والجرح العمدي",
+            "section": "ظروف التشديد"
+        },
+        "text": {
+            "original": "اذا وجد سبق الاصرار او الترصد تشدد العقوبات وفق نتائج العنف المذكورة في المادة 264.",
+            "language": "ar",
+            "is_official_arabic": true
+        },
+        "definition": "اذا وجد سبق الاصرار او الترصد تشدد العقوبات بحسب النتائج (وفاة/عاهة دائمة/الحالة الاساسية) المرتبطة بالعنف المذكور في المادة 264.",
+        "conditions": [
+            {
+                "type": "circumstance",
+                "value": [
+                    "سبق الاصرار",
+                    "الترصد"
+                ]
+            },
+            {
+                "type": "act_reference",
+                "value": "وقوع عنف من نوع المادة 264"
+            },
+            {
+                "type": "result",
+                "value": [
+                    "وفاة",
+                    "عاهة دائمة",
+                    "حالة 264/1 (عجز>15 يوم)"
+                ]
+            }
+        ],
+        "keywords": [
+            "عنف",
+            "سبق الاصرار",
+            "ترصد",
+            "ظرف مشدد",
+            "عاهة دائمة",
+            "وفاة"
+        ],
+        "legal_type": "تجريمية",
+        "norm_type": "لا يجوز الاتفاق على خلافها",
+        "legal_element": {
+            "material": "عنف عمدي + ظرف سبق الاصرار/الترصد + تحقق احدى النتائج المذكورة.",
+            "moral": "القصد الجنائي + نية مسبقة/ترصد (كظرف مشدد)."
+        },
+        "penalties": {
+            "if_death_results": {
+                "reclusion_perpetuity": true
+            },
+            "if_permanent_disability_results": {
+                "reclusion": {
+                    "min_years": 10,
+                    "max_years": 20
+                }
+            },
+            "if_base_case_of_264": {
+                "reclusion": {
+                    "min_years": 5,
+                    "max_years": 10
+                }
+            }
+        },
+        "additional_penalties": null,
+        "effects": null,
+        "termination": null,
+        "nullity": null,
+        "damages": {
+            "allowed": true,
+            "scope": "تقوم المسؤولية المدنية بالتوازي مع التشديد الجزائي."
+        },
+        "relations": {
+            "related_articles": [
+                264,
+                266
+            ],
+            "derived_from": null,
+            "amended_by": null,
+            "repeals": null
+        },
+        "source": {
+            "document": "قانون العقوبات الجزائري",
+            "year": 2005,
+            "publisher": "الجريدة الرسمية"
+        },
+        "versioning": {
+            "status": "ساري",
+            "version": "v1.0",
+            "last_update": "1975-06-17"
+        },
+        "tags": [
+            "عنف",
+            "سبق الاصرار",
+            "ترصد",
+            "ظرف مشدد",
+            "عاهة دائمة",
+            "وفاة"
+        ],
+        "language": "ar"
+    },
+    {
+        "id": "DZ_PENAL_ART_266",
+        "country": "Algeria",
+        "law_domain": "Penal Law",
+        "law_name": "قانون العقوبات",
+        "book": "الكتاب الثالث: في الجنايات والجنح وعقوباتها - الباب الثاني: الجنايات والجنح ضد الافراد - الفصل الاول: الجنايات والجنح ضد الاشخاص",
+        "title": "عنف بعجز ≤ 15 يوما مع سبق الاصرار/الترصد او حمل سلاح",
+        "article_number": 266,
+        "classification": {
+            "main_category": "الجرائم ضد الاشخاص",
+            "sub_category": "الضرب والجرح العمدي",
+            "section": "ظروف التشديد"
+        },
+        "text": {
+            "original": "اذا لم تتجاوز مدة العجز 15 يوما لكن العنف وقع مع سبق الاصرار او الترصد او حمل سلاح، يعاقب الفاعل بعقوبة جنحية مع امكانية المصادرة.",
+            "language": "ar",
+            "is_official_arabic": true
+        },
+        "definition": "اذا لم تتجاوز مدة العجز 15 يوما لكن العنف وقع مع سبق الاصرار او الترصد او حمل سلاح، يعاقب الفاعل بعقوبة جنحية مع امكانية المصادرة.",
+        "conditions": [
+            {
+                "type": "act",
+                "value": [
+                    "عنف عمدي",
+                    "ضرب/جرح/تعد"
+                ]
+            },
+            {
+                "type": "result",
+                "value": "مرض/عجز كلي عن العمل لا يتجاوز 15 يوما"
+            },
+            {
+                "type": "circumstance",
+                "value": [
+                    "سبق الاصرار",
+                    "ترصد",
+                    "حمل سلاح"
+                ]
+            }
+        ],
+        "keywords": [
+            "عنف",
+            "عجز ≤ 15 يوم",
+            "سبق الاصرار",
+            "ترصد",
+            "حمل سلاح",
+            "مصادرة"
+        ],
+        "legal_type": "تجريمية",
+        "norm_type": "لا يجوز الاتفاق على خلافها",
+        "legal_element": {
+            "material": "عنف عمدي + نتيجة (≤15 يوم) + ظرف مشدد (سبق الاصرار/الترصد/حمل سلاح).",
+            "moral": "القصد الجنائي."
+        },
+        "penalties": {
+            "imprisonment": {
+                "min_months": 2,
+                "max_years": 5
+            },
+            "fine": {
+                "min_dzd": 500,
+                "max_dzd": 10000
+            }
+        },
+        "additional_penalties": {
+            "confiscation_possible": true,
+            "confiscation_note": "تجوز مصادرة الاشياء التي استعملت او كان يفترض استعمالها، مع مراعاة حقوق الغير حسن النية."
+        },
+        "effects": null,
+        "termination": null,
+        "nullity": null,
+        "damages": {
+            "allowed": true,
+            "scope": "تقوم المسؤولية المدنية عن الضرر الجسدي الناجم عن العنف بجانب العقوبة الجزائية."
+        },
+        "relations": {
+            "related_articles": [
+                264,
+                265
+            ],
+            "derived_from": null,
+            "amended_by": "القانون 82-04",
+            "repeals": null
+        },
+        "source": {
+            "document": "قانون العقوبات الجزائري",
+            "year": 2005,
+            "publisher": "الجريدة الرسمية"
+        },
+        "versioning": {
+            "status": "ساري",
+            "version": "v2.0",
+            "last_update": "1982-02-13"
+        },
+        "tags": [
+            "عنف",
+            "عجز ≤ 15 يوم",
+            "سبق الاصرار",
+            "ترصد",
+            "حمل سلاح",
+            "مصادرة"
+        ],
+        "language": "ar"
+    },
+    {
+        "id": "DZ_PENAL_ART_284",
+        "country": "Algeria",
+        "law_domain": "Penal Law",
+        "law_name": "قانون العقوبات",
+        "book": "الكتاب الثالث: في الجنايات والجنح وعقوباتها - الباب الثاني: الجنايات والجنح ضد الافراد - الفصل الاول: الجنايات والجنح ضد الاشخاص",
+        "title": "التهديد (كتابي/رمزي) مع امر بايداع مال او شرط",
+        "article_number": 284,
+        "classification": {
+            "main_category": "الجرائم ضد الاشخاص",
+            "sub_category": "التهديد والابتزاز",
+            "section": "التهديد"
+        },
+        "text": {
+            "original": "تهديد بالاغتيال او الحبس او اي اعتداء على الاشخاص يتم عبر كتابة مجهولة/موقعة او صورة/رمز/شعار، اذا كان مصحوبا بامر بايداع مبلغ مالي او تنفيذ شرط اخر.",
+            "language": "ar",
+            "is_official_arabic": true
+        },
+        "definition": "تهديد بالاغتيال او الحبس او اي اعتداء على الاشخاص (يعاقب عليه بالاعدام او السجن المؤبد) يتم عبر كتابة مجهولة/موقعة او صورة/رمز/شعار، اذا كان مصحوبا بامر بايداع مبلغ مالي او تنفيذ شرط اخر.",
+        "conditions": [
+            {
+                "type": "means",
+                "value": [
+                    "كتابة (مجهولة/موقعة)",
+                    "صورة",
+                    "رمز",
+                    "شعار"
+                ]
+            },
+            {
+                "type": "threat_subject",
+                "value": [
+                    "اغتيال",
+                    "حبس",
+                    "اعتداء جسيم على الاشخاص"
+                ]
+            },
+            {
+                "type": "requirement",
+                "value": "امر بايداع مبلغ او تنفيذ شرط"
+            }
+        ],
+        "keywords": [
+            "تهديد",
+            "وسائل كتابية",
+            "وسائل رمزية",
+            "شرط",
+            "امر بايداع مال",
+            "ابتزاز"
+        ],
+        "legal_type": "تجريمية",
+        "norm_type": "لا يجوز الاتفاق على خلافها",
+        "legal_element": {
+            "material": "اصدار تهديد بالوسائل المحددة + اقترانه بامر بايداع مال او شرط.",
+            "moral": "القصد الجنائي."
+        },
+        "penalties": {
+            "imprisonment": {
+                "min_years": 2,
+                "max_years": 10
+            },
+            "fine": {
+                "min_dzd": 500,
+                "max_dzd": 5000
+            }
+        },
+        "additional_penalties": {
+            "rights_deprivation_article_14": {
+                "min_years": 1,
+                "max_years": 5
+            },
+            "ban_of_residence": {
+                "min_years": 1,
+                "max_years": 5
+            }
+        },
+        "effects": null,
+        "termination": null,
+        "nullity": null,
+        "damages": {
+            "allowed": true,
+            "scope": "يمكن للضحية المطالبة بتعويض مدني عن الضرر النفسي والمادي الناجم عن التهديد."
+        },
+        "relations": {
+            "related_articles": [
+                14,
+                285,
+                286,
+                287
+            ],
+            "derived_from": null,
+            "amended_by": "الامر 75-47",
+            "repeals": null
+        },
+        "source": {
+            "document": "قانون العقوبات الجزائري",
+            "year": 2005,
+            "publisher": "الجريدة الرسمية"
+        },
+        "versioning": {
+            "status": "ساري",
+            "version": "v1.0",
+            "last_update": "1975-06-17"
+        },
+        "tags": [
+            "تهديد",
+            "وسائل كتابية",
+            "وسائل رمزية",
+            "شرط",
+            "امر بايداع مال",
+            "ابتزاز",
+            "اعتداء على الاشخاص"
+        ],
+        "language": "ar"
+    },
+    {
+        "id": "DZ_PENAL_ART_285",
+        "country": "Algeria",
+        "law_domain": "Penal Law",
+        "law_name": "قانون العقوبات",
+        "book": "الكتاب الثالث: في الجنايات والجنح وعقوباتها - الباب الثاني: الجنايات والجنح ضد الافراد - الفصل الاول: الجنايات والجنح ضد الاشخاص",
+        "title": "التهديد بدون امر او شرط",
+        "article_number": 285,
+        "classification": {
+            "main_category": "الجرائم ضد الاشخاص",
+            "sub_category": "التهديد والابتزاز",
+            "section": "التهديد"
+        },
+        "text": {
+            "original": "تهديد من نوع المادة 284 دون ان يكون مصحوبا باي امر او شرط.",
+            "language": "ar",
+            "is_official_arabic": true
+        },
+        "definition": "تهديد من نوع المادة 284 دون ان يكون مصحوبا باي امر او شرط.",
+        "conditions": [
+            {
+                "type": "means",
+                "value": [
+                    "كتابة (مجهولة/موقعة)",
+                    "صورة",
+                    "رمز",
+                    "شعار"
+                ]
+            },
+            {
+                "type": "threat_subject",
+                "value": [
+                    "اغتيال",
+                    "حبس",
+                    "اعتداء جسيم على الاشخاص"
+                ]
+            },
+            {
+                "type": "requirement",
+                "value": "غياب اي امر او شرط"
+            }
+        ],
+        "keywords": [
+            "تهديد",
+            "وسائل كتابية",
+            "وسائل رمزية",
+            "بدون شرط",
+            "اعتداء على الاشخاص"
+        ],
+        "legal_type": "تجريمية",
+        "norm_type": "لا يجوز الاتفاق على خلافها",
+        "legal_element": {
+            "material": "تهديد من نوع 284 دون امر/شرط.",
+            "moral": "القصد الجنائي."
+        },
+        "penalties": {
+            "imprisonment": {
+                "min_years": 1,
+                "max_years": 3
+            },
+            "fine": {
+                "min_dzd": 500,
+                "max_dzd": 2500
+            }
+        },
+        "additional_penalties": {
+            "ban_of_residence": {
+                "min_years": 1,
+                "max_years": 5
+            }
+        },
+        "effects": null,
+        "termination": null,
+        "nullity": null,
+        "damages": {
+            "allowed": true,
+            "scope": "يمكن للضحية المطالبة بتعويض مدني عن الضرر الناجم عن التهديد."
+        },
+        "relations": {
+            "related_articles": [
+                284,
+                286
+            ],
+            "derived_from": null,
+            "amended_by": "الامر 75-47",
+            "repeals": null
+        },
+        "source": {
+            "document": "قانون العقوبات الجزائري",
+            "year": 2005,
+            "publisher": "الجريدة الرسمية"
+        },
+        "versioning": {
+            "status": "ساري",
+            "version": "v1.0",
+            "last_update": "1975-06-17"
+        },
+        "tags": [
+            "تهديد",
+            "وسائل كتابية",
+            "وسائل رمزية",
+            "بدون شرط",
+            "اعتداء على الاشخاص"
+        ],
+        "language": "ar"
+    },
+    {
+        "id": "DZ_PENAL_ART_286",
+        "country": "Algeria",
+        "law_domain": "Penal Law",
+        "law_name": "قانون العقوبات",
+        "book": "الكتاب الثالث: في الجنايات والجنح وعقوباتها - الباب الثاني: الجنايات والجنح ضد الافراد - الفصل الاول: الجنايات والجنح ضد الاشخاص",
+        "title": "التهديد الشفهي المصحوب بامر او شرط",
+        "article_number": 286,
+        "classification": {
+            "main_category": "الجرائم ضد الاشخاص",
+            "sub_category": "التهديد والابتزاز",
+            "section": "التهديد"
+        },
+        "text": {
+            "original": "اذا كانت التهديدات المصحوبة بامر او تحت شرط قد تمت شفهيا.",
+            "language": "ar",
+            "is_official_arabic": true
+        },
+        "definition": "اذا كانت التهديدات المصحوبة بامر او موضوعة تحت شرط قد تمت شفهيا.",
+        "conditions": [
+            {
+                "type": "means",
+                "value": [
+                    "شفهي"
+                ]
+            },
+            {
+                "type": "threat_subject",
+                "value": [
+                    "تهديد (ضمن نطاق القسم)"
+                ]
+            },
+            {
+                "type": "requirement",
+                "value": "امر او شرط"
+            }
+        ],
+        "keywords": [
+            "تهديد",
+            "شفهي",
+            "شرط",
+            "امر",
+            "اعتداء على الاشخاص"
+        ],
+        "legal_type": "تجريمية",
+        "norm_type": "لا يجوز الاتفاق على خلافها",
+        "legal_element": {
+            "material": "تهديد شفهي + امر/شرط.",
+            "moral": "القصد الجنائي."
+        },
+        "penalties": {
+            "imprisonment": {
+                "min_months": 6,
+                "max_months": 24
+            },
+            "fine": {
+                "min_dzd": 500,
+                "max_dzd": 1500
+            }
+        },
+        "additional_penalties": {
+            "ban_of_residence": {
+                "min_years": 1,
+                "max_years": 5
+            }
+        },
+        "effects": null,
+        "termination": null,
+        "nullity": null,
+        "damages": {
+            "allowed": true,
+            "scope": "يمكن للضحية المطالبة بتعويض مدني."
+        },
+        "relations": {
+            "related_articles": [
+                284,
+                285,
+                287
+            ],
+            "derived_from": null,
+            "amended_by": null,
+            "repeals": null
+        },
+        "source": {
+            "document": "قانون العقوبات الجزائري",
+            "year": 2005,
+            "publisher": "الجريدة الرسمية"
+        },
+        "versioning": {
+            "status": "ساري",
+            "version": "v1.0",
+            "last_update": "1975-06-17"
+        },
+        "tags": [
+            "تهديد",
+            "شفهي",
+            "شرط",
+            "امر",
+            "اعتداء على الاشخاص"
+        ],
+        "language": "ar"
+    },
+    {
+        "id": "DZ_PENAL_ART_287",
+        "country": "Algeria",
+        "law_domain": "Penal Law",
+        "law_name": "قانون العقوبات",
+        "book": "الكتاب الثالث: في الجنايات والجنح وعقوباتها - الباب الثاني: الجنايات والجنح ضد الافراد - الفصل الاول: الجنايات والجنح ضد الاشخاص",
+        "title": "تهديد بارتكاب عنف/اعتداءات (غير 284) مع امر او شرط",
+        "article_number": 287,
+        "classification": {
+            "main_category": "الجرائم ضد الاشخاص",
+            "sub_category": "التهديد والابتزاز",
+            "section": "التهديد"
+        },
+        "text": {
+            "original": "التهديد بوسيلة من وسائل المواد 284 الى 286 بارتكاب عنف/اعتداءات غير المنصوص عليها في المادة 284، اذا كان التهديد مع امر او تحت شرط.",
+            "language": "ar",
+            "is_official_arabic": true
+        },
+        "definition": "التهديد بوسيلة من وسائل المواد 284 الى 286 بارتكاب عنف/اعتداءات غير المنصوص عليها في المادة 284، اذا كان التهديد مع امر او تحت شرط.",
+        "conditions": [
+            {
+                "type": "means",
+                "value": [
+                    "وسائل 284-286 (كتابة/رمز/شفهي حسب الاحالة)"
+                ]
+            },
+            {
+                "type": "threat_subject",
+                "value": [
+                    "عنف",
+                    "اعتداءات غير المنصوص عليها في المادة 284"
+                ]
+            },
+            {
+                "type": "requirement",
+                "value": "امر او شرط"
+            }
+        ],
+        "keywords": [
+            "تهديد",
+            "عنف",
+            "وسائل 284-286",
+            "شرط",
+            "امر",
+            "اعتداء على الاشخاص"
+        ],
+        "legal_type": "تجريمية",
+        "norm_type": "لا يجوز الاتفاق على خلافها",
+        "legal_element": {
+            "material": "تهديد بوسائل 284-286 + موضوعه عنف/اعتداءات + اقترانه بامر/شرط.",
+            "moral": "القصد الجنائي."
+        },
+        "penalties": {
+            "imprisonment": {
+                "min_months": 3,
+                "max_months": 12
+            },
+            "fine": {
+                "min_dzd": 500,
+                "max_dzd": 1000
+            }
+        },
+        "additional_penalties": null,
+        "effects": null,
+        "termination": null,
+        "nullity": null,
+        "damages": {
+            "allowed": true,
+            "scope": "يمكن للضحية المطالبة بتعويض مدني عن الضرر الناجم عن التهديد."
+        },
+        "relations": {
+            "related_articles": [
+                284,
+                285,
+                286
+            ],
+            "derived_from": null,
+            "amended_by": "القانون 82-04",
+            "repeals": null
+        },
+        "source": {
+            "document": "قانون العقوبات الجزائري",
+            "year": 2005,
+            "publisher": "الجريدة الرسمية"
+        },
+        "versioning": {
+            "status": "ساري",
+            "version": "v2.0",
+            "last_update": "1982-02-13"
+        },
+        "tags": [
+            "تهديد",
+            "عنف",
+            "وسائل 284-286",
+            "شرط",
+            "امر",
+            "اعتداء على الاشخاص"
+        ],
+        "language": "ar"
+    },
+    {
+        "id": "DZ_PENAL_ART_296",
+        "country": "Algeria",
+        "law_domain": "Penal Law",
+        "law_name": "قانون العقوبات",
+        "book": "الكتاب الثالث: في الجنايات والجنح وعقوباتها - الباب الثاني: الجنايات والجنح ضد الافراد - الفصل الثاني: القذف والسب",
+        "title": "تعريف القذف/التشهير (Diffamation)",
+        "article_number": 296,
+        "classification": {
+            "main_category": "الجرائم ضد الشرف والاعتبار",
+            "sub_category": "القذف والسب",
+            "section": "القذف/التشهير"
+        },
+        "text": {
+            "original": "كل ادعاء او اسناد لواقعة تمس الشرف او الاعتبار يعد قذفا/تشهيرا، ويعاقب نشره حتى لو كان بصيغة الشك او دون تسمية صريحة متى امكن التعرف على المقصود.",
+            "language": "ar",
+            "is_official_arabic": true
+        },
+        "definition": "كل ادعاء او اسناد لواقعة تمس الشرف او الاعتبار يعد قذفا/تشهيرا، ويعاقب نشره حتى لو كان بصيغة الشك او دون تسمية صريحة متى امكن التعرف على المقصود.",
+        "conditions": [
+            {
+                "type": "act",
+                "value": [
+                    "اسناد واقعة تمس الشرف او الاعتبار",
+                    "ادعاء واقعة ماسة"
+                ]
+            },
+            {
+                "type": "publicity",
+                "value": "تحقق النشر/الاشهار"
+            }
+        ],
+        "keywords": [
+            "قذف",
+            "تشهير",
+            "سمعة",
+            "شرف",
+            "نشر",
+            "علانية"
+        ],
+        "legal_type": "تعريفية",
+        "norm_type": "لا يجوز الاتفاق على خلافها",
+        "legal_element": {
+            "material": "اسناد واقعة ماسة بالشرف + نشرها.",
+            "moral": "القصد الجنائي."
+        },
+        "penalties": null,
+        "additional_penalties": null,
+        "effects": null,
+        "termination": null,
+        "nullity": null,
+        "damages": {
+            "allowed": true,
+            "scope": "تقوم المسؤولية المدنية بالتوازي مع الملاحقة الجزائية وفق احكام المادة 298."
+        },
+        "relations": {
+            "related_articles": [
+                297,
+                298
+            ],
+            "derived_from": null,
+            "amended_by": null,
+            "repeals": null
+        },
+        "source": {
+            "document": "قانون العقوبات الجزائري",
+            "year": 2005,
+            "publisher": "الجريدة الرسمية"
+        },
+        "versioning": {
+            "status": "ساري",
+            "version": "v1.0",
+            "last_update": "1975-06-17"
+        },
+        "tags": [
+            "قذف",
+            "تشهير",
+            "سمعة",
+            "شرف",
+            "نشر",
+            "علانية"
+        ],
+        "language": "ar"
+    },
+    {
+        "id": "DZ_PENAL_ART_297",
+        "country": "Algeria",
+        "law_domain": "Penal Law",
+        "law_name": "قانون العقوبات",
+        "book": "الكتاب الثالث: في الجنايات والجنح وعقوباتها - الباب الثاني: الجنايات والجنح ضد الافراد - الفصل الثاني: القذف والسب",
+        "title": "تعريف السب/الشتم (Injure)",
+        "article_number": 297,
+        "classification": {
+            "main_category": "الجرائم ضد الشرف والاعتبار",
+            "sub_category": "القذف والسب",
+            "section": "السب/الشتم"
+        },
+        "text": {
+            "original": "كل تعبير مهين او لفظ ازدراء او شتيمة لا تتضمن اسناد واقعة محددة يعد سبا/شتما.",
+            "language": "ar",
+            "is_official_arabic": true
+        },
+        "definition": "كل تعبير مهين او لفظ ازدراء او شتيمة لا تتضمن اسناد واقعة محددة يعد سبا/شتما.",
+        "conditions": [
+            {
+                "type": "act",
+                "value": [
+                    "تعبير مهين",
+                    "ازدراء",
+                    "سباب"
+                ]
+            },
+            {
+                "type": "fact_imputation",
+                "value": "بدون اسناد واقعة محددة"
+            }
+        ],
+        "keywords": [
+            "سب",
+            "شتم",
+            "اهانة",
+            "كرامة",
+            "الفاظ"
+        ],
+        "legal_type": "تعريفية",
+        "norm_type": "لا يجوز الاتفاق على خلافها",
+        "legal_element": {
+            "material": "الفاظ/عبارات مهينة دون وقائع.",
+            "moral": "القصد الجنائي."
+        },
+        "penalties": null,
+        "additional_penalties": null,
+        "effects": null,
+        "termination": null,
+        "nullity": null,
+        "damages": {
+            "allowed": true,
+            "scope": "تقوم المسؤولية المدنية عن الضرر المعنوي وفق احكام المادتين 298 ومكرر و299."
+        },
+        "relations": {
+            "related_articles": [
+                298,
+                298.1,
+                299
+            ],
+            "derived_from": null,
+            "amended_by": null,
+            "repeals": null
+        },
+        "source": {
+            "document": "قانون العقوبات الجزائري",
+            "year": 2005,
+            "publisher": "الجريدة الرسمية"
+        },
+        "versioning": {
+            "status": "ساري",
+            "version": "v1.0",
+            "last_update": "1975-06-17"
+        },
+        "tags": [
+            "سب",
+            "شتم",
+            "اهانة",
+            "كرامة",
+            "الفاظ"
+        ],
+        "language": "ar"
+    },
+    {
+        "id": "DZ_PENAL_ART_298",
+        "country": "Algeria",
+        "law_domain": "Penal Law",
+        "law_name": "قانون العقوبات",
+        "book": "الكتاب الثالث: في الجنايات والجنح وعقوباتها - الباب الثاني: الجنايات والجنح ضد الافراد - الفصل الثاني: القذف والسب",
+        "title": "عقوبة القذف/التشهير",
+        "article_number": 298,
+        "classification": {
+            "main_category": "الجرائم ضد الشرف والاعتبار",
+            "sub_category": "القذف والسب",
+            "section": "القذف/التشهير"
+        },
+        "text": {
+            "original": "يعاقب القذف/التشهير اذا وقع على الافراد، وتشدد العقوبة اذا استهدف جماعة اثنية/فلسفية او ديانة بهدف التحريض على الكراهية.",
+            "language": "ar",
+            "is_official_arabic": true
+        },
+        "definition": "يعاقب القذف/التشهير اذا وقع على الافراد، وتشدد العقوبة اذا استهدف جماعة اثنية/فلسفية او ديانة بهدف التحريض على الكراهية.",
+        "conditions": [
+            {
+                "type": "act",
+                "value": [
+                    "قذف/تشهير"
+                ]
+            },
+            {
+                "type": "target",
+                "value": [
+                    "افراد",
+                    "جماعة اثنية/فلسفية/دينية (حالة مشددة)"
+                ]
+            },
+            {
+                "type": "intent",
+                "value": "في الحالة المشددة: التحريض على الكراهية"
+            }
+        ],
+        "keywords": [
+            "قذف",
+            "تشهير",
+            "عقوبة",
+            "نشر",
+            "تحريض على الكراهية",
+            "جماعة"
+        ],
+        "legal_type": "تجريمية",
+        "norm_type": "لا يجوز الاتفاق على خلافها",
+        "legal_element": {
+            "material": "تحقق القذف/التشهير ونشره.",
+            "moral": "القصد الجنائي (وفي المشدد: قصد التحريض)."
+        },
+        "penalties": {
+            "diffamation_against_individuals": {
+                "imprisonment": {
+                    "min_days": 5,
+                    "max_months": 6
+                },
+                "fine": {
+                    "min_dzd": 5000,
+                    "max_dzd": 50000
+                },
+                "alternative": "او احدى العقوبتين فقط"
+            },
+            "diffamation_against_group_incitement": {
+                "imprisonment": {
+                    "min_months": 1,
+                    "max_years": 1
+                },
+                "fine": {
+                    "min_dzd": 10000,
+                    "max_dzd": 100000
+                },
+                "alternative": "او احدى العقوبتين فقط"
+            }
+        },
+        "additional_penalties": null,
+        "effects": null,
+        "termination": null,
+        "nullity": null,
+        "damages": {
+            "allowed": true,
+            "scope": "يحق للمتضرر المطالبة بتعويض مدني عن الضرر المعنوي."
+        },
+        "relations": {
+            "related_articles": [
+                296,
+                297
+            ],
+            "derived_from": null,
+            "amended_by": "القانون 01-09",
+            "repeals": null
+        },
+        "source": {
+            "document": "قانون العقوبات الجزائري",
+            "year": 2005,
+            "publisher": "الجريدة الرسمية"
+        },
+        "versioning": {
+            "status": "ساري",
+            "version": "v2.0",
+            "last_update": "2001-06-26"
+        },
+        "tags": [
+            "قذف",
+            "تشهير",
+            "عقوبة",
+            "نشر",
+            "تحريض على الكراهية",
+            "جماعة"
+        ],
+        "language": "ar"
+    },
+    {
+        "id": "DZ_PENAL_ART_298bis",
+        "country": "Algeria",
+        "law_domain": "Penal Law",
+        "law_name": "قانون العقوبات",
+        "book": "الكتاب الثالث: في الجنايات والجنح وعقوباتها - الباب الثاني: الجنايات والجنح ضد الافراد - الفصل الثاني: القذف والسب",
+        "title": "عقوبة السب/الشتم ضد جماعة (ethnique/philosophique/religion)",
+        "article_number": 298.1,
+        "classification": {
+            "main_category": "الجرائم ضد الشرف والاعتبار",
+            "sub_category": "القذف والسب",
+            "section": "السب/الشتم"
+        },
+        "text": {
+            "original": "السب/الشتم تجاه شخص/اشخاص ينتمون الى جماعة اثنية او فلسفية او ديانة معينة.",
+            "language": "ar",
+            "is_official_arabic": true
+        },
+        "definition": "السب/الشتم تجاه شخص/اشخاص ينتمون الى جماعة اثنية او فلسفية او ديانة معينة.",
+        "conditions": [
+            {
+                "type": "act",
+                "value": [
+                    "سب/شتم"
+                ]
+            },
+            {
+                "type": "target",
+                "value": [
+                    "جماعة اثنية",
+                    "جماعة فلسفية",
+                    "ديانة"
+                ]
+            }
+        ],
+        "keywords": [
+            "سب",
+            "شتم",
+            "جماعة",
+            "اثنية",
+            "دين",
+            "عقوبة"
+        ],
+        "legal_type": "تجريمية",
+        "norm_type": "لا يجوز الاتفاق على خلافها",
+        "legal_element": {
+            "material": "سب/شتم موجه للفئة المحددة.",
+            "moral": "القصد الجنائي."
+        },
+        "penalties": {
+            "imprisonment": {
+                "min_days": 5,
+                "max_months": 6
+            },
+            "fine": {
+                "min_dzd": 5000,
+                "max_dzd": 50000
+            },
+            "alternative": "او احدى العقوبتين فقط"
+        },
+        "additional_penalties": null,
+        "effects": null,
+        "termination": null,
+        "nullity": null,
+        "damages": {
+            "allowed": true,
+            "scope": "يحق للمتضرر المطالبة بتعويض مدني عن الضرر المعنوي."
+        },
+        "relations": {
+            "related_articles": [
+                297,
+                299
+            ],
+            "derived_from": null,
+            "amended_by": "القانون 01-09",
+            "repeals": null
+        },
+        "source": {
+            "document": "قانون العقوبات الجزائري",
+            "year": 2005,
+            "publisher": "الجريدة الرسمية"
+        },
+        "versioning": {
+            "status": "ساري",
+            "version": "v2.0",
+            "last_update": "2001-06-26"
+        },
+        "tags": [
+            "سب",
+            "شتم",
+            "جماعة",
+            "اثنية",
+            "دين",
+            "عقوبة"
+        ],
+        "language": "ar"
+    },
+    {
+        "id": "DZ_PENAL_ART_299",
+        "country": "Algeria",
+        "law_domain": "Penal Law",
+        "law_name": "قانون العقوبات",
+        "book": "الكتاب الثالث: في الجنايات والجنح وعقوباتها - الباب الثاني: الجنايات والجنح ضد الافراد - الفصل الثاني: القذف والسب",
+        "title": "عقوبة السب/الشتم ضد الاشخاص",
+        "article_number": 299,
+        "classification": {
+            "main_category": "الجرائم ضد الشرف والاعتبار",
+            "sub_category": "القذف والسب",
+            "section": "السب/الشتم"
+        },
+        "text": {
+            "original": "السب/الشتم الموجه الى شخص او عدة اشخاص.",
+            "language": "ar",
+            "is_official_arabic": true
+        },
+        "definition": "السب/الشتم الموجه الى شخص او عدة اشخاص.",
+        "conditions": [
+            {
+                "type": "act",
+                "value": [
+                    "سب/شتم"
+                ]
+            },
+            {
+                "type": "target",
+                "value": [
+                    "شخص",
+                    "عدة اشخاص"
+                ]
+            }
+        ],
+        "keywords": [
+            "سب",
+            "شتم",
+            "اشخاص",
+            "عقوبة",
+            "اهانة"
+        ],
+        "legal_type": "تجريمية",
+        "norm_type": "لا يجوز الاتفاق على خلافها",
+        "legal_element": {
+            "material": "عبارات مهينة موجهة لضحايا محددين.",
+            "moral": "القصد الجنائي."
+        },
+        "penalties": {
+            "imprisonment": {
+                "min_days": 6,
+                "max_months": 3
+            },
+            "fine": {
+                "min_dzd": 5000,
+                "max_dzd": 50000
+            },
+            "alternative": "او احدى العقوبتين فقط"
+        },
+        "additional_penalties": null,
+        "effects": null,
+        "termination": null,
+        "nullity": null,
+        "damages": {
+            "allowed": true,
+            "scope": "يحق للضحية المطالبة بتعويض مدني عن الضرر المعنوي."
+        },
+        "relations": {
+            "related_articles": [
+                296,
+                297,
+                298.1
+            ],
+            "derived_from": null,
+            "amended_by": "القانون 01-09",
+            "repeals": null
+        },
+        "source": {
+            "document": "قانون العقوبات الجزائري",
+            "year": 2005,
+            "publisher": "الجريدة الرسمية"
+        },
+        "versioning": {
+            "status": "ساري",
+            "version": "v2.0",
+            "last_update": "2001-06-26"
+        },
+        "tags": [
+            "سب",
+            "شتم",
+            "اشخاص",
+            "عقوبة",
+            "اهانة"
+        ],
+        "language": "ar"
+    },
+    {
+        "id": "DZ_PENAL_ART_350",
+        "country": "Algeria",
+        "law_domain": "Penal Law",
+        "law_name": "قانون العقوبات",
+        "book": "الكتاب الثالث: في الجنايات والجنح وعقوباتها - الباب الثالث: الجنايات والجنح ضد الاموال - الفصل الاول: السرقة",
+        "title": "السرقة (تعريف + عقوبة + الشروع + تحويل الماء/الغاز/الكهرباء)",
+        "article_number": 350,
+        "classification": {
+            "main_category": "الجرائم ضد الاموال",
+            "sub_category": "السرقة",
+            "section": "السرقة البسيطة"
+        },
+        "text": {
+            "original": "كل من يختلس احتيالا شيئا لا يملكه يعد مرتكبا للسرقة، والشروع يعاقب بنفس العقوبة، وتمتد نفس العقوبات لتحويل الماء او الغاز او الكهرباء.",
+            "language": "ar",
+            "is_official_arabic": true
+        },
+        "definition": "كل من يختلس احتيالا شيئا لا يملكه يعد مرتكبا للسرقة، والشروع يعاقب بنفس العقوبة، وتمتد نفس العقوبات لتحويل الماء او الغاز او الكهرباء.",
+        "conditions": [
+            {
+                "type": "act",
+                "value": [
+                    "اختلاس شيء لا يملكه الفاعل"
+                ]
+            },
+            {
+                "type": "unlawfulness",
+                "value": "طبيعة الفعل احتيالية/غير مشروعة"
+            },
+            {
+                "type": "attempt",
+                "value": "الشروع يعاقب كالفعل التام"
+            },
+            {
+                "type": "assimilated_act",
+                "value": [
+                    "تحويل الماء",
+                    "تحويل الغاز",
+                    "تحويل الكهرباء"
+                ]
+            }
+        ],
+        "keywords": [
+            "سرقة",
+            "اختلاس",
+            "احتيال",
+            "الشروع",
+            "تحويل الماء",
+            "تحويل الغاز",
+            "تحويل الكهرباء"
+        ],
+        "legal_type": "تجريمية",
+        "norm_type": "لا يجوز الاتفاق على خلافها",
+        "legal_element": {
+            "material": "سلب/اختلاس شيء مملوك للغير بطريقة احتيالية، او الشروع في ذلك، او تحويل الماء/الغاز/الكهرباء.",
+            "moral": "القصد الجنائي (ارادة السلب مع العلم بعدم الملكية)."
+        },
+        "penalties": {
+            "imprisonment": {
+                "min_years": 1,
+                "max_years": 5
+            },
+            "fine": {
+                "min_dzd": 500,
+                "max_dzd": 20000
+            },
+            "attempt_same_penalty": true,
+            "diversion_water_gas_electricity_same_penalty": true
+        },
+        "additional_penalties": {
+            "rights_deprivation_article_14": {
+                "min_years": 1,
+                "max_years": 5
+            },
+            "ban_of_residence": {
+                "min_years": 1,
+                "max_years": 5
+            }
+        },
+        "effects": null,
+        "termination": null,
+        "nullity": null,
+        "damages": {
+            "allowed": true,
+            "scope": "يحق للمجني عليه المطالبة برد المسروقات والتعويض عن الضرر الناجم عن السرقة."
+        },
+        "relations": {
+            "related_articles": [
+                14,
+                351
+            ],
+            "derived_from": null,
+            "amended_by": "القانون 82-04",
+            "repeals": null
+        },
+        "source": {
+            "document": "قانون العقوبات الجزائري",
+            "year": 2005,
+            "publisher": "الجريدة الرسمية"
+        },
+        "versioning": {
+            "status": "ساري",
+            "version": "v2.0",
+            "last_update": "1982-02-13"
+        },
+        "tags": [
+            "سرقة",
+            "اختلاس",
+            "احتيال",
+            "الشروع",
+            "تحويل الماء",
+            "تحويل الغاز",
+            "تحويل الكهرباء",
+            "حقوق مدنية (م 14)",
+            "منع الاقامة"
+        ],
+        "language": "ar"
+    },
+    {
+        "id": "DZ_PENAL_ART_351",
+        "country": "Algeria",
+        "law_domain": "Penal Law",
+        "law_name": "قانون العقوبات",
+        "book": "الكتاب الثالث: في الجنايات والجنح وعقوباتها - الباب الثالث: الجنايات والجنح ضد الاموال - الفصل الاول: السرقة",
+        "title": "السرقة مع حمل سلاح (عقوبة الاعدام)",
+        "article_number": 351,
+        "classification": {
+            "main_category": "الجرائم ضد الاموال",
+            "sub_category": "السرقة",
+            "section": "السرقة المشددة"
+        },
+        "text": {
+            "original": "تعاقب السرقة بالاعدام اذا كان السارق او احدهم حاملا لسلاح ظاهر او مخفي، حتى لو تمت من شخص واحد ودون ظروف مشددة اخرى.",
+            "language": "ar",
+            "is_official_arabic": true
+        },
+        "definition": "تعاقب السرقة بالاعدام اذا كان السارق او احدهم حاملا لسلاح ظاهر او مخفي، حتى لو تمت من شخص واحد ودون ظروف مشددة اخرى.",
+        "conditions": [
+            {
+                "type": "act",
+                "value": "وقوع سرقة"
+            },
+            {
+                "type": "circumstance",
+                "value": [
+                    "حمل سلاح ظاهر او مخفي من احد الجناة"
+                ]
+            }
+        ],
+        "keywords": [
+            "سرقة",
+            "حمل سلاح",
+            "ظرف مشدد",
+            "عقوبة الاعدام"
+        ],
+        "legal_type": "تجريمية",
+        "norm_type": "لا يجوز الاتفاق على خلافها",
+        "legal_element": {
+            "material": "سرقة + حمل سلاح (ظاهر/مخفي) من احد الجناة.",
+            "moral": "القصد الجنائي في السرقة."
+        },
+        "penalties": {
+            "death_penalty": true
+        },
+        "additional_penalties": null,
+        "effects": null,
+        "termination": null,
+        "nullity": null,
+        "damages": {
+            "allowed": true,
+            "scope": "يحق للمجني عليه المطالبة برد المسروقات والتعويض عن الضرر."
+        },
+        "relations": {
+            "related_articles": [
+                350
+            ],
+            "derived_from": null,
+            "amended_by": "الامر 75-47",
+            "repeals": null
+        },
+        "source": {
+            "document": "قانون العقوبات الجزائري",
+            "year": 2005,
+            "publisher": "الجريدة الرسمية"
+        },
+        "versioning": {
+            "status": "ساري",
+            "version": "v1.0",
+            "last_update": "1975-06-17"
+        },
+        "tags": [
+            "سرقة",
+            "حمل سلاح",
+            "ظرف مشدد",
+            "عقوبة الاعدام"
+        ],
+        "language": "ar"
+    },
+    {
+        "id": "DZ_PENAL_ART_372",
+        "country": "Algeria",
+        "law_domain": "Penal Law",
+        "law_name": "قانون العقوبات",
+        "book": "الكتاب الثالث: في الجنايات والجنح وعقوباتها - الباب الثالث: الجنايات والجنح ضد الاموال - الفصل الخامس: النصب والاحتيال",
+        "title": "النصب/الاحتيال (Escroquerie) والشروع",
+        "article_number": 372,
+        "classification": {
+            "main_category": "الجرائم ضد الاموال",
+            "sub_category": "الاحتيال والنصب",
+            "section": "النصب والاحتيال"
+        },
+        "text": {
+            "original": "الحصول او محاولة الحصول على اموال/منقولات/سندات… باستعمال اسم كاذب او صفة كاذبة او مناورات احتيالية لايهام الغير بوجود مشاريع او سلطة او ائتمان وهمي او لاثارة الامل/الخوف بشان حدث خيالي.",
+            "language": "ar",
+            "is_official_arabic": true
+        },
+        "definition": "الحصول او محاولة الحصول على اموال/منقولات/سندات… باستعمال اسم كاذب او صفة كاذبة او مناورات احتيالية لايهام الغير بوجود مشاريع او سلطة او ائتمان وهمي او لاثارة الامل/الخوف بشان حدث خيالي.",
+        "conditions": [
+            {
+                "type": "means",
+                "value": [
+                    "اسم كاذب",
+                    "صفة كاذبة",
+                    "مناورات/حيل احتيالية"
+                ]
+            },
+            {
+                "type": "result",
+                "value": [
+                    "تسلم/استلام او محاولة تسلم اموال او اشياء او سندات"
+                ]
+            },
+            {
+                "type": "harm",
+                "value": "الاستيلاء/محاولة الاستيلاء على كل او جزء من مال الغير"
+            },
+            {
+                "type": "attempt",
+                "value": "الشروع يعاقب كالجريمة التامة"
+            }
+        ],
+        "keywords": [
+            "نصب",
+            "احتيال",
+            "مناورات احتيالية",
+            "اسم كاذب",
+            "صفة كاذبة",
+            "استيلاء على مال الغير",
+            "الشروع"
+        ],
+        "legal_type": "تجريمية",
+        "norm_type": "لا يجوز الاتفاق على خلافها",
+        "legal_element": {
+            "material": "استعمال وسائل احتيالية محددة قانونا + تسلم/محاولة تسلم مال او سندات + مساس بثروة الغير.",
+            "moral": "القصد الجنائي (نية الاحتيال والاستيلاء)."
+        },
+        "penalties": {
+            "imprisonment": {
+                "min_years": 1,
+                "max_years": 5
+            },
+            "fine": {
+                "min_dzd": 500,
+                "max_dzd": 20000
+            },
+            "attempt_same_penalty": true
+        },
+        "additional_penalties": null,
+        "effects": null,
+        "termination": null,
+        "nullity": null,
+        "damages": {
+            "allowed": true,
+            "scope": "يحق للمتضرر المطالبة بالتعويض عن كامل الضرر المادي والمعنوي الناجم عن الاحتيال."
+        },
+        "relations": {
+            "related_articles": [
+                373
+            ],
+            "derived_from": null,
+            "amended_by": null,
+            "repeals": null
+        },
+        "source": {
+            "document": "قانون العقوبات الجزائري",
+            "year": 2005,
+            "publisher": "الجريدة الرسمية"
+        },
+        "versioning": {
+            "status": "ساري",
+            "version": "v1.0",
+            "last_update": "1975-06-17"
+        },
+        "tags": [
+            "نصب",
+            "احتيال",
+            "مناورات احتيالية",
+            "اسم كاذب",
+            "صفة كاذبة",
+            "استيلاء على مال الغير",
+            "الشروع"
+        ],
+        "language": "ar"
+    }
+]

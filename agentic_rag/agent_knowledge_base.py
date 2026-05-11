@@ -22,11 +22,24 @@ import numpy as np
 from rank_bm25 import BM25Okapi
 
 # ── Paths ──────────────────────────────────────────────────────────────────────
+# ── Paths ──────────────────────────────────────────────────────────────────────
+# PROJECT_ROOT should be the absolute path to the 'Istacherni' folder
 PROJECT_ROOT  = Path(__file__).resolve().parents[1]
 RAW_DATA_DIR  = PROJECT_ROOT / "dataset" / "raw"
 CACHE_DIR     = Path(__file__).parent / "cache"
 INDEX_FILE    = CACHE_DIR / "agent_bm25.pkl"
 CORPUS_FILE   = CACHE_DIR / "agent_corpus.pkl"
+
+# ── Domain Mapping ─────────────────────────────────────────────────────────────
+# Maps English domain labels used by the Agent to Arabic labels in the dataset
+DOMAIN_MAP = {
+    "Penal Law":          "قانون العقوبات",
+    "Civil Law":          "القانون المدني",
+    "Labor Law":          "قانون العمل",
+    "Commercial Law":     "القانون التجاري",
+    "Administrative Law": "القانون الإداري",
+}
+
 
 
 # ═══════════════════════════════════════════════════════════════════════
@@ -94,7 +107,9 @@ def _remove_trailing_commas(text: str) -> str:
 def _load_raw_articles(data_dir: Path) -> list[dict]:
     """Load and normalise every *.json file in data_dir recursively (JSON array format)."""
     seen, articles = set(), []
+    print(f"[AgentKB] Searching JSON files in: {data_dir}")
     files = sorted(data_dir.rglob("*.json"))
+    print(f"[AgentKB] Found {len(list(data_dir.rglob('*.json')))} JSON files.")
     for path in files:
         if path.name.startswith("add_") or path.name.startswith("test"):
             continue
@@ -165,18 +180,24 @@ class _KnowledgeBase:
                 self._corpus = pickle.load(f)
             print(f"[AgentKB] Loaded {len(self._corpus)} articles from cache.")
         else:
-            print("[AgentKB] Building index from dataset…")
+            print(f"[AgentKB] Building index from dataset... (Looking in {RAW_DATA_DIR})")
             articles = _load_raw_articles(RAW_DATA_DIR)
+            print(f"[AgentKB] Raw articles loaded: {len(articles)}")
             tokenized = [_tokenize(_doc_text(a)) for a in articles]
             valid = [(tok, art) for tok, art in zip(tokenized, articles) if tok]
+            print(f"[AgentKB] Valid tokenized articles: {len(valid)}")
             tok_v, art_v = zip(*valid) if valid else ([], [])
             self._bm25   = BM25Okapi(list(tok_v))
             self._corpus = list(art_v)
-            with open(INDEX_FILE, "wb") as f:
-                pickle.dump(self._bm25, f)
-            with open(CORPUS_FILE, "wb") as f:
-                pickle.dump(self._corpus, f)
-            print(f"[AgentKB] Index built: {len(self._corpus)} docs, {len(self._bm25.idf)} terms.")
+            
+            if len(self._corpus) > 0:
+                with open(INDEX_FILE, "wb") as f:
+                    pickle.dump(self._bm25, f)
+                with open(CORPUS_FILE, "wb") as f:
+                    pickle.dump(self._corpus, f)
+                print(f"[AgentKB] Index built: {len(self._corpus)} docs, {len(self._bm25.idf)} terms.")
+            else:
+                print("[AgentKB] WARNING: No articles were loaded. Check your dataset directory.")
 
         # Build fast look-up caches
         for art in self._corpus:
@@ -204,15 +225,21 @@ class _KnowledgeBase:
 
     # ── Tool 2: domain-restricted BM25 search ─────────────────────────
     def filter_by_domain(self, domain: str, query: str, top_k: int = 5) -> list[dict]:
+        """Search within a specific domain. Domain can be English (mapped) or Arabic."""
         self._ensure_loaded()
-        # Fuzzy domain match (case-insensitive, partial)
-        domain_lower = domain.lower()
+        
+        # Translate English domain name if it exists in our map
+        target_domain = DOMAIN_MAP.get(domain, domain)
+        domain_lower = target_domain.lower()
+        
         pool = [
             a for key, arts in self._by_domain.items()
             for a in arts
             if domain_lower in key.lower()
         ]
+        
         if not pool:
+            print(f"[AgentKB] Warning: No docs found for domain '{domain}' (mapped to '{target_domain}')")
             return []
         tokens = _tokenize(query)
         if not tokens:

@@ -57,9 +57,9 @@ def main():
     )
     args = parser.parse_args()
 
-    # ── Report-only mode ──────────────────────────────────────────────────────
+    # -- Report-only mode ------------------------------------------------------
     if args.report_only:
-        print("\n[Eval] Report-only mode — loading existing results…")
+        print("\n[Eval] Report-only mode — loading existing results...")
         from evaluation.eval_report import generate_report
         raw_path = Path("evaluation/results/raw_results.json")
         if not raw_path.exists():
@@ -68,7 +68,7 @@ def main():
         generate_report(raw_path, retrieval_only=args.retrieval_only)
         return
 
-    # ── Parse model list ─────────────────────────────────────────────────────
+    # -- Parse model list -----------------------------------------------------
     models = [m.strip().lower() for m in args.models.split(",") if m.strip()]
     valid  = {"standard", "bm25", "agentic", "graph"}
     bad    = [m for m in models if m not in valid]
@@ -87,11 +87,11 @@ def main():
     print(f"  Mode          : {'Retrieval-only (no API calls)' if args.retrieval_only else 'Full (retrieval + generation + judge)'}")
     print("="*70)
 
-    # ── Load test set ──────────────────────────────────────────────────────────
+    # -- Load test set ----------------------------------------------------------
     from evaluation.eval_testset import load_test_cases
     test_cases = load_test_cases(n=n_questions)
 
-    # ── Run evaluation ────────────────────────────────────────────────────────
+    # -- Run evaluation --------------------------------------------------------
     from evaluation.eval_runner import run_all
     all_results = run_all(
         test_cases      = test_cases,
@@ -100,11 +100,11 @@ def main():
         verbose         = verbose,
     )
 
-    # ── Generate report ────────────────────────────────────────────────────────
+    # -- Generate report --------------------------------------------------------
     from evaluation.eval_report import generate_report
     generate_report(retrieval_only=args.retrieval_only)
 
-    print("\n✅ Evaluation complete!")
+    print("\n[PASS] Evaluation complete!")
 
 
 if __name__ == "__main__":

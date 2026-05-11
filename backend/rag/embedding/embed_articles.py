@@ -42,14 +42,12 @@ VECTORSTORE_DIR = PROJECT_ROOT / "backend" / "vectorstore"
 BATCH_SIZE = 20          # Smaller batches to reduce rate-limit pressure
 INTER_BATCH_SLEEP = 2    # Seconds to sleep between successful batches
 
-# ── Setup ─────────────────────────────────────────────────────────────────────
-if not GEMINI_API_KEY:
-    raise EnvironmentError(
-        "GEMINI_API_KEY not set. Create a .env file in the project root with:\n"
-        "  GEMINI_API_KEY=your_key_here"
-    )
-
-genai_client = genai.Client(api_key=GEMINI_API_KEY)
+genai_client = None
+if GEMINI_API_KEY:
+    try:
+        genai_client = genai.Client(api_key=GEMINI_API_KEY)
+    except Exception:
+        pass
 
 # Persistent ChromaDB client
 VECTORSTORE_DIR.mkdir(parents=True, exist_ok=True)
@@ -81,6 +79,12 @@ def _parse_retry_delay(err_str: str, default: int = 60) -> int:
 
 def run_ingestion():
     """Main ingestion pipeline."""
+    if not GEMINI_API_KEY or not genai_client:
+        raise EnvironmentError(
+            "GEMINI_API_KEY not set. Create a .env file in the project root with:\n"
+            "  GEMINI_API_KEY=your_key_here"
+        )
+
     print("=" * 60)
     print("  Algerian Law RAG — Ingestion Pipeline")
     print("=" * 60)

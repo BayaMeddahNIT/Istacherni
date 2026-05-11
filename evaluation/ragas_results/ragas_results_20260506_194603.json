@@ -1,0 +1,22 @@
+{
+  "timestamp": "20260506_194603",
+  "dataset_size": 5,
+  "pipelines": {
+    "P1_FAISS_Gemini": {
+      "retriever": "faiss",
+      "label": "FAISS (Dense) + Gemini-Flash"
+    },
+    "P2_Hybrid_Gemini": {
+      "retriever": "hybrid",
+      "label": "Hybrid FAISS+Chroma (RRF) + Gemini-Flash"
+    }
+  },
+  "results": {
+    "P1_FAISS_Gemini": {
+      "faithfulness": null,
+      "answer_relevancy": null,
+      "context_precision": null,
+      "context_recall": null
+    }
+  }
+}

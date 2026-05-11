@@ -2,10 +2,12 @@ import {
   Text, View, TouchableOpacity, ScrollView, Image,
   Alert, Modal, Platform, Share,
 } from "react-native";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { useUser, useTheme, useTranslation } from "@/context/UserContext";
+import { useAuth } from "@/context/AuthContext";
+import { apiFetchStats } from "@/services/api";
 
 function RateModal({ visible, onClose }: { visible: boolean; onClose: () => void }) {
   const theme = useTheme();
@@ -111,10 +113,22 @@ function MenuItem({
 
 export default function Profile() {
   const { user, clearSession } = useUser();
+  const { logout } = useAuth();
   const theme = useTheme();
   const { t, isRTL } = useTranslation();
   const [rateVisible, setRateVisible] = useState(false);
   const [loggingOut, setLoggingOut] = useState(false);
+  const [stats, setStats] = useState({ analyses: 0, contracts: 0, consultations: 0 });
+
+  useEffect(() => {
+    let active = true;
+    apiFetchStats()
+      .then(data => {
+        if (active) setStats(data);
+      })
+      .catch(err => console.log("Failed to fetch user stats", err));
+    return () => { active = false; };
+  }, []);
 
   const handleLogout = () => {
     Alert.alert(
@@ -127,10 +141,9 @@ export default function Profile() {
           style: "destructive",
           onPress: async () => {
             setLoggingOut(true);
-            await clearSession();
+            await clearSession();  // clear UserContext profile data
+            await logout();        // clear tokens + redirect
             setLoggingOut(false);
-            // Replace entire navigation stack — user cannot go back to home
-            router.replace("/(auth)/log-in");
           },
         },
       ]
@@ -141,16 +154,13 @@ export default function Profile() {
     try {
       await Share.share(
         {
-          title: "Istacherni – Assistant Juridique Algérien",
-          message:
-            "Découvrez Istacherni, l'assistant juridique IA pour la loi algérienne 🇩🇿\n" +
-            "Analysez vos contrats, trouvez un avocat et consultez la bibliothèque du droit algérien.\n\n" +
-            "https://istacherni.dz",
+          title: t("shareTitle"),
+          message: t("shareMessage"),
           url: "https://istacherni.dz",
         },
         {
-          dialogTitle: "Partager Istacherni",
-          subject: "Découvrez Istacherni – Assistant Juridique IA",
+          dialogTitle: t("shareDialogTitle"),
+          subject: t("shareSubject"),
         }
       );
     } catch (e) {
@@ -221,13 +231,12 @@ export default function Profile() {
             </TouchableOpacity>
           </View>
 
-          {/* Stats */}
           {displayName && (
             <View style={{ flexDirection: "row", marginTop: 20, gap: 10 }}>
               {[
-                { label: t("analyses"), value: "4" },
-                { label: t("contracts"), value: "2" },
-                { label: t("consultations"), value: "7" },
+                { label: t("analyses"), value: stats.analyses },
+                { label: t("contracts"), value: stats.contracts },
+                { label: t("consultations"), value: stats.consultations },
               ].map((stat) => (
                 <View key={stat.label} style={{
                   flex: 1, backgroundColor: "rgba(255,255,255,0.2)",
@@ -312,7 +321,7 @@ export default function Profile() {
               color={theme.danger}
             />
             <Text style={{ fontSize: 15, color: theme.danger, fontFamily: "inter-semibold" }}>
-              {loggingOut ? "Déconnexion…" : t("logout")}
+              {loggingOut ? t("loggingOut") : t("logout")}
             </Text>
           </TouchableOpacity>
         </View>

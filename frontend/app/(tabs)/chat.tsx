@@ -1,8 +1,9 @@
 import {
   Text, View, TextInput, TouchableOpacity, TouchableWithoutFeedback, FlatList,
   KeyboardAvoidingView, Platform, Animated, Alert, Image,
-  Modal, Pressable, ActivityIndicator,
+  Modal, Pressable, ActivityIndicator, Keyboard,
 } from "react-native";
+import * as Clipboard from "expo-clipboard";
 import { useState, useRef, useEffect, useCallback } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { Audio } from "expo-av";
@@ -10,6 +11,8 @@ import * as ImagePicker from "expo-image-picker";
 import * as DocumentPicker from "expo-document-picker";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useTheme, useTranslation } from "@/context/UserContext";
+import EventSource from "react-native-sse";
+import { apiFetch, API_BASE, getAccessToken } from "@/services/api";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -27,6 +30,14 @@ interface Message {
   fileName?: string;
   fileSize?: string;
   isLoading?: boolean;
+  sources?: {
+    id: string;
+    law_name: string;
+    article_number: string;
+    title: string;
+    score: number;
+  }[];
+  statuses?: string[];
 }
 
 interface Conversation {
@@ -37,377 +48,111 @@ interface Conversation {
   messages: Message[];
 }
 
-// ─── AI Configuration ────────────────────────────────────────────────────────
+// ─── API Configuration ────────────────────────────────────────────────────────
+// Change this IP to your local machine IP if testing on a physical device.
+// Emulators can usually use 10.0.2.2.
+const API_URL        = `${API_BASE}/chat`;
+const API_URL_STREAM = `${API_BASE}/api/chat/stream`;
+const REQUEST_TIMEOUT_MS = 300_000; // 5 minutes — covers worst-case CPU inference on qwen2:7b
 
-const AI_CONFIG = {
-  // Add your OpenAI API key here to enable real AI responses
-  apiKey: "",
-  endpoint: "https://api.openai.com/v1/chat/completions",
-  model: "gpt-3.5-turbo",
-};
-
-const SYSTEM_PROMPT = `Tu es Istacherni, un assistant juridique expert spécialisé dans la législation algérienne (دستور الجمهورية الجزائرية). Tu maîtrises:
-- Code Civil algérien (Ordonnance n° 75-58)
-- Code Pénal (Ordonnance n° 66-156)  
-- Code du Travail (Loi n° 90-11)
-- Code de Commerce (Ordonnance n° 75-59)
-- Code de la Famille (Loi n° 84-11)
-- Constitution algérienne 2020
-- Procédures administratives et judiciaires algériennes
-
-RÈGLES ABSOLUES:
-1. Réponds TOUJOURS dans la langue de l'utilisateur (arabe ↔ français ↔ anglais)
-2. Citations légales précises avec numéros d'articles quand possible
-3. Recommande un avocat pour les cas complexes
-4. Reste professionnel, précis et bienveillant
-5. Ne traduis jamais une réponse — réponds directement dans la langue détectée`;
-
-// ─── Language Detection ───────────────────────────────────────────────────────
-
-function detectLanguage(text: string): "ar" | "fr" | "en" {
-  const arabic = /[\u0600-\u06FF\u0750-\u077F]/;
-  if (arabic.test(text)) return "ar";
-  const frWords = ["je", "vous", "mon", "ma", "le", "la", "les", "de", "du", "est",
-    "sont", "avec", "pour", "dans", "que", "qui", "contrat", "droit", "loi", "travail",
-    "salaire", "licencié", "tribunal", "justice", "avocat", "procès", "plainte"];
-  const lower = text.toLowerCase();
-  const frScore = frWords.filter(w => lower.includes(w)).length;
-  return frScore >= 1 ? "fr" : "en";
+// Promise-based timeout (works with Expo's whatwg-fetch polyfill on iOS)
+function withTimeout<T>(promise: Promise<T>, ms: number, timeoutMsg: string): Promise<T> {
+  return Promise.race([
+    promise,
+    new Promise<T>((_, reject) =>
+      setTimeout(() => reject(new Error(timeoutMsg)), ms)
+    ),
+  ]);
 }
 
-// ─── Intelligent Local Legal Responses ───────────────────────────────────────
+async function getBackendResponse(question: string, history: { role: string; content: string }[], ragType: string) {
+  try {
+    const fetchPromise = apiFetch("/chat", {
+      method: "POST",
+      body: JSON.stringify({
+        question: question,
+        message: question, // alias for local Graph RAG compatibility
+        top_k: 7,
+        rag_type: ragType,
+        history: history,
+      }),
+    });
 
-const LEGAL_KB = {
-  fr: [
-    {
-      keys: ["contrat travail", "contrat de travail", "emploi", "employé", "employeur", "licenci"],
-      response: `📋 **Droit du Travail Algérien**
+    const res = await withTimeout(fetchPromise, REQUEST_TIMEOUT_MS, "TIMEOUT");
 
-Selon la **Loi n° 90-11** relative aux relations de travail :
-
-• **Art. 10** : Tout contrat de travail doit préciser la durée, la rémunération et la fonction
-• **Art. 73** : Le licenciement abusif ouvre droit à des indemnités
-• **Art. 87 bis** : Le SNMG (salaire minimum garanti) est obligatoire
-
-⚖️ Pour un licenciement : vous avez 3 mois pour saisir l'inspection du travail.
-
-*Recommandation : Conservez toujours une copie de votre contrat signé.*`
-    },
-    {
-      keys: ["loyer", "bail", "locataire", "propriétaire", "location", "maison", "appartement"],
-      response: `🏠 **Droit des Baux en Algérie**
-
-Selon le **Code Civil** (Ordonnance n° 75-58) :
-
-• **Art. 467** : Le bail doit être écrit pour toute durée supérieure à 3 ans
-• **Art. 479** : Le propriétaire doit garantir la jouissance paisible du bien
-• **Art. 483** : Le locataire doit payer le loyer aux dates convenues
-
-📋 En cas de litige :
-1. Tentative de médiation amiable
-2. Saisine du tribunal civil (TPI)
-3. Délai de recours : 10 ans pour les contrats
-
-*Un acte authentifié chez le notaire est fortement recommandé.*`
-    },
-    {
-      keys: ["divorce", "mariage", "famille", "enfants", "garde", "pension"],
-      response: `👨‍👩‍👧 **Code de la Famille Algérien**
-
-Selon la **Loi n° 84-11** portant Code de la Famille :
-
-• **Art. 48** : Le divorce peut être prononcé par le mari ou demandé par la femme (Khul')
-• **Art. 62** : La garde des enfants est accordée à la mère jusqu'à 10 ans pour les fils, 16 ans pour les filles
-• **Art. 72** : La pension alimentaire est fixée par le juge selon les revenus du père
-
-⚠️ La procédure se déroule devant le **Tribunal de famille** (section du TPI).
-
-*Consultez impérativement un avocat spécialisé en droit de la famille.*`
-    },
-    {
-      keys: ["commerce", "entreprise", "société", "faillite", "registre"],
-      response: `🏢 **Droit Commercial Algérien**
-
-Selon le **Code de Commerce** (Ordonnance n° 75-59) :
-
-• **Art. 1** : Tout commerçant doit s'inscrire au Registre du Commerce
-• **Art. 215** : La SARL nécessite un capital minimum de 100 000 DA
-• **Art. 330** : La faillite est prononcée par le tribunal commercial
-
-📋 Création d'entreprise :
-1. Inscription au CNRC (Centre National du RC)
-2. Dépôt des statuts chez le notaire
-3. Publication au BOAL
-
-*Pour toute création de société, un notaire est obligatoire.*`
-    },
-    {
-      keys: ["pénal", "crime", "délit", "plainte", "tribunal", "arrestation", "prison", "amende"],
-      response: `⚖️ **Code Pénal Algérien**
-
-Selon l'**Ordonnance n° 66-156** portant Code Pénal :
-
-• **Art. 2** : La loi pénale s'applique aux infractions commises sur le territoire algérien
-• **Art. 42** : Emprisonnement de 10 jours à 10 ans pour les délits
-• **Art. 53** : Possibilité de sursis pour les peines ≤ 5 ans
-
-📋 Dépôt de plainte :
-1. **Commissariat/Gendarmerie** : PV immédiat
-2. **Procureur de la République** : Lettre recommandée
-3. **Juge d'instruction** : Plainte avec constitution de partie civile
-
-*Délai de prescription : 3 ans pour les délits, 10 ans pour les crimes.*`
-    },
-    {
-      keys: ["propriété", "terrain", "acte", "notaire", "immobilier", "bien"],
-      response: `🏗️ **Droit Immobilier en Algérie**
-
-Selon le **Code Civil** et la **Loi n° 90-25** sur l'orientation foncière :
-
-• Tout transfert de propriété **doit** être établi par acte notarié
-• L'acte doit être **publié** à la Conservation Foncière
-• Le **certificat de propriété** est délivré par la Conservation Foncière
-
-📋 Documents nécessaires :
-- Acte de propriété du vendeur
-- Relevé cadastral
-- Attestation de non-imposition
-- PV de délimitation
-
-*⚠️ Méfiez-vous des ventes sous seing privé — elles ne sont pas opposables aux tiers.*`
-    },
-    {
-      keys: ["héritage", "succession", "testament", "décès", "héritier"],
-      response: `📜 **Droit des Successions en Algérie**
-
-Selon le **Code de la Famille** (Loi n° 84-11) et le **droit islamique** :
-
-• **Art. 126-188** : Règles de partage successoral basées sur la Charia
-• Le **conjoint survivant** reçoit 1/4 (sans enfants) ou 1/8 (avec enfants)
-• Les **filles** reçoivent la moitié de la part des fils
-
-📋 Procédure :
-1. Acte de décès + livret de famille
-2. Liste des héritiers établie par le notaire
-3. Déclaration fiscale de succession (6 mois)
-4. Partage notarié
-
-*Délai de déclaration fiscale : 6 mois après le décès.*`
-    },
-  ],
-  ar: [
-    {
-      keys: ["عقد", "عمل", "موظف", "صاحب عمل", "فصل", "أجر", "راتب"],
-      response: `📋 **قانون العمل الجزائري**
-
-وفقاً للـ **القانون رقم 90-11** المتعلق بعلاقات العمل:
-
-• **المادة 10**: يجب أن يتضمن عقد العمل المدة والأجر والمنصب
-• **المادة 73**: يُحق للعامل المفصول تعسفياً الحصول على تعويض
-• **المادة 87 مكرر**: الأجر الوطني الأدنى المضمون إلزامي
-
-⚖️ في حال الفصل: لديك **3 أشهر** لرفع شكوى لمفتشية العمل.
-
-*نصيحة: احتفظ دائماً بنسخة من عقد العمل الموقع.*`
-    },
-    {
-      keys: ["طلاق", "زواج", "أسرة", "أطفال", "حضانة", "نفقة"],
-      response: `👨‍👩‍👧 **قانون الأسرة الجزائري**
-
-وفقاً للـ **القانون رقم 84-11** المتضمن قانون الأسرة:
-
-• **المادة 48**: يحق للزوجة طلب الطلاق بالخلع
-• **المادة 62**: الحضانة للأم حتى 10 سنوات للأبناء و16 سنة للبنات
-• **المادة 72**: النفقة تُحدد من قبل القاضي بحسب دخل الأب
-
-⚠️ الإجراءات أمام **محكمة الأسرة** (قسم المحكمة الابتدائية)
-
-*يُنصح بشدة باستشارة محامٍ متخصص في قانون الأسرة.*`
-    },
-    {
-      keys: ["جريمة", "شكوى", "شرطة", "اعتقال", "سجن", "غرامة", "قضاء"],
-      response: `⚖️ **قانون العقوبات الجزائري**
-
-وفقاً للـ **الأمر رقم 66-156** المتضمن قانون العقوبات:
-
-• **المادة 2**: يُطبق القانون الجزائي على كل جريمة ارتُكبت فوق التراب الجزائري
-• **المادة 42**: السجن من 10 أيام إلى 10 سنوات للجنح
-• **المادة 53**: إمكانية وقف تنفيذ العقوبة للأحكام ≤ 5 سنوات
-
-📋 **كيفية تقديم شكوى:**
-1. **في المركز الأمني/الدرك**: محضر فوري
-2. **عند وكيل الجمهورية**: برسالة مضمونة
-3. **عند قاضي التحقيق**: شكوى مع ادعاء مدني
-
-*مدة التقادم: 3 سنوات للجنح، 10 سنوات للجنايات.*`
-    },
-    {
-      keys: ["عقار", "ملكية", "أرض", "موثق", "مسكن", "بيع"],
-      response: `🏗️ **قانون العقار في الجزائر**
-
-وفقاً للـ **القانون المدني** والـ **قانون رقم 90-25** المتعلق بالتوجيه العقاري:
-
-• أي نقل ملكية **يجب** أن يتم بموجب عقد موثق
-• يجب **نشر** العقد في المحافظة العقارية
-• **شهادة الملكية** تُسلم من المحافظة العقارية
-
-📋 الوثائق المطلوبة:
-- عقد ملكية البائع
-- مخطط مساحي
-- شهادة عدم الخضوع للضريبة
-
-*⚠️ احذر من عقود البيع العرفية — لا يمكن الاحتجاج بها في مواجهة الغير.*`
-    },
-  ],
-  en: [
-    {
-      keys: ["contract", "employment", "fired", "worker", "salary", "dismissal"],
-      response: `📋 **Algerian Labor Law**
-
-Under **Law No. 90-11** on labor relations:
-
-• **Art. 10**: Employment contracts must specify duration, salary, and position
-• **Art. 73**: Unfair dismissal entitles the worker to compensation
-• **Art. 87 bis**: The national minimum wage (SNMG) is mandatory
-
-⚖️ If dismissed: you have **3 months** to file a complaint with the Labor Inspectorate.
-
-*Key advice: Always keep a signed copy of your employment contract.*`
-    },
-    {
-      keys: ["criminal", "crime", "complaint", "police", "arrest", "penalty", "court"],
-      response: `⚖️ **Algerian Penal Code**
-
-Under **Ordinance No. 66-156** (Penal Code):
-
-• **Art. 2**: Algerian criminal law applies to all offenses committed on Algerian territory
-• **Art. 42**: Imprisonment from 10 days to 10 years for misdemeanors
-• **Art. 53**: Suspended sentences possible for terms ≤ 5 years
-
-📋 **Filing a complaint:**
-1. **Police/Gendarmerie station**: Immediate official report
-2. **Public Prosecutor**: Registered letter
-3. **Investigation Judge**: Criminal complaint with civil claim
-
-*Statute of limitations: 3 years for misdemeanors, 10 years for crimes.*`
-    },
-    {
-      keys: ["property", "real estate", "land", "notary", "house", "apartment", "buy", "sell"],
-      response: `🏗️ **Algerian Real Estate Law**
-
-Under the **Civil Code** and **Law No. 90-25**:
-
-• All property transfers **must** be formalized through a notarial deed
-• The deed must be **registered** at the Conservation Office (Conservation Foncière)
-• A **title certificate** is required for all transactions
-
-📋 Required documents:
-- Seller's title deed
-- Cadastral survey
-- Non-tax certificate
-- Boundary demarcation report
-
-*⚠️ Private sale agreements are not enforceable against third parties.*`
-    },
-    {
-      keys: ["business", "company", "commercial", "register", "bankruptcy", "trade"],
-      response: `🏢 **Algerian Commercial Law**
-
-Under the **Commercial Code** (Ordinance No. 75-59):
-
-• **Art. 1**: All merchants must register at the Commercial Registry (CNRC)
-• **Art. 215**: SARL (LLC) requires a minimum capital of 100,000 DZD
-• **Art. 330**: Bankruptcy is declared by the commercial court
-
-📋 Business registration steps:
-1. Register at CNRC
-2. Notarize company statutes
-3. Publish in the BOAL (Official Gazette)
-
-*A notary is mandatory for company formation.*`
-    },
-  ],
-};
-
-function generateLocalResponse(message: string): string {
-  const lang = detectLanguage(message);
-  const lower = message.toLowerCase();
-  const kb = LEGAL_KB[lang] || LEGAL_KB.fr;
-
-  for (const entry of kb) {
-    if (entry.keys.some(k => lower.includes(k))) {
-      return entry.response;
+    if (!res.ok) {
+      throw new Error(`API returned ${res.status}`);
     }
-  }
 
-  const fallbacks = {
-    fr: `Bonjour ! Je suis **Istacherni**, votre assistant juridique spécialisé dans le droit algérien. 🇩🇿
-
-Je peux vous aider sur :
-⚖️ Droit du travail et contrats d'emploi
-🏠 Droit immobilier et baux
-👨‍👩‍👧 Droit de la famille et successions
-🏢 Droit commercial et entreprises
-📋 Code pénal et procédures judiciaires
-
-Posez-moi votre question juridique et je vous répondrai avec les textes de loi applicables.
-
-*Pour les cas complexes, je vous recommande de consulter un avocat agréé au barreau algérien.*`,
-    ar: `مرحباً! أنا **إيستاشيرني**، مساعدك القانوني المتخصص في القانون الجزائري. 🇩🇿
-
-يمكنني مساعدتك في:
-⚖️ قانون العمل والعقود
-🏠 القانون العقاري والإيجار
-👨‍👩‍👧 قانون الأسرة والميراث
-🏢 القانون التجاري والشركات
-📋 قانون العقوبات والإجراءات القضائية
-
-اطرح سؤالك القانوني وسأجيبك بالنصوص القانونية المعمول بها.
-
-*للحالات المعقدة، أنصحك باستشارة محامٍ مسجل في نقابة المحامين الجزائريين.*`,
-    en: `Hello! I'm **Istacherni**, your legal assistant specialized in Algerian law. 🇩🇿
-
-I can help you with:
-⚖️ Labor law and employment contracts
-🏠 Real estate law and leases
-👨‍👩‍👧 Family law and inheritance
-🏢 Commercial law and business formation
-📋 Criminal code and judicial procedures
-
-Ask me your legal question and I'll respond with the applicable laws.
-
-*For complex cases, I recommend consulting a licensed attorney registered with the Algerian Bar.*`,
-  };
-
-  return fallbacks[lang];
-}
-
-async function getAIResponse(messages: { role: string; content: string }[]): Promise<string> {
-  if (AI_CONFIG.apiKey) {
-    try {
-      const res = await fetch(AI_CONFIG.endpoint, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${AI_CONFIG.apiKey}`,
-        },
-        body: JSON.stringify({
-          model: AI_CONFIG.model,
-          messages: [{ role: "system", content: SYSTEM_PROMPT }, ...messages],
-          max_tokens: 600,
-          temperature: 0.7,
-        }),
-      });
-      const data = await res.json();
-      return data.choices?.[0]?.message?.content ?? generateLocalResponse(messages[messages.length - 1].content);
-    } catch {
-      return generateLocalResponse(messages[messages.length - 1].content);
+    const data = await res.json();
+    return {
+      answer: data.answer,
+      sources: data.sources || [],
+    };
+  } catch (error: any) {
+    console.error("Backend Error:", error);
+    if (error?.message === "TIMEOUT") {
+      return {
+        answer: "⏳ انتهت مهلة الانتظار (3 دقائق). النموذج يعمل على المعالج وقد يحتاج إلى وقت أطول. يرجى المحاولة مرة أخرى.",
+        sources: [],
+      };
     }
+    return {
+      answer: "❌ عذراً، تعذر الاتصال بالخادم. يرجى التحقق من تشغيل الخادم واتصالك بالشبكة.",
+      sources: []
+    };
   }
-  // Simulate realistic network delay
-  await new Promise(r => setTimeout(r, 1200 + Math.random() * 800));
-  return generateLocalResponse(messages[messages.length - 1].content);
 }
+
+async function streamBackendResponse(
+  question: string,
+  history: { role: string; content: string }[],
+  onEvent: (event: { type: string; message?: string; content?: string; sources?: any[] }) => void,
+  ragType: string = "agentic",
+): Promise<void> {
+  // EventSource cannot send Authorization headers — pass token as query param instead.
+  const token = await getAccessToken();
+  const url = token
+    ? `${API_URL_STREAM}?token=${encodeURIComponent(token)}`
+    : API_URL_STREAM;
+
+  return new Promise((resolve, reject) => {
+    const es = new EventSource(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        question: question,
+        rag_type: ragType,
+        history: history,
+      }),
+    });
+
+    es.addEventListener("message", (event) => {
+      if (event.data) {
+        try {
+          const parsed = JSON.parse(event.data || "{}");
+          onEvent(parsed);
+          if (parsed.type === "done" || parsed.type === "error") {
+            es.removeAllEventListeners();
+            es.close();
+            if (parsed.type === "error") reject(new Error(parsed.message));
+            else resolve();
+          }
+        } catch (e) {
+          // Ignore parsing errors for incomplete chunks
+        }
+      }
+    });
+
+    es.addEventListener("error", (err) => {
+      console.log("SSE Connection Error:", err);
+      es.removeAllEventListeners();
+      es.close();
+      reject(err);
+    });
+  });
+}
+
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
@@ -450,13 +195,18 @@ function TypingIndicator({ theme }: { theme: any }) {
 
 // ─── Message Bubble ───────────────────────────────────────────────────────────
 
-function MessageBubble({ msg, theme }: { msg: Message; theme: any }) {
+function MessageBubble({
+  msg, theme, onLongPress,
+}: {
+  msg: Message;
+  theme: any;
+  onLongPress: (msg: Message) => void;
+}) {
   const isUser = msg.sender === "user";
   const bgColor = isUser ? theme.card : theme.primary;
   const textColor = isUser ? theme.text : "#FFFFFF";
 
   function formatText(text: string) {
-    // Bold (**text**) and line breaks
     const parts = text.split(/(\*\*[^*]+\*\*)/g);
     return parts.map((part, i) => {
       if (part.startsWith("**") && part.endsWith("**")) {
@@ -467,7 +217,12 @@ function MessageBubble({ msg, theme }: { msg: Message; theme: any }) {
   }
 
   return (
-    <View style={{ alignSelf: isUser ? "flex-end" : "flex-start", maxWidth: "82%", marginVertical: 5, marginHorizontal: 14 }}>
+    <TouchableOpacity
+      activeOpacity={0.85}
+      onLongPress={() => onLongPress(msg)}
+      delayLongPress={400}
+      style={{ alignSelf: isUser ? "flex-end" : "flex-start", maxWidth: "82%", marginVertical: 5, marginHorizontal: 14 }}
+    >
       <View style={{
         backgroundColor: bgColor, borderRadius: 18,
         borderBottomRightRadius: isUser ? 4 : 18,
@@ -475,7 +230,21 @@ function MessageBubble({ msg, theme }: { msg: Message; theme: any }) {
         paddingHorizontal: 14, paddingVertical: 10,
         shadowColor: theme.shadow, shadowOffset: { width: 0, height: 1 }, shadowOpacity: 0.07, elevation: 2,
       }}>
-        {msg.type === "text" && (
+        {msg.statuses && msg.statuses.length > 0 && (
+          <View style={{
+            marginBottom: msg.text ? 8 : 0, 
+            paddingBottom: msg.text ? 8 : 0,
+            borderBottomWidth: msg.text ? 0.5 : 0,
+            borderBottomColor: "rgba(255,255,255,0.2)"
+          }}>
+            {msg.statuses.map((status, i) => (
+              <Text key={`s-${i}`} style={{ fontSize: 12, color: "rgba(255,255,255,0.8)", fontStyle: "italic", marginBottom: 3 }}>
+                {status}
+              </Text>
+            ))}
+          </View>
+        )}
+        {msg.type === "text" && msg.text !== undefined && (
           <Text style={{ fontSize: 15, lineHeight: 22, color: textColor, fontFamily: "inter-regular" }}>
             {formatText(msg.text!)}
           </Text>
@@ -507,11 +276,23 @@ function MessageBubble({ msg, theme }: { msg: Message; theme: any }) {
             </View>
           </View>
         )}
+        {msg.sources && msg.sources.length > 0 && (
+          <View style={{ marginTop: 10, paddingTop: 10, borderTopWidth: 1, borderTopColor: isUser ? theme.border : "rgba(255,255,255,0.2)" }}>
+            <Text style={{ fontSize: 12, fontFamily: "inter-semibold", color: textColor, marginBottom: 4 }}>المصادر القانونية:</Text>
+            {msg.sources.map((src, i) => (
+              <View key={i} style={{ marginBottom: 4 }}>
+                <Text style={{ fontSize: 11, color: textColor, opacity: 0.9 }}>
+                  • {src.law_name} - {src.article_number && `المادة ${src.article_number}`}
+                </Text>
+              </View>
+            ))}
+          </View>
+        )}
       </View>
       <Text style={{ fontSize: 10, color: theme.textMuted, marginTop: 3, textAlign: isUser ? "right" : "left", paddingHorizontal: 4 }}>
         {new Date(msg.timestamp).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
       </Text>
-    </View>
+    </TouchableOpacity>
   );
 }
 
@@ -531,6 +312,13 @@ export default function Chat() {
   const [isTyping, setIsTyping] = useState(false);
   const [showAttachSheet, setShowAttachSheet] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
+  const [ragMode, setRagMode] = useState("graph_local");
+  const [isInputFocused, setIsInputFocused] = useState(false);
+
+  // Copy/Edit action state
+  const [actionTarget, setActionTarget] = useState<Message | null>(null);
+  const [editingMessageId, setEditingMessageId] = useState<string | null>(null);
+  const [editingText, setEditingText] = useState("");
 
   // Pending attachment (staged before sending)
   const [pendingAttachment, setPendingAttachment] = useState<{
@@ -546,6 +334,7 @@ export default function Chat() {
   const recordingRef = useRef<Audio.Recording | null>(null);
   const recordingTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const pulseAnim = useRef(new Animated.Value(1)).current;
+  const emptyStateOpacity = useRef(new Animated.Value(1)).current;
 
   // Refs
   const flatListRef = useRef<FlatList>(null);
@@ -557,6 +346,14 @@ export default function Chat() {
   useEffect(() => {
     loadConversations();
   }, []);
+
+  useEffect(() => {
+    Animated.timing(emptyStateOpacity, {
+      toValue: isInputFocused ? 0 : 1,
+      duration: 250,
+      useNativeDriver: true,
+    }).start();
+  }, [isInputFocused]);
 
   const loadConversations = async () => {
     try {
@@ -657,6 +454,112 @@ export default function Chat() {
     setConversationId(makeId());
   };
 
+  // ── Copy/Edit handlers ────────────────────────────────────────────────────
+
+  const handleLongPress = (msg: Message) => {
+    setActionTarget(msg);
+  };
+
+  const handleCopy = async () => {
+    if (actionTarget?.text) {
+      await Clipboard.setStringAsync(actionTarget.text);
+    }
+    setActionTarget(null);
+  };
+
+  const handleEditStart = () => {
+    if (!actionTarget || actionTarget.sender !== "user") return;
+    setEditingMessageId(actionTarget.id);
+    setEditingText(actionTarget.text || "");
+    setActionTarget(null);
+  };
+
+  const handleEditSubmit = useCallback(async () => {
+    if (!editingMessageId || !editingText.trim()) return;
+
+    // Find the index of the edited message
+    const msgIndex = messages.findIndex(m => m.id === editingMessageId);
+    if (msgIndex === -1) return;
+
+    // Replace the user message and remove everything after it (including bot reply)
+    const updatedMsg: Message = {
+      ...messages[msgIndex],
+      text: editingText.trim(),
+      timestamp: new Date(),
+    };
+    const trimmedMsgs = [...messages.slice(0, msgIndex), updatedMsg];
+    setMessages(trimmedMsgs);
+    setEditingMessageId(null);
+    setEditingText("");
+
+    // Rebuild AI history up to this message
+    aiMessages.current = trimmedMsgs
+      .filter(m => m.type === "text" && m.text)
+      .map(m => ({ role: m.sender === "user" ? "user" : "assistant", content: m.text! }));
+
+    // Re-send the edited message
+    setIsTyping(true);
+    setTimeout(() => flatListRef.current?.scrollToEnd({ animated: true }), 100);
+    try {
+      const historyToSend = aiMessages.current.slice(0, -1);
+      
+      if (ragMode === "agentic") {
+        const botMsgId = makeId();
+        const initialBotMsg: Message = {
+          id: botMsgId, type: "text", sender: "bot", timestamp: new Date(), text: "", statuses: []
+        };
+        setMessages(prev => [...prev, initialBotMsg]);
+        setIsTyping(false);
+        let finalText = "";
+        
+        await streamBackendResponse(editingText.trim(), historyToSend, (event) => {
+          setMessages(prevMsgs => {
+            const msgIndex = prevMsgs.findIndex(m => m.id === botMsgId);
+            if (msgIndex === -1) return prevMsgs;
+            const msg = { ...prevMsgs[msgIndex] };
+            if (event.type === "status" && event.message) {
+              msg.statuses = [...(msg.statuses || []), event.message];
+            } else if (event.type === "token" && event.content) {
+              msg.text = (msg.text || "") + event.content;
+              finalText = msg.text;
+            } else if (event.type === "sources" && event.sources) {
+              msg.sources = event.sources;
+            } else if (event.type === "done" && event.sources) {
+              msg.sources = event.sources;
+            }
+            const newMsgs = [...prevMsgs];
+            newMsgs[msgIndex] = msg;
+            return newMsgs;
+          });
+        });
+        
+        aiMessages.current.push({ role: "assistant", content: finalText });
+        setTimeout(() => flatListRef.current?.scrollToEnd({ animated: true }), 100);
+        setMessages(curr => { saveCurrentConversation(curr); return curr; });
+      } else {
+        const response = await getBackendResponse(editingText.trim(), historyToSend, ragMode);
+        const botMsg: Message = {
+          id: makeId(), type: "text", sender: "bot",
+          timestamp: new Date(), text: response.answer, sources: response.sources,
+        };
+        const finalMsgs = [...trimmedMsgs, botMsg];
+        setMessages(finalMsgs);
+        aiMessages.current.push({ role: "assistant", content: response.answer });
+        setTimeout(() => flatListRef.current?.scrollToEnd({ animated: true }), 100);
+        await saveCurrentConversation(finalMsgs);
+      }
+    } catch {
+      const errMsg: Message = { id: makeId(), type: "text", sender: "bot", timestamp: new Date(), text: "❌ Une erreur est survenue. Veuillez réessayer." };
+      setMessages(prev => {
+        const emptyBot = prev.find(m => m.sender === "bot" && m.text === "");
+        if (emptyBot) return prev.map(m => m.id === emptyBot.id ? { ...m, text: errMsg.text } : m);
+        return [...prev, errMsg];
+      });
+    } finally {
+      setIsTyping(false);
+    }
+  }, [editingMessageId, editingText, messages, ragMode]);
+
   // ── Send Message (with optional pending attachment) ─────────────────────
 
   const sendMessage = useCallback(async (text: string) => {
@@ -698,23 +601,85 @@ export default function Chat() {
 
     setIsTyping(true);
     try {
-      const aiCtx = hasText
-        ? [...aiMessages.current]
-        : [...aiMessages.current, { role: "user", content: aiContent }];
-      const reply = await getAIResponse(aiCtx);
-      const botMsg: Message = { id: makeId(), type: "text", sender: "bot", timestamp: new Date(), text: reply };
-      const finalMsgs = [...updated, botMsg];
-      setMessages(finalMsgs);
-      aiMessages.current.push({ role: "assistant", content: reply });
-      setTimeout(() => flatListRef.current?.scrollToEnd({ animated: true }), 100);
-      await saveCurrentConversation(finalMsgs);
+      const historyToSend = hasText ? aiMessages.current.slice(0, -1) : aiMessages.current;
+      
+      if (ragMode === "agentic") {
+        const botMsgId = makeId();
+        const initialBotMsg: Message = {
+          id: botMsgId, type: "text", sender: "bot", timestamp: new Date(), text: "", statuses: []
+        };
+        setMessages(prev => [...prev, initialBotMsg]);
+        setIsTyping(false);
+        let finalText = "";
+        
+        await streamBackendResponse(hasText ? text.trim() : aiContent, historyToSend, (event) => {
+          setMessages(prevMsgs => {
+            const msgIndex = prevMsgs.findIndex(m => m.id === botMsgId);
+            
+            if (msgIndex === -1) {
+              // The ultimate safeguard: if the token arrives before the initial bubble was 
+              // committed, create the bubble now with the first event included.
+              const newMsg: Message = { 
+                id: botMsgId, 
+                type: "text", 
+                sender: "bot", 
+                timestamp: new Date(), 
+                text: event.type === "token" ? event.content || "" : "", 
+                statuses: event.type === "status" && event.message ? [event.message] : [],
+                sources: event.type === "sources" && event.sources ? event.sources : undefined
+              };
+              if (event.type === "token" && event.content) finalText += event.content;
+              return [...prevMsgs, newMsg];
+            }
+
+            const msg = { ...prevMsgs[msgIndex] };
+            if (event.type === "status" && event.message) {
+              msg.statuses = [...(msg.statuses || []), event.message];
+            } else if (event.type === "token" && event.content) {
+              msg.text = (msg.text || "") + event.content;
+              finalText = msg.text;
+            } else if (event.type === "sources" && event.sources) {
+              msg.sources = event.sources;
+            } else if (event.type === "done" && event.sources) {
+              msg.sources = event.sources;
+            }
+            
+            const newMsgs = [...prevMsgs];
+            newMsgs[msgIndex] = msg;
+            return newMsgs;
+          });
+        });
+        
+        aiMessages.current.push({ role: "assistant", content: finalText });
+        setTimeout(() => flatListRef.current?.scrollToEnd({ animated: true }), 100);
+        setMessages(curr => { saveCurrentConversation(curr); return curr; });
+      } else {
+        const response = await getBackendResponse(hasText ? text.trim() : aiContent, historyToSend, ragMode);
+        const botMsg: Message = { 
+          id: makeId(), 
+          type: "text", 
+          sender: "bot", 
+          timestamp: new Date(), 
+          text: response.answer,
+          sources: response.sources 
+        };
+        const finalMsgs = [...updated, botMsg];
+        setMessages(finalMsgs);
+        aiMessages.current.push({ role: "assistant", content: response.answer });
+        setTimeout(() => flatListRef.current?.scrollToEnd({ animated: true }), 100);
+        await saveCurrentConversation(finalMsgs);
+      }
     } catch {
       const errMsg: Message = { id: makeId(), type: "text", sender: "bot", timestamp: new Date(), text: "❌ Une erreur est survenue. Veuillez réessayer." };
-      setMessages(prev => [...prev, errMsg]);
+      setMessages(prev => {
+        const emptyBot = prev.find(m => m.sender === "bot" && m.text === "");
+        if (emptyBot) return prev.map(m => m.id === emptyBot.id ? { ...m, text: errMsg.text } : m);
+        return [...prev, errMsg];
+      });
     } finally {
       setIsTyping(false);
     }
-  }, [messages, pendingAttachment]);
+  }, [messages, pendingAttachment, ragMode]);
 
   // ── Voice Recording ───────────────────────────────────────────────────────
 
@@ -758,8 +723,15 @@ export default function Chat() {
         setTimeout(() => flatListRef.current?.scrollToEnd({ animated: true }), 100);
         // AI response to voice message
         setIsTyping(true);
-        const reply = await getAIResponse([...aiMessages.current, { role: "user", content: "[Message vocal envoyé]" }]);
-        const botMsg: Message = { id: makeId(), type: "text", sender: "bot", timestamp: new Date(), text: reply };
+        const response = await getBackendResponse("[Message vocal envoyé]", aiMessages.current, ragMode);
+        const botMsg: Message = { 
+            id: makeId(), 
+            type: "text", 
+            sender: "bot", 
+            timestamp: new Date(), 
+            text: response.answer,
+            sources: response.sources
+        };
         const finalMsgs = [...updated, botMsg];
         setMessages(finalMsgs);
         setIsTyping(false);
@@ -849,10 +821,17 @@ export default function Chat() {
     }
   });
 
+  const nextRAGMode = () => {
+    const modes = ["agentic", "graph_local", "graph", "bm25", "standard"];
+    const currIdx = modes.indexOf(ragMode);
+    setRagMode(modes[(currIdx + 1) % modes.length]);
+  };
+
   // ── Render ────────────────────────────────────────────────────────────────
 
   return (
-    <View style={{ flex: 1, backgroundColor: theme.background }}>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <View style={{ flex: 1, backgroundColor: theme.background }}>
 
       {/* ── Sidebar Overlay ── */}
       {showSidebar && (
@@ -957,9 +936,9 @@ export default function Chat() {
       )}
 
       <KeyboardAvoidingView
-        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        behavior={Platform.OS === "ios" ? "padding" : undefined}
         style={{ flex: 1 }}
-        keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 0}
+        keyboardVerticalOffset={0}
       >
         {/* ── Header ── */}
         <View style={{
@@ -977,7 +956,11 @@ export default function Chat() {
               <View style={{ width: 8, height: 8, borderRadius: 4, backgroundColor: theme.success }} />
               <Text style={{ fontSize: 16, fontFamily: "inter-semibold", color: theme.text }}>Istacherni IA</Text>
             </View>
-            <Text style={{ fontSize: 11, color: theme.primary, marginTop: 1 }}>Assistant Juridique Algérien</Text>
+            <TouchableOpacity onPress={nextRAGMode} style={{ marginTop: 2, backgroundColor: theme.primary + "20", paddingHorizontal: 8, paddingVertical: 2, borderRadius: 10 }}>
+              <Text style={{ fontSize: 10, fontFamily: "inter-semibold", color: theme.primary }}>
+                Mode: {ragMode.toUpperCase()}
+              </Text>
+            </TouchableOpacity>
           </View>
 
           <TouchableOpacity
@@ -990,7 +973,7 @@ export default function Chat() {
 
         {/* ── Empty State ── */}
         {messages.length === 0 && !isTyping && (
-          <View style={{ flex: 1, alignItems: "center", justifyContent: "center", padding: 32 }}>
+          <Animated.View style={{ flex: 1, alignItems: "center", justifyContent: "center", padding: 32, opacity: emptyStateOpacity }} pointerEvents={isInputFocused ? "none" : "auto"}>
             <View style={{ width: 72, height: 72, borderRadius: 24, backgroundColor: theme.primaryLight, alignItems: "center", justifyContent: "center", marginBottom: 20 }}>
               <Ionicons name="chatbubbles-outline" size={36} color={theme.primary} />
             </View>
@@ -1017,7 +1000,7 @@ export default function Chat() {
                 </TouchableOpacity>
               ))}
             </View>
-          </View>
+          </Animated.View>
         )}
 
         {/* ── Messages ── */}
@@ -1026,12 +1009,47 @@ export default function Chat() {
             ref={flatListRef}
             data={messages}
             keyExtractor={m => m.id}
-            renderItem={({ item }) => <MessageBubble msg={item} theme={theme} />}
+            renderItem={({ item }) => (
+              editingMessageId === item.id ? (
+                // Inline edit mode
+                <View style={{ marginHorizontal: 14, marginVertical: 5, alignSelf: "flex-end", maxWidth: "82%" }}>
+                  <View style={{ backgroundColor: theme.card, borderRadius: 18, borderBottomRightRadius: 4, paddingHorizontal: 12, paddingVertical: 8, borderWidth: 1.5, borderColor: theme.primary }}>
+                    <TextInput
+                      value={editingText}
+                      onChangeText={setEditingText}
+                      autoFocus
+                      multiline
+                      style={{ fontSize: 15, color: theme.text, minHeight: 36, maxHeight: 120 }}
+                    />
+                    <View style={{ flexDirection: "row", justifyContent: "flex-end", gap: 10, marginTop: 8 }}>
+                      <TouchableOpacity onPress={() => { setEditingMessageId(null); setEditingText(""); }} style={{ paddingHorizontal: 14, paddingVertical: 6, borderRadius: 10, backgroundColor: theme.pillBg }}>
+                        <Text style={{ fontSize: 13, color: theme.textSecondary }}>إلغاء</Text>
+                      </TouchableOpacity>
+                      <TouchableOpacity onPress={handleEditSubmit} style={{ paddingHorizontal: 14, paddingVertical: 6, borderRadius: 10, backgroundColor: theme.primary }}>
+                        <Text style={{ fontSize: 13, color: "#fff", fontFamily: "inter-semibold" }}>إرسال ✓</Text>
+                      </TouchableOpacity>
+                    </View>
+                  </View>
+                </View>
+              ) : (
+                <MessageBubble msg={item} theme={theme} onLongPress={handleLongPress} />
+              )
+            )}
             contentContainerStyle={{ paddingVertical: 12, paddingBottom: 6 }}
             showsVerticalScrollIndicator={false}
             onContentSizeChange={() => flatListRef.current?.scrollToEnd({ animated: true })}
             keyboardShouldPersistTaps="handled"
-            ListFooterComponent={isTyping ? <TypingIndicator theme={theme} /> : null}
+            keyboardDismissMode="on-drag"
+            ListFooterComponent={isTyping ? (
+              <View style={{ alignSelf: "flex-start", marginHorizontal: 16, marginVertical: 6 }}>
+                <View style={{ backgroundColor: theme.primary, borderRadius: 20, borderBottomLeftRadius: 6, paddingHorizontal: 16, paddingVertical: 12 }}>
+                  <ActivityIndicator size="small" color="rgba(255,255,255,0.9)" />
+                  <Text style={{ fontSize: 11, color: "rgba(255,255,255,0.75)", marginTop: 6, textAlign: "center" }}>
+                    {ragMode === "graph_local" ? "🤖 qwen2 يفكر…" : "جاري التفكير…"}
+                  </Text>
+                </View>
+              </View>
+            ) : null}
           />
         )}
         {messages.length === 0 && isTyping && <TypingIndicator theme={theme} />}
@@ -1039,7 +1057,6 @@ export default function Chat() {
         {/* ── Voice Recording Overlay ── */}
         {isRecording && (
           <View style={{
-            position: "absolute", bottom: 0, left: 0, right: 0,
             backgroundColor: theme.card,
             borderTopLeftRadius: 24, borderTopRightRadius: 24,
             padding: 24, alignItems: "center", gap: 14,
@@ -1066,7 +1083,7 @@ export default function Chat() {
 
         {/* ── Input Bar ── */}
         {!isRecording && (
-          <View style={{ backgroundColor: theme.headerBg, paddingBottom: Platform.OS === "ios" ? 28 : 12 }}>
+          <View style={{ backgroundColor: theme.headerBg }}>
 
             {/* Attachment Preview Strip */}
             {pendingAttachment && (
@@ -1144,6 +1161,8 @@ export default function Chat() {
                   placeholderTextColor={theme.textMuted}
                   value={inputText}
                   onChangeText={setInputText}
+                  onFocus={() => setIsInputFocused(true)}
+                  onBlur={() => setIsInputFocused(false)}
                   style={{ flex: 1, fontSize: 15, color: theme.text, paddingVertical: 8, textAlign: isRTL ? "right" : "left" }}
                   multiline
                   maxLength={1000}
@@ -1246,6 +1265,64 @@ export default function Chat() {
           </View>
         </View>
       </Modal>
-    </View>
+
+      {/* ── Copy / Edit Action Modal ── */}
+      <Modal
+        visible={actionTarget !== null}
+        transparent
+        animationType="fade"
+        onRequestClose={() => setActionTarget(null)}
+        statusBarTranslucent
+      >
+        <TouchableWithoutFeedback onPress={() => setActionTarget(null)}>
+          <View style={{ flex: 1, backgroundColor: "rgba(0,0,0,0.5)", justifyContent: "center", alignItems: "center" }}>
+            <TouchableWithoutFeedback>
+              <View style={{
+                backgroundColor: theme.card, borderRadius: 20,
+                padding: 8, minWidth: 220,
+                shadowColor: "#000", shadowOffset: { width: 0, height: 8 }, shadowOpacity: 0.25, elevation: 24,
+              }}>
+                {/* Preview of the message text */}
+                {actionTarget?.text && (
+                  <Text numberOfLines={3} style={{ fontSize: 12, color: theme.textMuted, paddingHorizontal: 16, paddingVertical: 10, borderBottomWidth: 1, borderBottomColor: theme.divider }}>
+                    {actionTarget.text.slice(0, 120)}{actionTarget.text.length > 120 ? "…" : ""}
+                  </Text>
+                )}
+                {/* Copy button */}
+                <TouchableOpacity
+                  onPress={handleCopy}
+                  style={{ flexDirection: "row", alignItems: "center", paddingHorizontal: 18, paddingVertical: 14, gap: 14 }}
+                >
+                  <Ionicons name="copy-outline" size={20} color={theme.text} />
+                  <Text style={{ fontSize: 15, color: theme.text, fontFamily: "inter-regular" }}>نسخ</Text>
+                </TouchableOpacity>
+                {/* Edit button — only for user messages */}
+                {actionTarget?.sender === "user" && actionTarget?.type === "text" && (
+                  <>
+                    <View style={{ height: 1, backgroundColor: theme.divider, marginHorizontal: 16 }} />
+                    <TouchableOpacity
+                      onPress={handleEditStart}
+                      style={{ flexDirection: "row", alignItems: "center", paddingHorizontal: 18, paddingVertical: 14, gap: 14 }}
+                    >
+                      <Ionicons name="create-outline" size={20} color={theme.primary} />
+                      <Text style={{ fontSize: 15, color: theme.primary, fontFamily: "inter-regular" }}>تعديل الرسالة</Text>
+                    </TouchableOpacity>
+                  </>
+                )}
+                {/* Cancel */}
+                <View style={{ height: 1, backgroundColor: theme.divider, marginHorizontal: 16 }} />
+                <TouchableOpacity
+                  onPress={() => setActionTarget(null)}
+                  style={{ paddingHorizontal: 18, paddingVertical: 14, alignItems: "center" }}
+                >
+                  <Text style={{ fontSize: 14, color: theme.textSecondary }}>إلغاء</Text>
+                </TouchableOpacity>
+              </View>
+            </TouchableWithoutFeedback>
+          </View>
+        </TouchableWithoutFeedback>
+      </Modal>
+      </View>
+    </TouchableWithoutFeedback>
   );
 }

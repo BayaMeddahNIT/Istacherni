@@ -1,0 +1,84 @@
+{
+  "metadata": {
+    "timestamp": "2026-05-07 14:39:41",
+    "total_samples": 26,
+    "metrics": [
+      "faithfulness",
+      "answer_relevancy",
+      "context_precision",
+      "context_recall"
+    ]
+  },
+  "pipelines": {
+    "Graph RAG": {
+      "faithfulness": 0.0,
+      "answer_relevancy": 0.1434923076923077,
+      "context_precision": 0.09397692307692308,
+      "context_recall": 0.1039615384615385
+    },
+    "Agentic RAG": {
+      "faithfulness": 0.8584615384615385,
+      "answer_relevancy": 0.1434923076923077,
+      "context_precision": 0.0903076923076923,
+      "context_recall": 0.0993846153846154
+    }
+  },
+  "embeddings": {
+    "bge": {
+      "faithfulness": 0.44,
+      "answer_relevancy": 0.14175,
+      "context_precision": 0.1074,
+      "context_recall": 0.11499999999999999
+    },
+    "camelbert": {
+      "faithfulness": 0.42000000000000004,
+      "answer_relevancy": 0.14628000000000002,
+      "context_precision": 0.07924999999999999,
+      "context_recall": 0.08994999999999999
+    },
+    "qwen embeddings": {
+      "faithfulness": 0.43,
+      "answer_relevancy": 0.14175,
+      "context_precision": 0.09299999999999999,
+      "context_recall": 0.103
+    }
+  },
+  "configurations": {
+    "Graph RAG + bge": {
+      "faithfulness": 0.0,
+      "answer_relevancy": 0.14175,
+      "context_precision": 0.1098,
+      "context_recall": 0.118
+    },
+    "Graph RAG + camelbert": {
+      "faithfulness": 0.0,
+      "answer_relevancy": 0.14628,
+      "context_precision": 0.0805,
+      "context_recall": 0.0919
+    },
+    "Graph RAG + qwen embeddings": {
+      "faithfulness": 0.0,
+      "answer_relevancy": 0.14175,
+      "context_precision": 0.095,
+      "context_recall": 0.105
+    },
+    "Agentic RAG + bge": {
+      "faithfulness": 0.88,
+      "answer_relevancy": 0.14175,
+      "context_precision": 0.105,
+      "context_recall": 0.112
+    },
+    "Agentic RAG + camelbert": {
+      "faithfulness": 0.8400000000000001,
+      "answer_relevancy": 0.14628,
+      "context_precision": 0.078,
+      "context_recall": 0.088
+    },
+    "Agentic RAG + qwen embeddings": {
+      "faithfulness": 0.86,
+      "answer_relevancy": 0.14175,
+      "context_precision": 0.091,
+      "context_recall": 0.101
+    }
+  }
+}

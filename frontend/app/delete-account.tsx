@@ -3,9 +3,12 @@ import { View, Text, TextInput, TouchableOpacity, ScrollView, Platform, Alert } 
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { useUser, useTheme, useTranslation } from "@/context/UserContext";
+import { useAuth } from "@/context/AuthContext";
+import { apiDeleteAccount } from "@/services/api";
 
 export default function DeleteAccount() {
   const { clearSession } = useUser();
+  const { logout } = useAuth();
   const theme = useTheme();
   const { t, isRTL } = useTranslation();
 
@@ -17,26 +20,29 @@ export default function DeleteAccount() {
   const [loading, setLoading] = useState(false);
 
   const REASONS = [
-    "Je n'utilise plus l'application",
-    "L'application ne répond pas à mes besoins",
-    "J'ai des préoccupations concernant la confidentialité",
-    "Je crée un nouveau compte",
-    "Autre raison",
+    t("reasonNoLongerUse"),
+    t("reasonNotMeetNeeds"),
+    t("reasonPrivacy"),
+    t("reasonNewAccount"),
+    t("reasonOther"),
   ];
 
   const handleDelete = async () => {
-    if (confirmText !== "SUPPRIMER") {
-      Alert.alert("Confirmation requise", "Tapez SUPPRIMER pour confirmer.");
+    if (confirmText !== t("deleteWord")) {
+      Alert.alert(t("errorTitle"), t("typeDeleteToConfirm"));
       return;
     }
     setLoading(true);
-    // In production: call your backend API to delete the account here
-    await new Promise(r => setTimeout(r, 2000));
-    // Clear all local session data
-    await clearSession();
+    try {
+      await apiDeleteAccount();   // calls DELETE /auth/account with JWT
+    } catch (e: any) {
+      Alert.alert(t("errorTitle"), e.message || t("deleteFailed"));
+      setLoading(false);
+      return;
+    }
+    await clearSession();         // wipe UserContext profile
+    await logout();               // wipe tokens + navigate to login
     setLoading(false);
-    // Navigate to login — replace() removes the entire back-stack
-    router.replace("/(auth)/log-in");
   };
 
   return (
@@ -56,10 +62,12 @@ export default function DeleteAccount() {
           <Ionicons name={isRTL ? "arrow-forward" : "arrow-back"} size={22} color={theme.text} />
         </TouchableOpacity>
         <View style={{ flex: 1 }}>
-          <Text style={{ fontSize: 20, fontFamily: "inter-semibold", color: theme.text }}>
+          <Text style={{ fontSize: 20, fontFamily: "inter-semibold", color: theme.text, textAlign: isRTL ? "right" : "left" }}>
             {t("deleteAccount")}
           </Text>
-          <Text style={{ fontSize: 12, color: theme.danger, marginTop: 2 }}>Action irréversible</Text>
+          <Text style={{ fontSize: 12, color: theme.danger, marginTop: 2, textAlign: isRTL ? "right" : "left" }}>
+            {t("deleteActionIrreversible")}
+          </Text>
         </View>
       </View>
 
@@ -76,14 +84,14 @@ export default function DeleteAccount() {
         {step === 1 && (
           <>
             <View style={{ backgroundColor: theme.danger + "12", borderRadius: 18, padding: 20, gap: 12, borderWidth: 1, borderColor: theme.danger + "25" }}>
-              <View style={{ flexDirection: "row", gap: 12, alignItems: "flex-start" }}>
+              <View style={{ flexDirection: isRTL ? "row-reverse" : "row", gap: 12, alignItems: "flex-start" }}>
                 <Ionicons name="warning-outline" size={24} color={theme.danger} style={{ marginTop: 2 }} />
                 <View style={{ flex: 1 }}>
-                  <Text style={{ fontSize: 16, fontFamily: "inter-semibold", color: theme.danger, marginBottom: 8 }}>
-                    Attention — Action définitive
+                  <Text style={{ fontSize: 16, fontFamily: "inter-semibold", color: theme.danger, marginBottom: 8, textAlign: isRTL ? "right" : "left" }}>
+                    {t("warningPermanent")}
                   </Text>
-                  <Text style={{ fontSize: 13, color: theme.text, lineHeight: 20 }}>
-                    La suppression de votre compte est permanente et irréversible. Toutes vos données, analyses, et historique seront définitivement effacés.
+                  <Text style={{ fontSize: 13, color: theme.text, lineHeight: 20, textAlign: isRTL ? "right" : "left" }}>
+                    {t("warningPermanentDesc")}
                   </Text>
                 </View>
               </View>
@@ -91,25 +99,27 @@ export default function DeleteAccount() {
 
             {/* What will be deleted */}
             <View style={{ backgroundColor: theme.card, borderRadius: 18, padding: 16, gap: 10, shadowColor: theme.shadow, shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.05, elevation: 2 }}>
-              <Text style={{ fontSize: 14, fontFamily: "inter-semibold", color: theme.text, marginBottom: 4 }}>Ce qui sera supprimé :</Text>
-              {["Votre profil et informations personnelles", "Toutes vos analyses de contrats", "Votre historique de conversations", "Vos préférences et paramètres"].map((item, i) => (
-                <View key={i} style={{ flexDirection: "row", alignItems: "center", gap: 10 }}>
+              <Text style={{ fontSize: 14, fontFamily: "inter-semibold", color: theme.text, marginBottom: 4, textAlign: isRTL ? "right" : "left" }}>
+                {t("whatWillBeDeleted")}
+              </Text>
+              {[t("deletedProfile"), t("deletedAnalyses"), t("deletedHistory"), t("deletedSettings")].map((item, i) => (
+                <View key={i} style={{ flexDirection: isRTL ? "row-reverse" : "row", alignItems: "center", gap: 10 }}>
                   <Ionicons name="close-circle-outline" size={16} color={theme.danger} />
-                  <Text style={{ fontSize: 13, color: theme.textSecondary }}>{item}</Text>
+                  <Text style={{ fontSize: 13, color: theme.textSecondary, textAlign: isRTL ? "right" : "left" }}>{item}</Text>
                 </View>
               ))}
             </View>
 
             {/* Reason */}
             <View style={{ backgroundColor: theme.card, borderRadius: 18, padding: 16, gap: 2, shadowColor: theme.shadow, shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.05, elevation: 2 }}>
-              <Text style={{ fontSize: 14, fontFamily: "inter-semibold", color: theme.text, marginBottom: 12 }}>
-                Pourquoi souhaitez-vous supprimer votre compte ?
+              <Text style={{ fontSize: 14, fontFamily: "inter-semibold", color: theme.text, marginBottom: 12, textAlign: isRTL ? "right" : "left" }}>
+                {t("whyDelete")}
               </Text>
               {REASONS.map((r) => (
                 <TouchableOpacity
                   key={r}
                   onPress={() => setReason(r)}
-                  style={{ flexDirection: "row", alignItems: "center", paddingVertical: 12, borderBottomWidth: 0.5, borderBottomColor: theme.divider, gap: 12 }}
+                  style={{ flexDirection: isRTL ? "row-reverse" : "row", alignItems: "center", paddingVertical: 12, borderBottomWidth: 0.5, borderBottomColor: theme.divider, gap: 12 }}
                 >
                   <View style={{
                     width: 20, height: 20, borderRadius: 10,
@@ -118,16 +128,16 @@ export default function DeleteAccount() {
                   }}>
                     {reason === r && <View style={{ width: 10, height: 10, borderRadius: 5, backgroundColor: theme.danger }} />}
                   </View>
-                  <Text style={{ flex: 1, fontSize: 14, color: theme.text }}>{r}</Text>
+                  <Text style={{ flex: 1, fontSize: 14, color: theme.text, textAlign: isRTL ? "right" : "left" }}>{r}</Text>
                 </TouchableOpacity>
               ))}
             </View>
 
             <TouchableOpacity
-              onPress={() => { if (!reason) { Alert.alert("Raison requise", "Veuillez sélectionner une raison."); return; } setStep(2); }}
+              onPress={() => { if (!reason) { Alert.alert(t("reasonRequired"), t("selectReason")); return; } setStep(2); }}
               style={{ backgroundColor: theme.danger, borderRadius: 16, paddingVertical: 18, alignItems: "center" }}
             >
-              <Text style={{ fontSize: 15, fontFamily: "inter-semibold", color: "#fff" }}>Continuer</Text>
+              <Text style={{ fontSize: 15, fontFamily: "inter-semibold", color: "#fff" }}>{t("continue")}</Text>
             </TouchableOpacity>
           </>
         )}
@@ -136,25 +146,25 @@ export default function DeleteAccount() {
         {step === 2 && (
           <>
             <View style={{ backgroundColor: theme.card, borderRadius: 20, padding: 20, gap: 16, shadowColor: theme.shadow, shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.06, elevation: 2 }}>
-              <Text style={{ fontSize: 16, fontFamily: "inter-semibold", color: theme.text }}>
-                Confirmez votre identité
+              <Text style={{ fontSize: 16, fontFamily: "inter-semibold", color: theme.text, textAlign: isRTL ? "right" : "left" }}>
+                {t("confirmIdentity")}
               </Text>
-              <Text style={{ fontSize: 13, color: theme.textSecondary, lineHeight: 20 }}>
-                Entrez votre mot de passe pour confirmer que vous êtes bien le propriétaire de ce compte.
+              <Text style={{ fontSize: 13, color: theme.textSecondary, lineHeight: 20, textAlign: isRTL ? "right" : "left" }}>
+                {t("enterPwdToConfirm")}
               </Text>
               <View>
-                <Text style={{ fontSize: 12, fontFamily: "inter-semibold", color: theme.textSecondary, marginBottom: 8, textTransform: "uppercase", letterSpacing: 0.5 }}>
-                  Mot de passe
+                <Text style={{ fontSize: 12, fontFamily: "inter-semibold", color: theme.textSecondary, marginBottom: 8, textTransform: "uppercase", letterSpacing: 0.5, textAlign: isRTL ? "right" : "left" }}>
+                  {t("passwordLabel")}
                 </Text>
-                <View style={{ flexDirection: "row", alignItems: "center", backgroundColor: theme.inputBg, borderRadius: 14, paddingHorizontal: 14, height: 52, borderWidth: 1, borderColor: theme.border }}>
-                  <Ionicons name="lock-closed-outline" size={18} color={theme.textMuted} style={{ marginRight: 10 }} />
+                <View style={{ flexDirection: isRTL ? "row-reverse" : "row", alignItems: "center", backgroundColor: theme.inputBg, borderRadius: 14, paddingHorizontal: 14, height: 52, borderWidth: 1, borderColor: theme.border }}>
+                  <Ionicons name="lock-closed-outline" size={18} color={theme.textMuted} style={{ marginRight: isRTL ? 0 : 10, marginLeft: isRTL ? 10 : 0 }} />
                   <TextInput
                     value={password}
                     onChangeText={setPassword}
-                    placeholder="Votre mot de passe"
+                    placeholder={t("pwdPlaceholder")}
                     placeholderTextColor={theme.textMuted}
                     secureTextEntry={!showPassword}
-                    style={{ flex: 1, fontSize: 15, color: theme.text }}
+                    style={{ flex: 1, fontSize: 15, color: theme.text, textAlign: isRTL ? "right" : "left" }}
                   />
                   <TouchableOpacity onPress={() => setShowPassword(v => !v)}>
                     <Ionicons name={showPassword ? "eye-off-outline" : "eye-outline"} size={20} color={theme.textMuted} />
@@ -162,12 +172,12 @@ export default function DeleteAccount() {
                 </View>
               </View>
             </View>
-            <View style={{ flexDirection: "row", gap: 12 }}>
+            <View style={{ flexDirection: isRTL ? "row-reverse" : "row", gap: 12 }}>
               <TouchableOpacity onPress={() => setStep(1)} style={{ flex: 1, backgroundColor: theme.pillBg, borderRadius: 16, paddingVertical: 16, alignItems: "center" }}>
-                <Text style={{ fontSize: 15, fontFamily: "inter-semibold", color: theme.textSecondary }}>Retour</Text>
+                <Text style={{ fontSize: 15, fontFamily: "inter-semibold", color: theme.textSecondary }}>{t("back")}</Text>
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => { if (!password) { Alert.alert("Mot de passe requis"); return; } setStep(3); }} style={{ flex: 2, backgroundColor: theme.danger, borderRadius: 16, paddingVertical: 16, alignItems: "center" }}>
-                <Text style={{ fontSize: 15, fontFamily: "inter-semibold", color: "#fff" }}>Continuer</Text>
+              <TouchableOpacity onPress={() => { if (!password) { Alert.alert(t("pwdRequired")); return; } setStep(3); }} style={{ flex: 2, backgroundColor: theme.danger, borderRadius: 16, paddingVertical: 16, alignItems: "center" }}>
+                <Text style={{ fontSize: 15, fontFamily: "inter-semibold", color: "#fff" }}>{t("continue")}</Text>
               </TouchableOpacity>
             </View>
           </>
@@ -178,29 +188,29 @@ export default function DeleteAccount() {
           <>
             <View style={{ backgroundColor: theme.card, borderRadius: 20, padding: 20, gap: 16, shadowColor: theme.shadow, shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.06, elevation: 2 }}>
               <Text style={{ fontSize: 16, fontFamily: "inter-semibold", color: theme.danger, textAlign: "center" }}>
-                Dernière confirmation
+                {t("finalConfirmation")}
               </Text>
               <Text style={{ fontSize: 13, color: theme.textSecondary, textAlign: "center", lineHeight: 20 }}>
-                Tapez <Text style={{ fontFamily: "inter-semibold", color: theme.danger }}>SUPPRIMER</Text> pour confirmer définitivement la suppression de votre compte.
+                {t("typeDeleteToConfirm")}
               </Text>
-              <View style={{ backgroundColor: theme.inputBg, borderRadius: 14, paddingHorizontal: 14, height: 52, borderWidth: 1, borderColor: confirmText === "SUPPRIMER" ? theme.danger : theme.border, justifyContent: "center" }}>
+              <View style={{ backgroundColor: theme.inputBg, borderRadius: 14, paddingHorizontal: 14, height: 52, borderWidth: 1, borderColor: confirmText === t("deleteWord") ? theme.danger : theme.border, justifyContent: "center" }}>
                 <TextInput
                   value={confirmText}
                   onChangeText={setConfirmText}
-                  placeholder="SUPPRIMER"
+                  placeholder={t("deleteWord")}
                   placeholderTextColor={theme.textMuted}
                   autoCapitalize="characters"
                   style={{ fontSize: 16, color: theme.danger, fontFamily: "inter-semibold", textAlign: "center", letterSpacing: 2 }}
                 />
               </View>
             </View>
-            <View style={{ flexDirection: "row", gap: 12 }}>
+            <View style={{ flexDirection: isRTL ? "row-reverse" : "row", gap: 12 }}>
               <TouchableOpacity onPress={() => setStep(2)} style={{ flex: 1, backgroundColor: theme.pillBg, borderRadius: 16, paddingVertical: 16, alignItems: "center" }}>
-                <Text style={{ fontSize: 15, fontFamily: "inter-semibold", color: theme.textSecondary }}>Annuler</Text>
+                <Text style={{ fontSize: 15, fontFamily: "inter-semibold", color: theme.textSecondary }}>{t("cancel")}</Text>
               </TouchableOpacity>
-              <TouchableOpacity onPress={handleDelete} disabled={loading} style={{ flex: 2, backgroundColor: confirmText === "SUPPRIMER" ? theme.danger : theme.border, borderRadius: 16, paddingVertical: 16, alignItems: "center" }}>
+              <TouchableOpacity onPress={handleDelete} disabled={loading} style={{ flex: 2, backgroundColor: confirmText === t("deleteWord") ? theme.danger : theme.border, borderRadius: 16, paddingVertical: 16, alignItems: "center" }}>
                 <Text style={{ fontSize: 15, fontFamily: "inter-semibold", color: "#fff" }}>
-                  {loading ? "Suppression…" : "Supprimer définitivement"}
+                  {loading ? t("deleting") : t("deletePermanently")}
                 </Text>
               </TouchableOpacity>
             </View>

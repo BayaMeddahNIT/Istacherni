@@ -8,38 +8,7 @@ if (Platform.OS === "android" && UIManager.setLayoutAnimationEnabledExperimental
   UIManager.setLayoutAnimationEnabledExperimental(true);
 }
 
-const FAQ_DATA = [
-  {
-    category: "Utilisation de l'application",
-    questions: [
-      { q: "Comment créer un compte sur Istacherni ?", a: "Téléchargez l'application, appuyez sur 'S'inscrire', renseignez vos informations personnelles (nom, email, téléphone), puis confirmez votre compte via le code envoyé par email." },
-      { q: "L'application est-elle gratuite ?", a: "Istacherni propose une version gratuite avec les fonctionnalités de base. Des abonnements premium sont disponibles pour accéder à l'assistant IA avancé et aux analyses de contrats illimitées." },
-      { q: "Mes données sont-elles sécurisées ?", a: "Oui. Toutes vos données sont chiffrées et stockées de manière sécurisée. Nous respectons strictement la loi algérienne n° 18-07 relative à la protection des données personnelles." },
-    ]
-  },
-  {
-    category: "Assistant Juridique IA",
-    questions: [
-      { q: "Comment fonctionne l'analyse de contrats par l'IA ?", a: "Notre IA analyse le texte de votre contrat, identifie les clauses clés, détecte les risques juridiques potentiels et génère un rapport avec des recommandations basées sur la législation algérienne en vigueur." },
-      { q: "L'IA peut-elle remplacer un avocat ?", a: "Non. L'assistant IA est un outil d'aide à la compréhension juridique. Pour toute affaire légale importante, nous vous recommandons de consulter un avocat qualifié." },
-      { q: "Quels types de contrats peut analyser l'IA ?", a: "L'IA peut analyser les contrats de travail, baux commerciaux, ventes immobilières, prestations de services, NDA et tout document juridique rédigé en français ou en arabe." },
-    ]
-  },
-  {
-    category: "Avocats et Carte",
-    questions: [
-      { q: "Comment sont sélectionnés les avocats sur la carte ?", a: "Les avocats référencés sur Istacherni sont vérifiés et inscrits au barreau algérien. Ils sont affichés en fonction de votre localisation géographique." },
-      { q: "Comment contacter un avocat depuis l'application ?", a: "Appuyez sur le marqueur de l'avocat sur la carte, puis sur 'Voir les détails'. Vous pourrez consulter son profil, sa spécialité, ses évaluations et le contacter directement." },
-    ]
-  },
-  {
-    category: "Bibliothèque Juridique",
-    questions: [
-      { q: "D'où proviennent les textes de lois disponibles ?", a: "Tous les textes juridiques proviennent du Journal Officiel de la République Algérienne (JORADP) et du Ministère de la Justice. Les liens pointent directement vers les sources officielles." },
-      { q: "Les lois sont-elles mises à jour ?", a: "Nous mettons régulièrement à jour notre bibliothèque pour refléter les nouvelles publications et amendements publiés au JORA." },
-    ]
-  },
-];
+import translations from "@/constants/i18n";
 
 function AccordionItem({ question, answer }: { question: string; answer: string }) {
   const theme = useTheme();
@@ -67,8 +36,9 @@ function AccordionItem({ question, answer }: { question: string; answer: string 
 
 export default function FAQ() {
   const theme = useTheme();
-  const { t, isRTL } = useTranslation();
-  const totalQuestions = FAQ_DATA.reduce((acc, c) => acc + c.questions.length, 0);
+  const { t, language, isRTL } = useTranslation();
+  const faqData = (translations as any)[language].faqData || [];
+  const totalQuestions = faqData.reduce((acc: number, c: any) => acc + c.questions.length, 0);
 
   return (
     <View style={{ flex: 1, backgroundColor: theme.background }}>
@@ -89,13 +59,13 @@ export default function FAQ() {
       </View>
 
       <ScrollView contentContainerStyle={{ padding: 20, gap: 20 }} showsVerticalScrollIndicator={false}>
-        {FAQ_DATA.map((section) => (
+        {faqData.map((section: any) => (
           <View key={section.category}>
             <Text style={{ fontSize: 12, fontFamily: "inter-semibold", color: theme.textSecondary, textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 10, marginLeft: 4, textAlign: isRTL ? "right" : "left" }}>
               {section.category}
             </Text>
             <View style={{ backgroundColor: theme.card, borderRadius: 18, paddingHorizontal: 16, paddingVertical: 4, shadowColor: theme.shadow, shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.05, elevation: 2 }}>
-              {section.questions.map((item, i) => (
+              {section.questions.map((item: any, i: number) => (
                 <AccordionItem key={i} question={item.q} answer={item.a} />
               ))}
             </View>
