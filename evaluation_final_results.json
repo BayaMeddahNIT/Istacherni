@@ -1,0 +1,23 @@
+{
+  "Graph RAG": {
+    "Precision": 0.07261904761904762,
+    "Hit Rate": 0.2619047619047619,
+    "MRR": 0.17738095238095233,
+    "Recall": 0.07261904761904764,
+    "Legal Accuracy": 0.3813492063492066
+  },
+  "Qwen RAG": {
+    "Precision": 0.27777777777777757,
+    "Hit Rate": 0.7301587301587301,
+    "MRR": 0.5230158730158732,
+    "Recall": 0.28544973544973523,
+    "Legal Accuracy": 0.55952380952381
+  },
+  "CamELBERT RAG": {
+    "Precision": 0.0,
+    "Hit Rate": 0.0,
+    "MRR": 0.0,
+    "Recall": 0.0,
+    "Legal Accuracy": 0.348015873015873
+  }
+}

@@ -36,7 +36,7 @@ os.environ.setdefault("HF_DATASETS_OFFLINE", "1")
 # ── Model identifier ────────────────────────────────────────────────────────────
 # Using the MSA (Modern Standard Arabic) variant — available in local cache.
 # Legal Arabic is formal MSA, so this variant is well-suited for the task.
-MODEL_NAME = "CAMeL-Lab/bert-base-arabic-camelbert-msa"
+MODEL_NAME = "CAMeL-Lab/bert-base-arabic-camelbert-mix"
 
 # ── Lazy singletons ─────────────────────────────────────────────────────────────
 _tokenizer = None

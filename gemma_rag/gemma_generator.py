@@ -1,0 +1,170 @@
+"""
+gemma_generator.py
+------------------
+Shared generation module for all RAG pipelines.
+
+Takes a question + retrieved articles → calls gemma2:9b via Ollama
+→ returns a structured Arabic legal answer.
+
+Used by:
+  - run_bge_bm25.py      (BGE-M3 + BM25 hybrid retrieval)
+  - run_graph_rag.py     (Knowledge Graph retrieval)
+  - run_qwen_rag.py      (Qwen dense retrieval)
+  - run_camelbert_rag.py (CAMeLBERT dense retrieval)
+"""
+
+from __future__ import annotations
+
+import json
+import os
+import time
+import urllib.error
+import urllib.request
+from pathlib import Path
+from typing import Any, Dict, List
+
+from dotenv import load_dotenv
+
+# ── Env ─────────────────────────────────────────────────────────────────────────
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+load_dotenv(PROJECT_ROOT / ".env")
+
+# ── Config ───────────────────────────────────────────────────────────────────────
+OLLAMA_BASE_URL:    str   = os.getenv("OLLAMA_BASE_URL",    "http://localhost:11434")
+OLLAMA_GEMMA_MODEL: str   = os.getenv("OLLAMA_GEMMA_MODEL", "gemma2:9b")
+OLLAMA_TIMEOUT:     int   = int(os.getenv("OLLAMA_TIMEOUT",     "180"))
+OLLAMA_NUM_CTX:     int   = int(os.getenv("OLLAMA_NUM_CTX",     "4096"))
+OLLAMA_TEMP:        float = float(os.getenv("OLLAMA_TEMPERATURE", "0.1"))
+
+# ── System prompt ────────────────────────────────────────────────────────────────
+_SYSTEM = """أنت مساعد قانوني متخصص في القانون الجزائري.
+مهمتك هي الإجابة على أسئلة المستخدمين بناءً على المواد القانونية المسترجعة.
+
+قواعد الإجابة:
+1. أجب دائماً باللغة العربية.
+2. استند إلى المواد القانونية المقدمة واذكر رقم المادة واسم القانون لكل معلومة.
+3. إذا كانت المواد المقدمة تتعلق بفرع قانوني مختلف عن السؤال (مثلاً مواد مدنية لسؤال جنائي)، فاشرح ما تنص عليه هذه المواد وأوضح أن العقوبة الجزائية قد تكون منصوصاً عليها في قانون العقوبات.
+4. لا تتجاهل المواد المقدمة — استخدمها بأقصى قدر ممكن حتى لو كانت غير مباشرة.
+5. إذا لم تكن المواد المقدمة ذات صلة بالسؤال إطلاقاً، فقط أوضح ذلك بإيجاز.
+6. رتّب إجابتك: الحكم الرئيسي، ثم الشروط، ثم العقوبات إن وُجدت، ثم ملاحظات حول النطاق القانوني إن لزم."""
+
+
+# ── Context builder ──────────────────────────────────────────────────────────────
+
+def _build_context(retrieved: List[Dict[str, Any]]) -> str:
+    """Format retrieved article dicts into a readable Arabic context block."""
+    if not retrieved:
+        return "لا توجد مواد قانونية ذات صلة."
+
+    parts = []
+    for art in retrieved:
+        law  = art.get("law_name",       "قانون غير معروف")
+        num  = art.get("article_number", "N/A")
+        header = f"【{law} — المادة {num}】"
+        if art.get("title"):
+            header += f" ({art['title']})"
+
+        body_lines = [art.get("text_original", "")]
+        if art.get("legal_conditions_summary"):
+            body_lines.append(f"الشروط: {art['legal_conditions_summary']}")
+        if art.get("penalties_summary"):
+            body_lines.append(f"العقوبة: {art['penalties_summary']}")
+
+        parts.append(f"{header}\n" + "\n".join(body_lines))
+
+    return "\n\n---\n\n".join(parts)
+
+
+# ── Ollama call ──────────────────────────────────────────────────────────────────
+
+def _ollama_chat(system: str, user: str, max_retries: int = 3) -> str:
+    url = f"{OLLAMA_BASE_URL.rstrip('/')}/api/chat"
+    payload = json.dumps({
+        "model":  OLLAMA_GEMMA_MODEL,
+        "stream": False,
+        "options": {
+            "temperature": OLLAMA_TEMP,
+            "num_ctx":     OLLAMA_NUM_CTX,
+        },
+        "messages": [
+            {"role": "system", "content": system},
+            {"role": "user",   "content": user},
+        ],
+    }).encode("utf-8")
+
+    headers = {"Content-Type": "application/json"}
+
+    for attempt in range(max_retries):
+        try:
+            req = urllib.request.Request(url, data=payload, headers=headers)
+            with urllib.request.urlopen(req, timeout=OLLAMA_TIMEOUT) as resp:
+                body = json.loads(resp.read().decode("utf-8"))
+            return body["message"]["content"].strip()
+
+        except urllib.error.URLError as e:
+            if attempt < max_retries - 1:
+                wait = 5 * (attempt + 1)
+                print(f"[Gemma-Gen] Ollama unreachable ({e}), retrying in {wait}s …", flush=True)
+                time.sleep(wait)
+            else:
+                raise RuntimeError(
+                    f"Cannot connect to Ollama at {OLLAMA_BASE_URL}.\n"
+                    "Make sure Ollama is running:  ollama serve"
+                ) from e
+
+    return "خطأ في الاتصال بالمولد."
+
+
+# ── Public API ───────────────────────────────────────────────────────────────────
+
+def gemma_generate(
+    question:   str,
+    retrieved:  List[Dict[str, Any]],
+    max_retries: int = 3,
+) -> str:
+    """
+    Generate a legal answer using gemma2:9b via Ollama.
+
+    Args:
+        question:    The user's Arabic legal question.
+        retrieved:   List of article dicts from any retriever.
+        max_retries: Number of Ollama connection retry attempts.
+
+    Returns:
+        Generated Arabic answer string.
+    """
+    context = _build_context(retrieved)
+    user_prompt = (
+        "=== المواد القانونية ذات الصلة ===\n\n"
+        f"{context}\n\n"
+        "=== سؤال المستخدم ===\n\n"
+        f"{question}\n\n"
+        "=== الإجابة ==="
+    )
+    return _ollama_chat(system=_SYSTEM, user=user_prompt, max_retries=max_retries)
+
+
+# ── Health check ─────────────────────────────────────────────────────────────────
+
+def check_ollama_health() -> bool:
+    try:
+        url = f"{OLLAMA_BASE_URL.rstrip('/')}/api/tags"
+        with urllib.request.urlopen(url, timeout=5) as resp:
+            data = json.loads(resp.read())
+        available = [m["name"] for m in data.get("models", [])]
+        model_ok = (
+            OLLAMA_GEMMA_MODEL in available
+            or f"{OLLAMA_GEMMA_MODEL}:latest" in available
+        )
+        if not model_ok:
+            print(f"[Gemma-Gen] ⚠ '{OLLAMA_GEMMA_MODEL}' not found. Available: {available}")
+            return False
+        print(f"[Gemma-Gen] ✓ Ollama healthy | model '{OLLAMA_GEMMA_MODEL}' ready.")
+        return True
+    except Exception as e:
+        print(f"[Gemma-Gen] ✗ Health check failed: {e}")
+        return False
+
+
+if __name__ == "__main__":
+    check_ollama_health()
