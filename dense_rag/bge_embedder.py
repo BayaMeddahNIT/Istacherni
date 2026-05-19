@@ -6,7 +6,9 @@ from pathlib import Path
 from typing import List
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
-MODEL_PATH = Path("D:\\pfe_baya_models\\bge-m3-unified")
+#MODEL_PATH = Path("D:\\pfe_baya_models\\bge-m3-unified")
+MODEL_PATH = PROJECT_ROOT / "bge_m3_algerian_law_v3"
+
 
 # We use sentence-transformers to load our newly fine-tuned model
 import torch
@@ -18,8 +20,10 @@ _model = None
 def get_model():
     global _model
     if _model is None:
-        # Use CPU to save VRAM for reranker
-        device = "cpu"
+        # Load from environment variable to prevent VRAM overlap with Ollama
+        device = "cpu"  # GPU reserved for LLM (Gemma2:9b)
+        print("[BGE-M3 Retriever] Running on CPU — GPU reserved for LLM")
+        print(f"[Embedder] Loading BGE-M3 model on '{device}' ...")
         if MODEL_PATH.exists():
             _model = SentenceTransformer(str(MODEL_PATH), device=device)
         else:

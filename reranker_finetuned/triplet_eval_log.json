@@ -1,0 +1,37 @@
+[
+  {
+    "epoch": 0,
+    "steps": 0,
+    "legal_triplet_accuracy": 1.0,
+    "legal_triplet_correct": 13,
+    "legal_triplet_total": 13
+  },
+  {
+    "epoch": 1,
+    "steps": 53,
+    "legal_triplet_accuracy": 1.0,
+    "legal_triplet_correct": 13,
+    "legal_triplet_total": 13
+  },
+  {
+    "epoch": 2,
+    "steps": 106,
+    "legal_triplet_accuracy": 1.0,
+    "legal_triplet_correct": 13,
+    "legal_triplet_total": 13
+  },
+  {
+    "epoch": 3,
+    "steps": 159,
+    "legal_triplet_accuracy": 1.0,
+    "legal_triplet_correct": 13,
+    "legal_triplet_total": 13
+  },
+  {
+    "epoch": 3,
+    "steps": 159,
+    "legal_triplet_accuracy": 1.0,
+    "legal_triplet_correct": 13,
+    "legal_triplet_total": 13
+  }
+]

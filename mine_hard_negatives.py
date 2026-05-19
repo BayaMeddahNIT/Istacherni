@@ -51,7 +51,7 @@ OUTPUT_JSONL        = PROJECT_ROOT / "hard_negatives.jsonl"
 FLAGGED_JSON        = PROJECT_ROOT / "hard_negatives_flagged.json"
 VERIFICATION_JSON   = PROJECT_ROOT / "hard_negatives_verification.json"
 
-RETRIEVE_TOP_K      = 200   # Raised to 200 for deeper mining
+RETRIEVE_TOP_K      = 100   # Set to 100 to scan all useful ranks and double mining speed
 MAX_NEG_SCAN_RANK   = 100   # Scan deeper for negatives
 DEFAULT_SAMPLE      = 10
 DELTA_THRESHOLD     = 0.10  # strict filter (Δ ≤ 0.10 passes)

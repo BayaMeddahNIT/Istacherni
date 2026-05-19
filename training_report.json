@@ -1,0 +1,40 @@
+{
+  "baseline": {
+    "precision_at_1": 0.9134,
+    "hit_rate_30": 1.0,
+    "recall_30": 0.7862,
+    "mrr": 0.9554
+  },
+  "training_samples": {
+    "relaxed_threshold": 180,
+    "failure_specific": 21,
+    "new_laws": 5,
+    "total_after_oversampling": 253
+  },
+  "config": {
+    "learning_rate": 1e-05,
+    "num_epochs": 2,
+    "batch_size": 1,
+    "warmup_ratio": 0.1,
+    "weight_decay": 0.01,
+    "max_seq_length": 512,
+    "val_split": 0.1,
+    "oversampling": {
+      "failure_triplets": 3,
+      "new_law_triplets": 2,
+      "relaxed_triplets": 1
+    }
+  },
+  "training_loss_per_epoch": [
+    1004.7984354496002,
+    1209.6649079322815
+  ],
+  "validation_loss_per_epoch": [
+    0.3937824356555939,
+    0.34630721211433413
+  ],
+  "early_stopped": false,
+  "eval_results": {},
+  "improvement": {},
+  "model_path": "C:\\Users\\pc cam\\Desktop\\L3\\pfe baya\\Istacherni\\bge_m3_algerian_law_v3"
+}

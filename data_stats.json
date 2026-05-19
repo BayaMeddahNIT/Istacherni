@@ -1,0 +1,17 @@
+{
+  "total_pairs": 1876,
+  "train_pairs": 1667,
+  "val_pairs": 209,
+  "positive_pairs_train": 227,
+  "negative_pairs_train": 1440,
+  "positive_ratio_train": 0.1362,
+  "unique_queries_train": 119,
+  "unique_queries_val": 13,
+  "cross_code_pairs": 1204,
+  "source_breakdown": {
+    "hard_negatives_failures_5x": 55,
+    "hard_negatives_new_laws_3x": 15,
+    "hard_negatives_relaxed_2x": 56,
+    "hard_negatives_main_1x": 127
+  }
+}

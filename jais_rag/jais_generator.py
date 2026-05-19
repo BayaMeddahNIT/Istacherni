@@ -33,7 +33,7 @@ load_dotenv(PROJECT_ROOT / ".env")
 # ── Config (Local Ollama) ──────────────────────────────────────────────────────
 OLLAMA_BASE_URL: str   = os.getenv("OLLAMA_BASE_URL",   "http://localhost:11434")
 # Recommended: jwnder/jais-adaptive:7b or jwnder/jais-adaptive:13b
-OLLAMA_JAIS_MODEL: str = os.getenv("OLLAMA_JAIS_MODEL", "gemma4:4b")
+OLLAMA_JAIS_MODEL: str = os.getenv("OLLAMA_JAIS_MODEL", "gemma2:9b")
 OLLAMA_TIMEOUT:  int   = int(os.getenv("OLLAMA_TIMEOUT",      "180"))
 OLLAMA_NUM_CTX:  int   = int(os.getenv("OLLAMA_NUM_CTX",      "4096"))
 OLLAMA_TEMP:     float = float(os.getenv("OLLAMA_TEMPERATURE", "0.1"))

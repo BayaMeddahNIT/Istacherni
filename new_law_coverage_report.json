@@ -1,0 +1,14 @@
+[
+  {
+    "law_name": "القانون رقم 09-03 المتعلق بحماية المستهلك وقمع الغش",
+    "articles_total": 1,
+    "triplets_generated": 1,
+    "avg_negative_similarity": 0.8054
+  },
+  {
+    "law_name": "قانون العمل الجزائري",
+    "articles_total": 5,
+    "triplets_generated": 4,
+    "avg_negative_similarity": 0.7484
+  }
+]

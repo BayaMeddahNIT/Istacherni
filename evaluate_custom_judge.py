@@ -21,8 +21,8 @@ if sys.stdout.encoding.lower() != 'utf-8':
 OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
 JUDGE_MODEL = "qwen2.5:7b"
 DATASET_PATH = PROJECT_ROOT / "algerian_law_ragas_dataset_v3.json"
-ANSWERS_FILE = PROJECT_ROOT / "answers_gemma2_finetuned.txt"
-OUTPUT_CSV = PROJECT_ROOT / "custom_judge_results.csv"
+ANSWERS_FILE = PROJECT_ROOT / "answers_fused.txt"
+OUTPUT_CSV = PROJECT_ROOT / "answers_fused_judge_results.csv"
 
 # --- UTILS: Parse Answers File ---
 def normalize_arabic(text: str) -> str:

@@ -27,7 +27,7 @@ load_dotenv(PROJECT_ROOT / ".env")
 # ── Config ─────────────────────────────────────────────────────────────────────
 OLLAMA_BASE_URL: str   = os.getenv("OLLAMA_BASE_URL",   "http://localhost:11434")
 # Use OLLAMA_JAIS_MODEL as specified in your .env for Gemma 2
-OLLAMA_GEMMA_MODEL: str = os.getenv("OLLAMA_JAIS_MODEL", "gemma4:4b")
+OLLAMA_GEMMA_MODEL: str = os.getenv("OLLAMA_JAIS_MODEL", "gemma2:9b")
 OLLAMA_TIMEOUT:  int   = int(os.getenv("OLLAMA_TIMEOUT",      "180"))
 OLLAMA_NUM_CTX:  int   = int(os.getenv("OLLAMA_NUM_CTX",      "1536")) # Lowered for memory stability  2048
 OLLAMA_TEMP:     float = float(os.getenv("OLLAMA_TEMPERATURE", "0.1"))
@@ -83,6 +83,7 @@ def _ollama_chat(system: str, user: str, max_retries: int = 3) -> str:
         "options": {
             "temperature": OLLAMA_TEMP,
             "num_ctx":     OLLAMA_NUM_CTX,
+            "num_gpu":     28, # Force partial offload so Gemma 2 9B fits in 6GB VRAM
         },
         "messages": [
             {"role": "system", "content": system},
@@ -134,7 +135,7 @@ def check_gemma_health() -> bool:
     try:
         url = f"{OLLAMA_BASE_URL.rstrip('/')}/api/tags"
         with urllib.request.urlopen(url, timeout=5) as resp:
-            data = _json.loads(resp.read())
+            data = json.loads(resp.read())
 
         available_models = [m["name"] for m in data.get("models", [])]
 
