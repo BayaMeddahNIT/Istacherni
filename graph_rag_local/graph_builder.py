@@ -1,18 +1,16 @@
-"""
-graph_builder.py
-----------------
-Builds an Algerian-law Knowledge Graph with local BGE-M3 embeddings.
-This version computes embeddings for all article nodes and stores them in the graph.
-"""
-
 import json
 import pickle
 import re
+import sys
+import io
 from pathlib import Path
 from typing import Optional
 
 import networkx as nx
 import numpy as np
+
+# Force UTF-8 for terminal output (Fixes Arabic encoding crashes on Windows)
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
 
 # Import local embeddings utility
 from graph_rag_local.embeddings import embed_text
@@ -21,7 +19,6 @@ from graph_rag_local.embeddings import embed_text
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 RAW_DATA_DIR = PROJECT_ROOT / "dataset" / "raw"
 CACHE_DIR    = Path(__file__).parent / "cache"
-# Use a separate cache file for the local embedding-enhanced graph
 GRAPH_FILE   = CACHE_DIR / "law_graph_local.pkl"
 CORPUS_FILE  = CACHE_DIR / "graph_corpus_local.pkl"
 LAW_TYPE_CACHE_FILE = CACHE_DIR / "law_type_cache.json"
@@ -57,21 +54,21 @@ def _normalize(raw: dict) -> Optional[dict]:
     related_raw = relations.get("related_articles") or []
     related = [str(r) for r in related_raw if r is not None]
 
-    # Combine metadata for a searchable text block (useful for embeddings)
-    summary = raw.get("summary", "") or ""
+    title            = raw.get("title", "") or ""
     text_explanation = raw.get("text_explanation", "") or ""
-    search_block = f"{raw.get('title', '')} {summary} {text} {' '.join(raw.get('keywords', []))}"
+    summary          = raw.get("summary", "") or ""
+    search_block     = f"{title}. {text}".strip() if title else text
 
     return {
         "id":                       raw.get("id") or f"ART_{art_num}",
         "law_domain":               raw.get("law_domain", ""),
         "law_name":                 raw.get("law_name", ""),
         "article_number":           art_num,
-        "title":                    raw.get("title", ""),
+        "title":                    title,
         "text_original":            text,
         "text_explanation":         text_explanation,
         "summary":                  summary,
-        "search_block":             search_block.strip()[:2000], # Truncate for embedding efficiency
+        "search_block":             search_block[:2000],
         "keywords":                 [k.strip() for k in raw.get("keywords", []) if k],
         "penalties_summary":        raw.get("penalties_summary", ""),
         "legal_conditions_summary": raw.get("legal_conditions_summary", ""),
@@ -144,27 +141,21 @@ def _load_law_type_cache():
             _law_type_cache = json.load(f)
 
 def _save_law_type_cache():
+    CACHE_DIR.mkdir(parents=True, exist_ok=True)
     with open(LAW_TYPE_CACHE_FILE, "w", encoding="utf-8") as f:
-        json.dump(_law_type_cache, f, ensure_ascii=False, indent=2)
+        json.dump(_law_type_cache, f, ensure_ascii=False, indent=4)
 
-def _classify_legal_type(art_id: str, title: str, summary: str, keywords: list[str]) -> str:
-    global _law_type_cache
-    if not _law_type_cache:
-        _load_law_type_cache()
-        
+def get_law_type(art_id: str, text_to_check: str) -> str:
     if art_id in _law_type_cache:
         return _law_type_cache[art_id]
-
-    text_to_check = f"{title} {summary} {' '.join(keywords)}".strip()
     
-    # 1. Rule-based check
-    procedural_keywords = ["إثبات", "دعوى", "محكمة", "رسمي", "توثيق", "إجراءات", "طعن", "قضاء", "دليل", "شهادة", "قاضي", "كاتب العدل", "محرر رسمي"]
-    substantive_keywords = ["شروط", "أركان", "أهلية", "رضا", "سبب", "موضوع", "التزام", "عقد", "حق", "واجب", "بطلان", "فسخ", "إرادة"]
+    # Simple rule-based scoring
+    p_keywords = ["إجراءات", "ميعاد", "تبليغ", "اختصاص", "خصومة", "طعن", "نقض", "استئناف", "قضائية", "محضر"]
+    s_keywords = ["حق", "التزام", "عقد", "بيع", "ملكية", "مسؤولية", "ضرر", "تعويض", "عقوبة", "جريمة", "حبس", "سجن"]
     
-    p_score = sum(1 for w in procedural_keywords if w in text_to_check)
-    s_score = sum(1 for w in substantive_keywords if w in text_to_check)
+    p_score = sum(1 for k in p_keywords if k in text_to_check)
+    s_score = sum(1 for k in s_keywords if k in text_to_check)
     
-    # Rule engine priority
     if p_score > s_score + 1:
         res = "procedural"
     elif s_score > p_score + 1:
@@ -172,12 +163,9 @@ def _classify_legal_type(art_id: str, title: str, summary: str, keywords: list[s
     elif p_score == 0 and s_score == 0:
         res = "both"
     else:
-        # 2. Fast CamelBERT Fallback for ambiguous articles instead of slow LLM
         try:
             from graph_rag_local.camelbert_classifier import get_camelbert_classifier
             classifier = get_camelbert_classifier()
-            # CamelBERT returns the best domain. 
-            # If the domain is Civil Law -> substantive, Penal/Procedural -> procedural, else both
             domain, score, _ = classifier.classify(text_to_check)
             if score > 0.4:
                 if domain == "Civil Law":
@@ -188,17 +176,12 @@ def _classify_legal_type(art_id: str, title: str, summary: str, keywords: list[s
                     res = "both"
             else:
                 res = "both"
-        except Exception as e:
+        except Exception:
             res = "both"
             
     _law_type_cache[art_id] = res
     _save_law_type_cache()
     return res
-
-
-# ═══════════════════════════════════════════════════════════════════════
-# ── Graph builder ───────────────────────────────────────────────────
-# ═══════════════════════════════════════════════════════════════════════
 
 def build_graph(force: bool = False) -> tuple[nx.DiGraph, list[dict]]:
     CACHE_DIR.mkdir(parents=True, exist_ok=True)
@@ -220,10 +203,8 @@ def build_graph(force: bool = False) -> tuple[nx.DiGraph, list[dict]]:
         num_to_ids.setdefault(art["article_number"], []).append(art["id"])
         law_to_ids.setdefault(art["law_name"], []).append(art["id"])
 
-    # ── Phase 1: Add nodes & compute embeddings ─────────────────────────
     print(f"[GraphBuilder] Phase 1 — Computing embeddings for {len(articles)} articles…")
     
-    # Smart Ingestion: Reuse existing embeddings if search_block hasn't changed
     existing_embs = {}
     if GRAPH_FILE.exists():
         try:
@@ -249,68 +230,39 @@ def build_graph(force: bool = False) -> tuple[nx.DiGraph, list[dict]]:
 
     if texts_to_embed:
         print(f"[GraphBuilder] Reusing {len(articles) - len(texts_to_embed)} embeddings, computing {len(texts_to_embed)} new ones.")
-        new_embeddings = embed_text(texts_to_embed)
-        for idx, emb in zip(to_embed_indices, new_embeddings):
+        new_embs = embed_text(texts_to_embed)
+        for idx, emb in zip(to_embed_indices, new_embs):
             embeddings[idx] = emb
     else:
-        print(f"[GraphBuilder] Reusing all {len(articles)} existing embeddings.")
+        print(f"[GraphBuilder] Reusing all {len(articles)} embeddings.")
 
-    for i, art in enumerate(articles):
-        # Article node — store ALL metadata fields for downstream generation
-        G.add_node(
-            art["id"],
-            node_type        = "article",
-            law_name         = art["law_name"],
-            law_domain       = art["law_domain"],
-            article_number   = art["article_number"],
-            title            = art["title"],
-            text_original    = art["text_original"],
-            text_explanation = art["text_explanation"],
-            summary          = art["summary"],
-            search_block     = art["search_block"],
-            embedding        = embeddings[i],  # Store the BGE-M3 embedding!
-            penalties        = _classify_penalty(art["penalties_summary"]),
-            keywords         = art["keywords"],
-            law_type         = _classify_legal_type(art["id"], art.get("title", ""), art.get("summary", ""), art.get("keywords", [])),
-        )
-
-        for kw in art["keywords"]:
-            cid = f"CONCEPT:{kw}"
-            if not G.has_node(cid):
-                G.add_node(cid, node_type="concept", term=kw)
-
-    # ── Phase 2: Add edges ─────────────────────────────────────────────
-    print("[GraphBuilder] Phase 2 — Adding edges…")
-    for art in articles:
+    for art, emb in zip(articles, embeddings):
         art_id = art["id"]
-        for kw in art["keywords"]:
-            G.add_edge(art_id, f"CONCEPT:{kw}", rel="HAS_KEYWORD")
+        law_type = get_law_type(art_id, art["search_block"])
+        G.add_node(art_id, node_type="article", embedding=emb, law_type=law_type, **art)
+
+    print("[GraphBuilder] Phase 2 — Adding edges…")
+    for art_id in G.nodes():
+        node_data = G.nodes[art_id]
         
-        did = f"DOMAIN:{art['law_domain']}"
-        if not G.has_node(did): G.add_node(did, node_type="domain", name=art["law_domain"])
-        G.add_edge(art_id, did, rel="IN_DOMAIN")
+        # 1. Statutory relations
+        for rel_id in node_data.get("related_articles", []):
+            targets = num_to_ids.get(rel_id, [])
+            for target in targets:
+                if target != art_id:
+                    G.add_edge(art_id, target, relationship="related")
 
-        for p_class in _classify_penalty(art["penalties_summary"]):
-            pid = f"PENALTY:{p_class}"
-            if not G.has_node(pid): G.add_node(pid, node_type="penalty", penalty_class=p_class)
-            G.add_edge(art_id, pid, rel="HAS_PENALTY")
+        # 2. Domain consistency (edges between articles in same law)
+        # law_name = node_data.get("law_name")
+        # if law_name:
+        #     siblings = law_to_ids.get(law_name, [])
+        #     for sib in siblings:
+        #         if sib != art_id:
+        #             G.add_edge(art_id, sib, relationship="same_law")
 
-        for rel_num in art["related_articles"]:
-            for cand_id in num_to_ids.get(rel_num, []):
-                if cand_id != art_id:
-                    G.add_edge(art_id, cand_id, rel="RELATED_TO")
-
-    # SAME_LAW edges
-    for law_name, ids in law_to_ids.items():
-        for i in range(len(ids)):
-            for j in range(i + 1, len(ids)):
-                G.add_edge(ids[i], ids[j], rel="SAME_LAW", weight=0.3)
-                G.add_edge(ids[j], ids[i], rel="SAME_LAW", weight=0.3)
-
-    # Persist
-    with open(GRAPH_FILE,  "wb") as f: pickle.dump(G, f)
+    with open(GRAPH_FILE, "wb") as f: pickle.dump(G, f)
     with open(CORPUS_FILE, "wb") as f: pickle.dump(articles, f)
-    print(f"[GraphBuilder] * Graph built and cached with BGE-M3 embeddings.")
+    print("[GraphBuilder] * Graph built and cached with BGE-M3 embeddings.")
     return G, articles
 
 if __name__ == "__main__":

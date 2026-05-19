@@ -60,3 +60,9 @@ def cosine_similarity(query_emb: np.ndarray, doc_embs: np.ndarray) -> np.ndarray
     Assumes embeddings are already normalized (BGE-M3 default).
     """
     return np.dot(doc_embs, query_emb)
+
+from functools import lru_cache
+
+@lru_cache(maxsize=256)
+def embed_text_cached(text: str) -> np.ndarray:
+    return embed_text(text, show_progress=False)

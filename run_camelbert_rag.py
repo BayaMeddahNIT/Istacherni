@@ -56,15 +56,24 @@ def main():
         flush=True,
     )
 
-    with open(output_file, "w", encoding="utf-8") as out:
-        out.write(f"=== CAMeLBERT RAG Results — Generator: {OLLAMA_GEMMA_MODEL} ===\n\n")
+    with open(output_file, "a", encoding="utf-8") as out:
+        # ── Resume support ────────────────────────────────────────────────────
+        already_done = 0
+        if output_file.exists():
+            content = output_file.read_text(encoding="utf-8")
+            already_done = content.count("[User]:")
+            if already_done > 0:
+                print(f"Resuming from question {already_done + 1} (skipping {already_done} already done).")
+                questions = questions[already_done:]
+        else:
+            out.write(f"=== CAMeLBERT RAG Results — Generator: {OLLAMA_GEMMA_MODEL} ===\n\n")
 
         for i, q in enumerate(questions, 1):
             print(f"[{i}/{len(questions)}] Processing: {q}", flush=True)
             start = time.time()
 
             try:
-                chunks = camelbert_retrieve(q, top_k=5)
+                chunks = camelbert_retrieve(q, top_k=3)
                 answer = gemma_generate(q, chunks)
             except Exception as e:
                 answer = f"Error during processing: {e}"

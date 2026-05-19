@@ -1,0 +1,1466 @@
+Initializing Graph RAG test script… Loading heavy libraries.
+Using LOCAL hybrid retriever (BGE-M3 + PPR + domain boost)
+Loaded 127 questions. Using Graph RAG retrieval + qwen2:7b for generation.
+
+🔥 Warming up models (Initial load into RAM)...
+Asking to truncate to max_length but no maximum length is provided and the model has no predefined maximum length. Default to no truncation.
+[GraphRetriever] Pre-loading embedding matrix...
+[GraphRetriever] Building BM25 index...
+
+[GraphRetriever] Classifying query: هل القانون الجزائري يعاقب على السرقة؟
+[CamelBERT] Initialising query classifier (CAMeL-Lab/bert-base-arabic-camelbert-msa)...
+[CamelBERT] Low confidence for Penal Code (score: 0.592 < 0.65). Falling back.
+[GraphRetriever] Amplified: تتعلق هذه الطلب بقوانين الجزائية في جمهورية الجزائر حول العقوبات المرتبطة بالسرقة أو النهب.
+[GraphRetriever] HyDE Generated: في قانون الجزائي الجزائري، يعتبر سرقة الأشياء غير ملكية شخص ما جريمة تُعاقب عليها بموجب القواعد والإ...
+[GraphRetriever] Synonyms: النهب, القذف
+[GraphRetriever] Domain focus: Penal Law
+[Embeddings] Loading model: BAAI/bge-m3 on cpu...
+[Embeddings] Model loaded.
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:06<00:00,  6.11s/it]Batches: 100%|##########| 1/1 [00:06<00:00,  6.12s/it]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVPROC_ART_350 (sim=0.418)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_350 (sim=0.413)
+✅ Warmup complete. Starting benchmark.
+
+[1/127] Processing: هل النصب في التجارة يُعاقب عليه القانون؟
+[LegalNorm] 'نصب في التجارة' → 'احتيال خداع تدليس قانون العقوبات'
+
+[GraphRetriever] Classifying query: هل الاحتيال خداع تدليس قانون العقوبات يُعاقب عليه القانون؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.515 < 0.65). Falling back.
+[GraphRetriever] Amplified: إذا كان الاحتيال والخداع التدليس جريمتين مدرجةتين ضمن أركان النظام القضائي وفقا للقانون الجنائي، ويتم عقابهما بالعقوبات المقررة قانونيا؟
+[GraphRetriever] HyDE Generated: في القانون الجنائي، يعتبر الاحتيال والخداع التدليس جرائم خطيرة تُعاقَب عليها بعقوبات صارمة. يشكل هذا...
+[GraphRetriever] Synonyms: تلاعب الأسعار, الكذب في المعاملات المالية
+[GraphRetriever] Domain focus: Penal Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.26it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.26it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_174 (sim=0.487)
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_173 (sim=0.383)
+[2/127] Processing: شخص باعني منتج مزور، هل هذا يعتبر جريمة؟
+[LegalNorm] 'منتج مزور' → 'غش تجاري تقليد بضاعة قانون العقوبات'
+
+[GraphRetriever] Classifying query: شخص باعني غش تجاري تقليد بضاعة قانون العقوبات، هل هذا يعتبر جريمة؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.555 < 0.65). Falling back.
+[GraphRetriever] Amplified: هل يشكل التلاعب بالبضائع أو الغش التجاري نوعًا من الجرائم المقررة في القواعد القانونية للعقوبات؟
+[GraphRetriever] HyDE Generated: القانون المدني يحدد مجموعة متنوعة من الأفعال التي تعتبر جريمة، بما فيها الفاحش التجاري والغش. قد يعت...
+[GraphRetriever] Synonyms: تلاعب الأسعار, الفاحش التجاري
+[GraphRetriever] Domain focus: Penal Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:01<00:00,  1.01s/it]Batches: 100%|##########| 1/1 [00:01<00:00,  1.01s/it]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_431 (sim=0.390)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_434 (sim=0.452)
+[3/127] Processing: ما هي عقوبة الغش في بيع السلع؟
+
+[GraphRetriever] Classifying query: ما هي عقوبة الغش في بيع السلع؟
+[CamelBERT] Low confidence for Penal Code (score: 0.520 < 0.65). Falling back.
+[GraphRetriever] Amplified: ما هي العقوبات القانونية المرتبطة بالغش أثناء عملية بيع السلع?
+[GraphRetriever] HyDE Generated: في القانون الجزائري، يُعتبر غش في بيع السلع جريمة تشكل خرقاً للقوانين المقررة في قانون الأفعال الجنا...
+[GraphRetriever] Synonyms: الاحتيال, الفraud, penalties for fraud in sales
+[GraphRetriever] Domain focus: Penal Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.18it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.18it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_431 (sim=0.398)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_434 (sim=0.456)
+[4/127] Processing: هل يمكنني رفع شكوى ضد تاجر خدعني؟
+[LegalNorm] 'خدعني' → 'احتيال تدليس غش'
+
+[GraphRetriever] Classifying query: هل يمكنني رفع شكوى ضد تاجر احتيال تدليس غش؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.529 < 0.65). Falling back.
+[GraphRetriever] Amplified: كيفية تنفيذ الادعاء القانوني ضد تاجر يمارس الإحتيال والخداع والتضليل?
+[GraphRetriever] HyDE Generated: يمكن رفع شكوى ضده في إطار قانون التجارات الممنوعة، حيث يعتبر الإحتيال والخداع والتضليل جرائم مالية. ...
+[GraphRetriever] Synonyms: البلاغ عن الجريمة, الادعاء على التاجر
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.77it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.77it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_209 (sim=0.437)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVPROC_ART_209 (sim=0.445)
+[Generator] Blacklist filtered 1 generic article(s) from context.
+[5/127] Processing: ما هي عقوبة إصدار شيك بدون رصيد؟
+
+[GraphRetriever] Classifying query: ما هي عقوبة إصدار شيك بدون رصيد؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.577 < 0.65). Falling back.
+[GraphRetriever] Amplified: ما هو الإجراء القانوني الذي يترتب على شخص يصدر شيك بدون رصيد?
+[GraphRetriever] HyDE Generated: عند إصدار شيك بدون رصيد، يمكن للشخص المعني أن يتعرض لعقوبات قانونية. قد تشمل هذه العقوبات غرامة مالي...
+[GraphRetriever] Synonyms: تعدم صحة الشيك, إفلاس البنك
+[GraphRetriever] Domain focus: Penal Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.50it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.50it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_375 (sim=0.528)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_374 (sim=0.568)
+[6/127] Processing: هل عدم تسليم السلعة بعد الدفع يعتبر جريمة؟
+[LegalNorm] 'عدم تسليم السلعة' → 'عدم تسليم المبيع احتيال اختلاس قانون العقوبات'
+
+[GraphRetriever] Classifying query: هل عدم تسليم المبيع احتيال اختلاس قانون العقوبات بعد الدفع يعتبر جريمة؟
+[CamelBERT] Confident domain match: Civil Law (score: 0.655)
+[GraphRetriever] Amplified: إذا كان الامتناع عن التسليم بعد دفع الثمن يشكل جريمة الاختلاس ضمن نظام القواعد الجنائية?
+[GraphRetriever] HyDE Generated: في العديد من الأنظمة القانونية، يعتبر الاختلاس جريمة تتعلق بسرقة المال أو الموارد الأخرى التي تم الح...
+[GraphRetriever] Synonyms: تلاعب بالمال العام أو الخاص, استغلال مكانته القانونية للحصول على ثروات غير مشروعة
+[GraphRetriever] Domain focus: Civil Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.44it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.44it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_835 (sim=0.564)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_811 (sim=0.565)
+[7/127] Processing: هل التزوير في الفواتير يعاقب عليه؟
+
+[GraphRetriever] Classifying query: هل التزوير في الفواتير يعاقب عليه؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.569 < 0.65). Falling back.
+[GraphRetriever] Amplified: كيف يتم التعامل مع التزوير في الفواتير من الناحية القانونية?
+[GraphRetriever] HyDE Generated: تعد عملية التزوير في الفواتير جريمة تُعرف بـ'الاحتيال'- وهو مفهوم يشمل مجموعة واسعة من الأفعال التي ...
+[GraphRetriever] Synonyms: المصطلحات الأساسية: الباطل، الاحتيال
+[GraphRetriever] Domain focus: Penal Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.34it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.34it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_507_BIS_1 (sim=0.430)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_507_BIS (sim=0.436)
+[Generator] Blacklist filtered 2 generic article(s) from context.
+[8/127] Processing: ما عقوبة سرقة معدات من محل تجاري؟
+
+[GraphRetriever] Classifying query: ما عقوبة سرقة معدات من محل تجاري؟
+[CamelBERT] Low confidence for Penal Code (score: 0.550 < 0.65). Falling back.
+[GraphRetriever] Amplified: ما هي العقوبات القانونية المرتبطة بسرقة الأدوات من محل تجاري في الجزائر؟
+[GraphRetriever] HyDE Generated: في القانون الجزائري، يُعتبر سرقة الأدوات من محل تجاري جريمة غير قانونية. عادةً ما تتضمن هذه الجريمة ...
+[GraphRetriever] Synonyms: تسلب, مساومة
+[GraphRetriever] Domain focus: Penal Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.48it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.48it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVPROC_ART_350 (sim=0.403)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_350 (sim=0.379)
+[9/127] Processing: هل يمكن متابعة موظف سرق من الشركة؟
+
+[GraphRetriever] Classifying query: هل يمكن متابعة موظف سرق من الشركة؟
+[CamelBERT] Low confidence for Labor Law (score: 0.541 < 0.65). Falling back.
+[GraphRetriever] Amplified: هل يجوز اتخاذ إجراءات قانونية لمعالجة حالة السرقة التي وقع فيها موظف في بيئة العمل?
+[GraphRetriever] HyDE Generated: في القانون التجاري، يعتبر النهب جريمة تشكل خطرًا كبيرًا على صحة الأعمال. يمكن للشركة متابعة الموظف ا...
+[GraphRetriever] Synonyms: النهب, التعدي على الملكية
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.70it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.69it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_545 (sim=0.523)
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_548 (sim=0.478)
+[10/127] Processing: ما هي عقوبة خيانة الأمانة في التجارة؟
+
+[GraphRetriever] Classifying query: ما هي عقوبة خيانة الأمانة في التجارة؟
+[CamelBERT] Low confidence for Penal Code (score: 0.553 < 0.65). Falling back.
+[GraphRetriever] Amplified: ما هو القانون الذي يحدد عقوبات خيانة الأمانة في البيع والشراء?
+[GraphRetriever] HyDE Generated: في قانون التجارة، يتم تحديد عقوبات الخيانة في الأمانة من خلال تقييم الأدلة التي تثبت التلاعب أو الاح...
+[GraphRetriever] Synonyms: بطلان العقد, عقوبات التجاوز
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.78it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.77it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_96 (sim=0.519)
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_96 (sim=0.526)
+[11/127] Processing: هل نشر معلومات كاذبة عن شركة جريمة؟
+
+[GraphRetriever] Classifying query: هل نشر معلومات كاذبة عن شركة جريمة؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.488 < 0.65). Falling back.
+[GraphRetriever] Amplified: ما هي العقوبات القانونية المرتبطة بنشر معلومات كاذبة حول الشركة في إطار القواعد الجنائية?
+[GraphRetriever] HyDE Generated: في القانون المدني، يعتبر توزيع أو نشر معلومات كاذبة عن شركة جريمة. قد يعرض هذا النوع من الأفعال للعق...
+[GraphRetriever] Synonyms: تضليل الجمهور, الفعل الإجرامي
+[GraphRetriever] Domain focus: Penal Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  2.04it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  2.04it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_09 (sim=0.474)
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_09 (sim=0.430)
+[12/127] Processing: هل يمكن معاقبة شخص على المنافسة غير الشريفة؟
+
+[GraphRetriever] Classifying query: هل يمكن معاقبة شخص على المنافسة غير الشريفة؟
+[CamelBERT] Low confidence for Penal Code (score: 0.561 < 0.65). Falling back.
+[GraphRetriever] Amplified: كيف يتم معاقبة الأشخاص الذين يمارسون منافسة غير شريفة في سياق الأعمال?
+[GraphRetriever] HyDE Generated: في القانون التجاري، يعتبر التنافس غير الشرعي أو المنافسة غير الشريفة تجاوزاً للقواعد التي تحكم التبا...
+[GraphRetriever] Synonyms: التلاعب في السوق, التنافس الخاطئ, العقوبات القانونية
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.53it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.53it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_567 (sim=0.487)
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_584 (sim=0.369)
+[13/127] Processing: ما عقوبة التهديد في إطار العمل؟
+
+[GraphRetriever] Classifying query: ما عقوبة التهديد في إطار العمل؟
+[CamelBERT] Low confidence for Penal Code (score: 0.585 < 0.65). Falling back.
+[GraphRetriever] Amplified: ما هي العقوبات القانونية المرتبطة بسلوك التهديد ضمن سياق العمل?
+[GraphRetriever] HyDE Generated: في إطار العمل، يعتبر التهديد كعمل غير قانوني يعرض للشخص الذي يتلقى التهديد بالاضطرار للاستجابة له. ع...
+[GraphRetriever] Synonyms: عقوبات, تهدئة
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.37it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.37it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_286 (sim=0.470)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_05 (sim=0.468)
+[14/127] Processing: هل الاحتيال الإلكتروني (online scam) جريمة؟
+
+[GraphRetriever] Classifying query: هل الاحتيال الإلكتروني (online scam) جريمة؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.517 < 0.65). Falling back.
+[GraphRetriever] Amplified: هل يعتبر الاحتيال الإلكتروني كجريمة في إطار القواعد القانونية للقانون الجنائي?
+[GraphRetriever] HyDE Generated: في العديد من البلدان، يُعتبر الاحتيال الإلكتروني جريمة. تشمل الأركان الأساسية للفحص الدلالي هنا التض...
+[GraphRetriever] Synonyms: التلاعب بالثقة, الخداع الرقمي, الأنشطة غير القانونية على الإنترنت
+[GraphRetriever] Domain focus: Penal Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.64it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.64it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_507_BIS_1 (sim=0.394)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_507_BIS (sim=0.396)
+[Generator] Blacklist filtered 2 generic article(s) from context.
+[15/127] Processing: ما هي عقوبة انتحال صفة شركة؟
+
+[GraphRetriever] Classifying query: ما هي عقوبة انتحال صفة شركة؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.543 < 0.65). Falling back.
+[GraphRetriever] Amplified: ما هو الإجراء القانوني للإساءة إلى اسم الشركة?
+[GraphRetriever] HyDE Generated: في القانون الجزائري، يعتبر انتهاك حقوق الملكية الفكرية والادعاء بأنك تمتلك شركتك الخاصة من الجرائم ا...
+[GraphRetriever] Synonyms: تلاعب بالاسم التجاري, الاحتيال على الاسم
+[GraphRetriever] Domain focus: Penal Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.46it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.46it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_PENAL_ART_29 (sim=0.507)
+[GraphRetriever] PPR subgraph pulled in: DZ_PENAL_ART_28 (sim=0.402)
+[Generator] Blacklist filtered 2 generic article(s) from context.
+[16/127] Processing: هل استغلال أموال الشركة بشكل غير قانوني جريمة؟
+
+[GraphRetriever] Classifying query: هل استغلال أموال الشركة بشكل غير قانوني جريمة؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.567 < 0.65). Falling back.
+[GraphRetriever] Amplified: إذا كانت ممارسة الأفراد للاستفادة الشخصية من أموال الشركة بدون ترخيص أو في ظروف غير قانونية تعتبر جريمة أم لا؟
+[GraphRetriever] HyDE Generated: في القانون المدني، يعتبر استغلال أموال الشركة بشكل غير قانوني خرقاً للقواعد الأساسية للإدارة المشرفة...
+[GraphRetriever] Synonyms: تلاعب بالمالات, السرقة المهنية, الاحتيال التجاري
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.31it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.31it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_715 (sim=0.562)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVPROC_ART_800 (sim=0.518)
+[17/127] Processing: هل يمكن سجن شخص بسبب ديون تجارية؟
+
+[GraphRetriever] Classifying query: هل يمكن سجن شخص بسبب ديون تجارية؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.538 < 0.65). Falling back.
+[GraphRetriever] Amplified: إذا كان القانون يسمح بسجنه الشخص بسبب الديون التجارية?
+[GraphRetriever] HyDE Generated: في القانون المدني، يتم التعامل مع الأداء في العقود التجارية كالتزام قانوني. إذا لم يتم أداء الدين ال...
+[GraphRetriever] Synonyms: الدين التجاري, العقوبات الجنائية للأفعال المالية, الحقوق التجارية
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.09it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.08it/s]
+[GraphRetriever] PPR subgraph pulled in: LAW18-05_ART_31 (sim=0.504)
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_31 (sim=0.518)
+[18/127] Processing: ما الفرق بين النصب وخيانة الأمانة؟
+[LegalNorm] 'نصب' → 'احتيال تدليس خداع'
+
+[GraphRetriever] Classifying query: ما الفرق بين الاحتيال تدليس خداع وخيانة الأمانة؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.509 < 0.65). Falling back.
+[GraphRetriever] Amplified: كيف يمكن تمييز الاحتيال والتدليس من خدع الخادعة وخلاء الأمانة في القانون التجاري?
+[GraphRetriever] HyDE Generated: في القانون المدني، يُعتبر الاحتيال تلاعباً غير قانونياً للفائدة المادية للشخص الآخر بطرق مكذوبة أو ك...
+[GraphRetriever] Synonyms: تلاعب الأسعار, الفraud, misrepresentation, breach of trust
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.26it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.25it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_369 (sim=0.488)
+[GraphRetriever] PPR subgraph pulled in: DZ_PENAL_ART_369 (sim=0.486)
+[19/127] Processing: هل يمكن متابعة شريك تجاري جزائياً؟
+
+[GraphRetriever] Classifying query: هل يمكن متابعة شريك تجاري جزائياً؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.448 < 0.65). Falling back.
+[GraphRetriever] Amplified: هل يجوز اتخاذ إجراءات قانونية ضد شريك تجارى في الجزائر؟
+[GraphRetriever] HyDE Generated: في القانون المدني الجزائري، يتم التعامل مع الشركات والشركاء التجاريين بطرق محددة. يمكن متابعة شريك ت...
+[GraphRetriever] Synonyms: المشارك التجاري, المساهم, الشريك في الأعمال التجارية
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.34it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.34it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_01 (sim=0.496)
+[GraphRetriever] PPR subgraph pulled in: DZ_PENAL_ART_1 (sim=0.450)
+[20/127] Processing: ما هي الجرائم المرتبطة بالإفلاس؟
+
+[GraphRetriever] Classifying query: ما هي الجرائم المرتبطة بالإفلاس؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.588 < 0.65). Falling back.
+[GraphRetriever] Amplified: ما هي الأفعال الجنائية التي يمكن أن تكون مرتبطة بعملية الإفلاس والقاضية بالسجن أو العقوبات الأخرى في القانون المدني الجزائري؟
+[GraphRetriever] HyDE Generated: في القانون المدني الجزائري، يُعتبر تجاهل القوانين المتعلقة بالإفلاس وتجنب دفع الديون كجرم مالي. قد ي...
+[GraphRetriever] Synonyms: المصطلحات الأساسية: جرائم الإفلاس، الديون الخاطئة، التلاعب بالمالية
+[GraphRetriever] Domain focus: Penal Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.31it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.31it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_383 (sim=0.451)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_384 (sim=0.453)
+[Generator] Blacklist filtered 2 generic article(s) from context.
+[21/127] Processing: هل إخفاء الأرباح للتهرب الضريبي جريمة؟
+
+[GraphRetriever] Classifying query: هل إخفاء الأرباح للتهرب الضريبي جريمة؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.559 < 0.65). Falling back.
+[GraphRetriever] Amplified: هل يعتبر إخفاء الأرباح ل目的 of هرب ضريبي جريمة حسب قواعد القانون الجنائي في الجزائر؟
+[GraphRetriever] HyDE Generated: في نظام القوانين الجزائية في الجزائر، يُعتبر الهروب من الضرائب جريمة تعرف بـ'التهرب الضريبي'. يتم ال...
+[GraphRetriever] Synonyms: الهروب من الضرائب, الإفلاس التعملي
+[GraphRetriever] Domain focus: Penal Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.45it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.45it/s]
+[GraphRetriever] PPR subgraph pulled in: LAW18-05_ART_2 (sim=0.366)
+[GraphRetriever] PPR subgraph pulled in: DZ_PENAL_ART_2 (sim=0.454)
+[Generator] Blacklist filtered 2 generic article(s) from context.
+[22/127] Processing: ما عقوبة تزوير العقود التجارية؟
+
+[GraphRetriever] Classifying query: ما عقوبة تزوير العقود التجارية؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.590 < 0.65). Falling back.
+[GraphRetriever] Amplified: ما هي العقوبات القانونية المرتبطة بتزوير العقود التجارى في الجزائر؟
+[GraphRetriever] HyDE Generated: في نظام القانون الجزائري، يُعتبر تزوير العقود التجارية جريمة خطيرة. يمكن أن يؤدي إلى الإلغاء التلقائ...
+[GraphRetriever] Synonyms: تزوير, بلاقة, عقد غير صحيح
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.23it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.23it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_715 (sim=0.390)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVPROC_ART_800 (sim=0.376)
+[23/127] Processing: هل يمكن متابعة مورد لم يحترم العقد؟
+
+[GraphRetriever] Classifying query: هل يمكن متابعة مورد لم يحترم العقد؟
+[CamelBERT] Low confidence for Labor Law (score: 0.495 < 0.65). Falling back.
+[GraphRetriever] Amplified: كيف يتم متابعة الموردين الذين لم يحترموا عقودهم?
+[GraphRetriever] HyDE Generated: في القانون المدني، إذا تم انتهاك العقد من قبل المورد، قد يكون هناك العديد من الطرق لمعالجة هذه القضي...
+[GraphRetriever] Synonyms: الحق في التدقيق, الاستجواب القانوني
+[GraphRetriever] Domain focus: Civil Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.25it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.25it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_270 (sim=0.575)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_271 (sim=0.525)
+[24/127] Processing: ما عقوبة بيع منتجات خطيرة أو فاسدة؟
+
+[GraphRetriever] Classifying query: ما عقوبة بيع منتجات خطيرة أو فاسدة؟
+[CamelBERT] Low confidence for Penal Code (score: 0.512 < 0.65). Falling back.
+[GraphRetriever] Amplified: ما هي العقوبات القانونية المرتبطة ببيع المنتجات الخطيرة أو الفاسدة؟
+[GraphRetriever] HyDE Generated: في القانون الجزائري، يُعتبر بيع المنتجات الخطيرة أو الفاسدة جريمة تشكل خطرًا على الصحة العامة. عادةً...
+[GraphRetriever] Synonyms: عقاب, مسائلة, تجرد الحقوق
+[GraphRetriever] Domain focus: Penal Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.38it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.38it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_173 (sim=0.382)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_173 (sim=0.453)
+[25/127] Processing: هل يمكن تقديم شكوى ضد شركة وهمية؟
+
+[GraphRetriever] Classifying query: هل يمكن تقديم شكوى ضد شركة وهمية؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.507 < 0.65). Falling back.
+[GraphRetriever] Amplified: هل بإمكان شخص يخسر معًا في دعوى قضائية إذا كانت الشركة التي يتوجّه ضدها غير موجودة أو وهمية؟
+[GraphRetriever] HyDE Generated: في القانون المدني، يجب أن تكون الأطراف المتناقضة في أي عقد قانوني حقيقية وأن تتمتع بالأهلية للقيام ب...
+[GraphRetriever] Synonyms: مُزيفة, غير موجودة, غير قانونية
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.54it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.54it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_566 (sim=0.507)
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_775 (sim=0.454)
+[26/127] Processing: هل العقد الشفهي ملزم قانونياً؟
+
+[GraphRetriever] Classifying query: هل العقد الشفهي ملزم قانونياً؟
+[CamelBERT] Low confidence for Civil Law (score: 0.583 < 0.65). Falling back.
+[GraphRetriever] Amplified: ما هو الوضع القانوني للعقد الشفهي وما إذا كانت متطلباته تجعله ملزماً قانونياً أم لا؟
+[GraphRetriever] HyDE Generated: في القانون المدني، يعتبر العقود الشفهية جزءاً من الأنواع المختلفة من عقود العمل. ومع ذلك، قد تكون أق...
+[GraphRetriever] Synonyms: عقد غير كتابي, عقود بدون وثيقة
+[GraphRetriever] Domain focus: Civil Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.52it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.52it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_324_BIS_4 (sim=0.501)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVPROC_ART_333 (sim=0.495)
+[27/127] Processing: كيف يمكن فسخ عقد بين طرفين؟
+
+[GraphRetriever] Classifying query: كيف يمكن فسخ عقد بين طرفين؟
+[CamelBERT] Low confidence for Civil Law (score: 0.537 < 0.65). Falling back.
+[GraphRetriever] Amplified: ما هي الإجراءات القانونية التي يجب اتباعها لفاسخة عقد بين طرفين في القانون المدني?
+[GraphRetriever] HyDE Generated: في القانون المدني، يُمكن فسخ عقد بين طرفين إذا تحقق أحد الأركان الأساسية للعقد. هذه الأركان تشمل الر...
+[GraphRetriever] Synonyms: بطلان العقود, إلغاء العقود
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.32it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.32it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_566 (sim=0.484)
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_571 (sim=0.489)
+[28/127] Processing: ماذا يحدث إذا لم يلتزم أحد بالعقد؟
+
+[GraphRetriever] Classifying query: ماذا يحدث إذا لم يلتزم أحد بالعقد؟
+[CamelBERT] Low confidence for Civil Law (score: 0.524 < 0.65). Falling back.
+[GraphRetriever] Amplified: ما هي التبعات القانونية التي يمكن أن تتعرض لها الأطراف عند عدم الالتزام بشروط العقد؟
+[GraphRetriever] HyDE Generated: في حالة عدم الالتزام بشروط العقد، قد تواجه الأطراف مفاسدة عقدياً وفقدان حقوقهم المبرمجة. قد يضطر الط...
+[GraphRetriever] Synonyms: البطلان, تقرير الخسارة
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.44it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.44it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_98 (sim=0.580)
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_98 (sim=0.501)
+[29/127] Processing: هل يمكن المطالبة بالتعويض عن الضرر؟
+
+[GraphRetriever] Classifying query: هل يمكن المطالبة بالتعويض عن الضرر؟
+[CamelBERT] Low confidence for Civil Law (score: 0.584 < 0.65). Falling back.
+[GraphRetriever] Amplified: في قانون المدني، هل يحق للمتضرر مطالبته بتعويض عن الأذى الذي تسبب فيه أفعال أو نسيان من طرف الشخص الآخر؟
+[GraphRetriever] HyDE Generated: في القانون المدني، يتم التأكيد على حق المطالبة بالتعويض عند الإساءة أو الضرر الناتج عن سلوك غير قانو...
+[GraphRetriever] Synonyms: التعويض النقدي, التعويض القانوني, التعويض عن الأذى
+[GraphRetriever] Domain focus: Civil Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.60it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.60it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_125 (sim=0.563)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_78 (sim=0.513)
+[30/127] Processing: ما هي شروط صحة العقد؟
+
+[GraphRetriever] Classifying query: ما هي شروط صحة العقد؟
+[CamelBERT] Low confidence for Civil Law (score: 0.622 < 0.65). Falling back.
+[GraphRetriever] Amplified: توضيح مفهوم شروط صحة العقد في القانون المدني بما يشمل الرضا، الأهلية، المحل والسبب.
+[GraphRetriever] HyDE Generated: شروط صحة العقد تتعلق بالعوامل التي يجب أن تكون موجودة لكي يعتبر العقد قانونياً. هذه الشروط تتألف من ...
+[GraphRetriever] Synonyms: شروط وقواعد العقود, شروط التراضي, شروط البطلان
+[GraphRetriever] Domain focus: Civil Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.28it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.28it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVPROC_ART_067 (sim=0.510)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVPROC_ART_060 (sim=0.535)
+[31/127] Processing: هل يمكن تعديل العقد بعد توقيعه؟
+
+[GraphRetriever] Classifying query: هل يمكن تعديل العقد بعد توقيعه؟
+[CamelBERT] Low confidence for Civil Law (score: 0.515 < 0.65). Falling back.
+[GraphRetriever] Amplified: هل يسمح القانون المدني بإجراء التعديلات على العقود بعد التوقيع عليها؟
+[GraphRetriever] HyDE Generated: في القانون المدني، يتمتع الأطراف بالقدرة على تعديل أو إلغاء العقود في بعض الحالات. تحدد الشروط والقو...
+[GraphRetriever] Synonyms: تغيير العقود, تعديلات قانونية
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.65it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.65it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_582 (sim=0.526)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_582 (sim=0.516)
+[32/127] Processing: ماذا أفعل إذا لم يدفع لي الزبون؟
+
+[GraphRetriever] Classifying query: ماذا أفعل إذا لم يدفع لي الزبون؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.502 < 0.65). Falling back.
+[GraphRetriever] Amplified: كيف يمكن لصاحب الأعمال استعادة الأموال من زبونه الذي لم يدفع?
+[GraphRetriever] HyDE Generated: في القانون التجاري، عند عدم دفع الزبون للبائع، يجب على الأخير اتباع بعض الخطوات. أولاً، يجب إرسال مذ...
+[GraphRetriever] Synonyms: الجهة التي تقدم السلع أو الخدمات, الطرف الثاني في العقد
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.38it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.38it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_PENAL_ART_369 (sim=0.476)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_370 (sim=0.596)
+[33/127] Processing: هل يمكن إجبار الطرف الآخر على تنفيذ العقد؟
+
+[GraphRetriever] Classifying query: هل يمكن إجبار الطرف الآخر على تنفيذ العقد؟
+[CamelBERT] Low confidence for Civil Law (score: 0.572 < 0.65). Falling back.
+[GraphRetriever] Amplified: هل يحق للقضاء الإجبار على طرف في عقد مبرم لتنفيذ ما ورد فيه؟
+[GraphRetriever] HyDE Generated: توجد قواعد تتعلق بالإجبار على تنفيذ العقود في القانون المدني، حيث يمكن للمحكمة إلزام الطرف بتنفيذ ال...
+[GraphRetriever] Synonyms: ال强迫执行合同, obligation to perform the contract
+[GraphRetriever] Domain focus: Civil Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.51it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.51it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_270 (sim=0.500)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_269 (sim=0.540)
+[34/127] Processing: ما هي المسؤولية المدنية؟
+
+[GraphRetriever] Classifying query: ما هي المسؤولية المدنية؟
+[CamelBERT] Low confidence for Civil Law (score: 0.582 < 0.65). Falling back.
+[QueryClassifier] Failed to parse JSON. Raw output: {
+  "domain": "Civil Law",
+  "law_type": "Substantive",
+  "keywords": ["مسؤولية مدنية"],
+  "synonyms": ["تقصير لـ 'مسؤولية عقدية' أو 'مسؤولية قانونية'",
+  "amplified_query": "تعريف وشرح للمسؤولية المدنية في القانون المدني والأساسيات التي تعتمد عليها.",
+  "hyde_document": "المسؤولية المدنية هي نوع من الالتزامات القانونية تنشأ عندما يتعين على شخص ما التعويض عن الأضرار التي أصابها الآخرين نتيجة لأفعاله أو غيابه. تتطلب هذه المسؤولية وجود ثلاثة أركان أساسية: الخطيئة (أو الخطأ) ، والرضا، والأمانة. ",
+  "negative_concepts": ["المسؤولية الجنائية", "المسؤولية الإدارية"]
+}
+[GraphRetriever] Amplified: ما هي المسؤولية المدنية؟
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  4.67it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  4.67it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_567 (sim=0.265)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_130 (sim=0.330)
+[35/127] Processing: كيف يتم حساب التعويض؟
+
+[GraphRetriever] Classifying query: كيف يتم حساب التعويض؟
+[CamelBERT] Low confidence for Civil Law (score: 0.537 < 0.65). Falling back.
+[GraphRetriever] Amplified: ما هي الطرق القانونية لحساب تعويض الأضرار في الإجراءات القضائية?
+[GraphRetriever] HyDE Generated: في القانون المدني، يُعرَف التعويض بأنه المبلغ الذي يجب على الشخص دفعه للشخص الآخر كرد فعل على تجاوز ...
+[GraphRetriever] Synonyms: المطالبة بالرضا, التعويض النقدي
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.93it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.93it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_187_BIS_1 (sim=0.453)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_96 (sim=0.505)
+[36/127] Processing: هل يمكن إلغاء عقد البيع؟
+
+[GraphRetriever] Classifying query: هل يمكن إلغاء عقد البيع؟
+[CamelBERT] Low confidence for Civil Law (score: 0.573 < 0.65). Falling back.
+[GraphRetriever] Amplified: ما هي الشروط والقواعد القانونية التي تسمح بإلغاء عقد البيع?
+[GraphRetriever] HyDE Generated: في القانون المدني، يُمكن إلغاء عقد البيع إذا وردت ظروف محددة مثل عدم الرضا من أحد الأطراف أو عدم الأ...
+[GraphRetriever] Synonyms: بطلان العقد, تراضي الطرفين, المشقة في الإلتزام
+[GraphRetriever] Domain focus: Civil Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.79it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.79it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_483 (sim=0.515)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_488 (sim=0.521)
+[37/127] Processing: ما الفرق بين البطلان والفسخ؟
+
+[GraphRetriever] Classifying query: ما الفرق بين البطلان والفسخ؟
+[CamelBERT] Low confidence for Civil Law (score: 0.598 < 0.65). Falling back.
+[GraphRetriever] Amplified: كيف يتم تمييز وتفاوت الأسباب التي تؤدي إلى بطلان عقد مقارنة بالإلغاء (فسخ) للعقد؟
+[GraphRetriever] HyDE Generated: في القانون المدني، يعتبر البطلان حالة حيث يصبح العقد غير قابل للتوجيه بسبب عدم توافقه مع شروط صحة ال...
+[GraphRetriever] Synonyms: تراضي الطرفين, عدم التوافق, القضاء على العقد, إلغاء العقد
+[GraphRetriever] Domain focus: Civil Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.41it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.41it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_PENAL_ART_366 (sim=0.467)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_287 (sim=0.568)
+[38/127] Processing: هل يمكن استرجاع عربون؟
+
+[GraphRetriever] Classifying query: هل يمكن استرجاع عربون؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.504 < 0.65). Falling back.
+[GraphRetriever] Amplified: كيفية إعادة الحصول على مبلغ من المال بعد إلغاء أو بطلان العقد الذي تم بنفذه?
+[GraphRetriever] HyDE Generated: في القانون المدني، إذا تم اكتشاف خطأ في العقد أو تغير الظروف التي كانت قائمة عند توقيع العقد، يمكن ا...
+[GraphRetriever] Synonyms: توفير العقد, إعادة التحصيل
+[GraphRetriever] Domain focus: Civil Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:02<00:00,  2.32s/it]Batches: 100%|##########| 1/1 [00:02<00:00,  2.32s/it]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_835 (sim=0.517)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_270 (sim=0.555)
+[39/127] Processing: ماذا يحدث إذا تأخر التسليم؟
+
+[GraphRetriever] Classifying query: ماذا يحدث إذا تأخر التسليم؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.492 < 0.65). Falling back.
+[GraphRetriever] Amplified: ما هي الإجراءات القانونية التي يمكن اتخاذها عند تأخير تسليم البضائع?
+[GraphRetriever] HyDE Generated: في حالة تأخر التسليم، قد يحق للزبون طلب تعويض عن الأضرار المتكبدة. كما يمكنه أيضاً إلغاء العقد إذا ك...
+[GraphRetriever] Synonyms: تأخر في تسليم البضائع, تسوية الديون
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.83it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.83it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_571 (sim=0.499)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_571 (sim=0.402)
+[40/127] Processing: هل العقد بدون توثيق قانوني صحيح؟
+
+[GraphRetriever] Classifying query: هل العقد بدون توثيق قانوني صحيح؟
+[CamelBERT] Low confidence for Civil Law (score: 0.595 < 0.65). Falling back.
+[GraphRetriever] Amplified: هل يعتبر العقد الذي لم يتم توثيقه بموجب القوانين المدنية الصحيحة من الناحية القانونية؟
+[GraphRetriever] HyDE Generated: في القانون المدني، يجب أن يكون العقد مكتوباً ومرسولاً بشكل صحيح لكي يصبح قانونياً. بدون التوثيق الصح...
+[GraphRetriever] Synonyms: شروط صحة العقد, توثيق القانون المدني, الرضا, الأهلية, المحل, السبب
+[GraphRetriever] Domain focus: Civil Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.91it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.91it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_326 (sim=0.564)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_323_BIS (sim=0.575)
+[41/127] Processing: ما هي القوة القاهرة في العقود؟
+
+[GraphRetriever] Classifying query: ما هي القوة القاهرة في العقود؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.438 < 0.65). Falling back.
+[GraphRetriever] Amplified: تعريف وشرح للقوة القاهرة في عقود القانون المدني والشروط التي يجب اتباعها.
+[GraphRetriever] HyDE Generated: تتضمن قوة القاهرة في عقود القانون المدني مجموعًا من الشروط الأساسية، بما فيها الرضا، الأهلية، المحل،...
+[GraphRetriever] Synonyms: القوى الضرورية لصحة العقد, القدرة على التأثير
+[GraphRetriever] Domain focus: Civil Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.34it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.34it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_67 (sim=0.529)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVPROC_ART_067 (sim=0.500)
+[42/127] Processing: هل يمكن فسخ العقد بسبب الغش؟
+
+[GraphRetriever] Classifying query: هل يمكن فسخ العقد بسبب الغش؟
+[CamelBERT] Low confidence for Civil Law (score: 0.529 < 0.65). Falling back.
+[GraphRetriever] Amplified: كيف يتم فسخ عقد مبرم بفعل غش من قبل أحد الأطراف?
+[GraphRetriever] HyDE Generated: في القانون المدني، يُعتبر العقد الذي تم التوصل إليه بناءً على غش أو خداع كعقد غير قانوني ويمكن تطبيق...
+[GraphRetriever] Synonyms: بطلان العقد, تراضي الطرفين
+[GraphRetriever] Domain focus: Civil Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.73it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.73it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_191 (sim=0.544)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_483 (sim=0.501)
+[43/127] Processing: كيف أثبت وجود اتفاق؟
+
+[GraphRetriever] Classifying query: كيف أثبت وجود اتفاق؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.472 < 0.65). Falling back.
+[GraphRetriever] Amplified: كيف يمكن التحقق من صحة ووجود الاتفاق في القانون المدني?
+[GraphRetriever] HyDE Generated: في القانون المدني، يُعتبر الاتفاق مكونا أساسيا لتكوين عقد قانوني. يجب أن يكون هناك توافق بين الأطراف...
+[GraphRetriever] Synonyms: تراضي, بطلان العقد
+[GraphRetriever] Domain focus: Civil Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.40it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.40it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVPROC_ART_067 (sim=0.465)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_324_BIS_3 (sim=0.591)
+[44/127] Processing: هل يمكن رفع دعوى بدون عقد مكتوب؟
+
+[GraphRetriever] Classifying query: هل يمكن رفع دعوى بدون عقد مكتوب؟
+[CamelBERT] Low confidence for Civil Law (score: 0.604 < 0.65). Falling back.
+[GraphRetriever] Amplified: إذا كان بإمكان شخص رفع دعوى قانونية دون وجود عقد كتبى?
+[GraphRetriever] HyDE Generated: في القانون المدني، يُعتبر العقود المكتوبة ضرورية في العديد من الحالات لضمان حماية الأطراف المعنية وت...
+[GraphRetriever] Synonyms: الدعوى القضائية, العقود الكتابية
+[GraphRetriever] Domain focus: Civil Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.58it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.58it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_324_BIS_5 (sim=0.591)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_324 (sim=0.548)
+[45/127] Processing: ما هي آجال التقادم في الديون؟
+
+[GraphRetriever] Classifying query: ما هي آجال التقادم في الديون؟
+[CamelBERT] Low confidence for Civil Law (score: 0.605 < 0.65). Falling back.
+[GraphRetriever] Amplified: كيف يتم تحديد وتحديد آجال التقادم في دينات الأفراد والشركات?
+[GraphRetriever] HyDE Generated: في القانون المدني، يُعرَف آجال التقادم بأنها الفترة الزمنية التي يمكن فيها للطرف المدين أن يستمر في ...
+[GraphRetriever] Synonyms: أجل التقادم, الحالة القانونية للأمانات
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.34it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.34it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_722 (sim=0.491)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_722 (sim=0.500)
+[46/127] Processing: ماذا أفعل إذا أخل المورد بالاتفاق؟
+
+[GraphRetriever] Classifying query: ماذا أفعل إذا أخل المورد بالاتفاق؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.527 < 0.65). Falling back.
+[GraphRetriever] Amplified: ما الخطوات القانونية التي يمكن اتخاذها عند مخالفة المصدر للاتفاق?
+[GraphRetriever] HyDE Generated: عند مخالفة مصدر العقد، قد يكون من الضروري التوصل إلى حل قانوني لحل الخلاف. هذا قد يشمل توجيه إشعار ب...
+[GraphRetriever] Synonyms: الطرف الثالث, العقد
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.76it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.76it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_440 (sim=0.567)
+[GraphRetriever] PPR subgraph pulled in: DZ_PENAL_ART_442 (sim=0.520)
+[47/127] Processing: هل يمكن تحميل المسؤولية لشخص ثالث؟
+
+[GraphRetriever] Classifying query: هل يمكن تحميل المسؤولية لشخص ثالث؟
+[CamelBERT] Low confidence for Civil Law (score: 0.453 < 0.65). Falling back.
+[GraphRetriever] Amplified: إذا كان بإمكان شخص ثالث تحمل مسؤولية أو تعهد بتنفيذ واجبات معينة التي يتعين على شخص آخر، وذلك من خلال التزامات قانونية مباشرة أو غير مباشرة?
+[GraphRetriever] HyDE Generated: في القانون المدني، يمكن تحميل المسؤولية إلى شخص ثالث في بعض الحالات. هذا قد يحدث عندما يتم إبرام اتف...
+[GraphRetriever] Synonyms: تغطية المسؤولية, نقل الالتزام
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.35it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.35it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_567 (sim=0.477)
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_566 (sim=0.424)
+[48/127] Processing: ما هي شروط التعويض عن الضرر التجاري؟
+
+[GraphRetriever] Classifying query: ما هي شروط التعويض عن الضرر التجاري؟
+[CamelBERT] Confident domain match: Civil Law (score: 0.680)
+[GraphRetriever] Amplified: توضيح قانوني مفصل حول شروط التعويض عن الضرر التجاري وفقاً للقانون المدني الجزائري.
+[GraphRetriever] HyDE Generated: في القانون المدني الجزائري، تتعلق شروط التعويض عن الضرر التجاري بثلاثة أركان أساسية هي الرضا من طرف ...
+[GraphRetriever] Synonyms: المصطلحات الأساسية: الشروط القانونية للاعتزاز بالضرر، الأهلية للتعويض، المحل والسبب في الإجراء التجاري
+[GraphRetriever] Domain focus: Civil Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.23it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.23it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_178 (sim=0.524)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_187 (sim=0.547)
+[49/127] Processing: هل يمكن فسخ عقد الإيجار التجاري؟
+
+[GraphRetriever] Classifying query: هل يمكن فسخ عقد الإيجار التجاري؟
+[CamelBERT] Confident domain match: Civil Law (score: 0.665)
+[GraphRetriever] Amplified: كيف يتم فسخ عقد الإيجار التجاري وفقا للقانون المدني?
+[GraphRetriever] HyDE Generated: في القانون المدني، يُمكن فسخ عقد الإيجار التجاري إذا تحقق أحد الأسباب التي تسمح بذلك، مثل التوافق بي...
+[GraphRetriever] Synonyms: تبرع بالعقد, إلغاء العقد
+[GraphRetriever] Domain focus: Civil Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.79it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.79it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_507 (sim=0.540)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_507_BIS (sim=0.534)
+[50/127] Processing: هل يمكن المطالبة بالفوائد على التأخير؟
+
+[GraphRetriever] Classifying query: هل يمكن المطالبة بالفوائد على التأخير؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.564 < 0.65). Falling back.
+[GraphRetriever] Amplified: هل يتيح القانون المدني للمدين أن يتلقى فوائد إضافية نتيجة لتأخيره في دفع الدين?
+[GraphRetriever] HyDE Generated: في القانون المدني، يتم توضيح حقوق المدين والدائنين بخصوص التعامل مع الأموال. يمكن للدائنين الحصول عل...
+[GraphRetriever] Synonyms: الحق في الفوائد بسبب التأخر, التعويض عن التأخير
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.50it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.50it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_81 (sim=0.473)
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_81 (sim=0.531)
+[51/127] Processing: ماذا يحدث إذا توفي أحد أطراف العقد؟
+
+[GraphRetriever] Classifying query: ماذا يحدث إذا توفي أحد أطراف العقد؟
+[CamelBERT] Low confidence for Civil Law (score: 0.554 < 0.65). Falling back.
+[GraphRetriever] Amplified: ما التأثير القانوني الذي يترتب على وفاة أحد الأطراف في عقد?
+[GraphRetriever] HyDE Generated: عند وفاة أحد أطراف العقد، قد يتسبب ذلك في بطلان العقد بناءً على القواعد القانونية. هذا يعتمد بشكل أس...
+[GraphRetriever] Synonyms: بطلان العقد, أطراف العقد
+[GraphRetriever] Domain focus: Civil Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.08it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.08it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_67 (sim=0.596)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVPROC_ART_067 (sim=0.511)
+[52/127] Processing: هل يمكن بيع شيء لا أملكه؟
+
+[GraphRetriever] Classifying query: هل يمكن بيع شيء لا أملكه؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.486 < 0.65). Falling back.
+[GraphRetriever] Amplified: في قانون التجارة، هل يسمح بإجراء عملية بيع لشيء ليس ملك الشخص?
+[GraphRetriever] HyDE Generated: من الناحية القانونية، يجب أن يكون البائع حاملاً للحقوق الكاملة والملزمة للممتلكات التي يتم بيعها. إذ...
+[GraphRetriever] Synonyms: تعدم القدرة على البيع, الخسارة في الملكية
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.72it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.72it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_294 (sim=0.522)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVPROC_ART_294 (sim=0.491)
+[53/127] Processing: ما هي التزامات البائع؟
+
+[GraphRetriever] Classifying query: ما هي التزامات البائع؟
+[CamelBERT] Low confidence for Civil Law (score: 0.592 < 0.65). Falling back.
+[GraphRetriever] Amplified: ما هي الالتزامات القانونية التي يتعين على البائع احترامها أثناء عملية البيع والشراء?
+[GraphRetriever] HyDE Generated: في القانون المدني، يتم تحديد مسؤوليات وواجبات البائع في حالة البيع والشراء. تشمل هذه الالتزامات تقدي...
+[GraphRetriever] Synonyms: مسؤوليات البائع, واجبات البائع
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.17it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.17it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_81 (sim=0.506)
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_81 (sim=0.530)
+[54/127] Processing: ما هي التزامات المشتري؟
+
+[GraphRetriever] Classifying query: ما هي التزامات المشتري؟
+[CamelBERT] Low confidence for Civil Law (score: 0.585 < 0.65). Falling back.
+[GraphRetriever] Amplified: ما هي الالتزامات القانونية التي يتعين على المشتري اتباعها في المعاملات التجارية?
+[GraphRetriever] HyDE Generated: في القانون التجاري، تتضمن التزامات المشتري تلبية الشروط والشروط المتفق عليها في العقد، ودفع السعر ال...
+[GraphRetriever] Synonyms: مسؤوليات المشتري, واجبات المشتري
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.53it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.53it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_96 (sim=0.568)
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_96 (sim=0.601)
+[55/127] Processing: كيف أحمي نفسي قانونياً في عقد؟
+
+[GraphRetriever] Classifying query: كيف أحمي نفسي قانونياً في عقد؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.481 < 0.65). Falling back.
+[GraphRetriever] Amplified: ما هي الإجراءات القانونية التي يمكن اتباعها لحماية الأطراف من خلال عقود العمل?
+[GraphRetriever] HyDE Generated: تتضمن الشروط الأساسية للعقد القدرة على التوافق والقبول، ووجود طرف قانوني مهتم بالعقد، ويجب أن يكون ا...
+[GraphRetriever] Synonyms: الرضا, الأهلية, المحل, السبب, التراضي, البطلان
+[GraphRetriever] Domain focus: Civil Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.46it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.45it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_417 (sim=0.573)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_419 (sim=0.495)
+[56/127] Processing: كيف أقدم طعن ضد قرار إداري؟
+
+[GraphRetriever] Classifying query: كيف أقدم طعن ضد قرار إداري؟
+[CamelBERT] Low confidence for Code of Civil and Administrative Procedures (score: 0.500 < 0.65). Falling back.
+[GraphRetriever] Amplified: كيف يمكن تقديم طلب استئناف على قرار إداري؟
+[GraphRetriever] HyDE Generated: عندما يرغب الأطراف في دفع اعتراض أو طلب استئناف على قرار إداري، يجب أن تقدم الطلب بحسب الإجراءات الم...
+[GraphRetriever] Synonyms: استئناف, طلب استئناف
+[GraphRetriever] Domain focus: Civil and Administrative Procedures
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.69it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.69it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_310 (sim=0.463)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_311 (sim=0.559)
+[57/127] Processing: لماذا تم رفض طلبي لفتح محل؟
+
+[GraphRetriever] Classifying query: لماذا تم رفض طلبي لفتح محل؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.474 < 0.65). Falling back.
+[GraphRetriever] Amplified: ما هي الأسباب القانونية التي أدت إلى رفض الطلب لفتح المحل?
+[GraphRetriever] HyDE Generated: في القانون المدني، يتم قبول أو رفض الطلبات بناءً على مجموعة من القواعد والشروط. قد يشمل ذلك تحقق الأ...
+[GraphRetriever] Synonyms: تراضي, بطلان
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.70it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.70it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_775 (sim=0.522)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_775 (sim=0.440)
+[58/127] Processing: كيف أتحصل على رخصة تجارية؟
+
+[GraphRetriever] Classifying query: كيف أتحصل على رخصة تجارية؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.528 < 0.65). Falling back.
+[GraphRetriever] Amplified: خطوات الحصول على رخصة تجارية في القانون التجاري الجزائري
+[GraphRetriever] HyDE Generated: للحصول على رخصة تجارية، يجب الالتزام بقواعد وشروط معينة محددة في قانون الأعمال. هذه الخطوات عادة ما ...
+[GraphRetriever] Synonyms: 执照, ใบอนุญาตพาณิชย์
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.39it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.39it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_40 (sim=0.496)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVPROC_ART_040 (sim=0.456)
+[59/127] Processing: ما هي الإجراءات لفتح نشاط تجاري؟
+
+[GraphRetriever] Classifying query: ما هي الإجراءات لفتح نشاط تجاري؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.583 < 0.65). Falling back.
+[GraphRetriever] Amplified: كيف يمكن فتح نشاط تجاري بشكل قانوني في الجزائر؟
+[GraphRetriever] HyDE Generated: لإفتتاح نشاط تجاري، يجب اتباع إجراءات محددة وفقا للقانون المدني. هذه الإجراءات تتضمن اختيار اسم الشر...
+[GraphRetriever] Synonyms: الممارسات القانونية, الإجراءات التأسيسية
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.39it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.39it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_40 (sim=0.477)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVPROC_ART_040 (sim=0.449)
+[60/127] Processing: هل يمكن الطعن في غرامة إدارية؟
+
+[GraphRetriever] Classifying query: هل يمكن الطعن في غرامة إدارية؟
+[CamelBERT] Low confidence for Code of Civil and Administrative Procedures (score: 0.576 < 0.65). Falling back.
+[GraphRetriever] Amplified: قد يتم طلب استئناف غرامة إدارية أم لا؟
+[GraphRetriever] HyDE Generated: في القانون المدني والإداري، يتيح لمن يتعرضون للقرارات الإدارية الغير مرضية الطعن في قرار الإداري. قد...
+[GraphRetriever] Synonyms: الاستئناف, المطالبة بالعدم صحة القرار
+[GraphRetriever] Domain focus: Civil and Administrative Procedures
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.79it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.79it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_313 (sim=0.519)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_294 (sim=0.522)
+[61/127] Processing: ما هي حقوقي مع البلدية؟
+
+[GraphRetriever] Classifying query: ما هي حقوقي مع البلدية؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.472 < 0.65). Falling back.
+[GraphRetriever] Amplified: ما هي الحقوق التي يمتلكها الأفراد أو الشركات بحق في علاقاتهم مع البلدية?
+[GraphRetriever] HyDE Generated: تتضمن حقوق الشخص مع البلدية مجموعة متنوعة من الأمور، بما في ذلك الإلتزام بالخدمات المقدمة من قبل الب...
+[GraphRetriever] Synonyms: البراءة من الالتزامات, المسؤولية القانونية
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.46it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.46it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_582 (sim=0.482)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_582 (sim=0.475)
+[62/127] Processing: كيف أتعامل مع تعسف الإدارة؟
+
+[GraphRetriever] Classifying query: كيف أتعامل مع تعسف الإدارة؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.448 < 0.65). Falling back.
+[GraphRetriever] Amplified: كيف يمكن للشخص التعامل مع ممارسات الإدارة التي تعتبر تعسفة وفقا لقوانين الأعمال?
+[GraphRetriever] HyDE Generated: في القانون التجاري، يُعتبر التعسف من قبل الإدارة تجاوزًا غير قانوني في استخدامها للسلطة. يجب على الأ...
+[GraphRetriever] Synonyms: ممارسات غير مبررة من قبل الإدارة, استخدام السلطة بشكل غير قانوني
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.46it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.46it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_715 (sim=0.485)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_716 (sim=0.468)
+[63/127] Processing: ما هي الوثائق المطلوبة لفتح شركة؟
+[LegalNorm] 'فتح شركة' → 'تأسيس الشركة السجل التجاري'
+
+[GraphRetriever] Classifying query: ما هي الوثائق المطلوبة لتأسيس الشركة السجل التجاري؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.711)
+[GraphRetriever] Amplified: ما هي الأوراق التي يجب تقديمها عند إنشاء شركة وتسجيلها في السجل التجاري؟
+[GraphRetriever] HyDE Generated: عند تأسيس شركة، يتعين على أصحاب الأعمال تقديم مجموعة من الوثائق للحصول على الترخيص التجاري. هذه الوث...
+[GraphRetriever] Synonyms: المشروعات التجارية, السجل التجاري, الوثائق الضرورية
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.47it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.47it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_40 (sim=0.450)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVPROC_ART_040 (sim=0.499)
+[64/127] Processing: هل يمكن مقاضاة إدارة عمومية؟
+
+[GraphRetriever] Classifying query: هل يمكن مقاضاة إدارة عمومية؟
+[CamelBERT] Low confidence for Civil Law (score: 0.518 < 0.65). Falling back.
+[GraphRetriever] Amplified: كيف يتم تعريف وتحديد القدرتين القانونيتين لمقاضاة إدارة عمومية في القانون المدني?
+[GraphRetriever] HyDE Generated: في القانون المدني، يُمكن توجيه الدعوى ضد الإدارة العمومية إذا كانت الأنشطة التي تقوم بها تنتهك القوا...
+[GraphRetriever] Synonyms: توضيحات قانونية حول القدرة على ملاحقة الإدارة العامة
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.68it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.68it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_564 (sim=0.500)
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_590 (sim=0.454)
+[Generator] Blacklist filtered 1 generic article(s) from context.
+[65/127] Processing: كم تستغرق الإجراءات الإدارية؟
+
+[GraphRetriever] Classifying query: كم تستغرق الإجراءات الإدارية؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.477 < 0.65). Falling back.
+[GraphRetriever] Amplified: ما هو التوقيت المتوقع لإنجاز الإجراءات الإدارية في القانون المدني والاداري?
+[GraphRetriever] HyDE Generated: في القانون المدني والاداري، يعتمد وقت تنفيذ الإجراءات الإدارية على العديد من العوامل مثل نوع العملية...
+[GraphRetriever] Domain focus: Civil and Administrative Procedures
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.75it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.75it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_01 (sim=0.514)
+[GraphRetriever] PPR subgraph pulled in: LAW18-05_ART_1 (sim=0.420)
+[Generator] Blacklist filtered 2 generic article(s) from context.
+[66/127] Processing: كيف أستخرج سجل تجاري؟
+
+[GraphRetriever] Classifying query: كيف أستخرج سجل تجاري؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.575 < 0.65). Falling back.
+[GraphRetriever] Amplified: كيف يمكن استخراج سجل تجاري في القانون التجاري الجزائري؟
+[GraphRetriever] HyDE Generated: للاستفادة من سجل التاجري، يجب الاتصال بوزارة التجارة المحلية والصناعة أو المكتب المحلي للتجارة. يتطل...
+[GraphRetriever] Synonyms: سجل الأعمال, سجل الشركة
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.58it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.58it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_01 (sim=0.430)
+[GraphRetriever] PPR subgraph pulled in: DZ_PENAL_ART_1 (sim=0.341)
+[67/127] Processing: ماذا أفعل إذا تأخرت الإدارة؟
+
+[GraphRetriever] Classifying query: ماذا أفعل إذا تأخرت الإدارة؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.441 < 0.65). Falling back.
+[GraphRetriever] Amplified: كيف يمكن للمستفيد من العقد أو الأطراف المعنية التعامل مع تأخير الإدارة في تنفيذ الإجراءات القانونية المرتبطة بالعقد؟
+[GraphRetriever] HyDE Generated: عند تأخر الإدارة، قد يتعين على المستفيد أو الأطراف المعنية اتخاذ إجراءات قانونية لضمان التزام الإدار...
+[GraphRetriever] Synonyms: تأخر في التنفيذ, عدم الامتثال للأمانات
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.97it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.97it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_270 (sim=0.560)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_271 (sim=0.586)
+[68/127] Processing: هل يمكن طلب تعويض من الدولة؟
+
+[GraphRetriever] Classifying query: هل يمكن طلب تعويض من الدولة؟
+[CamelBERT] Low confidence for Civil Law (score: 0.518 < 0.65). Falling back.
+[GraphRetriever] Amplified: هل بإمكان الشخص الحصول على تعويض من الدولة في حالة الإساءة أو الخسارة التي واجهها بسبب قوانين الدولة؟
+[GraphRetriever] HyDE Generated: في القانون المدني، يُمكن للأشخاص طلب التعويض عن الأذى الذي يتعرضون له نتيجة لسلوك آخر. هذا يمكن أن ي...
+[GraphRetriever] Synonyms: المطالبة بالتعويض, الإعفاء من الضرائب
+[GraphRetriever] Domain focus: Civil Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.39it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.39it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_750 (sim=0.438)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_749 (sim=0.497)
+[69/127] Processing: ما هي شروط ممارسة نشاط تجاري؟
+
+[GraphRetriever] Classifying query: ما هي شروط ممارسة نشاط تجاري؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.586 < 0.65). Falling back.
+[GraphRetriever] Amplified: ما هي الشروط القانونية التي يجب اتباعها لمن يرغب في ممارسة نشاط تجارى?
+[GraphRetriever] HyDE Generated: في القانون المدني، هناك عدة أركان وشروط يجب أن يتم الالتزام بها للقيام بنشاط تجاري. هذه الأركان تتضم...
+[GraphRetriever] Synonyms: المحل التجاري, السياق التجاري
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.41it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.40it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_40 (sim=0.526)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVPROC_ART_040 (sim=0.499)
+[70/127] Processing: كيف أتعامل مع الضرائب المفروضة؟
+
+[GraphRetriever] Classifying query: كيف أتعامل مع الضرائب المفروضة؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.489 < 0.65). Falling back.
+[GraphRetriever] Amplified: كيفية التعامل مع الضرائب المفروضة في إطار القانون التجاري?
+[GraphRetriever] HyDE Generated: في القانون التجاري، يُحدد النظام الضريبي كيفية التعامل مع الضرائب المفروضة على الأفراد والشركات. يتط...
+[GraphRetriever] Synonyms: الضرائب
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.36it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.36it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_01 (sim=0.539)
+[GraphRetriever] PPR subgraph pulled in: LAW18-05_ART_1 (sim=0.519)
+[Generator] Blacklist filtered 1 generic article(s) from context.
+[71/127] Processing: هل يمكن لصاحب العمل عدم دفع راتبي؟
+[LegalNorm] 'راتبي' → 'الأجر'
+
+[GraphRetriever] Classifying query: هل يمكن لصاحب العمل عدم دفع الأجر؟
+[CamelBERT] Low confidence for Labor Law (score: 0.643 < 0.65). Falling back.
+[GraphRetriever] Amplified: هل يجوز لأصحاب الأعمال الامتناع عن دفع الأجور للعمال؟
+[GraphRetriever] HyDE Generated: في القانون المدني، يعتبر حقوق العمال من الحقوق الأساسية التي يجب احترامها. لا توجد شروط صحة عقد التو...
+[GraphRetriever] Synonyms: الجباية, التعويض
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  2.11it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  2.11it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_81 (sim=0.533)
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_81 (sim=0.476)
+[72/127] Processing: ما هي حقوق العامل في الجزائر؟
+
+[GraphRetriever] Classifying query: ما هي حقوق العامل في الجزائر؟
+[CamelBERT] Low confidence for Labor Law (score: 0.599 < 0.65). Falling back.
+[GraphRetriever] Amplified: توضيح الحقوق القانونية التي يمتلكها الأشخاص الذين يعملون كموظفين أو عمال في جزائر.
+[GraphRetriever] HyDE Generated: في نظام القانون المدني في الجزائر، يتم تعريف حقوق العامل على نطاق واسع ويتم تضمينها في القوانين والل...
+[GraphRetriever] Synonyms: المصطلحات الأساسية: حقوق، العامل
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.32it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.32it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_580 (sim=0.463)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_580 (sim=0.436)
+[73/127] Processing: هل يمكن طردي بدون سبب؟
+
+[GraphRetriever] Classifying query: هل يمكن طردي بدون سبب؟
+[CamelBERT] Low confidence for Labor Law (score: 0.465 < 0.65). Falling back.
+[GraphRetriever] Amplified: هل يسمح القانون المدني بطرد الأشخاص بدون تقديم سبب محدد؟
+[GraphRetriever] HyDE Generated: في القانون المدني، يتم التأكيد على أن جميع العمليات التي تؤثر في حقوق الأفراد يجب أن تكون وفقاً لقوا...
+[GraphRetriever] Synonyms: تبطلية العقد, بطلان العقد بدون سبب
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.64it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.64it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_440 (sim=0.568)
+[GraphRetriever] PPR subgraph pulled in: LAW18-05_ART_1 (sim=0.434)
+[Generator] Blacklist filtered 1 generic article(s) from context.
+[74/127] Processing: ما هي مدة الإشعار قبل الاستقالة؟
+
+[GraphRetriever] Classifying query: ما هي مدة الإشعار قبل الاستقالة؟
+[CamelBERT] Low confidence for Labor Law (score: 0.545 < 0.65). Falling back.
+[GraphRetriever] Amplified: كيف يتم تحديد مدة الإشعار قبل تقديم استقالة في القانون التجاري?
+[GraphRetriever] HyDE Generated: في القانون التجاري، يختلف متوسط مدة الإشعار قبل تقديم استقالة بين الشركات والوظائف. عادةً ما يتطلب ا...
+[GraphRetriever] Synonyms: توضيحات قانونية حول فترة إشعار استقالة
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.86it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.85it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_01 (sim=0.436)
+[GraphRetriever] PPR subgraph pulled in: LAW18-05_ART_1 (sim=0.402)
+[Generator] Blacklist filtered 1 generic article(s) from context.
+[75/127] Processing: هل العقد الشفهي في العمل مقبول؟
+
+[GraphRetriever] Classifying query: هل العقد الشفهي في العمل مقبول؟
+[CamelBERT] Low confidence for Labor Law (score: 0.611 < 0.65). Falling back.
+[GraphRetriever] Amplified: هل يعتبر عقود العمل الشفهية قانونية وموثقة في القانون المدني الجزائري؟
+[GraphRetriever] HyDE Generated: في القانون المدني الجزائري، تعتبر عقود العمل المكتوبة هي الأكثر دلالة والثقة. ومع ذلك، يمكن أن تكون ...
+[GraphRetriever] Synonyms: عقد غير مكتوب, عقود العمل
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.66it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.66it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_549 (sim=0.473)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_187 (sim=0.373)
+[76/127] Processing: ماذا أفعل إذا لم أحصل على عقد؟
+
+[GraphRetriever] Classifying query: ماذا أفعل إذا لم أحصل على عقد؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.440 < 0.65). Falling back.
+[GraphRetriever] Amplified: ما هي الخطوات القانونية التي يمكن اتباعها عند عدم الحصول على العقد المرغوب فيه؟
+[GraphRetriever] HyDE Generated: في القانون المدني، يجب الانتباه إلى الأركان الأساسية للعقد وهي الرضا والقدرة والأهلية والمحل والسبب....
+[GraphRetriever] Synonyms: المشروع, التراضي, القبول
+[GraphRetriever] Domain focus: Civil Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.44it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.44it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_79 (sim=0.467)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_102 (sim=0.584)
+[77/127] Processing: هل يمكن العمل بدون تصريح؟
+
+[GraphRetriever] Classifying query: هل يمكن العمل بدون تصريح؟
+[CamelBERT] Low confidence for Labor Law (score: 0.536 < 0.65). Falling back.
+[GraphRetriever] Amplified: هل يعتبر العمل بدون الحصول على التصريح أو الرخصة القانونية مخالفا للقانون ويشكل خرقا للأركان الأساسية للممارسة المهنية؟
+[GraphRetriever] HyDE Generated: في القانون المدني، يُعتبر الطلب المسبق والموافقة من الجهات المعنية جزءًا أساسيًا من الإجراءات التي ي...
+[GraphRetriever] Synonyms: الرخصة, الإذن القانوني
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.43it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.43it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVPROC_ART_019 (sim=0.450)
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_19 (sim=0.491)
+[78/127] Processing: ما هي ساعات العمل القانونية؟
+
+[GraphRetriever] Classifying query: ما هي ساعات العمل القانونية؟
+[CamelBERT] Low confidence for Labor Law (score: 0.587 < 0.65). Falling back.
+[GraphRetriever] Amplified: تحديد الساعات التي يجب على الشركات وفقا للقانون المدني أن تعمل فيها.
+[GraphRetriever] HyDE Generated: في الجزائر، يحدد قانون العمل (كجزء من قواعد الأعمال والتجارة) ساعات العمل القانونية. هذه الأحكام تخت...
+[GraphRetriever] Synonyms: وقت العمل, الزمن الذي يعمل فيه الموظف
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.49it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.49it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_02 (sim=0.490)
+[GraphRetriever] PPR subgraph pulled in: DZ_CYBER_ART_2 (sim=0.499)
+[Generator] Blacklist filtered 1 generic article(s) from context.
+[79/127] Processing: هل يحق لي عطلة مدفوعة؟
+
+[GraphRetriever] Classifying query: هل يحق لي عطلة مدفوعة؟
+[CamelBERT] Low confidence for Labor Law (score: 0.522 < 0.65). Falling back.
+[GraphRetriever] Amplified: إذا كانت هناك حقوق مالية متعلقة بـ 'عطلة' في سياق القانون التجاري، هل يمكن للمستخدم الحصول على هذه العطلات المدفوعة أم لا؟
+[GraphRetriever] HyDE Generated: في القانون المدني، يُعتبر عطلة كجزء من الحقوق التي قد يتم تضمينها ضمن معاهدة العمل. إذا كان المستخدم...
+[GraphRetriever] Synonyms: تراضي, بطلان العقد, حقوق العمل
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.43it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.43it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_187 (sim=0.521)
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_187_BIS_1 (sim=0.540)
+[80/127] Processing: ما هي حقوقي في حالة الفصل؟
+
+[GraphRetriever] Classifying query: ما هي حقوقي في حالة الفصل؟
+[CamelBERT] Low confidence for Labor Law (score: 0.515 < 0.65). Falling back.
+[GraphRetriever] Amplified: ما الحقوق القانونية المتاحة لطرف عقد يرغب في فسخه؟
+[GraphRetriever] HyDE Generated: في حالة الفصل، يمكن للطرف الذي يرغب في إلغاء العقد أن يستفيد من حقوقه القانونية التي تشمل إعادة الأم...
+[GraphRetriever] Synonyms: البطلان, تراضي الطرفين
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.78it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.77it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_110_P2 (sim=0.588)
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_111 (sim=0.585)
+[81/127] Processing: كيف أرفع دعوى ضد صاحب العمل؟
+
+[GraphRetriever] Classifying query: كيف أرفع دعوى ضد صاحب العمل؟
+[CamelBERT] Low confidence for Labor Law (score: 0.545 < 0.65). Falling back.
+[GraphRetriever] Amplified: كيفية تقديم طلب قضائي لرفع دعوى ضدهم في سياق قانون العمل?
+[GraphRetriever] HyDE Generated: لرفع دعوى ضد صاحب العمل، يجب عليك اتباع الإجراءات القانونية المحددة. هذا يشمل تجميع الأدلة والوثائق ...
+[GraphRetriever] Synonyms: الاستئناف, الطلب القضائي
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.72it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.72it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_15 (sim=0.553)
+[GraphRetriever] PPR subgraph pulled in: DZ_PENAL_ART_15 (sim=0.450)
+[82/127] Processing: هل يمكنني ترك العمل فوراً؟
+
+[GraphRetriever] Classifying query: هل يمكنني ترك العمل فوراً؟
+[CamelBERT] Low confidence for Labor Law (score: 0.448 < 0.65). Falling back.
+[GraphRetriever] Amplified: هل بإمكان الشخص التوقف عن عمله دون إجراءات مسبقة وفقًا للقانون التجاري?
+[GraphRetriever] HyDE Generated: في القانون التجاري، يتعين على الأطراف الالتزام بإجراءات معينة عند تغيير حالة العمل أو الإقلاع عنه. ق...
+[GraphRetriever] Synonyms: الإقالة, التوقف عن العمل
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.67it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.67it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_01 (sim=0.542)
+[GraphRetriever] PPR subgraph pulled in: LAW18-05_ART_1 (sim=0.502)
+[Generator] Blacklist filtered 1 generic article(s) from context.
+[83/127] Processing: ما هي التعويضات عند الطرد؟
+
+[GraphRetriever] Classifying query: ما هي التعويضات عند الطرد؟
+[CamelBERT] Low confidence for Labor Law (score: 0.601 < 0.65). Falling back.
+[GraphRetriever] Amplified: ما هو التوضيح القانوني للتعويضات التي يحق للموظف الحصول عليها في حالة طرده من العمل?
+[GraphRetriever] HyDE Generated: في القانون التجاري، يمكن أن تشمل التعويضات المادية والمعنوية التي يحق للموظف الحصول عليها عند طرده م...
+[GraphRetriever] Synonyms: المكافأة المالية, التعويض القانوني
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.62it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.62it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_187 (sim=0.526)
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_187_BIS_1 (sim=0.452)
+[84/127] Processing: هل يمكن لصاحب العمل تغيير العقد؟
+
+[GraphRetriever] Classifying query: هل يمكن لصاحب العمل تغيير العقد؟
+[CamelBERT] Low confidence for Labor Law (score: 0.614 < 0.65). Falling back.
+[GraphRetriever] Amplified: هل يحق لصاحب العمل تعديل أو تغيير شروط العقد?
+[GraphRetriever] HyDE Generated: في القانون المدني، يحدد قانون العمل في الجزائر معايير وشروط للعقود. يشمل ذلك الأهلية للمشتركة بين ال...
+[GraphRetriever] Synonyms: تعديل, تغيير, تعديلات عقود العمل
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.57it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.56it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_582 (sim=0.508)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_582 (sim=0.463)
+[85/127] Processing: ما هي حقوق المرأة العاملة؟
+
+[GraphRetriever] Classifying query: ما هي حقوق المرأة العاملة؟
+[CamelBERT] Low confidence for Labor Law (score: 0.560 < 0.65). Falling back.
+[GraphRetriever] Amplified: توضيح حقوق المرأة العاملة وفقا للقانون المدني
+[GraphRetriever] HyDE Generated: تشمل حقوق المرأة العاملة العديد من الأركان الأساسية مثل التكافؤ بين الجنسين في الأجور والترقيات، حما...
+[GraphRetriever] Synonyms: المواصفات القانونية لحماية المرأة في مكان العمل، الحقوق التي يتمتع بها المرأة كعاملة
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.62it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.62it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_582 (sim=0.489)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_582 (sim=0.411)
+[86/127] Processing: هل يمكن العمل في أكثر من وظيفة؟
+
+[GraphRetriever] Classifying query: هل يمكن العمل في أكثر من وظيفة؟
+[CamelBERT] Low confidence for Labor Law (score: 0.498 < 0.65). Falling back.
+[GraphRetriever] Amplified: هل يسمح القانون الجزائري بقيام الموظف بالعمل في عدة وظائف معا؟
+[GraphRetriever] HyDE Generated: في القانون المدني، يُعتبر التضامن الوظيفي أو العمل في أكثر من وظيفة أمرًا شائعًا. لكن يجب تقييم الظر...
+[GraphRetriever] Synonyms: التضامن الوظيفي, النشاط الاقتصادي
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.63it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.63it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_582 (sim=0.486)
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_580 (sim=0.498)
+[87/127] Processing: ماذا يحدث في حالة إصابة عمل؟
+
+[GraphRetriever] Classifying query: ماذا يحدث في حالة إصابة عمل؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.482 < 0.65). Falling back.
+[GraphRetriever] Amplified: ما هي حقوق الأشخاص الذين يعانون من إصابات في مكان العمل وما هي الاجراءات القانونية المتبعة?
+[GraphRetriever] HyDE Generated: في حال الإصابة بالعمل، يتم تطبيق قواعد وقوانين محددة للحماية والتعويض. هذه القوانين تشمل التعويض عن ...
+[GraphRetriever] Synonyms: تضرر العمل, المستفي من الإعاقة, التعويض عن الإصابات
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.33it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.33it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_187 (sim=0.493)
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_187_BIS_1 (sim=0.467)
+[88/127] Processing: هل يمكن خصم الراتب بدون سبب؟
+
+[GraphRetriever] Classifying query: هل يمكن خصم الراتب بدون سبب؟
+[CamelBERT] Low confidence for Labor Law (score: 0.541 < 0.65). Falling back.
+[GraphRetriever] Amplified: هل يجوز إجراء خصم من رواتب الموظفين دون وجود سبب قانوني محدد?
+[GraphRetriever] HyDE Generated: في القانون المدني، يتم التأكيد على أن تغيير أو خصم الأموال من الأجور يجب أن يكون بحجة وفقاً للقانون ...
+[GraphRetriever] Synonyms: تقليل, زيادة سلبية في الرواتب
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.53it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.53it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_566 (sim=0.550)
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_590 (sim=0.513)
+[89/127] Processing: ما هي حقوق العامل في القطاع الخاص؟
+
+[GraphRetriever] Classifying query: ما هي حقوق العامل في القطاع الخاص؟
+[CamelBERT] Low confidence for Labor Law (score: 0.642 < 0.65). Falling back.
+[GraphRetriever] Amplified: توضيح الحقوق القانونية التي يمتلكها الأشخاص الذين يعملون في قطاع الأعمال الخاص.
+[GraphRetriever] HyDE Generated: تعتبر حقوق العامل من أركان النظام القانوني وتشمل العديد من المفاهيم مثل الحق في الإجازة والراتب الشه...
+[GraphRetriever] Synonyms: المصطلحات الأساسية: حقوق، العامل
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.93it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.93it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_04 (sim=0.417)
+[GraphRetriever] PPR subgraph pulled in: DZ_PENAL_ART_4 (sim=0.483)
+[90/127] Processing: هل يمكن رفض العمل الإضافي؟
+
+[GraphRetriever] Classifying query: هل يمكن رفض العمل الإضافي؟
+[CamelBERT] Low confidence for Labor Law (score: 0.584 < 0.65). Falling back.
+[GraphRetriever] Amplified: هل يجوز رفض الطلب بخصوص العمل الإضافي في القانون التجاري?
+[GraphRetriever] HyDE Generated: في القانون المدني، يتم التوصل إلى قرار بشأن مسألة رفض العمل الإضافي بناءً على عدة أركان. الأولى هي ا...
+[GraphRetriever] Synonyms: ال不同意额外工作, التراضي على العمل الإضافي
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.26it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.26it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_187 (sim=0.529)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_177 (sim=0.546)
+[91/127] Processing: كيف يتم حساب الأجر؟
+
+[GraphRetriever] Classifying query: كيف يتم حساب الأجر؟
+[CamelBERT] Low confidence for Labor Law (score: 0.547 < 0.65). Falling back.
+[GraphRetriever] Amplified: ما هي الطرق القانونية لحساب الأجر في الإتفاقيات التجارية?
+[GraphRetriever] HyDE Generated: في القانون التجاري، يحدد العقد بين الأطراف طريقة حساب الأجر أو الراتب. يمكن أن يكون هذا حسب الساعة ا...
+[GraphRetriever] Synonyms: الراتب, المدفوعات المالية
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.75it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.75it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_722 (sim=0.562)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_722 (sim=0.459)
+[92/127] Processing: هل يمكن فسخ عقد العمل؟
+
+[GraphRetriever] Classifying query: هل يمكن فسخ عقد العمل؟
+[CamelBERT] Low confidence for Labor Law (score: 0.568 < 0.65). Falling back.
+[GraphRetriever] Amplified: ما هي الشروط والأساسيات القانونية التي يجب اتباعها للفسخ من عقد العمل في القانون المدني?
+[GraphRetriever] HyDE Generated: في القانون المدني، يُمكن فسخ عقد العمل إذا تحقق شرط البطلان أو التضليل. بالإضافة إلى ذلك، يمكن إلغاء...
+[GraphRetriever] Synonyms: تراضي الطرفين, بطلان العقد, إلغاء العقد
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.87it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.87it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_110_P2 (sim=0.536)
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_111 (sim=0.598)
+[93/127] Processing: ما هي أنواع عقود العمل؟
+
+[GraphRetriever] Classifying query: ما هي أنواع عقود العمل؟
+[CamelBERT] Low confidence for Labor Law (score: 0.577 < 0.65). Falling back.
+[GraphRetriever] Amplified: كيفية تحديد وتحديد أنواع عقود العمل المختلفة والفرق بينها في القانون المدني?
+[GraphRetriever] HyDE Generated: تعتبر قانونياً العديد من أنواع عقود العمل، بما فيها عقد التوظيف المباشر، عقد الإقراض، عقد الامتيازات...
+[GraphRetriever] Synonyms: أشكال العقود, صنوف العقود
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.75it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.74it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_549 (sim=0.436)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVPROC_ART_037 (sim=0.375)
+[94/127] Processing: هل يمكن رفع شكوى لمفتشية العمل؟
+
+[GraphRetriever] Classifying query: هل يمكن رفع شكوى لمفتشية العمل؟
+[CamelBERT] Low confidence for Labor Law (score: 0.513 < 0.65). Falling back.
+[GraphRetriever] Amplified: كيف يتم رفع شكوى إلى مفتشية العمل في القانون التجاري?
+[GraphRetriever] HyDE Generated: في القانون التجاري، يتيح قانون العمل للموظفين وربما أصحاب الأعمال الرغبة في تقديم بلاغات أو تقارير ل...
+[GraphRetriever] Synonyms: تقدم الطلب, البلاغ
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.80it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.80it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVPROC_ART_015 (sim=0.524)
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_15 (sim=0.560)
+[95/127] Processing: ماذا أفعل إذا تعرضت للظلم في العمل؟
+
+[GraphRetriever] Classifying query: ماذا أفعل إذا تعرضت للظلم في العمل؟
+[CamelBERT] Low confidence for Labor Law (score: 0.533 < 0.65). Falling back.
+[GraphRetriever] Amplified: كيف يمكن للموظف التعامل مع ظلمه في مكان العمل وفقا لقوانين العقد والإجراءات القانونية?
+[GraphRetriever] HyDE Generated: في حالة ظلم الموظف في مكان العمل، يجب على الشخص الابتعاد عن التصرفات غير القانونية أو المخالفة للشرو...
+[GraphRetriever] Synonyms: المشكلات المهنية, الانتهاكات القانونية في مكان العمل
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.45it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.45it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVPROC_ART_015 (sim=0.487)
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_15 (sim=0.525)
+[96/127] Processing: كيف أفتح شركة في الجزائر؟
+[LegalNorm] 'فتح شركة' → 'تأسيس الشركة السجل التجاري'
+
+[GraphRetriever] Classifying query: كيف أتأسيس الشركة السجل التجاري في الجزائر؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.644 < 0.65). Falling back.
+[GraphRetriever] Amplified: خطوات التأسيس وتسجيل الشركة التجارية في الجزائر
+[GraphRetriever] HyDE Generated: للاستفادة من قانون الإنشاء والتسجيل التجاري في الجزائر، يجب اتباع مجموعة محددة من الأركان الأساسية. ...
+[GraphRetriever] Synonyms: إنشاء شركة, تسجيل الشركة
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.29it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.29it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_507_BIS_1 (sim=0.385)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_507_BIS (sim=0.348)
+[97/127] Processing: ما الفرق بين SARL و SPA؟
+[Acronym Expander] 'ما الفرق بين SARL و SPA؟' → 'ما الفرق بين شركة ذات مسؤولية محدودة و شركة مساهمة؟'
+
+[GraphRetriever] Classifying query: ما الفرق بين شركة ذات مسؤولية محدودة و شركة مساهمة؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.493 < 0.65). Falling back.
+[GraphRetriever] Amplified: توضيح الأطراف القانونية والمسؤوليات في شركتي الشركة المحدودة المسؤولة والمملوكة بالأسهم.
+[GraphRetriever] HyDE Generated: في القانون التجاري، توجد نوعين رئيسيين من الشركات: شركة ذات مسؤولية محدودة وشركة مساهمة. يتم التمييز...
+[GraphRetriever] Synonyms: شركة محدودة المسئولية, شركة مساهمات
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.19it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.19it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_567 (sim=0.492)
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_571 (sim=0.528)
+[98/127] Processing: ما هي شروط إنشاء شركة؟
+
+[GraphRetriever] Classifying query: ما هي شروط إنشاء شركة؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.556 < 0.65). Falling back.
+[GraphRetriever] Amplified: تحديد الشروط الأساسية والإجراءات اللازمة لإعداد وإنشاء شركة في الجزائر.
+[GraphRetriever] HyDE Generated: تشمل شروط إنشاء الشركة في الجزائر الأهلية التجارية للشركة، ووجود سياق قانوني واضح يحدد المكانة القان...
+[GraphRetriever] Synonyms: المشروع التجاري, التأسيس, الأهلية التجارية, السياق القانوني
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.72it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.72it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_02 (sim=0.383)
+[GraphRetriever] PPR subgraph pulled in: DZ_CYBER_ART_2 (sim=0.439)
+[99/127] Processing: كيف أكتب عقد شراكة؟
+
+[GraphRetriever] Classifying query: كيف أكتب عقد شراكة؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.532 < 0.65). Falling back.
+[GraphRetriever] Amplified: ما هي الخطوات الأساسية لكتابة وتنفيذ عقد شراكة في القانون المدني?
+[GraphRetriever] HyDE Generated: عند كتابة عقد شراكة، يجب مراعاة الأركان الأساسية للعقد وهي الرضا، الأهلية، المحل والسبب. بالإضافة إل...
+[GraphRetriever] Synonyms: توفيق الشركاء, شروط التعاقد
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.72it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.71it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_549 (sim=0.505)
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_548 (sim=0.574)
+[100/127] Processing: ماذا يحدث إذا انسحب شريك؟
+
+[GraphRetriever] Classifying query: ماذا يحدث إذا انسحب شريك؟
+[CamelBERT] Low confidence for Labor Law (score: 0.451 < 0.65). Falling back.
+[GraphRetriever] Amplified: ما التأثيرات القانونية للانسحاب من عقد شراكات الأعمال التجارية?
+[GraphRetriever] HyDE Generated: في قانون الشركات، يُعتبر الانسحاب من عقد الشراكة بمثابة تغيير في الهيكل التنظيمي للمشروع. قد يؤدي ذل...
+[GraphRetriever] Synonyms: تقليل مشاركة الشريك, استقالة الشريك
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.50it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.49it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_566 (sim=0.504)
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_567 (sim=0.510)
+[101/127] Processing: كيف يتم تقسيم الأرباح؟
+
+[GraphRetriever] Classifying query: كيف يتم تقسيم الأرباح؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.524 < 0.65). Falling back.
+[GraphRetriever] Amplified: كيف يتم توزيع الأرباح بين الشركاء في الشركة?
+[GraphRetriever] HyDE Generated: في القانون التجاري، يتم تقسيم الأرباح عادة بحسب نسبة المساهمين أو حسب الإتفاقات التي تم توقيعها. قد ...
+[GraphRetriever] Synonyms: توزيع الأرباح, مشاركة الأرباح
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  2.01it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  2.01it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_722 (sim=0.579)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVPROC_ART_800 (sim=0.458)
+[102/127] Processing: هل يمكن بيع حصتي في الشركة؟
+
+[GraphRetriever] Classifying query: هل يمكن بيع حصتي في الشركة؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.526 < 0.65). Falling back.
+[GraphRetriever] Amplified: هل يتمكن مساهم شركة من بيع حصته في الشركة وفقا للقوانين التجارية?
+[GraphRetriever] HyDE Generated: في القانون التجاري، يُسمح بممارسة الأشخاص المساهمين في الشركات بعمليات البيع والشراء لأسهمهم. ولكن ي...
+[GraphRetriever] Synonyms: تداول الأسهم, تحويل حقوق الملكية
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.55it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.55it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_79 (sim=0.429)
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_119 (sim=0.532)
+[103/127] Processing: ما هي مسؤولية المدير؟
+
+[GraphRetriever] Classifying query: ما هي مسؤولية المدير؟
+[CamelBERT] Low confidence for Civil Law (score: 0.494 < 0.65). Falling back.
+[GraphRetriever] Amplified: تحديد وتحليل مسؤوليات المديرين في إطار القانون التجاري
+[GraphRetriever] HyDE Generated: في القانون التجاري، يتحمل المدير مسؤوليته المباشرة والغير مباشرة للشركة. هذه المسئولية تشمل الامتثال...
+[GraphRetriever] Synonyms: تقصير المسؤولية, دور مدير الشركة, التزامات التحكم
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.03it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.03it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_582 (sim=0.511)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_582 (sim=0.504)
+[104/127] Processing: ماذا أفعل إذا خانني شريكي؟
+
+[GraphRetriever] Classifying query: ماذا أفعل إذا خانني شريكي؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.462 < 0.65). Falling back.
+[GraphRetriever] Amplified: ما هي الخطوات القانونية التي يمكن اتخاذها في حالة خيانة شريك الأعمال?
+[GraphRetriever] HyDE Generated: في حال خيانة شريك الأعمال، قد يكون من الأفضل استشارة محامٍ للحصول على نصائح قانونية محددة. ولكن بشكل...
+[GraphRetriever] Synonyms: بطلان العقد, تراضي الطرفين, الالتزامات المشتركة
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.48it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.48it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_591 (sim=0.511)
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_566 (sim=0.485)
+[105/127] Processing: كيف أحمي فكرتي التجارية؟
+
+[GraphRetriever] Classifying query: كيف أحمي فكرتي التجارية؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.510 < 0.65). Falling back.
+[GraphRetriever] Amplified: ما هي الإجراءات القانونية التي يمكن اتباعها لحماية فكرة الأعمال التجارية من الاختراق والتقليد؟
+[GraphRetriever] HyDE Generated: في قانون التجارة، يُعتبر حماية الأفكار التجارية مهمة جداً. تشمل هذه الحماية عادة استخدام حقوق الطبع ...
+[GraphRetriever] Synonyms: المصطلحات الأساسية: الترخيص، حقوق الطبع، العلامات التجارية
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.56it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.56it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_19 (sim=0.525)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVPROC_ART_019 (sim=0.438)
+[106/127] Processing: هل يمكن فتح نشاط بدون سجل تجاري؟
+
+[GraphRetriever] Classifying query: هل يمكن فتح نشاط بدون سجل تجاري؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.611 < 0.65). Falling back.
+[GraphRetriever] Amplified: هل يسمح القانون المدني بفتح نشاطات أعمال دون الحاجة إلى تسجيل تجاري؟
+[GraphRetriever] HyDE Generated: في القانون المدني، يعتبر السجل التجاري جزءاً أساسياً من التراخيص والتوثيق المطلوبة لبدء أي نوع من ال...
+[GraphRetriever] Synonyms: أنشطة الأعمال, التسجيل التجاري
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.55it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.55it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_507_BIS_1 (sim=0.425)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_507_BIS (sim=0.398)
+[107/127] Processing: ما هي التزامات التاجر؟
+
+[GraphRetriever] Classifying query: ما هي التزامات التاجر؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.599 < 0.65). Falling back.
+[GraphRetriever] Amplified: ما هي الالتزامات القانونية التي يتعين على التجار احترامها وفقا للقانون المدني الجزائري?
+[GraphRetriever] HyDE Generated: تتضمن التزامات التاجر مجموعة من الأركان الأساسية والشروط، بما في ذلك الامتثال لقواعد السوق، تقديم ال...
+[GraphRetriever] Synonyms: مسؤوليات التجار, واجبات التجار
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.43it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.42it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_01 (sim=0.486)
+[GraphRetriever] PPR subgraph pulled in: DZ_PENAL_ART_1 (sim=0.474)
+[Generator] Blacklist filtered 1 generic article(s) from context.
+[108/127] Processing: كيف يتم تسجيل شركة؟
+
+[GraphRetriever] Classifying query: كيف يتم تسجيل شركة؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.585 < 0.65). Falling back.
+[GraphRetriever] Amplified: خطوات التسجيل القانونية لشركة في الجزائر
+[GraphRetriever] HyDE Generated: تتضمن عملية تسجيل الشركة مجموعة من الإجراءات والشروط التي يجب اتباعها، بما فيها تقديم طلب للإدارة ال...
+[GraphRetriever] Synonyms: إنشاء الشركة, تأسيس الشركة
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.92it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.92it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_02 (sim=0.385)
+[GraphRetriever] PPR subgraph pulled in: DZ_CYBER_ART_2 (sim=0.474)
+[109/127] Processing: ما هي الضرائب على الشركات؟
+
+[GraphRetriever] Classifying query: ما هي الضرائب على الشركات؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.563 < 0.65). Falling back.
+[GraphRetriever] Amplified: توضيح مفهوم ونوع الضرائب التي يتعين على شركات الأشخاص القانونيين دفعها في الجزائر.
+[GraphRetriever] HyDE Generated: في نظام التشريع الجزائري، توجد العديد من الضرائب المطبقة على الشركات. هذه الضرائب قد تتضمن ضرائب الد...
+[GraphRetriever] Synonyms: الرسوم الضريبية, الضرائب التجارية
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.28it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.28it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_545 (sim=0.553)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_02 (sim=0.453)
+[110/127] Processing: كيف أتعامل مع زبون لم يدفع؟
+
+[GraphRetriever] Classifying query: كيف أتعامل مع زبون لم يدفع؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.472 < 0.65). Falling back.
+[GraphRetriever] Amplified: ما هي الإجراءات القانونية لمعالجة الزبون الذي لم يدفع ثمن سلع أو خدماته؟
+[GraphRetriever] HyDE Generated: في حالة عدم دفع الزبون للسلع أو الخدمات، يمكن للمتعرض أن يتوجه بطلب إلى القضاء لإصدار حكم بالاسترداد...
+[GraphRetriever] Synonyms: الجهة التي تقدم السلع أو الخدمات, الطرف الثاني في العقد
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.40it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.40it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_274 (sim=0.546)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_270 (sim=0.567)
+[111/127] Processing: ما هي إجراءات الإفلاس؟
+
+[GraphRetriever] Classifying query: ما هي إجراءات الإفلاس؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.629 < 0.65). Falling back.
+[GraphRetriever] Amplified: ما هي الخطوات والإجراءات القانونية المرتبطة بعملية الإفلاس في القانون التجاري?
+[GraphRetriever] HyDE Generated: إجراء الإفلاس هو عملية قانونية تهدف إلى حل الأزمات المالية للشركات التي لا تستطيع دفع ديونها. تتضمن ...
+[GraphRetriever] Synonyms: إجراءات التفكير التجاري, إجراءات الإفلاس التجاري
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.12it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.12it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_PENAL_ART_28 (sim=0.383)
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_25 (sim=0.461)
+[112/127] Processing: هل يمكن إغلاق الشركة بسهولة؟
+
+[GraphRetriever] Classifying query: هل يمكن إغلاق الشركة بسهولة؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.496 < 0.65). Falling back.
+[GraphRetriever] Amplified: كيف يتم إغلاق شركة في إطار قانون التجارة?
+[GraphRetriever] HyDE Generated: في القانون التجاري، يحدد الإجراءات والقواعد التي يجب اتباعها لإغلاق الشركة. هذا قد يتضمن تقديم تقرير...
+[GraphRetriever] Synonyms: توفير الأعمال, النفاذ إلى الإعلانات القانونية
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.72it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.72it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_774 (sim=0.607)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_774 (sim=0.476)
+[113/127] Processing: كيف أرفع دعوى تجارية؟
+
+[GraphRetriever] Classifying query: كيف أرفع دعوى تجارية؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.535 < 0.65). Falling back.
+[GraphRetriever] Amplified: خطوات تقديم دعوى قانونية تجارية وفقا للقانون المدني
+[GraphRetriever] HyDE Generated: لرفع دعوى تجارية، يجب على المدعى عليه التقدم بطلب إلى المحكمة المعنية بالقضايا التجارية. يتضمن هذا ا...
+[GraphRetriever] Synonyms: تقديم الطلب التجاري, الإجراءات القضائية في التجارة
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.73it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.73it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_01 (sim=0.490)
+[GraphRetriever] PPR subgraph pulled in: LAW18-05_ART_1 (sim=0.485)
+[Generator] Blacklist filtered 1 generic article(s) from context.
+[114/127] Processing: ما الفرق بين التاجر والشركة؟
+
+[GraphRetriever] Classifying query: ما الفرق بين التاجر والشركة؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.596 < 0.65). Falling back.
+[GraphRetriever] Amplified: كيف يتم تعريف التاجرين وشركات الأعمال وكيف يختلفان?
+[GraphRetriever] HyDE Generated: في القانون التجاري، يمكن تمييز التاجر من الشركة بناءً على الأطر التنظيمية والحقوق المترتبة عليها. ال...
+[GraphRetriever] Synonyms: المستهلك, المتجر, المنشأة التجارية, المنظمة ѕرية
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.03it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.03it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_02 (sim=0.399)
+[GraphRetriever] PPR subgraph pulled in: DZ_CYBER_ART_2 (sim=0.371)
+[Generator] Blacklist filtered 1 generic article(s) from context.
+[115/127] Processing: هل يمكن لشخص أجنبي فتح شركة؟
+[LegalNorm] 'فتح شركة' → 'تأسيس الشركة السجل التجاري'
+
+[GraphRetriever] Classifying query: هل يمكن لشخص أجنبي تأسيس الشركة السجل التجاري؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.662)
+[GraphRetriever] Amplified: هل يمتلك القانون المدني الجزائري حقا للأشخاص الأجانب في تأسيس الشركات التجارية؟
+[GraphRetriever] HyDE Generated: في القانون المدني الجزائري، يتم تحديد حقوق الأجانب في تأسيس الشركات التجارية بناءً على القواعد والشر...
+[GraphRetriever] Synonyms: تأسيس شركات خارجية, حق الأجانب في التأسيس
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.51it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.51it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_507_BIS_1 (sim=0.508)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_507_BIS (sim=0.498)
+[116/127] Processing: ما هي شروط التجارة الإلكترونية؟
+
+[GraphRetriever] Classifying query: ما هي شروط التجارة الإلكترونية؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.538 < 0.65). Falling back.
+[GraphRetriever] Amplified: ما هي القواعد والمبادئ التي يجب اتباعها في تجارة الإنترنت?
+[GraphRetriever] HyDE Generated: في القانون التجاري، يتم تحديد شروط وقواعد للتجارة الإلكترونية من خلال قوانين خاصة بالعقود الرقمية وا...
+[GraphRetriever] Synonyms: المبادئ الأساسية للاعتبارات التجارية, قواعد التحصيل
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.38it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.38it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_507_BIS_1 (sim=0.372)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_507_BIS (sim=0.406)
+[117/127] Processing: هل البيع عبر الإنترنت قانوني؟
+
+[GraphRetriever] Classifying query: هل البيع عبر الإنترنت قانوني؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.548 < 0.65). Falling back.
+[GraphRetriever] Amplified: 合法性在线销售的法律框架和条件是什么？
+[GraphRetriever] HyDE Generated: في القانون المدني، يعتبر بيع الأشياء عبر الإنترنت مسموحًا به وقانونيًا، مع مراعاة الشروط والقواعد ال...
+[GraphRetriever] Synonyms: تداول افتراضي, تجارة الإلكترونية
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:01<00:00,  1.01s/it]Batches: 100%|##########| 1/1 [00:01<00:00,  1.01s/it]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_507_BIS_1 (sim=0.384)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_507_BIS (sim=0.408)
+[118/127] Processing: كيف أتعامل مع مورد لم يحترم العقد؟
+
+[GraphRetriever] Classifying query: كيف أتعامل مع مورد لم يحترم العقد؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.475 < 0.65). Falling back.
+[GraphRetriever] Amplified: ما هي الخطوات القانونية التي يمكن اتباعها عند التعامل مع مورد قد لم يحترم شروط العقد المبرمة بين الطرفين?
+[GraphRetriever] HyDE Generated: في حالة عدم تلبية طرف من الأطراف للشروط الأساسية لعقد العمل، مثل الرضا والكفاءة والأمانة والموضوعية ...
+[GraphRetriever] Synonyms: تراضي البطلان, مبادئ العقود
+[GraphRetriever] Domain focus: Civil Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.42it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.42it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_79 (sim=0.498)
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_97 (sim=0.616)
+[119/127] Processing: ما هي الوثائق التجارية الأساسية؟
+
+[GraphRetriever] Classifying query: ما هي الوثائق التجارية الأساسية؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.619 < 0.65). Falling back.
+[GraphRetriever] Amplified: ما هي الأدلة الأساسية التي يتم استخدامها في التجارة?
+[GraphRetriever] HyDE Generated: الوثائق التجارية الأساسية تشمل الموازنات، الفواتير، الشهادات المالية والقوائم التجارب. هذه الوثائق م...
+[GraphRetriever] Synonyms: الموازنة التجارية, الفواتير, الشهادات المالية, القوائم التجارب
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.63it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.63it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVPROC_ART_015 (sim=0.487)
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_15 (sim=0.557)
+[120/127] Processing: كيف أحمي علامتي التجارية؟
+
+[GraphRetriever] Classifying query: كيف أحمي علامتي التجارية؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.515 < 0.65). Falling back.
+[GraphRetriever] Amplified: ما هي الإجراءات القانونية التي يمكن اتباعها لحماية علامة تجارية من الاستخدام غير المصرح به أو الاحتكار؟
+[GraphRetriever] HyDE Generated: تتضمن الأركان الأساسية للحماية القانونية لعلامة تجارية: تقديم طلب للحصول على وثيقة حقوق الملكية الفك...
+[GraphRetriever] Synonyms: حقوق العلامات التجارية, حماية العلامات التجارية
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.36it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.36it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_98 (sim=0.512)
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_98 (sim=0.528)
+[121/127] Processing: ما هي المنافسة غير المشروعة؟
+
+[GraphRetriever] Classifying query: ما هي المنافسة غير المشروعة؟
+[CamelBERT] Low confidence for Labor Law (score: 0.500 < 0.65). Falling back.
+[QueryClassifier] Failed to parse JSON. Raw output: {
+  "domain": "Commercial Law",
+  "law_type": "both",
+  "keywords": ["منافسة", "غير مشاركة"],
+  "synonyms": ["التنافس غير القانوني", "ال konkurence illégale" بالفرنسية],
+  "amplified_query": "تعريف وشرح للمنافسة غير المشروعة في قانون التجارة",
+  "hyde_document": "في القانون التجاري، يشير 'المنافسة غير المشروعة' إلى أي أنشطة تهدف لتعطيل أو التأثير على المنافسة العادلة بين الشركات. يمكن أن تتضمن هذه الأنشطة الاحتكار، والتشويش على المنتجات، والتلاعب الأسعار، وغيرها من الممارسات التي تضر بعمليات السوق وتدمر التنافس.",
+  "negative_concepts": ["التنافس الشريف", "التنافس الجيد"]
+}
+[GraphRetriever] Amplified: ما هي المنافسة غير المشروعة؟
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  4.23it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  4.23it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_683 (sim=0.322)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_684 (sim=0.331)
+[122/127] Processing: هل يمكن فتح شركة بدون رأس مال كبير؟
+[LegalNorm] 'فتح شركة' → 'تأسيس الشركة السجل التجاري'
+
+[GraphRetriever] Classifying query: هل يمكن تأسيس الشركة السجل التجاري بدون رأس مال كبير؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.664)
+[GraphRetriever] Amplified: يمكن تأسيس شركة سجل تجاري مع رأس مال صغير أم لا?
+[GraphRetriever] HyDE Generated: في القانون المدني، يمكن تأسيس شركة سجل تجارى بغض النظر عن حجم رأس المال. يحدد قانون الشركات في الجزا...
+[GraphRetriever] Synonyms: تأسيس شركة, سجل الأعمال التجارية, المبلغ الأولي للرأسمال, إنشاء شركة
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.95it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.95it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_01 (sim=0.422)
+[GraphRetriever] PPR subgraph pulled in: LAW18-05_ART_1 (sim=0.529)
+[123/127] Processing: ما هي أنواع الشركات في الجزائر؟
+
+[GraphRetriever] Classifying query: ما هي أنواع الشركات في الجزائر؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.533 < 0.65). Falling back.
+[QueryClassifier] Failed to parse JSON. Raw output: {
+  "domain": "Commercial Law",
+  "law_type": "both",
+  "keywords": ["أنواع الشركات", "شركات"],
+  "synonyms": ["أشكال الأعمال التجارية", "صناديق الاستثمار المشترك", "المستثمرون"},
+  "amplified_query": "توضيح الأنواع المختلفة للشركات وفقا لقوانين التجارة في الجزائر، بما يشمل شروط التأسيس والتنظيم القانوني.",
+  "hyde_document": "في قانون التجار في الجزائر، توجد عدة أشكال للأعمال التجارية التي يمكن تكوينها. هذه الأشكال تتضمن الشركات المساهمة (شركة محدودة)، الشركات العامة (شركة مفتوحة)， الشركات الخاصة (شركة ذات ملكية فردية) والأمانات التجارية. كل نوع من هذه الشركات يتم تنظيمه بموجب القواعد القانونية المعينة ويجب الالتزام بها أثناء التاسيس والتقدم بالإجراءات المناسبة للحصول على الإذن القانوني.",
+  "negative_concepts": ["القوانين الجنائية", "حقوق العقد"]
+}
+[GraphRetriever] Amplified: ما هي أنواع الشركات في الجزائر؟
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  4.82it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  4.80it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_566 (sim=0.428)
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_567 (sim=0.355)
+[124/127] Processing: كيف يتم حل النزاعات التجارية؟
+
+[GraphRetriever] Classifying query: كيف يتم حل النزاعات التجارية؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.514 < 0.65). Falling back.
+[GraphRetriever] Amplified: كيف يتم تنفيذ الإجراءات القانونية لحل النزاعات التجارية في الجزائر؟
+[GraphRetriever] HyDE Generated: تتم معالجة نزاعات الأعمال من خلال الادعاء والرد، وتقديم الأدلة والشهادات. تشمل هذه العملية أيضاً مرا...
+[GraphRetriever] Synonyms: إجراءات التسوية القانونية, المراقبة القضائية
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  2.03it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  2.02it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVPROC_ART_015 (sim=0.415)
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_15 (sim=0.511)
+[125/127] Processing: هل يمكن تغيير نشاط الشركة؟
+
+[GraphRetriever] Classifying query: هل يمكن تغيير نشاط الشركة؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.556 < 0.65). Falling back.
+[GraphRetriever] Amplified: هل يسمح القانون المدني بتغيير نشاط الشركة وفقا للشروط والقواعد القانونية المرتبطة بذلك؟
+[GraphRetriever] HyDE Generated: قد يتضمن هذا السؤال مسألة قانونية في مجال التصنيع التجاري، حيث يمكن تغيير نشاط الشركة بشرط الامتثال ...
+[GraphRetriever] Synonyms: تعديل النشاط التجاري, تغير الإجراءات التجارية
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.51it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.51it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_PENAL_ART_28 (sim=0.470)
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_25 (sim=0.500)
+[126/127] Processing: ما هي مسؤولية الشركاء؟
+
+[GraphRetriever] Classifying query: ما هي مسؤولية الشركاء؟
+[CamelBERT] Low confidence for Civil Law (score: 0.493 < 0.65). Falling back.
+[GraphRetriever] Amplified: كيف يتم تحديد وتحديد مسؤولية شركاء الأعمال التجارية والالتزامات التي يتحملونها?
+[GraphRetriever] HyDE Generated: في القانون التجاري، مسؤولية الشركاء تتعلق بواجباتهم المادية والمعنوية في حالة الزيادة المالية للشركة...
+[GraphRetriever] Synonyms: الالتزامات المشتركة, مسؤوليات الأعمال التجارية
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.36it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.36it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_548 (sim=0.543)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_02 (sim=0.455)
+[127/127] Processing: كيف أتعامل مع ديون الشركة؟
+
+[GraphRetriever] Classifying query: كيف أتعامل مع ديون الشركة؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.537 < 0.65). Falling back.
+[GraphRetriever] Amplified: ما هي الخطوات القانونية التي يجب اتباعها لمعالجة وادارة دينات الشركة ؟
+[GraphRetriever] HyDE Generated: في قانون الأعمال، يُعتبر التعامل مع الديون أحد الأركان الأساسية للعمل التجاري. يتضمن ذلك تقييم الديو...
+[GraphRetriever] Synonyms: تسيير الديون, تسوية الديون
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.05it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.05it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_215 (sim=0.456)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVPROC_ART_215 (sim=0.398)
+
+Done! 127 answers saved to C:\Users\Dell\Desktop\isthacherni\Istacherni\answers_graph_rag.txt

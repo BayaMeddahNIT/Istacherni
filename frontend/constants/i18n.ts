@@ -13,6 +13,17 @@ const translations = {
     confirm: "Confirmer",
     appVersion: "Istacherni v1.0.0  •  © 2025 Tous droits réservés",
 
+    // Onboarding
+    onboardingNext: "Suivante >",
+    onboardingStart: "Commencer",
+    onboardingSkip: "Passer",
+    onboardingTitle1: "Services Juridiques",
+    onboardingDesc1: "Trouvez tous les types de services juridiques dans une seule application, avec un processus simple et de multiples avantages.",
+    onboardingTitle2: "Expertise Locale",
+    onboardingDesc2: "Saisissez le nom de votre ville et le type de consultant que vous recherchez. Notre système d'IA sélectionnera le meilleur candidat pour votre mission.",
+    onboardingTitle3: "Profils Vérifiés",
+    onboardingDesc3: "Choisissez les meilleurs profils d'avocats vérifiés dans votre région en fonction de leurs qualifications, leur expérience et les avis des utilisateurs.",
+
     // Tab Labels
     tabHome: "Accueil",
     tabDocuments: "Documents",
@@ -244,6 +255,17 @@ const translations = {
     confirm: "Confirm",
     appVersion: "Istacherni v1.0.0  •  © 2025 All rights reserved",
 
+    // Onboarding
+    onboardingNext: "Next >",
+    onboardingStart: "Get Started",
+    onboardingSkip: "Skip",
+    onboardingTitle1: "Legal Services",
+    onboardingDesc1: "Find all types of legal services in a single application, with a simple process and multiple benefits.",
+    onboardingTitle2: "Local Expertise",
+    onboardingDesc2: "Enter the name of your city and the type of consultant you are looking for. Our AI system will select the best candidate for your mission.",
+    onboardingTitle3: "Verified Profiles",
+    onboardingDesc3: "Choose the best verified lawyer profiles in your region based on their qualifications, experience, and user reviews.",
+
     tabHome: "Home",
     tabDocuments: "Documents",
     tabMap: "Map",
@@ -463,6 +485,17 @@ const translations = {
     sending: "جارٍ الإرسال…",
     confirm: "تأكيد",
     appVersion: "إيستاشيرني v1.0.0  •  © 2025 جميع الحقوق محفوظة",
+
+    // Onboarding
+    onboardingNext: "التالي >",
+    onboardingStart: "ابدأ الآن",
+    onboardingSkip: "تخطي",
+    onboardingTitle1: "الخدمات القانونية",
+    onboardingDesc1: "ابحث عن جميع أنواع الخدمات القانونية في تطبيق واحد، مع عملية بسيطة وفوائد متعددة.",
+    onboardingTitle2: "الخبرة المحلية",
+    onboardingDesc2: "أدخل اسم مدينتك ونوع المستشار الذي تبحث عنه. سيختار نظام الذكاء الاصطناعي لدينا أفضل مرشح لمهمتك.",
+    onboardingTitle3: "ملفات شخصية موثوقة",
+    onboardingDesc3: "اختر أفضل ملفات المحامين المعتمدين في منطقتك بناءً على مؤهلاتهم وخبرتهم وتقييمات المستخدمين.",
 
     tabHome: "الرئيسية",
     tabDocuments: "الوثائق",

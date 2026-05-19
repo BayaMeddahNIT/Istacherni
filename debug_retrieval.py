@@ -1,17 +1,24 @@
-# debug_retrieval.py
 import sys
+import io
+import pickle
 from pathlib import Path
-sys.path.insert(0, str(Path(__file__).resolve().parents[0]))
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
 
-from bm25_rag.bm25_retriever import bm25_retrieve
-from dense_rag.bge_retriever import dense_retrieve
+from graph_rag_local.graph_retriever import graph_retrieve, _G
 
-q = "ما هي عقوبة السرقة في القانون الجزائري؟"
+# Load graph manually to check node data
+CACHE_DIR = Path("graph_rag_local/cache")
+GRAPH_FILE = CACHE_DIR / "law_graph_local.pkl"
 
-print("=== BM25 Results ===")
-for r in bm25_retrieve(q, top_k=5):
-    print(f"  id={r.get('id')} | {r['law_name']} م{r['article_number']} | score={r['score']}")
+with open(GRAPH_FILE, "rb") as f:
+    G = pickle.load(f)
 
-print("\n=== Dense Results ===")
-for r in dense_retrieve(q, top_k=5):
-    print(f"  id={r.get('id')} | {r['law_name']} م{r['article_number']} | score={r['score']}")
+q = "ما هي عقوبة السرقة بالإكراه؟"
+articles = graph_retrieve(q, top_k=5)
+for i, a in enumerate(articles, 1):
+    art_id = a.get('id')
+    node_data = G.nodes[art_id]
+    print(f"Article {i}: ID={art_id}, Law={node_data.get('law_name')}, ArtNum={node_data.get('article_number')}")
+    print(f"Text Original (first 100): '{node_data.get('text_original', '')[:100]}'")
+    print(f"Search Block (first 100): '{node_data.get('search_block', '')[:100]}'")
+    print("-" * 20)

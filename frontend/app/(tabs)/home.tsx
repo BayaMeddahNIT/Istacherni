@@ -126,7 +126,7 @@ export default function Home() {
             borderBottomLeftRadius: 30, borderBottomRightRadius: 30,
             alignItems: "center", justifyContent: "center",
           }}>
-            <Image source={images.logo} style={{ width: 180, height: 120 }} resizeMode="contain" />
+            <Image source={images.appLogo} style={{ width: 200, height: 140 }} resizeMode="contain" />
           </View>
         )}
 

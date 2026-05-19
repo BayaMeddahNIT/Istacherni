@@ -1,0 +1,142 @@
+Initializing Graph RAG test script… Loading heavy libraries.
+Using LOCAL hybrid retriever (BGE-M3 + PPR + domain boost)
+Loaded 127 questions. Using Graph RAG retrieval + qwen2:7b for generation.
+
+🔥 Warming up models (Initial load into RAM)...
+Asking to truncate to max_length but no maximum length is provided and the model has no predefined maximum length. Default to no truncation.
+[GraphRetriever] Pre-loading embedding matrix...
+[GraphRetriever] Building BM25 index...
+
+[GraphRetriever] Classifying query: هل القانون الجزائري يعاقب على السرقة؟
+[CamelBERT] Initialising query classifier (CAMeL-Lab/bert-base-arabic-camelbert-msa)...
+[CamelBERT] Low confidence for Penal Code (score: 0.592 < 0.65). Falling back.
+[GraphRetriever] Amplified: هل القانون الجزائري يعاقب بنشاط قانوني على سلوك معين يُعرف بالسرقة؟
+[GraphRetriever] HyDE Generated: تعتبر السرقة من الجرائم المجرمة في القانون الجزائري، وفقاً للشريعة الجنائية الجزائرية، يتم عقاب الأف...
+[GraphRetriever] Synonyms: النهب
+[GraphRetriever] Domain focus: Penal Law
+[Embeddings] Loading model: BAAI/bge-m3 on cpu...
+[Embeddings] Model loaded.
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:05<00:00,  5.23s/it]Batches: 100%|##########| 1/1 [00:05<00:00,  5.23s/it]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVPROC_ART_350 (sim=0.399)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_350 (sim=0.398)
+✅ Warmup complete. Starting benchmark.
+
+[1/127] Processing: هل النصب في التجارة يُعاقب عليه القانون؟
+
+[GraphRetriever] Classifying query: هل النصب في التجارة يُعاقب عليه القانون؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.561 < 0.65). Falling back.
+[GraphRetriever] Amplified: هل يعتبر التنصيب في سياق التجارة جريمة قانونية وفقا للقانون التجاري الجزائري؟
+[GraphRetriever] HyDE Generated: في القانون التجاري، يمكن اعتبار التنصيب كجريمة إذا كان يتم استخدامه لتشويه الحقائق أو تزوير المعلوما...
+[GraphRetriever] Synonyms: التضليل, الاحتيال, الخداع
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:01<00:00,  1.07s/it]Batches: 100%|##########| 1/1 [00:01<00:00,  1.07s/it]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_369 (sim=0.422)
+[GraphRetriever] PPR subgraph pulled in: DZ_PENAL_ART_369 (sim=0.488)
+[2/127] Processing: شخص باعني منتج مزور، هل هذا يعتبر جريمة؟
+
+[GraphRetriever] Classifying query: شخص باعني منتج مزور، هل هذا يعتبر جريمة؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.494 < 0.65). Falling back.
+[GraphRetriever] Amplified: هل بيع المنتجات المزورة يشكل جريمة في القانون الجزائري؟
+[GraphRetriever] HyDE Generated: في القانون الجزائري، يمكن اعتبار بيع المنتجات المزورة كجريمة حسب القوانين المتعلقة بالحماية التجارية...
+[GraphRetriever] Synonyms: الجرائم الجنائية
+[GraphRetriever] Domain focus: Penal Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.97it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.97it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_431 (sim=0.369)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_434 (sim=0.407)
+[3/127] Processing: ما هي عقوبة الغش في بيع السلع؟
+
+[GraphRetriever] Classifying query: ما هي عقوبة الغش في بيع السلع؟
+[CamelBERT] Low confidence for Penal Code (score: 0.520 < 0.65). Falling back.
+[GraphRetriever] Amplified: ما هي العقوبات القانونية المرتبطة بالغش أثناء عملية بيع السلع?
+[GraphRetriever] HyDE Generated: في القانون الجزائري، يُعتبر غش بعملية البيع جريمة تشكل خرقاً للقوانين المقررة في قانون الأفعال الجنا...
+[GraphRetriever] Synonyms: الاحتيال, الفraud, penalties for fraud in sale transactions
+[GraphRetriever] Domain focus: Penal Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:01<00:00,  1.32s/it]Batches: 100%|##########| 1/1 [00:01<00:00,  1.32s/it]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_431 (sim=0.404)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_434 (sim=0.455)
+[4/127] Processing: هل يمكنني رفع شكوى ضد تاجر خدعني؟
+
+[GraphRetriever] Classifying query: هل يمكنني رفع شكوى ضد تاجر خدعني؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.482 < 0.65). Falling back.
+[GraphRetriever] Amplified: هل بإمكان شخص رفع شكاية ضده تاجر بسبب ممارساته الخاطئة التي أضرت به?
+[GraphRetriever] HyDE Generated: في القانون المدني، يُمكن للأشخاص التقدم بحالة قانونية ضد الأشخاص أو الشركات إذا تعرضوا للفساد التجار...
+[GraphRetriever] Synonyms: البلاغ, المزاحم, الإساءة التجارية, الخداع التجاري
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.24it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.24it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_25 (sim=0.446)
+[GraphRetriever] PPR subgraph pulled in: DZ_PENAL_ART_25 (sim=0.551)
+[5/127] Processing: ما هي عقوبة إصدار شيك بدون رصيد؟
+
+[GraphRetriever] Classifying query: ما هي عقوبة إصدار شيك بدون رصيد؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.577 < 0.65). Falling back.
+[GraphRetriever] Amplified: ما هو القانون الذي يحدد العقوبات المرتبطة بإصدار شيك بدون رصيد في الجزائر؟
+[GraphRetriever] HyDE Generated: عند إصدار شخص لصك مالي بدون تغطية، يمكن أن يتعرض للمسائلة الجنائية وفقاً للقانون المدني والجنائي. عا...
+[GraphRetriever] Synonyms: عقوبات الإفلاس النقدي, جرائم المالية
+[GraphRetriever] Domain focus: Penal Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:01<00:00,  1.28s/it]Batches: 100%|##########| 1/1 [00:01<00:00,  1.28s/it]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_375 (sim=0.471)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVPROC_ART_035 (sim=0.411)
+[6/127] Processing: هل عدم تسليم السلعة بعد الدفع يعتبر جريمة؟
+
+[GraphRetriever] Classifying query: هل عدم تسليم السلعة بعد الدفع يعتبر جريمة؟
+[CamelBERT] Low confidence for Civil Law (score: 0.614 < 0.65). Falling back.
+[GraphRetriever] Amplified: إذا كان الامتناع عن تسليم السلع بعد دفع العميل يشكل جريمة أم لا؟
+[GraphRetriever] HyDE Generated: في القانون المدني، تتعلق هذه القضية بقواعد العقود التجارية والالتزامات. إذا تم الاتفاق على شرط لتسلي...
+[GraphRetriever] Synonyms: مرادفات دقيقة موجودة في نصوص القانون المدني مثل: الرضا، الأهلية، المحل، السبب، التراضي، البطلان
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:01<00:00,  1.88s/it]Batches: 100%|##########| 1/1 [00:01<00:00,  1.88s/it]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_176 (sim=0.590)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_181 (sim=0.586)
+[7/127] Processing: هل التزوير في الفواتير يعاقب عليه؟
+
+[GraphRetriever] Classifying query: هل التزوير في الفواتير يعاقب عليه؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.569 < 0.65). Falling back.
+[GraphRetriever] Amplified: كيف يتم عقاب الشخص الذي يقوم بالتزوير على فواتيره?
+[GraphRetriever] HyDE Generated: في القانون الجزائري، يعتبر التزوير في الفواتير جريمة تُعرف بـ'الاحتيال'. وفقاً للقانون الجنائي (كود ...
+[GraphRetriever] Synonyms: المصطلحات الأساسية: الباطل، الاحتيال
+[GraphRetriever] Domain focus: Penal Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:02<00:00,  2.14s/it]Batches: 100%|##########| 1/1 [00:02<00:00,  2.14s/it]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_507_BIS_1 (sim=0.420)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_784 (sim=0.434)
+[8/127] Processing: ما عقوبة سرقة معدات من محل تجاري؟
+
+[GraphRetriever] Classifying query: ما عقوبة سرقة معدات من محل تجاري؟
+[CamelBERT] Low confidence for Penal Code (score: 0.550 < 0.65). Falling back.
+[GraphRetriever] Amplified: ما هي العقوبات القانونية المرتبطة بسرقة الأدوات من محل تجاري في الجزائر؟
+[GraphRetriever] HyDE Generated: في نظام القوانين الجزائية في الجزائر، يُعتبر سرقة الأدوات من محل تجاري جريمة خطيرة. عادةً ما تتضمن ه...
+[GraphRetriever] Synonyms: تسلب, مساومة
+[GraphRetriever] Domain focus: Penal Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:02<00:00,  2.42s/it]Batches: 100%|##########| 1/1 [00:02<00:00,  2.43s/it]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVPROC_ART_350 (sim=0.379)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_350 (sim=0.363)
+[9/127] Processing: هل يمكن متابعة موظف سرق من الشركة؟
+
+[GraphRetriever] Classifying query: هل يمكن متابعة موظف سرق من الشركة؟
+[CamelBERT] Low confidence for Labor Law (score: 0.541 < 0.65). Falling back.
+[GraphRetriever] Amplified: إذا كان بإمكان التحقيق في الموظف الذي سرق من الشركة وفقا للقانون التجاري?
+[GraphRetriever] HyDE Generated: في القانون التجاري، يُمكن تطبيق الإجراءات القانونية والتحقيقات ضد الموظفين الذين يقومون بالسرقة أو ا...
+[GraphRetriever] Synonyms: النهب, التعدي على الخزينة, الإجراءات القانونية
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:01<00:00,  1.58s/it]Batches: 100%|##########| 1/1 [00:01<00:00,  1.58s/it]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_01 (sim=0.520)
+[GraphRetriever] PPR subgraph pulled in: LAW18-05_ART_1 (sim=0.425)
+[10/127] Processing: ما هي عقوبة خيانة الأمانة في التجارة؟
+
+[GraphRetriever] Classifying query: ما هي عقوبة خيانة الأمانة في التجارة؟
+[CamelBERT] Low confidence for Penal Code (score: 0.553 < 0.65). Falling back.
+[GraphRetriever] Amplified: ما هو الإجراء القانوني الذي يطبق على الشخص الذي يخون الأمانة في سياق الأعمال التجارية؟
+[GraphRetriever] HyDE Generated: في القانون التجاري، تُعتبر خيانة الأمانة من الجرائم المالية التي يمكن أن تتسبب في إلحاق ضرر كبير بال...
+[GraphRetriever] Synonyms: بطلان العقد, عقاب, مسؤولية
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:01<00:00,  1.73s/it]Batches: 100%|##########| 1/1 [00:01<00:00,  1.73s/it]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_98 (sim=0.522)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_81 (sim=0.486)
+[11/127] Processing: هل نشر معلومات كاذبة عن شركة جريمة؟
+
+[GraphRetriever] Classifying query: هل نشر معلومات كاذبة عن شركة جريمة؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.488 < 0.65). Falling back.
+[GraphRetriever] Amplified: ما هي التبعات القانونية لنشر معلومات كاذبة حول الشركة?
+[GraphRetriever] HyDE Generated: في القانون الجزائري، يعتبر نشر المعلومات الكاذبة عن الشركات جريمة تضليل الجمهور. قد يعرض المنشئ للمس...
+[GraphRetriever] Synonyms: تضليل الجمهور, الفسخ
+[GraphRetriever] Domain focus: Penal Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.57it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  1.56it/s]

@@ -11,8 +11,9 @@ import {
   Keyboard,
   ActivityIndicator,
   Alert,
+  Animated,
 } from "react-native";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import * as WebBrowser from "expo-web-browser";
 import * as Linking from "expo-linking";
 import * as AuthSession from "expo-auth-session";
@@ -22,13 +23,13 @@ import { router } from "expo-router";
 import { apiFetch } from "@/services/api";
 import { useAuth } from "@/context/AuthContext";
 import { useUser, useTheme, useTranslation } from "@/context/UserContext";
-import LanguageSelector from "@/components/LanguageSelector";
+import AuthControls from "@/components/AuthControls";
 
 WebBrowser.maybeCompleteAuthSession();
 
 export default function SignUp() {
   const { login } = useAuth();
-  const { updateUser } = useUser();
+  const { updateUser, darkMode, setDarkMode } = useUser();
   const theme = useTheme();
   const { t, isRTL } = useTranslation();
   const [username, setUsername] = useState("");
@@ -38,6 +39,15 @@ export default function SignUp() {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const logoAnim = useRef(new Animated.Value(0)).current;
+  const logoScale = useRef(new Animated.Value(0.85)).current;
+
+  useEffect(() => {
+    Animated.parallel([
+      Animated.timing(logoAnim, { toValue: 1, duration: 700, useNativeDriver: true }),
+      Animated.spring(logoScale, { toValue: 1, tension: 70, friction: 9, useNativeDriver: true }),
+    ]).start();
+  }, []);
 
   const handleSignUp = async () => {
     if (!username.trim() || !email.trim() || !password || !confirmPassword) {
@@ -155,28 +165,30 @@ export default function SignUp() {
           showsVerticalScrollIndicator={false}
           keyboardShouldPersistTaps="handled"
         >
-          {/* Language Selector */}
-          <View style={{
-            position: "absolute",
-            top: Platform.OS === 'ios' ? 40 : 20,
-            right: isRTL ? undefined : 20,
-            left: isRTL ? 20 : undefined,
-            zIndex: 1000
-          }}>
-            <LanguageSelector />
-          </View>
+          <AuthControls />
 
           {/* Logo */}
-          <View className="items-center mb-2 w-full">
+          <Animated.View
+            style={{
+              alignItems: "center",
+              marginBottom: 8,
+              marginTop: 80,
+              opacity: logoAnim,
+              transform: [{ scale: logoScale }],
+            }}
+          >
             <Image
-              source={images.logo}
-              className="img-logo-2"
+              source={images.appLogo}
+              style={{ width: 140, height: 140 }}
               resizeMode="contain"
             />
-          </View>
+          </Animated.View>
 
           {/* Title */}
-          <Text className="text-2xl font-inter-semibold text-black mb-10 mt-4">
+          <Text 
+            style={{ color: theme.text }}
+            className="text-2xl font-inter-semibold mb-10 mt-4"
+          >
             {t("signupTitle")}
           </Text>
 
@@ -285,7 +297,10 @@ export default function SignUp() {
 
             {/* Login link */}
             <View className={`flex-row justify-center mt-2 ${isRTL ? "flex-row-reverse" : ""}`}>
-              <Text className="text-base text-black font-inter-regular opacity-60">
+              <Text 
+                style={{ color: theme.text }}
+                className="text-base font-inter-regular opacity-60"
+              >
                 {t("alreadyHaveAccount")}{" "}
               </Text>
               <TouchableOpacity onPress={() => router.push("/(auth)/log-in")}>

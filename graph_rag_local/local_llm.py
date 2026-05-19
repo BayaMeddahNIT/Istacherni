@@ -30,7 +30,7 @@ from dotenv import load_dotenv
 
 # ── Configuration ──────────────────────────────────────────────────────────────
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-load_dotenv(PROJECT_ROOT / ".env")
+load_dotenv(PROJECT_ROOT / ".env", override=True)
 
 # Model name — override in .env with LOCAL_LLM_MODEL
 # Recommended: "qwen2:7b" (strong Arabic), "mistral" (lighter), "aya:8b" (Arabic-first)
@@ -143,7 +143,8 @@ def local_generate(
         "options": {
             "temperature": temperature,
             "num_predict": max_tokens,
-            "num_ctx": 4096,        # cap context window to avoid memory/time blowup
+            "num_ctx": 3072,        # Increased from 2048 to prevent cross-lingual hallucination (stability)
+            "num_thread": 6,        # Reduced to prevent CPU saturation (allow OS cycles)
             "repeat_penalty": 1.15, # Prevent small models (0.5b) from looping answers
             "repeat_last_n": 128,   # Look-back window for repetition detection
             "stop": ["\n\n\n", "الإجابة:\nالإجابة:", "السؤال:"],  # Hard stop sequences

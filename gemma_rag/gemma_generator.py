@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import time
 import urllib.error
 import urllib.request
@@ -27,26 +28,47 @@ from dotenv import load_dotenv
 
 # ── Env ─────────────────────────────────────────────────────────────────────────
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-load_dotenv(PROJECT_ROOT / ".env")
+load_dotenv(PROJECT_ROOT / ".env", override=True)
 
 # ── Config ───────────────────────────────────────────────────────────────────────
 OLLAMA_BASE_URL:    str   = os.getenv("OLLAMA_BASE_URL",    "http://localhost:11434")
 OLLAMA_GEMMA_MODEL: str   = os.getenv("OLLAMA_GEMMA_MODEL", "gemma2:9b")
-OLLAMA_TIMEOUT:     int   = int(os.getenv("OLLAMA_TIMEOUT",     "180"))
+OLLAMA_TIMEOUT:     int   = int(os.getenv("OLLAMA_TIMEOUT",     "600"))
 OLLAMA_NUM_CTX:     int   = int(os.getenv("OLLAMA_NUM_CTX",     "4096"))
 OLLAMA_TEMP:        float = float(os.getenv("OLLAMA_TEMPERATURE", "0.1"))
 
-# ── System prompt ────────────────────────────────────────────────────────────────
-_SYSTEM = """أنت مساعد قانوني متخصص في القانون الجزائري.
-مهمتك هي الإجابة على أسئلة المستخدمين بناءً على المواد القانونية المسترجعة.
+# ── Context pollution blacklist ─────────────────────────────────────────────
+_CONTEXT_BLACKLIST = {
+    ("قانون العقوبات",                                        "3"),
+    ("قانون الوقاية من الجرائم المتصلة بتكنولوجيات",         "2"),
+    ("قانون الوقاية من الجرائم المتصلة بتكنولوجيات",         "3"),
+    ("القانون المدني",                                         "1"),
+    ("القانون التجاري",                                        "1"),
+}
 
-قواعد الإجابة:
-1. أجب دائماً باللغة العربية.
-2. استند إلى المواد القانونية المقدمة واذكر رقم المادة واسم القانون لكل معلومة.
-3. إذا كانت المواد المقدمة تتعلق بفرع قانوني مختلف عن السؤال (مثلاً مواد مدنية لسؤال جنائي)، فاشرح ما تنص عليه هذه المواد وأوضح أن العقوبة الجزائية قد تكون منصوصاً عليها في قانون العقوبات.
-4. لا تتجاهل المواد المقدمة — استخدمها بأقصى قدر ممكن حتى لو كانت غير مباشرة.
-5. إذا لم تكن المواد المقدمة ذات صلة بالسؤال إطلاقاً، فقط أوضح ذلك بإيجاز.
-6. رتّب إجابتك: الحكم الرئيسي، ثم الشروط، ثم العقوبات إن وُجدت، ثم ملاحظات حول النطاق القانوني إن لزم."""
+def _is_blacklisted(art: dict) -> bool:
+    law = art.get("law_name", "")
+    num = str(art.get("article_number", ""))
+    return any(
+        frag in law and num == num_key
+        for frag, num_key in _CONTEXT_BLACKLIST
+    )
+
+# ── Arabic output sanitizer ─────────────────────────────────────────────────
+_CJK_RANGE = re.compile(r'[\u4e00-\u9fff\u3040-\u309f\u30a0-\u30ff\uac00-\ud7af]+')
+
+def _sanitize_arabic(text: str) -> str:
+    return _CJK_RANGE.sub('[...]‏', text)
+
+# ── System prompt ────────────────────────────────────────────────────────────────
+# Roadmap Step 5: Generation Grounding Instruction
+_SYSTEM = """مساعد قانوني متخصص في القانون الجزائري.
+أجب حصراً بناءً على المواد المرفقة.
+قواعد صارمة:
+1. ابدأ تحليلك دائماً من المادة [1] باعتبارها الأعلى صلة. لا تتجاهل المادة الأولى لصالح مادة لاحقة.
+2. اذكر دائماً رقم المادة واسم القانون لكل معلومة.
+3. إذا لم تجد في المواد المقدمة نصاً صريحاً، اذكر: 'لا تتضمن المواد المقدمة نصاً على هذه الحالة'.
+4. أجب بنص عادي مباشر وابتعد عن التنسيق المعقد."""
 
 
 # ── Context builder ──────────────────────────────────────────────────────────────
@@ -55,6 +77,12 @@ def _build_context(retrieved: List[Dict[str, Any]]) -> str:
     """Format retrieved article dicts into a readable Arabic context block."""
     if not retrieved:
         return "لا توجد مواد قانونية ذات صلة."
+
+    filtered = [a for a in retrieved if not _is_blacklisted(a)]
+    if len(filtered) < len(retrieved):
+        removed = len(retrieved) - len(filtered)
+        print(f"[Gemma-Gen] Blacklist filtered {removed} generic article(s) from context.", flush=True)
+    retrieved = filtered if filtered else retrieved
 
     parts = []
     for art in retrieved:
@@ -83,8 +111,13 @@ def _ollama_chat(system: str, user: str, max_retries: int = 3) -> str:
         "model":  OLLAMA_GEMMA_MODEL,
         "stream": False,
         "options": {
-            "temperature": OLLAMA_TEMP,
-            "num_ctx":     OLLAMA_NUM_CTX,
+            "temperature":    OLLAMA_TEMP,
+            "num_ctx":        OLLAMA_NUM_CTX,
+            "num_predict":    800,    # Hard token cap — prevents runaway long answers (~2× speedup)
+            "top_k":          20,     # Narrow sampling = fewer token evaluations
+            "top_p":          0.8,
+            "repeat_penalty": 1.1,   # Prevent repetition loops that inflate length
+            "stop":           ["\n\n\n", "السؤال:"],
         },
         "messages": [
             {"role": "system", "content": system},
@@ -141,7 +174,8 @@ def gemma_generate(
         f"{question}\n\n"
         "=== الإجابة ==="
     )
-    return _ollama_chat(system=_SYSTEM, user=user_prompt, max_retries=max_retries)
+    response = _ollama_chat(system=_SYSTEM, user=user_prompt, max_retries=max_retries)
+    return _sanitize_arabic(response)
 
 
 # ── Health check ─────────────────────────────────────────────────────────────────

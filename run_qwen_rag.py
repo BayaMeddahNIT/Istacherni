@@ -26,7 +26,8 @@ if sys.stdout.encoding.lower() != "utf-8":
 print("Initializing Qwen RAG test script… Loading heavy libraries.", flush=True)
 
 from qwen_rag.qwen_retriever import qwen_retrieve
-from gemma_rag.gemma_generator import gemma_generate, OLLAMA_GEMMA_MODEL
+from qwen_rag.qwen_generator import qwen_generate
+OLLAMA_MODEL = "qwen2:1.5b"
 
 
 def main():
@@ -52,22 +53,34 @@ def main():
 
     print(
         f"Loaded {len(questions)} questions. "
-        f"Using Qwen dense retrieval + {OLLAMA_GEMMA_MODEL} for generation.",
+        f"Using Qwen dense retrieval + {OLLAMA_MODEL} for generation.",
         flush=True,
     )
 
-    with open(output_file, "w", encoding="utf-8") as out:
-        out.write(f"=== Qwen RAG Results — Generator: {OLLAMA_GEMMA_MODEL} ===\n\n")
+    with open(output_file, "a", encoding="utf-8") as out:
+        # ── Resume support ────────────────────────────────────────────────────
+        already_done = 0
+        if output_file.exists():
+            content = output_file.read_text(encoding="utf-8")
+            already_done = content.count("[User]:")
+            if already_done > 0:
+                print(f"Resuming from question {already_done + 1} (skipping {already_done} already done).")
+                questions = questions[already_done:]
+        else:
+            out.write(f"=== Qwen RAG Results — Generator: {OLLAMA_MODEL} ===\n\n")
 
         for i, q in enumerate(questions, 1):
             print(f"[{i}/{len(questions)}] Processing: {q}", flush=True)
             start = time.time()
 
             try:
-                chunks = qwen_retrieve(q, top_k=5)
-                answer = gemma_generate(q, chunks)
+                chunks = qwen_retrieve(q, top_k=3)
+                answer = qwen_generate(q, chunks)
             except Exception as e:
-                answer = f"Error during processing: {e}"
+                import traceback
+                error_trace = traceback.format_exc()
+                print(error_trace, flush=True)
+                answer = f"Error during processing: {e}\n{error_trace}"
                 chunks = []
 
             elapsed = time.time() - start

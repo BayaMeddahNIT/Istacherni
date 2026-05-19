@@ -12,7 +12,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 // ── Config ─────────────────────────────────────────────────────────────────
 export const API_BASE =
-  process.env.EXPO_PUBLIC_API_URL || "http://172.32.31.30:8000";
+  process.env.EXPO_PUBLIC_API_URL || "https://istacherni-auth.loca.lt";
 
 const TIMEOUT_MS = 300_000; // 5 min (covers slow CPU inference)
 
@@ -64,7 +64,10 @@ async function _tryRefresh(): Promise<string | null> {
   try {
     const res = await fetch(`${API_BASE}/auth/refresh`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        "bypass-tunnel-reminder": "true",
+      },
       body: JSON.stringify({ refresh_token: refresh }),
     });
     if (!res.ok) return null;
@@ -85,6 +88,7 @@ export async function apiFetch(
 
   const headers: Record<string, string> = {
     "Content-Type": "application/json",
+    "bypass-tunnel-reminder": "true",
     ...(options.headers as Record<string, string>),
   };
   if (token) headers["Authorization"] = `Bearer ${token}`;

@@ -28,9 +28,13 @@ from __future__ import annotations
 # ── Force UTF-8 output on Windows before ANY print() ─────────────────────────
 import sys
 import io
-if sys.stdout.encoding and sys.stdout.encoding.lower() != "utf-8":
-    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
-    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="replace")
+try:
+    if hasattr(sys.stdout, 'reconfigure'):
+        sys.stdout.reconfigure(encoding='utf-8')
+    if hasattr(sys.stderr, 'reconfigure'):
+        sys.stderr.reconfigure(encoding='utf-8')
+except Exception:
+    pass
 
 import argparse
 import csv
@@ -52,7 +56,7 @@ ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT))
 
 # ── Paths ──────────────────────────────────────────────────────────────────────
-DATASET_PATH = ROOT / "dataset" / "raw" / "algerian_law_ragas_dataset_v2.json"
+DATASET_PATH = ROOT / "algerian_law_ragas_dataset_v3.json"
 RESULTS_DIR  = ROOT / "evaluation" / "ragas_results"
 RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -89,15 +93,16 @@ def load_dataset(n: int | None = None) -> list[dict]:
 # ==============================================================================
 
 def _check_ollama() -> bool:
+    import urllib.request
     try:
-        import requests
-        r = requests.get("http://localhost:11434/api/version", timeout=3)
-        return r.status_code == 200
+        req = urllib.request.Request("http://localhost:11434/api/tags", method="GET")
+        with urllib.request.urlopen(req, timeout=3) as resp:
+            return resp.status == 200
     except Exception:
         return False
 
 
-def run_bge_qwen_pipeline(question: str, top_k: int = 7) -> dict:
+def run_bge_qwen_pipeline(question: str, top_k: int = 7, model: str = None) -> dict:
     """Pipeline 1: BGE-M3 graph retrieval + Qwen2 local generation."""
     from graph_rag_local.graph_retriever import graph_retrieve, expand_acronyms
     from graph_rag_local.graph_generator import graph_generate
@@ -108,7 +113,7 @@ def run_bge_qwen_pipeline(question: str, top_k: int = 7) -> dict:
     if not chunks:
         return {"answer": "", "contexts": [], "retrieved_ids": []}
 
-    answer = graph_generate(clean_q, chunks, stream=False)
+    answer = graph_generate(clean_q, chunks, stream=False, model=model)
 
     contexts = [
         c.get("text_original") or c.get("summary") or ""
@@ -127,7 +132,7 @@ def run_bge_qwen_pipeline(question: str, top_k: int = 7) -> dict:
     }
 
 
-def run_camelbert_pipeline(question: str, top_k: int = 7) -> dict:
+def run_camelbert_pipeline(question: str, top_k: int = 7, model: str = None) -> dict:
     """Pipeline 2: CamelBERT retrieval + Qwen2 generation."""
     from camelbert_rag.camelbert_retriever import camelbert_retrieve
     from graph_rag_local.graph_generator import graph_generate
@@ -137,7 +142,7 @@ def run_camelbert_pipeline(question: str, top_k: int = 7) -> dict:
     if not chunks:
         return {"answer": "", "contexts": [], "retrieved_ids": []}
 
-    answer = graph_generate(question, chunks, stream=False)
+    answer = graph_generate(question, chunks, stream=False, model=model)
 
     contexts = [
         c.get("text_original") or c.get("summary") or ""
@@ -175,10 +180,10 @@ def retrieve_only_camelbert(question: str, top_k: int = 7) -> dict:
     return {"answer": "", "contexts": contexts, "retrieved_ids": retrieved_ids}
 
 
-def run_agentic_bge_pipeline(question: str, top_k: int = 7) -> dict:
+def run_agentic_bge_pipeline(question: str, top_k: int = 7, model: str = None) -> dict:
     """Pipeline 3: Agentic RAG (BGE + Qwen)."""
     from agentic_rag.agentic_agent import agentic_answer
-    result = agentic_answer(question, verbose=False, retriever_type="bge", skip_gen=False)
+    result = agentic_answer(question, verbose=False, retriever_type="bge", skip_gen=False, model=model)
     return {
         "answer":        result.get("answer", ""),
         "contexts":      result.get("contexts", []),
@@ -187,10 +192,10 @@ def run_agentic_bge_pipeline(question: str, top_k: int = 7) -> dict:
     }
 
 
-def run_agentic_camelbert_pipeline(question: str, top_k: int = 7) -> dict:
+def run_agentic_camelbert_pipeline(question: str, top_k: int = 7, model: str = None) -> dict:
     """Pipeline 4: Agentic RAG (CamelBERT + Qwen)."""
     from agentic_rag.agentic_agent import agentic_answer
-    result = agentic_answer(question, verbose=False, retriever_type="camelbert", skip_gen=False)
+    result = agentic_answer(question, verbose=False, retriever_type="camelbert", skip_gen=False, model=model)
     return {
         "answer":        result.get("answer", ""),
         "contexts":      result.get("contexts", []),
@@ -334,6 +339,7 @@ def run_pipeline(
     retrieve_fn,          # retrieval-only function
     dataset: list[dict],
     skip_gen: bool = False,
+    model: str = None,
     verbose: bool  = True,
 ) -> dict:
     """Run one pipeline on the full dataset and return aggregated results."""
@@ -357,7 +363,7 @@ def run_pipeline(
             print(f"\n  [{i+1:3d}/{len(dataset)}] [{category}] {q_short}")
 
         try:
-            result = retrieve_fn(question) if skip_gen else pipeline_fn(question)
+            result = retrieve_fn(question) if skip_gen else pipeline_fn(question, model=model)
         except Exception as e:
             print(f"    ERROR: {type(e).__name__}: {e}")
             result = {"answer": "", "contexts": [], "retrieved_ids": []}
@@ -1083,6 +1089,8 @@ def main():
         help="Reprint the latest saved report without running anything.")
     parser.add_argument("--quiet", action="store_true",
         help="Suppress per-question output.")
+    parser.add_argument("--model", type=str, default=None,
+        help="Ollama model name to use for generation.")
     args = parser.parse_args()
 
     print("\n" + "=" * 65)
@@ -1144,6 +1152,7 @@ def main():
                 retrieve_fn   = cfg["retrieve_fn"],
                 dataset       = dataset,
                 skip_gen      = args.skip_gen,
+                model         = args.model,
                 verbose       = not args.quiet,
             )
             all_results.append(result)

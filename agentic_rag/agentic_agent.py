@@ -140,7 +140,7 @@ CRITICAL RULES:
 Expansion Rule: SARL -> شركة ذات مسؤولية محدودة, SPA -> شركة مساهمة.
 """
 
-def _run_router(query: str, history: list[dict], verbose: bool = False) -> dict:
+def _run_router(query: str, history: list[dict], verbose: bool = False, model: str = None) -> dict:
     """Combines intent classification, query rewriting, and entity extraction into a single LLM pass."""
     prompt = _ROUTER_SYSTEM + "\n\n"
     if history:
@@ -154,7 +154,7 @@ def _run_router(query: str, history: list[dict], verbose: bool = False) -> dict:
     prompt += f"Language hint: {lang_hint}\n"
     prompt += "\nOutput ONLY valid JSON:\n"
 
-    raw = local_generate(prompt, temperature=0.0, stream=False)
+    raw = local_generate(prompt, temperature=0.0, stream=False, model=model)
     
     # Extract JSON
     raw = re.sub(r"```(?:json)?", "", raw).strip().strip("`").strip()
@@ -343,6 +343,7 @@ def agentic_answer(
     verbose: bool = True,
     retriever_type: str = "bge",
     skip_gen: bool = False,
+    model: str = None,
 ) -> dict:
     """Run the state-based hybrid agentic RAG loop."""
     # ── O(1) Instant CHITCHAT Interceptor — zero LLM cost ─────────────────────
@@ -363,7 +364,7 @@ def agentic_answer(
 
     while state != "END":
         if state == "ROUTE":
-            routing_data = _run_router(question, chat_history, verbose)
+            routing_data = _run_router(question, chat_history, verbose, model=model)
             detected_language = routing_data.get("detected_language", detected_language)
             if verbose:
                 print(f"  [Router] Lang: {detected_language} | Intent: {routing_data.get('intent')} | Rewritten: {routing_data.get('rewritten_query')}")
@@ -405,7 +406,7 @@ def agentic_answer(
             intent = routing_data.get("intent", "SUBSTANTIVE")
             qa_system = _build_qa_system(detected_language, intent)
             prompt = qa_system + f"\n\nRetrieved context:\n{context_text}\n\nUser question: {question}\nOutput JSON only:"
-            raw = local_generate(prompt, temperature=0.0, stream=False)
+            raw = local_generate(prompt, temperature=0.0, stream=False, model=model)
             thoughts, final_json = _parse_thought_and_json(raw)
             if verbose and thoughts:
                 print(f"  [Thought] {thoughts}")
@@ -447,6 +448,7 @@ def agentic_answer(
 def agentic_answer_stream(
     question: str,
     chat_history: list[dict] = None,
+    model: str = None,
 ):
     """Generator version of the state machine."""
     # ── O(1) Instant CHITCHAT Interceptor — zero LLM cost ─────────────────────
@@ -470,7 +472,7 @@ def agentic_answer_stream(
 
     while state != "END":
         if state == "ROUTE":
-            routing_data = _run_router(question, chat_history)
+            routing_data = _run_router(question, chat_history, model=model)
             detected_language = routing_data.get("detected_language", detected_language)
             intent = routing_data.get("intent", "SUBSTANTIVE")
 
@@ -507,7 +509,7 @@ def agentic_answer_stream(
             intent = routing_data.get("intent", "SUBSTANTIVE")
             qa_system = _build_qa_system(detected_language, intent)
             prompt = qa_system + f"\n\nRetrieved context:\n{context_text}\n\nUser question: {question}\nOutput JSON only:"
-            raw = local_generate(prompt, temperature=0.0, stream=False)
+            raw = local_generate(prompt, temperature=0.0, stream=False, model=model)
             thoughts, final_json = _parse_thought_and_json(raw)
             if final_json.get("is_context_sufficient") == "yes":
                 ans = final_json.get("answer", "")

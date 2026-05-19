@@ -8,60 +8,126 @@ Zero external API calls. Works completely offline after Ollama setup.
 """
 
 from graph_rag_local.local_llm import local_generate, LOCAL_LLM_MODEL
+import re
+
+# ── Context pollution blacklist ─────────────────────────────────────────────
+# Fix A: Generic scope/definitions articles that are semantically adjacent to
+# every query but contain zero specific legal conclusions. They occupy top-3
+# context slots without contributing any legal value.
+# Keyed as (law_name_fragment, article_number) for resilient matching.
+_CONTEXT_BLACKLIST = {
+    ("قانون العقوبات",                                        "3"),   # scope article
+    ("قانون الوقاية من الجرائم المتصلة بتكنولوجيات",         "2"),   # cybercrime definitions
+    ("قانون الوقاية من الجرائم المتصلة بتكنولوجيات",         "3"),   # cybercrime scope
+    ("القانون المدني",                                         "1"),   # general provisions
+    ("القانون التجاري",                                        "1"),   # general provisions
+}
+
+def _is_blacklisted(art: dict) -> bool:
+    """Return True if the article is a known context-polluting generic article."""
+    law = art.get("law_name", "")
+    num = str(art.get("article_number", ""))
+    return any(
+        frag in law and num == num_key
+        for frag, num_key in _CONTEXT_BLACKLIST
+    )
+
+# ── Arabic output sanitizer ─────────────────────────────────────────────────
+# Fix D: The 7B model occasionally bleeds into CJK (Chinese/Japanese/Korean)
+# character ranges under high context pressure. Replace any such bleed with a
+# clean Arabic placeholder so the output remains professionally usable.
+_CJK_RANGE = re.compile(r'[\u4e00-\u9fff\u3040-\u309f\u30a0-\u30ff\uac00-\ud7af]+')
+
+def _sanitize_arabic(text: str) -> str:
+    """Strip any CJK character sequences from model output."""
+    return _CJK_RANGE.sub('[...]‏', text)
 
 # ── System instruction ─────────────────────────────────────────────────────────
-_SYSTEM = """أنت مستشار قانوني جزائري خبير ودقيق. مهمتك الوحيدة هي الإجابة على سؤال المستخدم بناءً حصراً على النصوص القانونية ذات الصلة المرفقة.
-
-تعليمات إلزامية وصارمة:
-1. اقرأ جميع المواد المُقدَّمة أولاً، ثم قيّم مدى صلتها بسؤال المستخدم.
-2. 🚫 إذا كانت مادةٌ ما لا علاقة لها المباشرة بسؤال المستخدم، تجاهلها تماماً ولا تذكرها في إجابتك ولو بكلمة واحدة.
-3. ✅ استخدم فقط المواد التي تجيب بشكل مباشر على السؤال المطروح.
-4. اكتب إجابة منظمة بالنقاط تذكر فيها كل حكم قانوني مع رقم المادة التي جاء منها.
-5. الإجابة باللغة العربية الفصحى فقط — يُمنع منعاً باتاً استخدام أي كلمات أو رموز أجنبية.
-6. كن مختصراً ودقيقاً — لا تكرر المعلومات ولا تطوّل دون فائدة.
-7. استخدم مصطلح "صاحب العمل" أو "المُستخدِم" للإشارة إلى رب العمل (لا تستخدم رموزاً أجنبية مثل 雇主).
-8. بعد كل جملة تستند إلى نص قانوني، اذكر رقم المادة بين قوسين مربعين: [المادة X]. إذا لم تستطع نسب الجملة لمادة محددة مُقدَّمة في السياق، لا تكتبها.
-9. يُمنع منعاً باتاً استخدام أي لغة أخرى غير اللغة العربية. لا تستخدم أي رموز أو كلمات أجنبية أو صينية.
-10. إذا كانت النصوص المسترجعة لا تذكر صراحة تفاصيل معينة (مثل مسؤولية الشركاء)، يُمنع منعاً باتاً استنتاجها أو تأليفها. اكتفِ بما هو مكتوب فقط."""
+# Phase 3.1: Structured Chain-of-Thought Citation Prompt.
+# Forces the LLM through a 4-step reasoning chain before generating an answer,
+# directly attacking F2 (Legal Conclusion Errors) and hallucination by separating
+# issue identification from article matching from conclusion drawing.
+_SYSTEM = """أنت مستشار قانوني جزائري متخصص. أجب حصراً بناءً على المواد المرفقة.
+**قاعدة الأولوية:** ابدأ تحليلك دائماً من المادة [1] باعتبارها الأعلى صلة. لا تتجاهل المادة الأولى لصالح مادة لاحقة بسبب تشابه المصطلحات وحده — الترتيب يعكس الصلة الفعلية بالسؤال.
+اكتفِ بهذا الهيكل المختصر:
+**1. التحليل والمواد:** حدد المسألة والمواد المنطبقة [المادة X].
+**2. الحكم:** النتيجة القانونية المباشرة.
+**3. تنبيه:** اذكر أي نقص في التغطية القانونية (إن وجد).
+لا تستخدم مواد غير مباشرة. الإجابة باللغة العربية حصراً. يمنع استخدام أي لغة أخرى (مثل الصينية أو الإنجليزية)."""
 
 # ── Context builder ────────────────────────────────────────────────────────────
-def _build_context(retrieved: list[dict]) -> str:
+def _build_context(retrieved: list[dict], max_articles_full: int = 3) -> str:
+    """
+    Builds the prompt context from retrieved articles.
+    Strictly tiers the context: full text for top-3 articles, only summaries for the rest,
+    to prevent 'lost in the middle' hallucinations and context saturation.
+
+    Phase 3.2: Injects a multi-domain disambiguation warning when retrieved articles
+    span more than one law domain (e.g., Civil + Commercial mix), preventing the LLM
+    from conflating partnership rules from different legal codes.
+    """
     if not retrieved:
         return "لا توجد مواد قانونية ذات صلة."
+
+    # Disambiguation warning: if articles come from multiple law domains,
+    # alert the LLM to use only the most directly relevant ones.
+    domains_found = set(a.get("law_domain", "") for a in retrieved if a.get("law_domain"))
     parts = []
+    if len(domains_found) > 1:
+        parts.append(
+            "⚠️ تحذير — مواد من قوانين مختلفة: المواد أدناه مستمدة من مجالات قانونية متعددة "
+            f"({' / '.join(domains_found)}). "
+            "استخدم فقط المواد المنطبقة مباشرة على السؤال المطروح، وتجاهل المواد الأخرى."
+        )
+    # Fix A: Filter blacklisted generic scope articles BEFORE building context.
+    # Replace each removed slot with the next highest-ranked non-blacklisted article.
+    filtered = [a for a in retrieved if not _is_blacklisted(a)]
+    if len(filtered) < len(retrieved):
+        removed = len(retrieved) - len(filtered)
+        print(f"[Generator] Blacklist filtered {removed} generic article(s) from context.")
+    # Use filtered list — maintains original rank order, just without noise articles.
+    retrieved = filtered if filtered else retrieved  # safety: never return empty
+
     for i, art in enumerate(retrieved, 1):
+        is_top_priority = (i <= max_articles_full)
+        
         title = f" ({art['title']})" if art.get("title") else ""
         header = f"━━━ المادة {i}: 【{art['law_name']} — المادة {art['article_number']}】{title} ━━━"
 
         sections = [header]
 
-        # Summary — first priority for conceptual understanding
+        # Summary — always include as it anchors the article concept
         summary = art.get("summary", "").strip()
         if summary:
             sections.append(f"📌 الملخص:\n{summary}")
 
-        # Explanation — second priority for legal reasoning
-        explanation = art.get("text_explanation", "").strip()
-        if explanation:
-            sections.append(f"📖 الشرح والتعليل:\n{explanation}")
+        if is_top_priority:
+            # Explanation
+            explanation = art.get("text_explanation", "").strip()
+            if explanation:
+                sections.append(f"📖 الشرح والتعليل:\n{explanation}")
 
-        # Original text — third priority for legal citation
-        text = art.get("text_original", "نص غير متوفر").strip()
-        sections.append(f"⚖️ النص الأصلي للمادة:\n{text}")
+            # Original text — ONLY for top priority
+            text = art.get("text_original", "نص غير متوفر").strip()
+            sections.append(f"⚖️ النص الأصلي للمادة:\n{text}")
 
-        # Keywords — contextual anchors
-        keywords = art.get("keywords", [])
-        if keywords:
-            sections.append(f"🔑 الكلمات المفتاحية: {' | '.join(keywords)}")
-
-        # Optional penalty/conditions metadata
-        if art.get("legal_conditions_summary"):
-            sections.append(f"📋 الشروط القانونية: {art['legal_conditions_summary']}")
-        if art.get("penalties_summary"):
-            sections.append(f"⚠️ العقوبات: {art['penalties_summary']}")
+            # Metadata
+            if art.get("legal_conditions_summary"):
+                sections.append(f"📋 الشروط القانونية: {art['legal_conditions_summary']}")
+            if art.get("penalties_summary"):
+                sections.append(f"⚠️ العقوبات: {art['penalties_summary']}")
 
         parts.append("\n".join(sections))
     return "\n\n---\n\n".join(parts)
+
+def _estimate_max_tokens(question: str, retrieved: list[dict]) -> int:
+    """Dynamically set max_tokens to reduce latency."""
+    unique_laws = len(set(a.get("law_name", "") for a in retrieved if a.get("law_name")))
+    if unique_laws >= 2:
+        return 768  # Multi-code synthesis
+    if len(retrieved) <= 2 and len(question) < 60:
+        return 256   # Simple factual lookup
+    return 400       # Optimized default
 
 
 
@@ -70,7 +136,8 @@ def graph_generate(
     question: str,
     retrieved: list[dict],
     chat_history: list[dict] = None,
-    stream: bool = False,
+    stream: bool = True,
+    model: str = None,
 ) -> str:
     """
     Generate a legal answer using a fully local LLM (Ollama).
@@ -110,26 +177,25 @@ def graph_generate(
     is_procedural_query = any(t in query_lower for t in _PROCEDURAL_TRIGGERS)
 
     if is_procedural_query:
-        # Build an honest summary from the retrieved articles
-        legal_facts = []
-        for a in retrieved[:4]:
-            art_num = a.get("article_number", "")
-            law = a.get("law_name", "")
-            summary = (a.get("summary") or a.get("text_original") or "")[:200]
-            if art_num and summary:
-                legal_facts.append(f"• المادة {art_num} ({law}): {summary.strip()}")
-
-        facts_text = "\n".join(legal_facts)
-        return (
-            "النصوص القانونية المسترجعة تحدد الإطار القانوني لهذا الموضوع، "
-            "ولكنها لا تحتوي على الإجراءات الإدارية التفصيلية (الأوراق، الرسوم، المكاتب).\n\n"
-            "**ما ينص عليه القانون:**\n"
-            f"{facts_text}\n\n"
-            "للحصول على الإجراءات الإدارية المحددة، يُرجى التواصل مباشرةً مع الجهة المختصة "
-            "(مثل المركز الوطني للسجل التجاري CNRC أو الجهة الإدارية ذات الصلة)."
+        # Pass to LLM with specialized procedural prompt.
+        # Old code returned hardcoded response violating the Arabic-only system prompt.
+        procedural_context = _build_context(retrieved)
+        procedural_prompt = (
+            f"{_SYSTEM}\n\n"
+            "تنبيه خاص: السؤال يتعلق بإجراءات أو خطوات. "
+            "اعرض فقط ما تنص عليه المواد القانونية المسترجعة من التزامات وشروط قانونية. "
+            "لا تخترع خطوات إدارية غير مذكورة صراحةً في النصوص. "
+            "إذا لم تتضمن النصوص إجراءات، فاذكر الإطار القانوني فقط.\n\n"
+            f"=== المواد القانونية المسترجعة ===\n\n{procedural_context}\n\n"
+            f"=== سؤال المستخدم ===\n\n{question}\n\n"
+            "=== الإجابة ==="
+        )
+        return _sanitize_arabic(
+            local_generate(procedural_prompt, temperature=0.0, stream=stream, model=model)
         )
     # ── End of Procedural Guard ────────────────────────────────────────────────
-    context = _build_context(retrieved)
+    context = _build_context(retrieved, max_articles_full=3)
+    max_tok = _estimate_max_tokens(question, retrieved)
 
     chat_text = ""
     if chat_history:
@@ -139,30 +205,6 @@ def graph_generate(
             lines.append(f"{role}: {msg.get('content', '')}")
         chat_text = "\n\n=== تاريخ المحادثة ===\n" + "\n".join(lines) + "\n"
 
-    # ── Last-Word Anti-Hallucination Gate + Chain-of-Thought ──────────────────
-    # This block is placed at the VERY BOTTOM of the prompt, immediately before
-    # the answer token. Recency bias ensures the model reads this last.
-    # The CoT line forces it to audit the context before writing a single word.
-    anti_hallucination_gate = (
-        "[تنبيه صارم وحاسم قبل الإجابة]:\n"
-        "راجع المواد المسترجعة أعلاه الآن. هل تحتوي على خطوات إدارية "
-        "(أوراق مطلوبة، رسوم، مكاتب، إجراءات تطبيقية)؟\n\n"
-        "ابدأ إجابتك بجملة تحليل بين قوسين:\n"
-        "- إذا كانت المواد تحتوي على خطوات: اكتب (التحليل: السياق يحتوي على [...]) ثم اعرض المعلومات القانونية.\n"
-        "- إذا كانت المواد لا تحتوي على خطوات إدارية: يجب أن تكتب الجملة التالية حرفياً ثم تتوقف:\n"
-        '  "(التحليل: النصوص المسترجعة لا تحتوي على إجراءات إدارية.)\n'
-        "  النصوص القانونية المسترجعة تنص على الالتزام القانوني فقط:\n"
-        "  - [اذكر ما تنص عليه المادة 19 ومواد أخرى صراحةً بدون إضافة خطوات من عندك]\"\n"
-    )
-
-    # ONLY attach the anti-hallucination gate for procedural queries.
-    # For pure legal queries (e.g. "what are worker rights?"), omit it entirely
-    # so the model produces a clean bulleted answer without the (التحليل...) header.
-    if is_procedural_query:
-        gate_block = f"{anti_hallucination_gate}\n\n"
-    else:
-        gate_block = ""
-
     prompt = (
         f"{_SYSTEM}\n\n"
         f"=== المواد القانونية المسترجعة ===\n\n"
@@ -170,11 +212,12 @@ def graph_generate(
         f"{chat_text}"
         f"=== سؤال المستخدم ===\n\n"
         f"{question}\n\n"
-        f"{gate_block}"
         f"=== الإجابة ==="
     )
 
-    return local_generate(prompt, temperature=0.0, stream=stream)
+    return _sanitize_arabic(
+        local_generate(prompt, temperature=0.0, max_tokens=max_tok, stream=stream, model=model)
+    )
 
 
 if __name__ == "__main__":

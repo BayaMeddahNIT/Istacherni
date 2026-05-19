@@ -1,0 +1,1172 @@
+Initializing Graph RAG test script… Loading heavy libraries.
+Using LOCAL hybrid retriever (BGE-M3 + PPR + domain boost)
+Loaded 127 questions. Using Graph RAG retrieval + gemma2:9b for generation.
+[1/127] Processing: هل النصب في التجارة يُعاقب عليه القانون؟
+[GraphRetriever] Pre-loading embedding matrix...
+[GraphRetriever] Building BM25 index...
+
+[GraphRetriever] Classifying query: هل النصب في التجارة يُعاقب عليه القانون؟
+[CamelBERT] Initialising query classifier (CAMeL-Lab/bert-base-arabic-camelbert-msa)...
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 10211.74it/s]
+[1mBertModel LOAD REPORT[0m from: CAMeL-Lab/bert-base-arabic-camelbert-msa
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+bert.embeddings.position_ids               | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.decoder.bias               | UNEXPECTED |  | 
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.predictions.decoder.weight             | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+[CamelBERT] Confident domain match: Commercial Law (score: 0.561)
+[GraphRetriever] Amplified: هل النصب في التجارة يُعاقب عليه القانون؟
+[GraphRetriever] Domain focus: Commercial Law
+[Embeddings] Loading model: BAAI/bge-m3 on cpu...
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 11349.45it/s]
+[Embeddings] Model loaded.
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:03<00:00,  3.16s/it]Batches: 100%|██████████| 1/1 [00:03<00:00,  3.16s/it]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_19 (sim=0.374)
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_19 (sim=0.322)
+[2/127] Processing: شخص باعني منتج مزور، هل هذا يعتبر جريمة؟
+
+[GraphRetriever] Classifying query: شخص باعني منتج مزور، هل هذا يعتبر جريمة؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.494)
+[GraphRetriever] Amplified: شخص باعني منتج مزور، هل هذا يعتبر جريمة؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.40it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.38it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_01 (sim=0.358)
+[GraphRetriever] PPR subgraph pulled in: DZ_PENAL_ART_1 (sim=0.420)
+[3/127] Processing: ما هي عقوبة الغش في بيع السلع؟
+
+[GraphRetriever] Classifying query: ما هي عقوبة الغش في بيع السلع؟
+[CamelBERT] Confident domain match: Penal Code (score: 0.520)
+[GraphRetriever] Amplified: ما هي عقوبة الغش في بيع السلع؟
+[GraphRetriever] Domain focus: Penal Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.69it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.68it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_431 (sim=0.327)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_434 (sim=0.366)
+[4/127] Processing: هل يمكنني رفع شكوى ضد تاجر خدعني؟
+
+[GraphRetriever] Classifying query: هل يمكنني رفع شكوى ضد تاجر خدعني؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.482)
+[GraphRetriever] Amplified: هل يمكنني رفع شكوى ضد تاجر خدعني؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.76it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.76it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_84 (sim=0.362)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_84 (sim=0.418)
+[5/127] Processing: ما هي عقوبة إصدار شيك بدون رصيد؟
+
+[GraphRetriever] Classifying query: ما هي عقوبة إصدار شيك بدون رصيد؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.577)
+[GraphRetriever] Amplified: ما هي عقوبة إصدار شيك بدون رصيد؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:02<00:00,  2.95s/it]Batches: 100%|██████████| 1/1 [00:02<00:00,  2.96s/it]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_374 (sim=0.442)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_375 (sim=0.398)
+[6/127] Processing: هل عدم تسليم السلعة بعد الدفع يعتبر جريمة؟
+
+[GraphRetriever] Classifying query: هل عدم تسليم السلعة بعد الدفع يعتبر جريمة؟
+[CamelBERT] Confident domain match: Civil Law (score: 0.614)
+[GraphRetriever] Amplified: هل عدم تسليم السلعة بعد الدفع يعتبر جريمة؟
+[GraphRetriever] Domain focus: Civil Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.34it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.34it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_PENAL_ART_388 (sim=0.457)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_389 (sim=0.444)
+[7/127] Processing: هل التزوير في الفواتير يعاقب عليه؟
+
+[GraphRetriever] Classifying query: هل التزوير في الفواتير يعاقب عليه؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.569)
+[GraphRetriever] Amplified: هل التزوير في الفواتير يعاقب عليه؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:01<00:00,  1.28s/it]Batches: 100%|██████████| 1/1 [00:01<00:00,  1.28s/it]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_216 (sim=0.371)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVPROC_ART_216 (sim=0.410)
+[8/127] Processing: ما عقوبة سرقة معدات من محل تجاري؟
+
+[GraphRetriever] Classifying query: ما عقوبة سرقة معدات من محل تجاري؟
+[CamelBERT] Confident domain match: Penal Code (score: 0.550)
+[GraphRetriever] Amplified: ما عقوبة سرقة معدات من محل تجاري؟
+[GraphRetriever] Domain focus: Penal Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:01<00:00,  1.16s/it]Batches: 100%|██████████| 1/1 [00:01<00:00,  1.17s/it]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_350 (sim=0.302)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVPROC_ART_350 (sim=0.300)
+[9/127] Processing: هل يمكن متابعة موظف سرق من الشركة؟
+
+[GraphRetriever] Classifying query: هل يمكن متابعة موظف سرق من الشركة؟
+[CamelBERT] Confident domain match: Labor Law (score: 0.541)
+[GraphRetriever] Amplified: هل يمكن متابعة موظف سرق من الشركة؟
+[GraphRetriever] Domain focus: Labor Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.50it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.50it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_14 (sim=0.396)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_376 (sim=0.428)
+[10/127] Processing: ما هي عقوبة خيانة الأمانة في التجارة؟
+
+[GraphRetriever] Classifying query: ما هي عقوبة خيانة الأمانة في التجارة؟
+[CamelBERT] Confident domain match: Penal Code (score: 0.553)
+[GraphRetriever] Amplified: ما هي عقوبة خيانة الأمانة في التجارة؟
+[GraphRetriever] Domain focus: Penal Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.02it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.02it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_376 (sim=0.386)
+[GraphRetriever] PPR subgraph pulled in: DZ_PENAL_ART_14 (sim=0.347)
+[11/127] Processing: هل نشر معلومات كاذبة عن شركة جريمة؟
+
+[GraphRetriever] Classifying query: هل نشر معلومات كاذبة عن شركة جريمة؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.488)
+[GraphRetriever] Amplified: هل نشر معلومات كاذبة عن شركة جريمة؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [16:34<00:00, 994.18s/it]Batches: 100%|██████████| 1/1 [16:34<00:00, 994.18s/it]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_775 (sim=0.378)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_775 (sim=0.208)
+[12/127] Processing: هل يمكن معاقبة شخص على المنافسة غير الشريفة؟
+
+[GraphRetriever] Classifying query: هل يمكن معاقبة شخص على المنافسة غير الشريفة؟
+[CamelBERT] Confident domain match: Penal Code (score: 0.561)
+[GraphRetriever] Amplified: هل يمكن معاقبة شخص على المنافسة غير الشريفة؟
+[GraphRetriever] Domain focus: Penal Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:02<00:00,  2.29s/it]Batches: 100%|██████████| 1/1 [00:02<00:00,  2.29s/it]
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_14 (sim=0.314)
+[GraphRetriever] PPR subgraph pulled in: DZ_PENAL_ART_14 (sim=0.440)
+[13/127] Processing: ما عقوبة التهديد في إطار العمل؟
+
+[GraphRetriever] Classifying query: ما عقوبة التهديد في إطار العمل؟
+[CamelBERT] Confident domain match: Penal Code (score: 0.585)
+[GraphRetriever] Amplified: ما عقوبة التهديد في إطار العمل؟
+[GraphRetriever] Domain focus: Penal Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:01<00:00,  1.71s/it]Batches: 100%|██████████| 1/1 [00:01<00:00,  1.71s/it]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_284 (sim=0.379)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_286 (sim=0.352)
+[14/127] Processing: هل الاحتيال الإلكتروني (online scam) جريمة؟
+
+[GraphRetriever] Classifying query: هل الاحتيال الإلكتروني (online scam) جريمة؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.517)
+[GraphRetriever] Amplified: هل الاحتيال الإلكتروني (online scam) جريمة؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.44it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.44it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_PENAL_ART_14 (sim=0.349)
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_14 (sim=0.307)
+[15/127] Processing: ما هي عقوبة انتحال صفة شركة؟
+
+[GraphRetriever] Classifying query: ما هي عقوبة انتحال صفة شركة؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.543)
+[GraphRetriever] Amplified: ما هي عقوبة انتحال صفة شركة؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.51it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.51it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_01 (sim=0.289)
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_01 (sim=0.310)
+[16/127] Processing: هل استغلال أموال الشركة بشكل غير قانوني جريمة؟
+
+[GraphRetriever] Classifying query: هل استغلال أموال الشركة بشكل غير قانوني جريمة؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.567)
+[GraphRetriever] Amplified: هل استغلال أموال الشركة بشكل غير قانوني جريمة؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.44it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.44it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_610 (sim=0.365)
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_593 (sim=0.416)
+[17/127] Processing: هل يمكن سجن شخص بسبب ديون تجارية؟
+
+[GraphRetriever] Classifying query: هل يمكن سجن شخص بسبب ديون تجارية؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.538)
+[GraphRetriever] Amplified: هل يمكن سجن شخص بسبب ديون تجارية؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.65it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.65it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_PENAL_ART_369 (sim=0.416)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_369 (sim=0.372)
+[18/127] Processing: ما الفرق بين النصب وخيانة الأمانة؟
+
+[GraphRetriever] Classifying query: ما الفرق بين النصب وخيانة الأمانة؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.517)
+[GraphRetriever] Amplified: ما الفرق بين النصب وخيانة الأمانة؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.91it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.91it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_369 (sim=0.253)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_368 (sim=0.183)
+[19/127] Processing: هل يمكن متابعة شريك تجاري جزائياً؟
+
+[GraphRetriever] Classifying query: هل يمكن متابعة شريك تجاري جزائياً؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.448 < 0.45). Falling back.
+[GraphRetriever] Amplified: هل يمكن متابعة شريك تجاري جزائياً؟
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.11it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.10it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_564 (sim=0.401)
+[GraphRetriever] PPR subgraph pulled in: DZ_PENAL_ART_14 (sim=0.376)
+[20/127] Processing: ما هي الجرائم المرتبطة بالإفلاس؟
+
+[GraphRetriever] Classifying query: ما هي الجرائم المرتبطة بالإفلاس؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.588)
+[GraphRetriever] Amplified: ما هي الجرائم المرتبطة بالإفلاس؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:02<00:00,  2.54s/it]Batches: 100%|██████████| 1/1 [00:02<00:00,  2.55s/it]
+[GraphRetriever] PPR subgraph pulled in: DZ_PENAL_ART_370 (sim=0.381)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_370 (sim=0.358)
+[21/127] Processing: هل إخفاء الأرباح للتهرب الضريبي جريمة؟
+
+[GraphRetriever] Classifying query: هل إخفاء الأرباح للتهرب الضريبي جريمة؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.559)
+[GraphRetriever] Amplified: هل إخفاء الأرباح للتهرب الضريبي جريمة؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.78it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.78it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVPROC_ART_800 (sim=0.314)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_800 (sim=0.334)
+[22/127] Processing: ما عقوبة تزوير العقود التجارية؟
+
+[GraphRetriever] Classifying query: ما عقوبة تزوير العقود التجارية؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.590)
+[GraphRetriever] Amplified: ما عقوبة تزوير العقود التجارية؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.25it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.25it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_204 (sim=0.444)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_204 (sim=0.362)
+[23/127] Processing: هل يمكن متابعة مورد لم يحترم العقد؟
+
+[GraphRetriever] Classifying query: هل يمكن متابعة مورد لم يحترم العقد؟
+[CamelBERT] Confident domain match: Labor Law (score: 0.495)
+[GraphRetriever] Amplified: هل يمكن متابعة مورد لم يحترم العقد؟
+[GraphRetriever] Domain focus: Labor Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:01<00:00,  1.17s/it]Batches: 100%|██████████| 1/1 [00:01<00:00,  1.17s/it]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_93 (sim=0.510)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_95 (sim=0.514)
+[24/127] Processing: ما عقوبة بيع منتجات خطيرة أو فاسدة؟
+
+[GraphRetriever] Classifying query: ما عقوبة بيع منتجات خطيرة أو فاسدة؟
+[CamelBERT] Confident domain match: Penal Code (score: 0.512)
+[GraphRetriever] Amplified: ما عقوبة بيع منتجات خطيرة أو فاسدة؟
+[GraphRetriever] Domain focus: Penal Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.87it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.86it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_350 (sim=0.296)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVPROC_ART_350 (sim=0.339)
+[25/127] Processing: هل يمكن تقديم شكوى ضد شركة وهمية؟
+
+[GraphRetriever] Classifying query: هل يمكن تقديم شكوى ضد شركة وهمية؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.507)
+[GraphRetriever] Amplified: هل يمكن تقديم شكوى ضد شركة وهمية؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:05<00:00,  5.13s/it]Batches: 100%|██████████| 1/1 [00:05<00:00,  5.14s/it]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_549 (sim=0.413)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_800 (sim=0.341)
+[26/127] Processing: هل العقد الشفهي ملزم قانونياً؟
+
+[GraphRetriever] Classifying query: هل العقد الشفهي ملزم قانونياً؟
+[CamelBERT] Confident domain match: Civil Law (score: 0.583)
+[GraphRetriever] Amplified: هل العقد الشفهي ملزم قانونياً؟
+[GraphRetriever] Domain focus: Civil Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:02<00:00,  3.00s/it]Batches: 100%|██████████| 1/1 [00:03<00:00,  3.01s/it]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVPROC_ART_057 (sim=0.465)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVPROC_ART_058 (sim=0.382)
+[27/127] Processing: كيف يمكن فسخ عقد بين طرفين؟
+
+[GraphRetriever] Classifying query: كيف يمكن فسخ عقد بين طرفين؟
+[CamelBERT] Confident domain match: Civil Law (score: 0.537)
+[GraphRetriever] Amplified: كيف يمكن فسخ عقد بين طرفين؟
+[GraphRetriever] Domain focus: Civil Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:01<00:00,  1.78s/it]Batches: 100%|██████████| 1/1 [00:01<00:00,  1.79s/it]
+[GraphRetriever] PPR subgraph pulled in: DZ_PENAL_ART_198 (sim=0.366)
+[GraphRetriever] PPR subgraph pulled in: DZ_PENAL_ART_366 (sim=0.421)
+[28/127] Processing: ماذا يحدث إذا لم يلتزم أحد بالعقد؟
+
+[GraphRetriever] Classifying query: ماذا يحدث إذا لم يلتزم أحد بالعقد؟
+[CamelBERT] Confident domain match: Civil Law (score: 0.524)
+[GraphRetriever] Amplified: ماذا يحدث إذا لم يلتزم أحد بالعقد؟
+[GraphRetriever] Domain focus: Civil Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.16it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.16it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_91 (sim=0.414)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_89 (sim=0.472)
+[29/127] Processing: هل يمكن المطالبة بالتعويض عن الضرر؟
+
+[GraphRetriever] Classifying query: هل يمكن المطالبة بالتعويض عن الضرر؟
+[CamelBERT] Confident domain match: Civil Law (score: 0.584)
+[GraphRetriever] Amplified: هل يمكن المطالبة بالتعويض عن الضرر؟
+[GraphRetriever] Domain focus: Civil Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:01<00:00,  1.78s/it]Batches: 100%|██████████| 1/1 [00:01<00:00,  1.78s/it]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_693 (sim=0.533)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_140 (sim=0.525)
+[30/127] Processing: ما هي شروط صحة العقد؟
+
+[GraphRetriever] Classifying query: ما هي شروط صحة العقد؟
+[CamelBERT] Confident domain match: Civil Law (score: 0.622)
+[GraphRetriever] Amplified: ما هي شروط صحة العقد؟
+[GraphRetriever] Synonyms: الأهلية, السبب, تطابق الإرادتين, أركان العقد, المحل, الرضا
+[GraphRetriever] Domain focus: Civil Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.00it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.00it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_99 (sim=0.509)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVPROC_ART_060 (sim=0.480)
+[31/127] Processing: هل يمكن تعديل العقد بعد توقيعه؟
+
+[GraphRetriever] Classifying query: هل يمكن تعديل العقد بعد توقيعه؟
+[CamelBERT] Confident domain match: Civil Law (score: 0.515)
+[GraphRetriever] Amplified: هل يمكن تعديل العقد بعد توقيعه؟
+[GraphRetriever] Domain focus: Civil Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:02<00:00,  2.07s/it]Batches: 100%|██████████| 1/1 [00:02<00:00,  2.08s/it]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_102 (sim=0.479)
+[GraphRetriever] PPR subgraph pulled in: DZ_PENAL_ART_365 (sim=0.437)
+[32/127] Processing: ماذا أفعل إذا لم يدفع لي الزبون؟
+
+[GraphRetriever] Classifying query: ماذا أفعل إذا لم يدفع لي الزبون؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.502)
+[GraphRetriever] Amplified: ماذا أفعل إذا لم يدفع لي الزبون؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.03it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.03it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_84 (sim=0.462)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_84 (sim=0.394)
+[33/127] Processing: هل يمكن إجبار الطرف الآخر على تنفيذ العقد؟
+
+[GraphRetriever] Classifying query: هل يمكن إجبار الطرف الآخر على تنفيذ العقد؟
+[CamelBERT] Confident domain match: Civil Law (score: 0.572)
+[GraphRetriever] Amplified: هل يمكن إجبار الطرف الآخر على تنفيذ العقد؟
+[GraphRetriever] Domain focus: Civil Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.87it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.87it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_176 (sim=0.467)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_91 (sim=0.451)
+[34/127] Processing: ما هي المسؤولية المدنية؟
+
+[GraphRetriever] Classifying query: ما هي المسؤولية المدنية؟
+[CamelBERT] Confident domain match: Civil Law (score: 0.582)
+[GraphRetriever] Amplified: ما هي المسؤولية المدنية؟
+[GraphRetriever] Domain focus: Civil Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.39it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.39it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_130 (sim=0.314)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_425_BIS (sim=0.345)
+[35/127] Processing: كيف يتم حساب التعويض؟
+
+[GraphRetriever] Classifying query: كيف يتم حساب التعويض؟
+[CamelBERT] Confident domain match: Civil Law (score: 0.537)
+[GraphRetriever] Amplified: كيف يتم حساب التعويض؟
+[GraphRetriever] Domain focus: Civil Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:01<00:00,  1.21s/it]Batches: 100%|██████████| 1/1 [00:01<00:00,  1.21s/it]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_279 (sim=0.403)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVPROC_ART_315 (sim=0.319)
+[36/127] Processing: هل يمكن إلغاء عقد البيع؟
+
+[GraphRetriever] Classifying query: هل يمكن إلغاء عقد البيع؟
+[CamelBERT] Confident domain match: Civil Law (score: 0.573)
+[GraphRetriever] Amplified: هل يمكن إلغاء عقد البيع؟
+[GraphRetriever] Domain focus: Civil Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.48it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.48it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_PENAL_ART_354 (sim=0.392)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVPROC_ART_353 (sim=0.537)
+[37/127] Processing: ما الفرق بين البطلان والفسخ؟
+
+[GraphRetriever] Classifying query: ما الفرق بين البطلان والفسخ؟
+[CamelBERT] Confident domain match: Civil Law (score: 0.598)
+[GraphRetriever] Amplified: ما الفرق بين البطلان والفسخ؟
+[GraphRetriever] Domain focus: Civil Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.80it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.79it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_102 (sim=0.277)
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_103 (sim=0.314)
+[38/127] Processing: هل يمكن استرجاع عربون؟
+
+[GraphRetriever] Classifying query: هل يمكن استرجاع عربون؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.504)
+[GraphRetriever] Amplified: هل يمكن استرجاع عربون؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:07<00:00,  7.10s/it]Batches: 100%|██████████| 1/1 [00:07<00:00,  7.12s/it]
+[GraphRetriever] PPR subgraph pulled in: DZ_PENAL_ART_21 (sim=0.265)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_693 (sim=0.406)
+[39/127] Processing: ماذا يحدث إذا تأخر التسليم؟
+
+[GraphRetriever] Classifying query: ماذا يحدث إذا تأخر التسليم؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.492)
+[GraphRetriever] Amplified: ماذا يحدث إذا تأخر التسليم؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:07<00:00,  7.62s/it]Batches: 100%|██████████| 1/1 [00:07<00:00,  7.64s/it]
+[GraphRetriever] PPR subgraph pulled in: DZ_PENAL_ART_369 (sim=0.438)
+[GraphRetriever] PPR subgraph pulled in: DZ_PENAL_ART_367 (sim=0.454)
+[40/127] Processing: هل العقد بدون توثيق قانوني صحيح؟
+
+[GraphRetriever] Classifying query: هل العقد بدون توثيق قانوني صحيح؟
+[CamelBERT] Confident domain match: Civil Law (score: 0.595)
+[GraphRetriever] Amplified: هل العقد بدون توثيق قانوني صحيح؟
+[GraphRetriever] Domain focus: Civil Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:02<00:00,  2.01s/it]Batches: 100%|██████████| 1/1 [00:02<00:00,  2.01s/it]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_325 (sim=0.488)
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_102 (sim=0.406)
+[41/127] Processing: ما هي القوة القاهرة في العقود؟
+
+[GraphRetriever] Classifying query: ما هي القوة القاهرة في العقود؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.438 < 0.45). Falling back.
+[GraphRetriever] Amplified: ما هي القوة القاهرة في العقود؟
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.96it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.96it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_601 (sim=0.336)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_679 (sim=0.315)
+[42/127] Processing: هل يمكن فسخ العقد بسبب الغش؟
+
+[GraphRetriever] Classifying query: هل يمكن فسخ العقد بسبب الغش؟
+[CamelBERT] Confident domain match: Civil Law (score: 0.529)
+[GraphRetriever] Amplified: هل يمكن فسخ العقد بسبب الغش؟
+[GraphRetriever] Domain focus: Civil Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:03<00:00,  3.43s/it]Batches: 100%|██████████| 1/1 [00:03<00:00,  3.44s/it]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_364 (sim=0.331)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_488 (sim=0.493)
+[43/127] Processing: كيف أثبت وجود اتفاق؟
+
+[GraphRetriever] Classifying query: كيف أثبت وجود اتفاق؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.472)
+[GraphRetriever] Amplified: كيف أثبت وجود اتفاق؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:02<00:00,  2.61s/it]Batches: 100%|██████████| 1/1 [00:02<00:00,  2.61s/it]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_549 (sim=0.394)
+[GraphRetriever] PPR subgraph pulled in: DZ_PENAL_ART_14 (sim=0.304)
+[44/127] Processing: هل يمكن رفع دعوى بدون عقد مكتوب؟
+
+[GraphRetriever] Classifying query: هل يمكن رفع دعوى بدون عقد مكتوب؟
+[CamelBERT] Confident domain match: Civil Law (score: 0.604)
+[GraphRetriever] Amplified: هل يمكن رفع دعوى بدون عقد مكتوب؟
+[GraphRetriever] Domain focus: Civil Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.17it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.17it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_103 (sim=0.389)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_103 (sim=0.401)
+[45/127] Processing: ما هي آجال التقادم في الديون؟
+
+[GraphRetriever] Classifying query: ما هي آجال التقادم في الديون؟
+[CamelBERT] Confident domain match: Civil Law (score: 0.605)
+[GraphRetriever] Amplified: ما هي آجال التقادم في الديون؟
+[GraphRetriever] Domain focus: Civil Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:02<00:00,  2.80s/it]Batches: 100%|██████████| 1/1 [00:02<00:00,  2.80s/it]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVPROC_ART_315 (sim=0.293)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVPROC_ART_308 (sim=0.510)
+[46/127] Processing: ماذا أفعل إذا أخل المورد بالاتفاق؟
+
+[GraphRetriever] Classifying query: ماذا أفعل إذا أخل المورد بالاتفاق؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.527)
+[GraphRetriever] Amplified: ماذا أفعل إذا أخل المورد بالاتفاق؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.72it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.72it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_PENAL_ART_369 (sim=0.452)
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_84 (sim=0.446)
+[47/127] Processing: هل يمكن تحميل المسؤولية لشخص ثالث؟
+
+[GraphRetriever] Classifying query: هل يمكن تحميل المسؤولية لشخص ثالث؟
+[CamelBERT] Confident domain match: Civil Law (score: 0.453)
+[GraphRetriever] Amplified: هل يمكن تحميل المسؤولية لشخص ثالث؟
+[GraphRetriever] Domain focus: Civil Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:01<00:00,  1.70s/it]Batches: 100%|██████████| 1/1 [00:01<00:00,  1.70s/it]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_176 (sim=0.409)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_176 (sim=0.483)
+[48/127] Processing: ما هي شروط التعويض عن الضرر التجاري؟
+
+[GraphRetriever] Classifying query: ما هي شروط التعويض عن الضرر التجاري؟
+[CamelBERT] Confident domain match: Civil Law (score: 0.680)
+[GraphRetriever] Amplified: ما هي شروط التعويض عن الضرر التجاري؟
+[GraphRetriever] Domain focus: Civil Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:01<00:00,  1.61s/it]Batches: 100%|██████████| 1/1 [00:01<00:00,  1.61s/it]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_181 (sim=0.477)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_693 (sim=0.453)
+[49/127] Processing: هل يمكن فسخ عقد الإيجار التجاري؟
+
+[GraphRetriever] Classifying query: هل يمكن فسخ عقد الإيجار التجاري؟
+[CamelBERT] Confident domain match: Civil Law (score: 0.665)
+[GraphRetriever] Amplified: هل يمكن فسخ عقد الإيجار التجاري؟
+[GraphRetriever] Domain focus: Civil Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.96it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.94it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_487 (sim=0.513)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_483 (sim=0.506)
+[50/127] Processing: هل يمكن المطالبة بالفوائد على التأخير؟
+
+[GraphRetriever] Classifying query: هل يمكن المطالبة بالفوائد على التأخير؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.564)
+[GraphRetriever] Amplified: هل يمكن المطالبة بالفوائد على التأخير؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.80it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.80it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_84 (sim=0.438)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_84 (sim=0.375)
+[51/127] Processing: ماذا يحدث إذا توفي أحد أطراف العقد؟
+
+[GraphRetriever] Classifying query: ماذا يحدث إذا توفي أحد أطراف العقد؟
+[CamelBERT] Confident domain match: Civil Law (score: 0.554)
+[GraphRetriever] Amplified: ماذا يحدث إذا توفي أحد أطراف العقد؟
+[GraphRetriever] Domain focus: Civil Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.07it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.07it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_PENAL_ART_229 (sim=0.291)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVPROC_ART_229 (sim=0.369)
+[52/127] Processing: هل يمكن بيع شيء لا أملكه؟
+
+[GraphRetriever] Classifying query: هل يمكن بيع شيء لا أملكه؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.486)
+[GraphRetriever] Amplified: هل يمكن بيع شيء لا أملكه؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.16it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.16it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_81 (sim=0.416)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_85 (sim=0.404)
+[53/127] Processing: ما هي التزامات البائع؟
+
+[GraphRetriever] Classifying query: ما هي التزامات البائع؟
+[CamelBERT] Confident domain match: Civil Law (score: 0.592)
+[GraphRetriever] Amplified: ما هي التزامات البائع؟
+[GraphRetriever] Domain focus: Civil Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.89it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.86it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVPROC_ART_405 (sim=0.341)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVPROC_ART_404 (sim=0.321)
+[54/127] Processing: ما هي التزامات المشتري؟
+
+[GraphRetriever] Classifying query: ما هي التزامات المشتري؟
+[CamelBERT] Confident domain match: Civil Law (score: 0.585)
+[GraphRetriever] Amplified: ما هي التزامات المشتري؟
+[GraphRetriever] Domain focus: Civil Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.01it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.01it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_363 (sim=0.388)
+[GraphRetriever] PPR subgraph pulled in: DZ_PENAL_ART_284 (sim=0.325)
+[55/127] Processing: كيف أحمي نفسي قانونياً في عقد؟
+
+[GraphRetriever] Classifying query: كيف أحمي نفسي قانونياً في عقد؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.481)
+[GraphRetriever] Amplified: كيف أحمي نفسي قانونياً في عقد؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.75it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.75it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_81 (sim=0.336)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_79 (sim=0.402)
+[56/127] Processing: كيف أقدم طعن ضد قرار إداري؟
+
+[GraphRetriever] Classifying query: كيف أقدم طعن ضد قرار إداري؟
+[CamelBERT] Confident domain match: Code of Civil and Administrative Procedures (score: 0.500)
+[GraphRetriever] Amplified: كيف أقدم طعن ضد قرار إداري؟
+[GraphRetriever] Domain focus: Civil and Administrative Procedures
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.63it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.63it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_349 (sim=0.393)
+[GraphRetriever] PPR subgraph pulled in: DZ_PENAL_ART_354 (sim=0.412)
+[57/127] Processing: لماذا تم رفض طلبي لفتح محل؟
+
+[GraphRetriever] Classifying query: لماذا تم رفض طلبي لفتح محل؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.474)
+[GraphRetriever] Amplified: لماذا تم رفض طلبي لفتح محل؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.81it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.79it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_PENAL_ART_13 (sim=0.284)
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_13 (sim=0.343)
+[58/127] Processing: كيف أتحصل على رخصة تجارية؟
+
+[GraphRetriever] Classifying query: كيف أتحصل على رخصة تجارية؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.528)
+[GraphRetriever] Amplified: كيف أتحصل على رخصة تجارية؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.37it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.37it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_98 (sim=0.362)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_97 (sim=0.362)
+[59/127] Processing: ما هي الإجراءات لفتح نشاط تجاري؟
+
+[GraphRetriever] Classifying query: ما هي الإجراءات لفتح نشاط تجاري؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.583)
+[GraphRetriever] Amplified: ما هي الإجراءات لفتح نشاط تجاري؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.35it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.35it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_601 (sim=0.341)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_79 (sim=0.276)
+[60/127] Processing: هل يمكن الطعن في غرامة إدارية؟
+
+[GraphRetriever] Classifying query: هل يمكن الطعن في غرامة إدارية؟
+[CamelBERT] Confident domain match: Code of Civil and Administrative Procedures (score: 0.576)
+[GraphRetriever] Amplified: هل يمكن الطعن في غرامة إدارية؟
+[GraphRetriever] Domain focus: Civil and Administrative Procedures
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.95it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.93it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_PENAL_ART_358 (sim=0.244)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_358 (sim=0.449)
+[61/127] Processing: ما هي حقوقي مع البلدية؟
+
+[GraphRetriever] Classifying query: ما هي حقوقي مع البلدية؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.472)
+[GraphRetriever] Amplified: ما هي حقوقي مع البلدية؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.32it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.32it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_582 (sim=0.316)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_167 (sim=0.394)
+[62/127] Processing: كيف أتعامل مع تعسف الإدارة؟
+
+[GraphRetriever] Classifying query: كيف أتعامل مع تعسف الإدارة؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.448 < 0.45). Falling back.
+[GraphRetriever] Amplified: كيف أتعامل مع تعسف الإدارة؟
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.32it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.32it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_89 (sim=0.460)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_91 (sim=0.399)
+[63/127] Processing: ما هي الوثائق المطلوبة لفتح شركة؟
+[LegalNorm] 'فتح شركة' → 'تأسيس الشركة السجل التجاري'
+
+[GraphRetriever] Classifying query: ما هي الوثائق المطلوبة لتأسيس الشركة السجل التجاري؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.711)
+[GraphRetriever] Amplified: ما هي الوثائق المطلوبة لتأسيس الشركة السجل التجاري؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.83it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.83it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_21 (sim=0.319)
+[GraphRetriever] PPR subgraph pulled in: DZ_PENAL_ART_21 (sim=0.343)
+[64/127] Processing: هل يمكن مقاضاة إدارة عمومية؟
+
+[GraphRetriever] Classifying query: هل يمكن مقاضاة إدارة عمومية؟
+[CamelBERT] Confident domain match: Civil Law (score: 0.518)
+[GraphRetriever] Amplified: هل يمكن مقاضاة إدارة عمومية؟
+[GraphRetriever] Domain focus: Civil Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.42it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.42it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_713 (sim=0.360)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_714 (sim=0.430)
+[65/127] Processing: كم تستغرق الإجراءات الإدارية؟
+
+[GraphRetriever] Classifying query: كم تستغرق الإجراءات الإدارية؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.477)
+[GraphRetriever] Amplified: كم تستغرق الإجراءات الإدارية؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.95it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.91it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_09 (sim=0.350)
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_09 (sim=0.398)
+[66/127] Processing: كيف أستخرج سجل تجاري؟
+
+[GraphRetriever] Classifying query: كيف أستخرج سجل تجاري؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.575)
+[GraphRetriever] Amplified: كيف أستخرج سجل تجاري؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.45it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.45it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_203 (sim=0.287)
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_21 (sim=0.349)
+[67/127] Processing: ماذا أفعل إذا تأخرت الإدارة؟
+
+[GraphRetriever] Classifying query: ماذا أفعل إذا تأخرت الإدارة؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.441 < 0.45). Falling back.
+[GraphRetriever] Amplified: ماذا أفعل إذا تأخرت الإدارة؟
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.67it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.67it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_182 (sim=0.447)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVPROC_ART_069 (sim=0.456)
+[68/127] Processing: هل يمكن طلب تعويض من الدولة؟
+
+[GraphRetriever] Classifying query: هل يمكن طلب تعويض من الدولة؟
+[CamelBERT] Confident domain match: Civil Law (score: 0.518)
+[GraphRetriever] Amplified: هل يمكن طلب تعويض من الدولة؟
+[GraphRetriever] Domain focus: Civil Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.29it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.29it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_696 (sim=0.392)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_695 (sim=0.427)
+[69/127] Processing: ما هي شروط ممارسة نشاط تجاري؟
+
+[GraphRetriever] Classifying query: ما هي شروط ممارسة نشاط تجاري؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.586)
+[GraphRetriever] Amplified: ما هي شروط ممارسة نشاط تجاري؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.35it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.35it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_79 (sim=0.280)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_01 (sim=0.348)
+[70/127] Processing: كيف أتعامل مع الضرائب المفروضة؟
+
+[GraphRetriever] Classifying query: كيف أتعامل مع الضرائب المفروضة؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.489)
+[GraphRetriever] Amplified: كيف أتعامل مع الضرائب المفروضة؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.08it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.08it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_09 (sim=0.359)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_09 (sim=0.372)
+[71/127] Processing: هل يمكن لصاحب العمل عدم دفع راتبي؟
+[LegalNorm] 'راتبي' → 'الأجر'
+
+[GraphRetriever] Classifying query: هل يمكن لصاحب العمل عدم دفع الأجر؟
+[CamelBERT] Confident domain match: Labor Law (score: 0.643)
+[GraphRetriever] Amplified: هل يمكن لصاحب العمل عدم دفع الأجر؟
+[GraphRetriever] Domain focus: Labor Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.29it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.29it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_45 (sim=0.506)
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_42 (sim=0.496)
+[72/127] Processing: ما هي حقوق العامل في الجزائر؟
+
+[GraphRetriever] Classifying query: ما هي حقوق العامل في الجزائر؟
+[CamelBERT] Confident domain match: Labor Law (score: 0.599)
+[GraphRetriever] Amplified: ما هي حقوق العامل في الجزائر؟
+[GraphRetriever] Domain focus: Labor Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.52it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.52it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_14 (sim=0.397)
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_41 (sim=0.402)
+[73/127] Processing: هل يمكن طردي بدون سبب؟
+
+[GraphRetriever] Classifying query: هل يمكن طردي بدون سبب؟
+[CamelBERT] Confident domain match: Labor Law (score: 0.465)
+[GraphRetriever] Amplified: هل يمكن طردي بدون سبب؟
+[GraphRetriever] Domain focus: Labor Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.52it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.52it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_86 (sim=0.400)
+[GraphRetriever] PPR subgraph pulled in: DZ_PENAL_ART_375 (sim=0.418)
+[74/127] Processing: ما هي مدة الإشعار قبل الاستقالة؟
+
+[GraphRetriever] Classifying query: ما هي مدة الإشعار قبل الاستقالة؟
+[CamelBERT] Confident domain match: Labor Law (score: 0.545)
+[GraphRetriever] Amplified: ما هي مدة الإشعار قبل الاستقالة؟
+[GraphRetriever] Domain focus: Labor Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.39it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.38it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_97 (sim=0.384)
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_97 (sim=0.481)
+[75/127] Processing: هل العقد الشفهي في العمل مقبول؟
+
+[GraphRetriever] Classifying query: هل العقد الشفهي في العمل مقبول؟
+[CamelBERT] Confident domain match: Labor Law (score: 0.611)
+[GraphRetriever] Amplified: هل العقد الشفهي في العمل مقبول؟
+[GraphRetriever] Domain focus: Labor Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.26it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.26it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_5 (sim=0.388)
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_86 (sim=0.377)
+[76/127] Processing: ماذا أفعل إذا لم أحصل على عقد؟
+
+[GraphRetriever] Classifying query: ماذا أفعل إذا لم أحصل على عقد؟
+[CamelBERT] Low confidence for Commercial Law (score: 0.440 < 0.45). Falling back.
+[GraphRetriever] Amplified: ماذا أفعل إذا لم أحصل على عقد؟
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.76it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.76it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVPROC_ART_416 (sim=0.422)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_416 (sim=0.438)
+[77/127] Processing: هل يمكن العمل بدون تصريح؟
+
+[GraphRetriever] Classifying query: هل يمكن العمل بدون تصريح؟
+[CamelBERT] Confident domain match: Labor Law (score: 0.536)
+[GraphRetriever] Amplified: هل يمكن العمل بدون تصريح؟
+[GraphRetriever] Domain focus: Labor Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.71it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.71it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_5 (sim=0.424)
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_19 (sim=0.435)
+[78/127] Processing: ما هي ساعات العمل القانونية؟
+
+[GraphRetriever] Classifying query: ما هي ساعات العمل القانونية؟
+[CamelBERT] Confident domain match: Labor Law (score: 0.587)
+[GraphRetriever] Amplified: ما هي ساعات العمل القانونية؟
+[GraphRetriever] Domain focus: Labor Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.69it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.69it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_21 (sim=0.410)
+[GraphRetriever] PPR subgraph pulled in: حساب_الراتب_6 (sim=0.397)
+[79/127] Processing: هل يحق لي عطلة مدفوعة؟
+
+[GraphRetriever] Classifying query: هل يحق لي عطلة مدفوعة؟
+[CamelBERT] Confident domain match: Labor Law (score: 0.522)
+[GraphRetriever] Amplified: هل يحق لي عطلة مدفوعة؟
+[GraphRetriever] Domain focus: Labor Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.03it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.03it/s]
+[GraphRetriever] PPR subgraph pulled in: حساب_الراتب_1 (sim=0.459)
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_81 (sim=0.483)
+[80/127] Processing: ما هي حقوقي في حالة الفصل؟
+
+[GraphRetriever] Classifying query: ما هي حقوقي في حالة الفصل؟
+[CamelBERT] Confident domain match: Labor Law (score: 0.515)
+[GraphRetriever] Amplified: ما هي حقوقي في حالة الفصل؟
+[GraphRetriever] Domain focus: Labor Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.46it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.46it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_421 (sim=0.406)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_425_BIS (sim=0.412)
+[81/127] Processing: كيف أرفع دعوى ضد صاحب العمل؟
+
+[GraphRetriever] Classifying query: كيف أرفع دعوى ضد صاحب العمل؟
+[CamelBERT] Confident domain match: Labor Law (score: 0.545)
+[GraphRetriever] Amplified: كيف أرفع دعوى ضد صاحب العمل؟
+[GraphRetriever] Domain focus: Labor Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.51it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.51it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_775 (sim=0.337)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_775 (sim=0.356)
+[82/127] Processing: هل يمكنني ترك العمل فوراً؟
+
+[GraphRetriever] Classifying query: هل يمكنني ترك العمل فوراً؟
+[CamelBERT] Low confidence for Labor Law (score: 0.448 < 0.45). Falling back.
+[GraphRetriever] Amplified: هل يمكنني ترك العمل فوراً؟
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.38it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.38it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_265 (sim=0.352)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_266 (sim=0.287)
+[83/127] Processing: ما هي التعويضات عند الطرد؟
+
+[GraphRetriever] Classifying query: ما هي التعويضات عند الطرد؟
+[CamelBERT] Confident domain match: Labor Law (score: 0.601)
+[GraphRetriever] Amplified: ما هي التعويضات عند الطرد؟
+[GraphRetriever] Domain focus: Labor Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.87it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.86it/s]
+[GraphRetriever] PPR subgraph pulled in: حساب_الراتب_4 (sim=0.401)
+[GraphRetriever] PPR subgraph pulled in: حساب_الراتب_7 (sim=0.418)
+[84/127] Processing: هل يمكن لصاحب العمل تغيير العقد؟
+
+[GraphRetriever] Classifying query: هل يمكن لصاحب العمل تغيير العقد؟
+[CamelBERT] Confident domain match: Labor Law (score: 0.614)
+[GraphRetriever] Amplified: هل يمكن لصاحب العمل تغيير العقد؟
+[GraphRetriever] Domain focus: Labor Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.41it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.41it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_5 (sim=0.489)
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_19 (sim=0.467)
+[85/127] Processing: ما هي حقوق المرأة العاملة؟
+
+[GraphRetriever] Classifying query: ما هي حقوق المرأة العاملة؟
+[CamelBERT] Confident domain match: Labor Law (score: 0.560)
+[GraphRetriever] Amplified: ما هي حقوق المرأة العاملة؟
+[GraphRetriever] Domain focus: Labor Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  6.03it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  6.03it/s]
+[GraphRetriever] PPR subgraph pulled in: حساب_الراتب_3 (sim=0.380)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_01 (sim=0.323)
+[86/127] Processing: هل يمكن العمل في أكثر من وظيفة؟
+
+[GraphRetriever] Classifying query: هل يمكن العمل في أكثر من وظيفة؟
+[CamelBERT] Confident domain match: Labor Law (score: 0.498)
+[GraphRetriever] Amplified: هل يمكن العمل في أكثر من وظيفة؟
+[GraphRetriever] Domain focus: Labor Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.37it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.37it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_41 (sim=0.429)
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_5 (sim=0.420)
+[87/127] Processing: ماذا يحدث في حالة إصابة عمل؟
+
+[GraphRetriever] Classifying query: ماذا يحدث في حالة إصابة عمل؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.482)
+[GraphRetriever] Amplified: ماذا يحدث في حالة إصابة عمل؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.78it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.76it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_130 (sim=0.413)
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_472 (sim=0.354)
+[88/127] Processing: هل يمكن خصم الراتب بدون سبب؟
+
+[GraphRetriever] Classifying query: هل يمكن خصم الراتب بدون سبب؟
+[CamelBERT] Confident domain match: Labor Law (score: 0.541)
+[GraphRetriever] Amplified: هل يمكن خصم الراتب بدون سبب؟
+[GraphRetriever] Domain focus: Labor Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.22it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.20it/s]
+[GraphRetriever] PPR subgraph pulled in: حساب_الراتب_5 (sim=0.487)
+[GraphRetriever] PPR subgraph pulled in: حساب_الراتب_7 (sim=0.357)
+[89/127] Processing: ما هي حقوق العامل في القطاع الخاص؟
+
+[GraphRetriever] Classifying query: ما هي حقوق العامل في القطاع الخاص؟
+[CamelBERT] Confident domain match: Labor Law (score: 0.642)
+[GraphRetriever] Amplified: ما هي حقوق العامل في القطاع الخاص؟
+[GraphRetriever] Domain focus: Labor Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.11it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.10it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_41 (sim=0.359)
+[GraphRetriever] PPR subgraph pulled in: حساب_الراتب_3 (sim=0.371)
+[90/127] Processing: هل يمكن رفض العمل الإضافي؟
+
+[GraphRetriever] Classifying query: هل يمكن رفض العمل الإضافي؟
+[CamelBERT] Confident domain match: Labor Law (score: 0.584)
+[GraphRetriever] Amplified: هل يمكن رفض العمل الإضافي؟
+[GraphRetriever] Domain focus: Labor Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.70it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.70it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_21 (sim=0.446)
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_19 (sim=0.397)
+[91/127] Processing: كيف يتم حساب الأجر؟
+
+[GraphRetriever] Classifying query: كيف يتم حساب الأجر؟
+[CamelBERT] Confident domain match: Labor Law (score: 0.547)
+[GraphRetriever] Amplified: كيف يتم حساب الأجر؟
+[GraphRetriever] Domain focus: Labor Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.55it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.52it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_11 (sim=0.456)
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_5 (sim=0.466)
+[92/127] Processing: هل يمكن فسخ عقد العمل؟
+
+[GraphRetriever] Classifying query: هل يمكن فسخ عقد العمل؟
+[CamelBERT] Confident domain match: Labor Law (score: 0.568)
+[GraphRetriever] Amplified: هل يمكن فسخ عقد العمل؟
+[GraphRetriever] Domain focus: Labor Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.09it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.09it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_5 (sim=0.478)
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_22 (sim=0.490)
+[93/127] Processing: ما هي أنواع عقود العمل؟
+
+[GraphRetriever] Classifying query: ما هي أنواع عقود العمل؟
+[CamelBERT] Confident domain match: Labor Law (score: 0.577)
+[GraphRetriever] Amplified: ما هي أنواع عقود العمل؟
+[GraphRetriever] Domain focus: Labor Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.18it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.15it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVPROC_ART_036 (sim=0.350)
+[GraphRetriever] PPR subgraph pulled in: DZ_PENAL_ART_37 (sim=0.309)
+[94/127] Processing: هل يمكن رفع شكوى لمفتشية العمل؟
+
+[GraphRetriever] Classifying query: هل يمكن رفع شكوى لمفتشية العمل؟
+[CamelBERT] Confident domain match: Labor Law (score: 0.513)
+[GraphRetriever] Amplified: هل يمكن رفع شكوى لمفتشية العمل؟
+[GraphRetriever] Domain focus: Labor Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.60it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.60it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_19 (sim=0.392)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_387 (sim=0.334)
+[95/127] Processing: ماذا أفعل إذا تعرضت للظلم في العمل؟
+
+[GraphRetriever] Classifying query: ماذا أفعل إذا تعرضت للظلم في العمل؟
+[CamelBERT] Confident domain match: Labor Law (score: 0.533)
+[GraphRetriever] Amplified: ماذا أفعل إذا تعرضت للظلم في العمل؟
+[GraphRetriever] Domain focus: Labor Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.77it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.77it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_87 (sim=0.460)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_124 (sim=0.445)
+[96/127] Processing: كيف أفتح شركة في الجزائر؟
+[LegalNorm] 'فتح شركة' → 'تأسيس الشركة السجل التجاري'
+
+[GraphRetriever] Classifying query: كيف أتأسيس الشركة السجل التجاري في الجزائر؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.644)
+[GraphRetriever] Amplified: كيف أتأسيس الشركة السجل التجاري في الجزائر؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.54it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.49it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_19 (sim=0.274)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_19 (sim=0.342)
+[97/127] Processing: ما الفرق بين SARL و SPA؟
+[Acronym Expander] 'ما الفرق بين SARL و SPA؟' → 'ما الفرق بين شركة ذات مسؤولية محدودة و شركة مساهمة؟'
+
+[GraphRetriever] Classifying query: ما الفرق بين شركة ذات مسؤولية محدودة و شركة مساهمة؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.493)
+[GraphRetriever] Amplified: ما الفرق بين شركة ذات مسؤولية محدودة و شركة مساهمة؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.52it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.52it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_586 (sim=0.298)
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_567 (sim=0.399)
+[98/127] Processing: ما هي شروط إنشاء شركة؟
+
+[GraphRetriever] Classifying query: ما هي شروط إنشاء شركة؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.556)
+[GraphRetriever] Amplified: ما هي شروط إنشاء شركة؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.11it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.08it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_91 (sim=0.338)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_92 (sim=0.383)
+[99/127] Processing: كيف أكتب عقد شراكة؟
+
+[GraphRetriever] Classifying query: كيف أكتب عقد شراكة؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.532)
+[GraphRetriever] Amplified: كيف أكتب عقد شراكة؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.93it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.93it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_PENAL_ART_30 (sim=0.268)
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_549 (sim=0.374)
+[100/127] Processing: ماذا يحدث إذا انسحب شريك؟
+
+[GraphRetriever] Classifying query: ماذا يحدث إذا انسحب شريك؟
+[CamelBERT] Confident domain match: Labor Law (score: 0.451)
+[GraphRetriever] Amplified: ماذا يحدث إذا انسحب شريك؟
+[GraphRetriever] Domain focus: Labor Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.11it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.11it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_PENAL_ART_436_439 (sim=0.263)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_436 (sim=0.409)
+[101/127] Processing: كيف يتم تقسيم الأرباح؟
+
+[GraphRetriever] Classifying query: كيف يتم تقسيم الأرباح؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.524)
+[GraphRetriever] Amplified: كيف يتم تقسيم الأرباح؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.49it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.49it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVPROC_ART_800 (sim=0.317)
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_800 (sim=0.464)
+[102/127] Processing: هل يمكن بيع حصتي في الشركة؟
+
+[GraphRetriever] Classifying query: هل يمكن بيع حصتي في الشركة؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.526)
+[GraphRetriever] Amplified: هل يمكن بيع حصتي في الشركة؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.30it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.30it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_571 (sim=0.373)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_715 (sim=0.468)
+[103/127] Processing: ما هي مسؤولية المدير؟
+
+[GraphRetriever] Classifying query: ما هي مسؤولية المدير؟
+[CamelBERT] Confident domain match: Civil Law (score: 0.494)
+[GraphRetriever] Amplified: ما هي مسؤولية المدير؟
+[GraphRetriever] Domain focus: Civil Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.56it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.56it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_425_BIS (sim=0.392)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_425 (sim=0.348)
+[104/127] Processing: ماذا أفعل إذا خانني شريكي؟
+
+[GraphRetriever] Classifying query: ماذا أفعل إذا خانني شريكي؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.462)
+[GraphRetriever] Amplified: ماذا أفعل إذا خانني شريكي؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.49it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.49it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_582 (sim=0.426)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_580 (sim=0.422)
+[105/127] Processing: كيف أحمي فكرتي التجارية؟
+
+[GraphRetriever] Classifying query: كيف أحمي فكرتي التجارية؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.510)
+[GraphRetriever] Amplified: كيف أحمي فكرتي التجارية؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.82it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.82it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_09 (sim=0.320)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_09 (sim=0.392)
+[106/127] Processing: هل يمكن فتح نشاط بدون سجل تجاري؟
+
+[GraphRetriever] Classifying query: هل يمكن فتح نشاط بدون سجل تجاري؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.611)
+[GraphRetriever] Amplified: هل يمكن فتح نشاط بدون سجل تجاري؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.13it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.13it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_01 (sim=0.331)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVPROC_ART_021 (sim=0.302)
+[107/127] Processing: ما هي التزامات التاجر؟
+
+[GraphRetriever] Classifying query: ما هي التزامات التاجر؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.599)
+[GraphRetriever] Amplified: ما هي التزامات التاجر؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.68it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.66it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_01 (sim=0.302)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_02 (sim=0.260)
+[108/127] Processing: كيف يتم تسجيل شركة؟
+
+[GraphRetriever] Classifying query: كيف يتم تسجيل شركة؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.585)
+[GraphRetriever] Amplified: كيف يتم تسجيل شركة؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.26it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.24it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_19 (sim=0.401)
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_19 (sim=0.341)
+[109/127] Processing: ما هي الضرائب على الشركات؟
+
+[GraphRetriever] Classifying query: ما هي الضرائب على الشركات؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.563)
+[GraphRetriever] Amplified: ما هي الضرائب على الشركات؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.63it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.63it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_594 (sim=0.386)
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_591 (sim=0.379)
+[110/127] Processing: كيف أتعامل مع زبون لم يدفع؟
+
+[GraphRetriever] Classifying query: كيف أتعامل مع زبون لم يدفع؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.472)
+[GraphRetriever] Amplified: كيف أتعامل مع زبون لم يدفع؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.99it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.99it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_PENAL_ART_264 (sim=0.440)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_264 (sim=0.467)
+[111/127] Processing: ما هي إجراءات الإفلاس؟
+
+[GraphRetriever] Classifying query: ما هي إجراءات الإفلاس؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.629)
+[GraphRetriever] Amplified: ما هي إجراءات الإفلاس؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.24it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.24it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_114 (sim=0.441)
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_113 (sim=0.431)
+[112/127] Processing: هل يمكن إغلاق الشركة بسهولة؟
+
+[GraphRetriever] Classifying query: هل يمكن إغلاق الشركة بسهولة؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.496)
+[GraphRetriever] Amplified: هل يمكن إغلاق الشركة بسهولة؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  6.08it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  6.08it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_571 (sim=0.341)
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_582 (sim=0.417)
+[113/127] Processing: كيف أرفع دعوى تجارية؟
+
+[GraphRetriever] Classifying query: كيف أرفع دعوى تجارية؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.535)
+[GraphRetriever] Amplified: كيف أرفع دعوى تجارية؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.96it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.96it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_79 (sim=0.276)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_91 (sim=0.354)
+[114/127] Processing: ما الفرق بين التاجر والشركة؟
+
+[GraphRetriever] Classifying query: ما الفرق بين التاجر والشركة؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.596)
+[GraphRetriever] Amplified: ما الفرق بين التاجر والشركة؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.66it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.66it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_01 (sim=0.302)
+[GraphRetriever] PPR subgraph pulled in: DZ_PENAL_ART_1 (sim=0.331)
+[115/127] Processing: هل يمكن لشخص أجنبي فتح شركة؟
+[LegalNorm] 'فتح شركة' → 'تأسيس الشركة السجل التجاري'
+
+[GraphRetriever] Classifying query: هل يمكن لشخص أجنبي تأسيس الشركة السجل التجاري؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.662)
+[GraphRetriever] Amplified: هل يمكن لشخص أجنبي تأسيس الشركة السجل التجاري؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.01it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.01it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_19 (sim=0.291)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_19 (sim=0.367)
+[116/127] Processing: ما هي شروط التجارة الإلكترونية؟
+
+[GraphRetriever] Classifying query: ما هي شروط التجارة الإلكترونية؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.538)
+[GraphRetriever] Amplified: ما هي شروط التجارة الإلكترونية؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.12it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.11it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_97 (sim=0.398)
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_04 (sim=0.437)
+[117/127] Processing: هل البيع عبر الإنترنت قانوني؟
+
+[GraphRetriever] Classifying query: هل البيع عبر الإنترنت قانوني؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.548)
+[GraphRetriever] Amplified: هل البيع عبر الإنترنت قانوني؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.76it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.76it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_81 (sim=0.417)
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_84 (sim=0.316)
+[118/127] Processing: كيف أتعامل مع مورد لم يحترم العقد؟
+
+[GraphRetriever] Classifying query: كيف أتعامل مع مورد لم يحترم العقد؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.475)
+[GraphRetriever] Amplified: كيف أتعامل مع مورد لم يحترم العقد؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.81it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.78it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_91 (sim=0.512)
+[GraphRetriever] PPR subgraph pulled in: DZ_PENAL_ART_264 (sim=0.458)
+[119/127] Processing: ما هي الوثائق التجارية الأساسية؟
+
+[GraphRetriever] Classifying query: ما هي الوثائق التجارية الأساسية؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.619)
+[GraphRetriever] Amplified: ما هي الوثائق التجارية الأساسية؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.91it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.90it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_PENAL_ART_11 (sim=0.217)
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_11 (sim=0.314)
+[120/127] Processing: كيف أحمي علامتي التجارية؟
+
+[GraphRetriever] Classifying query: كيف أحمي علامتي التجارية؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.515)
+[GraphRetriever] Amplified: كيف أحمي علامتي التجارية؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.07it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.07it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_09 (sim=0.317)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_09 (sim=0.368)
+[121/127] Processing: ما هي المنافسة غير المشروعة؟
+
+[GraphRetriever] Classifying query: ما هي المنافسة غير المشروعة؟
+[CamelBERT] Confident domain match: Labor Law (score: 0.500)
+[GraphRetriever] Amplified: ما هي المنافسة غير المشروعة؟
+[GraphRetriever] Domain focus: Labor Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.32it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.32it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_88 (sim=0.354)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_684 (sim=0.320)
+[122/127] Processing: هل يمكن فتح شركة بدون رأس مال كبير؟
+[LegalNorm] 'فتح شركة' → 'تأسيس الشركة السجل التجاري'
+
+[GraphRetriever] Classifying query: هل يمكن تأسيس الشركة السجل التجاري بدون رأس مال كبير؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.664)
+[GraphRetriever] Amplified: هل يمكن تأسيس الشركة السجل التجاري بدون رأس مال كبير؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.61it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.61it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_19 (sim=0.272)
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_19 (sim=0.239)
+[123/127] Processing: ما هي أنواع الشركات في الجزائر؟
+
+[GraphRetriever] Classifying query: ما هي أنواع الشركات في الجزائر؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.533)
+[GraphRetriever] Amplified: ما هي أنواع الشركات في الجزائر؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.58it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.58it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_591 (sim=0.392)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_02 (sim=0.250)
+[124/127] Processing: كيف يتم حل النزاعات التجارية؟
+
+[GraphRetriever] Classifying query: كيف يتم حل النزاعات التجارية؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.514)
+[GraphRetriever] Amplified: كيف يتم حل النزاعات التجارية؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.73it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.73it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_590 (sim=0.340)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_01 (sim=0.353)
+[125/127] Processing: هل يمكن تغيير نشاط الشركة؟
+
+[GraphRetriever] Classifying query: هل يمكن تغيير نشاط الشركة؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.556)
+[GraphRetriever] Amplified: هل يمكن تغيير نشاط الشركة؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.67it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.65it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_24 (sim=0.461)
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_564 (sim=0.433)
+[126/127] Processing: ما هي مسؤولية الشركاء؟
+
+[GraphRetriever] Classifying query: ما هي مسؤولية الشركاء؟
+[CamelBERT] Confident domain match: Civil Law (score: 0.493)
+[GraphRetriever] Amplified: ما هي مسؤولية الشركاء؟
+[GraphRetriever] Domain focus: Civil Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.76it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.76it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_425 (sim=0.449)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_756 (sim=0.417)
+[127/127] Processing: كيف أتعامل مع ديون الشركة؟
+
+[GraphRetriever] Classifying query: كيف أتعامل مع ديون الشركة؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.537)
+[GraphRetriever] Amplified: كيف أتعامل مع ديون الشركة؟
+[GraphRetriever] Domain focus: Commercial Law
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.66it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.64it/s]
+[GraphRetriever] PPR subgraph pulled in: DZ_PENAL_ART_436_439 (sim=0.260)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_425_BIS (sim=0.451)
+
+Done! 127 answers saved to C:\Users\Dell\Desktop\isthacherni\Istacherni\answers_graph_rag.txt

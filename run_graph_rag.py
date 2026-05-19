@@ -25,8 +25,20 @@ if sys.stdout.encoding.lower() != "utf-8":
 
 print("Initializing Graph RAG test script… Loading heavy libraries.", flush=True)
 
-from graph_rag.graph_retriever import graph_retrieve
-from gemma_rag.gemma_generator import gemma_generate, OLLAMA_GEMMA_MODEL
+# ── Retriever selection ──────────────────────────────────────────────────────────
+# False → graph_rag.graph_retriever   (pure keyword/graph traversal, fast, no GPU)
+# True  → graph_rag_local.graph_retriever  (BGE-M3 hybrid: embeddings + RRF + PPR
+#          + domain boost + HyDE averaging — all 8 fixes applied)
+USE_LOCAL_RETRIEVER = True
+
+if USE_LOCAL_RETRIEVER:
+    from graph_rag_local.graph_retriever import graph_retrieve
+    print("Using LOCAL hybrid retriever (BGE-M3 + PPR + domain boost)")
+else:
+    from graph_rag.graph_retriever import graph_retrieve
+    print("Using KEYWORD graph retriever")
+from graph_rag_local.graph_generator import graph_generate
+OLLAMA_MODEL = "qwen2:7b"
 
 
 def main():
@@ -52,23 +64,57 @@ def main():
 
     print(
         f"Loaded {len(questions)} questions. "
-        f"Using Graph RAG retrieval + {OLLAMA_GEMMA_MODEL} for generation.",
+        f"Using Graph RAG retrieval + {OLLAMA_MODEL} for generation.",
         flush=True,
     )
 
-    with open(output_file, "w", encoding="utf-8") as out:
-        out.write(f"=== Graph RAG Results — Generator: {OLLAMA_GEMMA_MODEL} ===\n\n")
+    with open(output_file, "a", encoding="utf-8") as out:
+        # ── Resume support: detect how many questions already answered ──────────
+        already_done = 0
+        if output_file.exists():
+            content = output_file.read_text(encoding="utf-8")
+            already_done = content.count("[User]:")
+            if already_done > 0:
+                print(f"Resuming from question {already_done + 1} (skipping {already_done} already done).")
+                questions = questions[already_done:]
+        else:
+            out.write(f"=== Graph RAG Results (V7 — Fixes A+D+E Active) — Generator: {OLLAMA_MODEL} ===\n\n")
+
+
+        # ── Step 0: Model Warmup (Load models into memory before timing) ───────────
+        if questions:
+            print("\n🔥 Warming up models (Initial load into RAM)...", flush=True)
+            try:
+                # Run a dummy query to force BGE-M3, FAISS, Reranker, and Qwen into memory
+                warmup_q = "هل القانون الجزائري يعاقب على السرقة؟"
+                warmup_chunks = graph_retrieve(warmup_q, top_k=1)
+                if warmup_chunks:
+                    _ = graph_generate(warmup_q, warmup_chunks, model=OLLAMA_MODEL, stream=False)
+                print("✅ Warmup complete. Starting benchmark.\n")
+            except Exception as e:
+                print(f"⚠️ Warmup failed (non-critical): {e}\n")
 
         for i, q in enumerate(questions, 1):
             print(f"[{i}/{len(questions)}] Processing: {q}", flush=True)
             start = time.time()
 
+            # ── Retrieval (always runs) ───────────────────────────────────────
+            chunks = []
             try:
-                chunks = graph_retrieve(q, top_k=5)
-                answer = gemma_generate(q, chunks)
+                # Reverting to baseline top_k=7 as requested by the user.
+                chunks = graph_retrieve(q, top_k=7)
             except Exception as e:
-                answer = f"Error during processing: {e}"
-                chunks = []
+                print(f"  [Retrieval ERROR] {e}", flush=True)
+
+            # ── Generation (requires Ollama) ──────────────────────────────────
+            answer = ""
+            try:
+                if chunks:
+                    answer = graph_generate(q, chunks, model=OLLAMA_MODEL, stream=False)
+                else:
+                    answer = "Retrieval returned no results."
+            except Exception as e:
+                answer = f"Error during generation: {e}"
 
             elapsed = time.time() - start
 
@@ -77,7 +123,7 @@ def main():
             out.write(f"(Time taken: {elapsed:.2f} seconds)\n")
             out.write("SOURCES:\n")
             for idx, chunk in enumerate(chunks, 1):
-                law_name   = chunk.get("law_name",       "قانون غير معروف")
+                law_name    = chunk.get("law_name",       "قانون غير معروف")
                 article_num = chunk.get("article_number", "N/A")
                 graph_score = chunk.get("graph_score",    0)
                 pagerank    = chunk.get("pagerank",       0)
