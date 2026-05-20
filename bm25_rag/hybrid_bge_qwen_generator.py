@@ -64,6 +64,7 @@ load_dotenv(PROJECT_ROOT / ".env")
 # ── Configuration ──────────────────────────────────────────────────────────────
 OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
 OLLAMA_MODEL    = os.getenv("OLLAMA_MODEL", "qwen2.5:7b")
+OLLAMA_TIMEOUT  = int(os.getenv("OLLAMA_TIMEOUT", "1800"))
 
 # Generation parameters — keep temperature low for factual legal answers
 TEMPERATURE  = 0.1
@@ -139,7 +140,7 @@ def _call_ollama(prompt: str) -> str:
     )
 
     try:
-        with urllib.request.urlopen(req, timeout=120) as resp:
+        with urllib.request.urlopen(req, timeout=OLLAMA_TIMEOUT) as resp:
             body = json.loads(resp.read().decode("utf-8"))
             return body.get("response", "").strip()
     except urllib.error.URLError as e:
