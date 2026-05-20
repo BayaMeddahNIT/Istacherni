@@ -18,7 +18,7 @@ from FlagEmbedding import BGEM3FlagModel
 
 PROJECT_ROOT            = Path(__file__).resolve().parent.parent
 FINETUNED_RERANKER_PATH = PROJECT_ROOT / "reranker_finetuned"
-BGEM3_UNIFIED_PATH      = "D:\\pfe_baya_models\\bge-m3-unified"
+BGEM3_UNIFIED_PATH      = str(PROJECT_ROOT / "models" / "bge-m3-unified")
 
 QUERY_PROMPT = "Represent this sentence for searching relevant passages: {query}"
 

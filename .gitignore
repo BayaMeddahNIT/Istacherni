@@ -210,3 +210,7 @@ __marimo__/
 models/
 *.gguf
 *.safetensors
+
+# Backups
+*.fused_bak
+*.bak
