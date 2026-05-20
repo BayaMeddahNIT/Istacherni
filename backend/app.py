@@ -327,7 +327,6 @@ class ChatResponse(BaseModel):
     session_id: Optional[str] = None
 
 
-<<<<<<< HEAD
 # ── Hybrid pipeline request/response models ────────────────────────────────────
 class HybridChatRequest(BaseModel):
     question: str = Field(
@@ -364,7 +363,6 @@ class HybridChatResponse(BaseModel):
 
 
 # ── Routes ────────────────────────────────────────────────────────────────────
-=======
 class SearchRequest(BaseModel):
     question: str = Field(..., min_length=1, max_length=1000)
     top_k:    int = Field(default=7, ge=1, le=20)
@@ -1186,7 +1184,6 @@ def receive_contact_message(
 # ── System routes ─────────────────────────────────────────────────────────────
 # ═══════════════════════════════════════════════════════════════════════════════
 
->>>>>>> graph
 @app.get("/health", tags=["system"])
 def health_check():
     """Health check — verifies the vector store is accessible."""
