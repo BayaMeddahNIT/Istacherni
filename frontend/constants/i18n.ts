@@ -13,6 +13,17 @@ const translations = {
     confirm: "Confirmer",
     appVersion: "Istacherni v1.0.0  •  © 2025 Tous droits réservés",
 
+    // Onboarding
+    onboardingNext: "Suivante >",
+    onboardingStart: "Commencer",
+    onboardingSkip: "Passer",
+    onboardingTitle1: "Services Juridiques",
+    onboardingDesc1: "Trouvez tous les types de services juridiques dans une seule application, avec un processus simple et de multiples avantages.",
+    onboardingTitle2: "Expertise Locale",
+    onboardingDesc2: "Saisissez le nom de votre ville et le type de consultant que vous recherchez. Notre système d'IA sélectionnera le meilleur candidat pour votre mission.",
+    onboardingTitle3: "Profils Vérifiés",
+    onboardingDesc3: "Choisissez les meilleurs profils d'avocats vérifiés dans votre région en fonction de leurs qualifications, leur expérience et les avis des utilisateurs.",
+
     // Tab Labels
     tabHome: "Accueil",
     tabDocuments: "Documents",
@@ -82,6 +93,9 @@ const translations = {
     changePassword: "Changer le mot de passe",
     privacySecurity: "Confidentialité et sécurité",
     deleteAccount: "Supprimer mon compte",
+    recentSearch: "Recherche récente",
+    openedDocument: "Document ouvert",
+    noRecentActivity: "Aucune activité récente pour le moment",
 
     // Contact Us
     contactTitle: "Contactez-nous",
@@ -159,6 +173,11 @@ const translations = {
     lawyersReferenced: "avocats référencés",
     searchLawyerPlaceholder: "Nom, spécialité, ville...",
     noLawyerFound: "Aucun avocat trouvé",
+    lawyerDemoDisclaimer: "Ces données sont fictives et fournies à titre de démonstration uniquement.",
+    lawyerGoogleSource: "Données fournies par Google Maps",
+    lawyerGoogleNote: "Avocats réels près de vous (à 8 km)",
+    viewOnMaps: "Voir sur Maps",
+    loadingLawyers: "Recherche d’avocats à proximité…",
     available: "Disponible",
     busy: "Occupé",
     experience: "ans d'expérience",
@@ -188,6 +207,41 @@ const translations = {
     later: "Plus tard",
     thankYou: "Merci pour votre avis !",
     selectRating: "Veuillez sélectionner une note",
+    // Auth
+    loginTitle: "Se Connecter",
+    signupTitle: "S'inscrire",
+    username: "Nom d'utilisateur",
+    password: "Mot de passe",
+    loginBtn: "Se Connecter",
+    signupBtn: "S'inscrire",
+    googleLogin: "Continuer avec Google",
+    noAccount: "Pas encore de compte ?",
+    alreadyHaveAccount: "Déjà inscrit ?",
+    fillFields: "Veuillez remplir tous les champs.",
+    confirmPassword: "Confirmer le mot de passe",
+    emailPhone: "Email ou Téléphone",
+    faqData: [
+      {
+        category: "Général",
+        questions: [
+          { q: "Qu'est-ce qu'Istacherni ?", a: "Istacherni est une plateforme juridique intelligente qui facilite l'accès aux lois algériennes et fournit une assistance juridique par IA." },
+          { q: "Est-ce gratuit ?", a: "L'accès aux textes de loi et aux recherches de base est gratuit. Certaines fonctions avancées d'analyse IA peuvent nécessiter un compte premium." }
+        ]
+      },
+      {
+        category: "Recherche",
+        questions: [
+          { q: "Comment trouver un texte de loi ?", a: "Vous pouvez rechercher par mots-clés ou numéro d'article dans l'onglet 'Documents' ou poser une question directe à l'IA sur l'accueil." },
+          { q: "Les sources sont-elles officielles ?", a: "Oui, nous indexons principalement le Journal Officiel de la République Algérienne (JORADP)." }
+        ]
+      },
+      {
+        category: "Sécurité",
+        questions: [
+          { q: "Mes données sont-elles protégées ?", a: "Absolument. Vos recherches et profils sont cryptés et ne sont jamais partagés avec des tiers sans votre accord." }
+        ]
+      }
+    ],
   },
 
   en: {
@@ -200,6 +254,17 @@ const translations = {
     sending: "Sending…",
     confirm: "Confirm",
     appVersion: "Istacherni v1.0.0  •  © 2025 All rights reserved",
+
+    // Onboarding
+    onboardingNext: "Next >",
+    onboardingStart: "Get Started",
+    onboardingSkip: "Skip",
+    onboardingTitle1: "Legal Services",
+    onboardingDesc1: "Find all types of legal services in a single application, with a simple process and multiple benefits.",
+    onboardingTitle2: "Local Expertise",
+    onboardingDesc2: "Enter the name of your city and the type of consultant you are looking for. Our AI system will select the best candidate for your mission.",
+    onboardingTitle3: "Verified Profiles",
+    onboardingDesc3: "Choose the best verified lawyer profiles in your region based on their qualifications, experience, and user reviews.",
 
     tabHome: "Home",
     tabDocuments: "Documents",
@@ -265,6 +330,9 @@ const translations = {
     changePassword: "Change Password",
     privacySecurity: "Privacy & Security",
     deleteAccount: "Delete My Account",
+    recentSearch: "Recent Search",
+    openedDocument: "Opened Document",
+    noRecentActivity: "No recent activity yet",
 
     contactTitle: "Contact Us",
     respondIn24h: "We respond within 24h",
@@ -337,6 +405,11 @@ const translations = {
     lawyersReferenced: "listed lawyers",
     searchLawyerPlaceholder: "Name, specialty, city...",
     noLawyerFound: "No lawyer found",
+    lawyerDemoDisclaimer: "This data is fictional and provided for demonstration purposes only.",
+    lawyerGoogleSource: "Data provided by Google Maps",
+    lawyerGoogleNote: "Real lawyers near you (within 8 km)",
+    viewOnMaps: "View on Maps",
+    loadingLawyers: "Searching for nearby lawyers…",
     available: "Available",
     busy: "Busy",
     experience: "years of experience",
@@ -365,6 +438,41 @@ const translations = {
     later: "Later",
     thankYou: "Thank you for your feedback!",
     selectRating: "Please select a rating",
+    // Auth
+    loginTitle: "Login",
+    signupTitle: "Sign Up",
+    username: "Username",
+    password: "Password",
+    loginBtn: "Login",
+    signupBtn: "Sign Up",
+    googleLogin: "Continue with Google",
+    noAccount: "Don't have an account ?",
+    alreadyHaveAccount: "Already have an account ?",
+    fillFields: "Please fill in all fields.",
+    confirmPassword: "Confirm Password",
+    emailPhone: "Email or Phone",
+    faqData: [
+      {
+        category: "General",
+        questions: [
+          { q: "What is Istacherni?", a: "Istacherni is an intelligent legal platform that simplifies access to Algerian laws and provides AI-powered legal assistance." },
+          { q: "Is it free?", a: "Access to legal texts and basic searches is free. Some advanced AI analysis features may require a premium account." }
+        ]
+      },
+      {
+        category: "Search",
+        questions: [
+          { q: "How do I find a law text?", a: "You can search by keywords or article numbers in the 'Documents' tab or ask a direct question to the AI on the home screen." },
+          { q: "Are the sources official?", a: "Yes, we primarily index the Official Gazette of the Algerian Republic (JORADP)." }
+        ]
+      },
+      {
+        category: "Security",
+        questions: [
+          { q: "Is my data protected?", a: "Absolutely. Your searches and profiles are encrypted and are never shared with third parties without your consent." }
+        ]
+      }
+    ],
   },
 
   ar: {
@@ -377,6 +485,17 @@ const translations = {
     sending: "جارٍ الإرسال…",
     confirm: "تأكيد",
     appVersion: "إيستاشيرني v1.0.0  •  © 2025 جميع الحقوق محفوظة",
+
+    // Onboarding
+    onboardingNext: "التالي >",
+    onboardingStart: "ابدأ الآن",
+    onboardingSkip: "تخطي",
+    onboardingTitle1: "الخدمات القانونية",
+    onboardingDesc1: "ابحث عن جميع أنواع الخدمات القانونية في تطبيق واحد، مع عملية بسيطة وفوائد متعددة.",
+    onboardingTitle2: "الخبرة المحلية",
+    onboardingDesc2: "أدخل اسم مدينتك ونوع المستشار الذي تبحث عنه. سيختار نظام الذكاء الاصطناعي لدينا أفضل مرشح لمهمتك.",
+    onboardingTitle3: "ملفات شخصية موثوقة",
+    onboardingDesc3: "اختر أفضل ملفات المحامين المعتمدين في منطقتك بناءً على مؤهلاتهم وخبرتهم وتقييمات المستخدمين.",
 
     tabHome: "الرئيسية",
     tabDocuments: "الوثائق",
@@ -442,6 +561,9 @@ const translations = {
     changePassword: "تغيير كلمة المرور",
     privacySecurity: "الخصوصية والأمان",
     deleteAccount: "حذف حسابي",
+    recentSearch: "بحث حديث",
+    openedDocument: "مستند مفتوح",
+    noRecentActivity: "لا يوجد نشاط حديث بعد",
 
     contactTitle: "اتصل بنا",
     respondIn24h: "نرد خلال 24 ساعة",
@@ -514,6 +636,11 @@ const translations = {
     lawyersReferenced: "محامٍ مسجّل",
     searchLawyerPlaceholder: "الاسم، التخصص، المدينة...",
     noLawyerFound: "لا يوجد محامٍ",
+    lawyerDemoDisclaimer: "هذه البيانات وهمية ومقدمة لأغراض تجريبية فقط.",
+    lawyerGoogleSource: "بيانات مقدمة من Google Maps",
+    lawyerGoogleNote: "محامون حقيقيون بالقرب منك (8 كم)",
+    viewOnMaps: "عرض على Maps",
+    loadingLawyers: "جاري البحث عن المحامين القريبين…",
     available: "متاح",
     busy: "مشغول",
     experience: "سنوات خبرة",
@@ -542,6 +669,41 @@ const translations = {
     later: "لاحقاً",
     thankYou: "شكراً على تقييمك!",
     selectRating: "يرجى اختيار تقييم",
+    // Auth
+    loginTitle: "تسجيل الدخول",
+    signupTitle: "إنشاء حساب",
+    username: "اسم المستخدم",
+    password: "كلمة المرور",
+    loginBtn: "دخول",
+    signupBtn: "تسجيل",
+    googleLogin: "المتابعة باستخدام Google",
+    noAccount: "ليس لديك حساب؟",
+    alreadyHaveAccount: "لديك حساب بالفعل؟",
+    fillFields: "يرجى ملء جميع الحقول.",
+    confirmPassword: "تأكيد كلمة المرور",
+    emailPhone: "البريد أو الهاتف",
+    faqData: [
+      {
+        category: "عام",
+        questions: [
+          { q: "ما هو إيستاشيرني؟", a: "إيستاشيرني هي منصة قانونية ذكية تسهل الوصول إلى القوانين الجزائرية وتوفر مساعدة قانونية عبر الذكاء الاصطناعي." },
+          { q: "هل التطبيق مجاني؟", a: "الوصول إلى النصوص القانونية والأبحاث الأساسية مجاني. قد تتطلب بعض ميزات تحليل الذكاء الاصطناعي المتقدمة حساباً مميزاً." }
+        ]
+      },
+      {
+        category: "البحث",
+        questions: [
+          { q: "كيف أجد نصاً قانونياً؟", a: "يمكنك البحث بالكلمات المفتاحية أو رقم المادة في تبويب 'الوثائق' أو طرح سؤال مباشر على الذكاء الاصطناعي في الصفحة الرئيسية." },
+          { q: "هل المصادر رسمية؟", a: "نعم، نحن نقوم بفهرسة الجريدة الرسمية للجمهورية الجزائرية (JORADP) بشكل أساسي." }
+        ]
+      },
+      {
+        category: "الأمان",
+        questions: [
+          { q: "هل بياناتي محمية؟", a: "بالتأكيد. أبحاثك وملفاتك الشخصية مشفرة ولا تتم مشاركتها أبداً مع أطراف ثالثة دون موافقتك." }
+        ]
+      }
+    ],
   },
 };
 

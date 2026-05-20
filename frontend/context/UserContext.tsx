@@ -31,6 +31,10 @@ interface UserContextType {
   notifications: boolean;
   setNotifications: (val: boolean) => Promise<void>;
 
+  // Onboarding
+  hasCompletedOnboarding: boolean;
+  setHasCompletedOnboarding: (val: boolean) => Promise<void>;
+
   // Derived: theme + translations
   theme: Theme;
   t: (key: TranslationKeys) => string;
@@ -54,6 +58,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
   const [language, setLanguageState] = useState<LangKey>("fr");
   const [darkMode, setDarkModeState] = useState(false);
   const [notifications, setNotificationsState] = useState(true);
+  const [hasCompletedOnboarding, setHasCompletedOnboardingState] = useState(false);
 
   useEffect(() => {
     loadPersistedData();
@@ -61,16 +66,18 @@ export function UserProvider({ children }: { children: ReactNode }) {
 
   const loadPersistedData = async () => {
     try {
-      const [storedUser, storedLang, storedDark, storedNotif] = await Promise.all([
+      const [storedUser, storedLang, storedDark, storedNotif, storedOnboarding] = await Promise.all([
         AsyncStorage.getItem("@user_profile"),
         AsyncStorage.getItem("@language"),
         AsyncStorage.getItem("@dark_mode"),
         AsyncStorage.getItem("@notifications"),
+        AsyncStorage.getItem("@onboarding_complete"),
       ]);
       if (storedUser) setUser(JSON.parse(storedUser));
       if (storedLang) setLanguageState(storedLang as LangKey);
       if (storedDark) setDarkModeState(storedDark === "true");
       if (storedNotif) setNotificationsState(storedNotif !== "false");
+      if (storedOnboarding) setHasCompletedOnboardingState(storedOnboarding === "true");
     } catch (e) {
       console.log("Error loading persisted data", e);
     }
@@ -113,6 +120,11 @@ export function UserProvider({ children }: { children: ReactNode }) {
     await AsyncStorage.setItem("@notifications", String(val));
   };
 
+  const setHasCompletedOnboarding = async (val: boolean) => {
+    setHasCompletedOnboardingState(val);
+    await AsyncStorage.setItem("@onboarding_complete", String(val));
+  };
+
   // Derived values — recomputed whenever darkMode or language changes
   const theme: Theme = darkMode ? darkTheme : lightTheme;
   const t = (key: TranslationKeys): string => translations[language][key] ?? translations.fr[key] ?? key;
@@ -124,6 +136,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
       language, setLanguage,
       darkMode, setDarkMode,
       notifications, setNotifications,
+      hasCompletedOnboarding, setHasCompletedOnboarding,
       theme, t, isRTL,
     }}>
       {children}

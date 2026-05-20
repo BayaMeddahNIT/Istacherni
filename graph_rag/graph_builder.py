@@ -266,13 +266,31 @@ def build_graph(force: bool = False) -> tuple[nx.DiGraph, list[dict]]:
                     G.add_edge(art_id, candidate_id, rel="RELATED_TO")
                     edges += 1
 
-    # ── SAME_LAW edges (articles in the same law are loosely connected) ──
+    # ── Law hub nodes + sequential NEXT_ARTICLE edges ─────────────────────────
+    # Replaces the old O(n²) SAME_LAW all-pairs edges.
+    # Rationale: SAME_LAW dense edges (~n²/2 per law) caused PageRank to assign
+    # nearly identical scores to every article in the same law, making the graph
+    # score useless as a discriminative retrieval signal.
+    #
+    # New structure:
+    #   article → LAW_HUB:<law_name>   (BELONGS_TO_LAW, weight 0.5)
+    #   article[i] → article[i+1]      (NEXT_ARTICLE, weight 0.7)
+    # This retains law-grouping semantics with O(n) edges instead of O(n²).
     for law_name, ids in law_to_ids.items():
-        for i in range(len(ids)):
-            for j in range(i + 1, len(ids)):
-                G.add_edge(ids[i], ids[j], rel="SAME_LAW", weight=0.3)
-                G.add_edge(ids[j], ids[i], rel="SAME_LAW", weight=0.3)
-                edges += 2
+        # Add a hub node for this law
+        hub_id = f"LAW_HUB:{law_name}"
+        if not G.has_node(hub_id):
+            G.add_node(hub_id, node_type="law_hub", name=law_name)
+
+        for art_id in ids:
+            G.add_edge(art_id, hub_id, rel="BELONGS_TO_LAW", weight=0.5)
+            edges += 1
+
+        # Sequential links between consecutive articles in the same law
+        for i in range(len(ids) - 1):
+            G.add_edge(ids[i], ids[i + 1], rel="NEXT_ARTICLE", weight=0.7)
+            G.add_edge(ids[i + 1], ids[i], rel="PREV_ARTICLE", weight=0.7)
+            edges += 2
 
     print(f"[GraphBuilder] Graph complete:")
     print(f"  Nodes : {G.number_of_nodes()} ({len(articles)} articles + concept/domain/penalty nodes)")

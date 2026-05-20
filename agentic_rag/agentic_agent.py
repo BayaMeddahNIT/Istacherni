@@ -1,355 +1,538 @@
 """
 agentic_agent.py
 ----------------
-The core Agentic RAG engine.
+Agentic RAG engine — 100% local brain, local Graph RAG (Offline Only).
 
-How it works — unlike standard RAG:
+Architecture:
   ┌──────────────────────────────────────────────────────────────────┐
-  │  User question                                                   │
-  │       ↓                                                          │
-  │  Gemini (THINK) → decides which tool(s) to call                  │
-  │       ↓                                                          │
-  │  Tool execution  (search_articles / filter_by_domain /           │
-  │                   get_article_by_id)                             │
-  │       ↓                                                          │
-  │  Gemini reviews results → may call MORE tools (iterative)        │
-  │       ↓  (loop until Gemini stops calling tools)                 │
-  │  Gemini generates the final Arabic answer                        │
+  │  User query                                                      │
+  │      ↓                                                           │
+  │  [1] Acronym Expander  (expand_acronyms)                         │
+  │      ↓                                                           │
+  │  [2] Intent Classifier (Python rule-based, instant)              │
+  │      └─ SUBSTANTIVE/PROCEDURAL → Tool: graph_retrieve            │
+  │      ↓                                                           │
+  │  [3] Local Agentic Loop  (qwen2:7b via Ollama, JSON-mode)        │
+  │      ├─ Model outputs {"tool": "...", "args": {...}}              │
+  │      ├─ Python executes graph_retrieve, feeds result back        │
+  │      └─ Loop until model outputs {"tool": "final_answer", ...}   │
+  │      ↓                                                           │
+  │  [4] Final Arabic answer                                         │
   └──────────────────────────────────────────────────────────────────┘
 
-The agent is powered by Gemini 2.5 Flash function-calling.
-Uses AGENTIC_GEMINI_API_KEY if set in .env, falls back to GEMINI_API_KEY.
+Brain: qwen2:7b via Ollama (offline, private, zero API cost)
+Local tool: graph_rag_local.graph_retriever (local vector graph)
 """
 
+OFFLINE_MODE = True  # Toggle for 100% offline operation
+
 import json
-import os
 import re
-import time
 from pathlib import Path
-from typing import Any
-
+from typing import Optional
 from dotenv import load_dotenv
-from google import genai
-from google.genai import types as genai_types
 
-from agentic_rag.agent_knowledge_base import KB
+load_dotenv(Path(__file__).resolve().parents[1] / ".env")
 
-# ── Env ───────────────────────────────────────────────────────────────────────
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
-load_dotenv(PROJECT_ROOT / ".env")
+from graph_rag_local.graph_retriever import graph_retrieve, expand_acronyms
+from graph_rag_local.graph_generator import graph_generate
+from graph_rag_local.local_llm import local_generate, LOCAL_LLM_MODEL
+from agentic_rag.web_search_tool import web_search
 
-_API_KEY = os.getenv("AGENTIC_GEMINI_API_KEY") or os.getenv("GEMINI_API_KEY")
-MODEL    = "gemini-2.5-flash"
-MAX_TOOL_ROUNDS = 5   # Maximum agentic iterations before forcing a final answer
+MAX_TOOL_ROUNDS = 3   # Maximum agentic iterations before forcing final answer
 
 
-# ═══════════════════════════════════════════════════════════════════════
-# ── Tool declarations  (sent to Gemini's function-calling API) ────────
-# ═══════════════════════════════════════════════════════════════════════
+# ══════════════════════════════════════════════════════════════════════════════
+# ── Intent Classifier ─────────────────────────────────────────────────────────
+# ══════════════════════════════════════════════════════════════════════════════
 
-_TOOL_DECLARATIONS = [
-    genai_types.FunctionDeclaration(
-        name="search_articles",
-        description=(
-            "Search the full Algerian law corpus using BM25 keyword matching. "
-            "Use this as the first tool when you are unsure which law domain "
-            "the question belongs to."
-        ),
-        parameters=genai_types.Schema(
-            type=genai_types.Type.OBJECT,
-            properties={
-                "query": genai_types.Schema(
-                    type=genai_types.Type.STRING,
-                    description="The search query in Arabic (key legal terms from the user's question)."
-                ),
-                "top_k": genai_types.Schema(
-                    type=genai_types.Type.INTEGER,
-                    description="Number of articles to return (default 5, max 10)."
-                ),
-            },
-            required=["query"],
-        ),
-    ),
-    genai_types.FunctionDeclaration(
-        name="filter_by_domain",
-        description=(
-            "Search within a specific Algerian law domain. "
-            "Use when you know the relevant domain (e.g. 'Penal Law', 'Civil Law', "
-            "'Labor Law', 'Commercial Law', 'Administrative Law'). "
-            "More precise than search_articles when the domain is clear."
-        ),
-        parameters=genai_types.Schema(
-            type=genai_types.Type.OBJECT,
-            properties={
-                "domain": genai_types.Schema(
-                    type=genai_types.Type.STRING,
-                    description=(
-                        "The law domain to filter by. Examples: "
-                        "'Penal Law', 'Civil Law', 'Labor Law', 'Commercial Law'."
-                    )
-                ),
-                "query": genai_types.Schema(
-                    type=genai_types.Type.STRING,
-                    description="The search query in Arabic."
-                ),
-                "top_k": genai_types.Schema(
-                    type=genai_types.Type.INTEGER,
-                    description="Number of articles to return (default 5, max 10)."
-                ),
-            },
-            required=["domain", "query"],
-        ),
-    ),
-    genai_types.FunctionDeclaration(
-        name="get_article_by_id",
-        description=(
-            "Retrieve the full text of a specific article by its ID "
-            "(e.g. 'DZ_PENAL_ART_350'). Use this to fetch the complete "
-            "details of an article you already know about."
-        ),
-        parameters=genai_types.Schema(
-            type=genai_types.Type.OBJECT,
-            properties={
-                "article_id": genai_types.Schema(
-                    type=genai_types.Type.STRING,
-                    description="The exact article ID (e.g. 'DZ_PENAL_ART_350')."
-                ),
-            },
-            required=["article_id"],
-        ),
-    ),
-]
+# ── Instant CHITCHAT Patterns (O(1) Python-first, zero LLM cost) ──────────────
+_CHITCHAT_PATTERNS = {
+    # Arabic greetings
+    "مرحبا", "مرحباً", "السلام", "السلام عليكم", "صباح الخير", "مساء الخير",
+    "هلا", "هاي", "أهلاً", "أهلا", "شكراً", "شكرا", "وداعاً", "مع السلامة",
+    # English greetings
+    "hello", "hi", "hey", "good morning", "good evening", "thanks", "thank you", "bye",
+    # French greetings
+    "bonjour", "salut", "bonsoir", "merci", "au revoir", "bonne journée",
+}
 
-_TOOLS = [genai_types.Tool(function_declarations=_TOOL_DECLARATIONS)]
+_CHITCHAT_RESPONSES = {
+    "AR": "مرحباً! أنا مستشارك القانوني الجزائري. كيف يمكنني مساعدتك اليوم؟",
+    "EN": "Hello! I'm your Algerian legal assistant. How can I help you today?",
+    "FR": "Bonjour ! Je suis votre assistant juridique algérien. Comment puis-je vous aider ?",
+}
+
+def _detect_language_fast(text: str) -> str:
+    """Detect language from script. Fast O(n) check with no LLM."""
+    stripped = text.strip()
+    arabic_chars = sum(1 for c in stripped if '\u0600' <= c <= '\u06FF')
+    if arabic_chars / max(len(stripped), 1) > 0.3:
+        return "AR"
+    low = stripped.lower()
+    # Unambiguous French single words and markers
+    french_words = {"bonjour", "salut", "bonsoir", "merci", "quelles", "quel",
+                    "comment", "pourquoi", "quelle", "est-ce", "dans", "les",
+                    "des", "une", "au revoir", "bonne"}
+    if any(w in low.split() or low == w for w in french_words):
+        return "FR"
+    french_markers = ["quell", "est-ce", "au revoir"]
+    if any(m in low for m in french_markers):
+        return "FR"
+    return "EN"
+
+def _check_instant_chitchat(query: str) -> tuple[bool, str]:
+    """Return (is_chitchat, language) in O(1). Runs before any LLM call."""
+    normalized = query.strip().lower().rstrip("!؟?.,")
+    lang = _detect_language_fast(query)
+    if normalized in _CHITCHAT_PATTERNS:
+        return True, lang
+    # Also check if the entire message is very short and contains a greeting word
+    if len(normalized.split()) <= 3:
+        for pat in _CHITCHAT_PATTERNS:
+            if pat in normalized:
+                return True, lang
+    return False, lang
 
 
-# ═══════════════════════════════════════════════════════════════════════
-# ── Tool executor ────────────────────────────────────────────────────
-# ═══════════════════════════════════════════════════════════════════════
+_ROUTER_SYSTEM = """You are an intelligent multilingual classifier for Algerian legal queries.
+Analyze the user's last message based on the conversation context and output a single JSON object.
 
-def _format_article(art: dict) -> dict:
-    """Return a clean JSON-serialisable summary of an article for the agent."""
+Detect the user's language:
+- If the message contains Arabic script → "AR"
+- If the message is in French → "FR"
+- If the message is in English → "EN"
+
+Intent types:
+1. CHITCHAT: Greetings, thanks, or off-topic messages.
+2. FOLLOW_UP: Question depends entirely on the previous answer (e.g., "explain more", "does this apply to...").
+3. SUBSTANTIVE: Legal substance or procedural questions (rights, penalties, contract conditions, steps, registration).
+
+Rules for rewritten_query (CRITICAL — this is the retrieval query):
+- ALWAYS write rewritten_query in Arabic, even if the user wrote in French or English.
+- Translate the question into Arabic for the Arabic legal database.
+- Expand French acronyms (SARL → شركة ذات مسؤولية محدودة, SPA → شركة مساهمة).
+- If CHITCHAT, set rewritten_query to null.
+- If FOLLOW_UP, resolve pronouns using context history and write the full standalone Arabic query.
+
+Rules for direct_response:
+- Only populate this field if intent = CHITCHAT.
+- Write the greeting response in the SAME language as detected_language.
+- Otherwise set to null.
+
+Output ONLY valid JSON in this exact format:
+{
+  "detected_language": "AR",
+  "intent": "SUBSTANTIVE",
+  "rewritten_query": "Arabic search query",
+  "direct_response": null,
+  "extracted_articles": []
+}
+
+EXAMPLES:
+User: "How to register a company?" -> {"detected_language": "EN", "intent": "SUBSTANTIVE", "rewritten_query": "كيفية تسجيل شركة في الجزائر؟", "direct_response": null}
+User: "مرحبا" -> {"detected_language": "AR", "intent": "CHITCHAT", "rewritten_query": null, "direct_response": "مرحباً! كيف أساعدك؟"}
+
+CRITICAL RULES:
+- `detected_language`: Input language (AR, EN, or FR).
+- `rewritten_query`: ALWAYS provide the search query in Arabic. 
+- NO Chinese/Asian characters allowed. Strictly Arabic.
+Expansion Rule: SARL -> شركة ذات مسؤولية محدودة, SPA -> شركة مساهمة.
+"""
+
+def _run_router(query: str, history: list[dict], verbose: bool = False, model: str = None) -> dict:
+    """Combines intent classification, query rewriting, and entity extraction into a single LLM pass."""
+    prompt = _ROUTER_SYSTEM + "\n\n"
+    if history:
+        prompt += "Conversation context (last 3 messages):\n"
+        for msg in history[-3:]:
+            if msg.get("role") in ["user", "assistant"]:
+                prompt += f"{msg['role']}: {msg['content']}\n"
+    
+    lang_hint = _detect_language_fast(query)
+    prompt += f"\nUser message: {query}\n"
+    prompt += f"Language hint: {lang_hint}\n"
+    prompt += "\nOutput ONLY valid JSON:\n"
+
+    raw = local_generate(prompt, temperature=0.0, stream=False, model=model)
+    
+    # Extract JSON
+    raw = re.sub(r"```(?:json)?", "", raw).strip().strip("`").strip()
+    match = re.search(r"\{.*\}", raw, re.DOTALL)
+    if match:
+        try:
+            res = json.loads(match.group())
+            # [SECURITY PATCH] Force-strip Chinese characters from rewritten_query
+            if res.get("rewritten_query"):
+                res["rewritten_query"] = re.sub(r"[\u4e00-\u9fff]+", "", res["rewritten_query"]).strip()
+            return res
+        except:
+            pass
+            
+    # Fallback if parsing fails
     return {
-        "id":                         art.get("id"),
-        "law_name":                   art.get("law_name"),
-        "law_domain":                 art.get("law_domain"),
-        "article_number":             art.get("article_number"),
-        "title":                      art.get("title"),
-        "text":                       art.get("text_original", "")[:600],  # keep tokens low
-        "legal_conditions_summary":   art.get("legal_conditions_summary"),
-        "penalties_summary":          art.get("penalties_summary"),
-        "keywords":                   art.get("keywords", []),
-        "bm25_score":                 art.get("bm25_score"),
+        "detected_language": _detect_language_fast(query),
+        "intent": "SUBSTANTIVE",
+        "rewritten_query": query,
+        "direct_response": None,
+        "extracted_articles": []
     }
 
 
+
+# ══════════════════════════════════════════════════════════════════════════════
+# ── Tool Executor ─────────────────────────────────────────────────────────────
+# ══════════════════════════════════════════════════════════════════════════════
+
+def _tool_graph_retrieve(args: dict) -> str:
+    """Call local graph retriever and return a JSON string of article summaries."""
+    query   = args.get("query", "")
+    top_k   = min(int(args.get("top_k", 7)), 10)
+    results = graph_retrieve(query, top_k=top_k)
+
+    articles = []
+    for r in results:
+        articles.append({
+            "law_name":       r.get("law_name", ""),
+            "article_number": r.get("article_number", ""),
+            "title":          r.get("title", ""),
+            "text":           (r.get("text_original") or r.get("summary") or "")[:400],
+            "score":          round(r.get("graph_score", 0), 3),
+        })
+    return json.dumps({"tool": "graph_retrieve", "count": len(articles), "articles": articles},
+                      ensure_ascii=False)
+
+
+def _tool_web_search(args: dict) -> str:
+    """Call DuckDuckGo scoped to Algerian government domains."""
+    query   = args.get("query", "")
+    domains = args.get("domains", None)   # None → use default whitelist
+    result  = web_search(query, domains)
+    return json.dumps({"tool": "web_search", **result}, ensure_ascii=False)
+
+
+_TOOL_REGISTRY = {
+    "graph_retrieve": _tool_graph_retrieve,
+    "web_search":     _tool_web_search,
+}
+
+
 def _execute_tool(name: str, args: dict) -> str:
-    """
-    Dispatch a function-call from Gemini to the actual KB tool.
-    Returns a JSON string to send back as the tool result.
-    """
+    fn = _TOOL_REGISTRY.get(name)
+    if fn is None:
+        return json.dumps({"error": f"Unknown tool '{name}'"})
     try:
-        if name == "search_articles":
-            results = KB.search_articles(
-                query=args.get("query", ""),
-                top_k=min(int(args.get("top_k", 5)), 10),
-            )
-            payload = [_format_article(a) for a in results]
-            return json.dumps({"articles": payload, "count": len(payload)}, ensure_ascii=False)
-
-        elif name == "filter_by_domain":
-            results = KB.filter_by_domain(
-                domain=args.get("domain", ""),
-                query=args.get("query", ""),
-                top_k=min(int(args.get("top_k", 5)), 10),
-            )
-            payload = [_format_article(a) for a in results]
-            return json.dumps({"articles": payload, "count": len(payload)}, ensure_ascii=False)
-
-        elif name == "get_article_by_id":
-            art = KB.get_article_by_id(args.get("article_id", ""))
-            if art:
-                return json.dumps({"article": _format_article(art)}, ensure_ascii=False)
-            return json.dumps({"error": "Article not found."}, ensure_ascii=False)
-
-        else:
-            return json.dumps({"error": f"Unknown tool: {name}"})
-
+        return fn(args)
     except Exception as e:
         return json.dumps({"error": str(e)})
 
 
-# ═══════════════════════════════════════════════════════════════════════
-# ── Agent  ───────────────────────────────────────────────────────────
-# ═══════════════════════════════════════════════════════════════════════
+# ══════════════════════════════════════════════════════════════════════════════
+# ── JSON Tool-Call Prompt ──────────────────────────────────────────────────────
+# ══════════════════════════════════════════════════════════════════════════════
 
-_SYSTEM_INSTRUCTION = """أنت محامٍ رقمي متخصص في القانون الجزائري.
-لديك أدوات للبحث في قاعدة بيانات المواد القانونية الجزائرية.
+_AGENT_SYSTEM = """\
+أنت محامٍ رقمي متخصص في القانون الجزائري. تعمل في وضع عدم الاتصال (Offline) وتعتمد حصرياً على قاعدة بيانات القوانين المحلية.
 
-إرشادات العمل:
-1. حلّل سؤال المستخدم وحدّد أي مجال قانوني ينتمي إليه (جزائي / مدني / عمل / تجاري…).
-2. استخدم الأدوات المتاحة للبحث عن المواد ذات الصلة. يمكنك استدعاء أدوات متعددة إذا لزم الأمر.
-3. بعد الحصول على المواد الكافية، صِغ إجابة قانونية شاملة باللغة العربية.
-4. استشهد برقم المادة واسم القانون لكل معلومة.
-5. لا تخترع معلومات خارج المواد المسترجعة.
-6. إذا لم تجد مواد كافية بعد البحث، قل ذلك صراحةً."""
+الأدوات المتاحة:
+1. graph_retrieve(query, top_k=7)  — البحث في قاعدة بيانات المواد القانونية والإجراءات المحلية.
+2. final_answer(text)              — إصدار الإجابة النهائية للمستخدم باللغة العربية.
 
+قواعد صارمة:
+- أجب دائماً بكائن JSON واحد فقط بهذا الشكل بالضبط:
+  {"tool": "اسم_الأداة", "args": {"المفتاح": "القيمة"}}
+- لا تكتب أي نص خارج كائن JSON.
+- استخدم graph_retrieve للبحث عن المعلومات القانونية أو الإجرائية في قاعدة البيانات المحلية.
+- بعد الحصول على نتائج كافية، استخدم final_answer مع نص الإجابة الكاملة.
+- لا تخترع معلومات. اعتمد فقط على ما استرجعته من الأدوات.
+- يُمنع منعاً باتاً استخدام أي لغة أخرى غير اللغة العربية. لا تستخدم أي رموز أو كلمات أجنبية أو صينية.
+"""
 
-def _get_client() -> genai.Client:
-    if not _API_KEY:
-        raise EnvironmentError(
-            "No Gemini API key found. Set AGENTIC_GEMINI_API_KEY or GEMINI_API_KEY in .env"
-        )
-    return genai.Client(api_key=_API_KEY)
+def _build_agent_prompt(question: str, history: list[dict], hint_procedural: bool) -> str:
+    """Build the full prompt string for the local LLM."""
+    hint = '\n[تلميح]: استخدم graph_retrieve للبحث في قاعدة البيانات القانونية.\n'
 
+    turns = ""
+    for entry in history:
+        role   = entry["role"]   # "tool_call" | "tool_result"
+        content = entry["content"]
+        if role == "tool_call":
+            turns += f"\n[استدعيت]: {content}\n"
+        elif role == "tool_result":
+            turns += f"\n[نتيجة الأداة]: {content}\n"
 
-def agentic_answer(question: str, verbose: bool = True) -> dict:
-    """
-    Run the full agentic RAG loop for a given question.
-
-    Args:
-        question: The user's legal question (Arabic or French).
-        verbose:  Print the agent's reasoning steps to stdout.
-
-    Returns:
-        {
-          "answer":       str,           ← the final Arabic answer
-          "tools_called": list[dict],    ← log of every tool call + result summary
-          "rounds":       int,           ← number of agentic iterations
-        }
-    """
-    client = _get_client()
-    tools_log: list[dict] = []
-
-    # ── Conversation history ───────────────────────────────────────────
-    history: list[genai_types.Content] = [
-        genai_types.Content(
-            role="user",
-            parts=[genai_types.Part(text=f"{_SYSTEM_INSTRUCTION}\n\n---\n\nسؤال المستخدم:\n{question}")]
-        )
-    ]
-
-    config = genai_types.GenerateContentConfig(
-        temperature=0.1,
-        max_output_tokens=2048,
-        tools=_TOOLS,
+    return (
+        f"{_AGENT_SYSTEM}\n"
+        f"{hint}\n"
+        f"سؤال المستخدم: {question}\n"
+        f"{turns}\n"
+        f"أجب الآن بكائن JSON:"
     )
 
-    # ── Agentic loop ──────────────────────────────────────────────────
-    for round_num in range(1, MAX_TOOL_ROUNDS + 1):
-        if verbose:
-            print(f"\n  [Agent Round {round_num}] Calling Gemini…")
 
-        # Call Gemini with retry on 429
-        response = _call_with_retry(client, history, config)
+_LANGUAGE_DIRECTIVE = {
+    "AR": "اكتب الإجابة النهائية بالعربية الفصحى فقط. لا تستخدم أي لغة أجنبية.",
+    "EN": "The user wrote in English. You retrieved Arabic law — that is correct. Now synthesize the legal findings and write your ENTIRE 'answer' field in fluent, professional English. Translate legal article citations accurately.",
+    "FR": "L'utilisateur a écrit en français. Tu as récupéré les lois en arabe — c'est correct. Maintenant synthétise les conclusions juridiques et rédige TOUT le champ 'answer' en français fluide et professionnel. Traduis avec précision les citations des articles.",
+}
 
-        candidate = response.candidates[0]
-        tool_calls = [
-            part for part in candidate.content.parts
-            if part.function_call is not None
-        ]
+def _build_qa_system(detected_language: str = "AR", intent: str = "SUBSTANTIVE") -> str:
+    """Build the QA system prompt dynamically based on the user's detected language."""
+    lang_directive = _LANGUAGE_DIRECTIVE.get(detected_language, _LANGUAGE_DIRECTIVE["AR"])
+    
+    validation_rule = """- CRITICAL: You MUST rely exclusively on the retrieved legal and procedural texts from the local database. 
 
-        # No tool calls → agent has the final answer
-        if not tool_calls:
-            final_text = "".join(
-                part.text for part in candidate.content.parts
-                if hasattr(part, "text") and part.text
-            ).strip()
+- SYNTHESIS PERMISSION: If the user asks for a comparison or difference between two concepts (e.g., SARL vs SPA), or steps for a procedure, and the retrieved context contains the relevant definitions or rules, you are AUTHORIZED to synthesize the answer yourself. Extract the information from the provided articles and structure them clearly.
+
+- If the provided context does NOT contain information about the query, you MUST refuse to answer."""
+
+    return f"""You are an expert Algerian digital legal advisor.
+Think step by step inside <thought> tags to analyze the question and the retrieved sources.
+After thinking, output ONLY a valid JSON object — no other text:
+{{
+  "is_context_sufficient": "yes" | "no",
+  "answer": "Your structured answer"
+}}
+
+Strict rules:
+- {lang_directive}
+- IDENTIFY the SPECIFIC sub-point the user is asking about. Answer ONLY that sub-point. Do NOT summarize the entire legal article.
+- Structure procedural answers as numbered steps. Cite article numbers [المادة X] for substantive answers.
+- Legal Acronym Dictionary: Never guess acronyms. Strictly use: SARL = شركة ذات مسؤولية محدودة, SPA = شركة مساهمة, SNC = شركة تضامن, EURL = مؤسسة ذات الشخص الوحيد وذات المسؤولية المحدودة.
+{validation_rule}
+- If the retrieved context does NOT contain sufficient information to answer, set is_context_sufficient to "no" and refuse to guess.
+- NEVER invent legal facts not present in the retrieved context.
+- Do NOT use Chinese characters or any unexpected symbols.
+- CRITICAL: Output ONLY the JSON. 
+- TONE: Always start your response with a brief, polite, and professional opening in the user's language before delivering the legal or procedural facts. Ensure the flow is natural and helpful.
+
+FINAL INSTRUCTION: You MUST output your final answer ENTIRELY in the same language as the user's original query. If the query is in Arabic, your entire response must be in fluent Arabic. Do not use English unless defining an acronym."""
+
+def _flatten_json_list(data):
+    """Recursively flatten JSON lists into string format."""
+    if isinstance(data, list):
+        return "\n".join([str(item) for item in data])
+    if isinstance(data, dict):
+        return {k: _flatten_json_list(v) for k, v in data.items()}
+    return data
+
+def _parse_thought_and_json(raw: str) -> tuple[str, dict]:
+    """Extract <thought> block and parse JSON securely."""
+    thoughts = ""
+    t_match = re.search(r"<thought>(.*?)</thought>", raw, re.DOTALL)
+    if t_match:
+        thoughts = t_match.group(1).strip()
+        raw = raw.replace(t_match.group(0), "").strip()
+
+    raw = re.sub(r"```(?:json)?", "", raw).strip().strip("`").strip()
+    match = re.search(r"\{.*\}", raw, re.DOTALL)
+    if match:
+        try:
+            return thoughts, json.loads(match.group())
+        except:
+            pass
+    return thoughts, {"is_context_sufficient": "no", "answer": ""}
+
+# ══════════════════════════════════════════════════════════════════════════════
+# ── Main Agentic State Machine ────────────────────────────────────────────────
+# ══════════════════════════════════════════════════════════════════════════════
+
+def agentic_answer(
+    question: str,
+    chat_history: list[dict] = None,
+    verbose: bool = True,
+    retriever_type: str = "bge",
+    skip_gen: bool = False,
+    model: str = None,
+) -> dict:
+    """Run the state-based hybrid agentic RAG loop."""
+    # ── O(1) Instant CHITCHAT Interceptor — zero LLM cost ─────────────────────
+    is_chitchat, lang = _check_instant_chitchat(question)
+    if is_chitchat:
+        return {"answer": _CHITCHAT_RESPONSES.get(lang, _CHITCHAT_RESPONSES["AR"]), "tools_called": [], "rounds": 0}
+
+    state = "ROUTE"
+    context_text = ""
+    routing_data = {}
+    tools_log = []
+    final_answer_text = ""
+    detected_language = _detect_language_fast(question)
+
+    # Metadata for evaluation
+    retrieved_ids = []
+    context_sufficient = True # Default to true for chitchat/early returns
+
+    while state != "END":
+        if state == "ROUTE":
+            routing_data = _run_router(question, chat_history, verbose, model=model)
+            detected_language = routing_data.get("detected_language", detected_language)
             if verbose:
-                print(f"  [Agent Round {round_num}] ✓ Final answer generated.")
-            return {
-                "answer":       final_text,
-                "tools_called": tools_log,
-                "rounds":       round_num,
-            }
+                print(f"  [Router] Lang: {detected_language} | Intent: {routing_data.get('intent')} | Rewritten: {routing_data.get('rewritten_query')}")
+            if routing_data.get("intent") == "CHITCHAT":
+                direct = routing_data.get("direct_response") or _CHITCHAT_RESPONSES.get(detected_language, _CHITCHAT_RESPONSES["AR"])
+                return {"answer": direct, "tools_called": [], "rounds": 0}
+            state = "RETRIEVE"
 
-        # ── Execute all tool calls in this round ──────────────────────
-        # Add the model's response (with tool calls) to history
-        history.append(candidate.content)
+        elif state == "RETRIEVE":
+            query_to_search = routing_data.get("rewritten_query") or question
+            extracted = routing_data.get("extracted_articles", [])
+            
+            if retriever_type == "camelbert":
+                from camelbert_rag.camelbert_retriever import camelbert_retrieve
+                res = camelbert_retrieve(query_to_search, top_k=7)
+                tool_name = "camelbert_retrieve"
+            else:
+                res = graph_retrieve(query_to_search, top_k=7, seeds=extracted)
+                tool_name = "graph_retrieve"
+                
+            retrieved_ids = [r.get("id") for r in res if r.get("id")]
+            articles = []
+            for r in res:
+                law = r.get('law_name', '')
+                num = r.get('article_number', '')
+                txt = r.get('text_original', '') or r.get('summary', '')
+                articles.append(f"[{law} - المادة {num}]:\n{txt}")
+            context_text = "النصوص القانونية والإجرائية المسترجعة:\n\n" + "\n\n".join(articles)
+            tools_log.append({"tool": tool_name, "args": {"query": query_to_search, "seeds": extracted}})
+            state = "VERIFY_AND_ANSWER"
 
-        tool_response_parts: list[genai_types.Part] = []
-        for part in tool_calls:
-            fc   = part.function_call
-            name = fc.name
-            args = dict(fc.args) if fc.args else {}
+        elif state == "VERIFY_AND_ANSWER":
+            if skip_gen:
+                final_answer_text = ""
+                context_sufficient = True
+                state = "END"
+                continue
 
-            if verbose:
-                print(f"  [Agent]  → Tool: {name}({', '.join(f'{k}={repr(v)}' for k,v in args.items())})")
-
-            result_str = _execute_tool(name, args)
-            result_obj = json.loads(result_str)
-
-            # Log it
-            tools_log.append({
-                "round":  round_num,
-                "tool":   name,
-                "args":   args,
-                "result_summary": (
-                    f"{result_obj.get('count', 1)} article(s) found"
-                    if "count" in result_obj else
-                    result_obj.get("error", "ok")
-                ),
-            })
-
-            tool_response_parts.append(
-                genai_types.Part(
-                    function_response=genai_types.FunctionResponse(
-                        name=name,
-                        response={"result": result_str},
-                    )
-                )
-            )
-
-        # Add all tool results as a single "tool" role message
-        history.append(
-            genai_types.Content(role="tool", parts=tool_response_parts)
-        )
-
-    # ── Reached MAX_TOOL_ROUNDS — force a final generation ────────────
-    if verbose:
-        print(f"  [Agent] Max rounds reached. Forcing final answer…")
-
-    history.append(
-        genai_types.Content(
-            role="user",
-            parts=[genai_types.Part(
-                text="بناءً على ما استرجعته من المواد القانونية، قدّم الآن إجابتك النهائية الشاملة."
-            )]
-        )
-    )
-    final_config = genai_types.GenerateContentConfig(
-        temperature=0.1,
-        max_output_tokens=2048,
-    )
-    response = _call_with_retry(client, history, final_config)
-    final_text = "".join(
-        part.text for part in response.candidates[0].content.parts
-        if hasattr(part, "text") and part.text
-    ).strip()
+            intent = routing_data.get("intent", "SUBSTANTIVE")
+            qa_system = _build_qa_system(detected_language, intent)
+            prompt = qa_system + f"\n\nRetrieved context:\n{context_text}\n\nUser question: {question}\nOutput JSON only:"
+            raw = local_generate(prompt, temperature=0.0, stream=False, model=model)
+            thoughts, final_json = _parse_thought_and_json(raw)
+            if verbose and thoughts:
+                print(f"  [Thought] {thoughts}")
+            
+            context_sufficient = final_json.get("is_context_sufficient") == "yes"
+            if context_sufficient:
+                ans_raw = final_json.get("answer", "")
+                
+                # Sanitizer: Handle stubborn JSON arrays from 7B model
+                if isinstance(ans_raw, str):
+                    ans_raw = ans_raw.strip()
+                    if ans_raw.startswith("[") and ans_raw.endswith("]"):
+                        try:
+                            maybe_list = json.loads(ans_raw)
+                            if isinstance(maybe_list, list):
+                                ans_raw = "\n".join(str(item) for item in maybe_list)
+                        except: pass
+                
+                if isinstance(ans_raw, list):
+                    final_answer_text = "\n".join(str(item) for item in ans_raw)
+                elif isinstance(ans_raw, dict):
+                    final_answer_text = json.dumps(ans_raw, ensure_ascii=False, indent=2)
+                else:
+                    final_answer_text = str(ans_raw)
+            else:
+                _no_context = {"AR": "عذراً، لم أتمكن من العثور على نص قانوني أو إجرائي دقيق يجيب على هذا السؤال في قاعدة البيانات المحلية.", "EN": "Sorry, I could not find a specific legal or procedural text to answer this question in the local database.", "FR": "Désolé, je n'ai pas trouvé de texte juridique ou procédural précis pour répondre à cette question dans la base de données locale."}
+                final_answer_text = _no_context.get(detected_language, _no_context["AR"])
+            state = "END"
 
     return {
-        "answer":       final_text,
+        "answer": final_answer_text,
         "tools_called": tools_log,
-        "rounds":       MAX_TOOL_ROUNDS,
+        "retrieved_ids": retrieved_ids,
+        "contexts": articles,
+        "is_context_sufficient": context_sufficient,
+        "rounds": 1
     }
 
+def agentic_answer_stream(
+    question: str,
+    chat_history: list[dict] = None,
+    model: str = None,
+):
+    """Generator version of the state machine."""
+    # ── O(1) Instant CHITCHAT Interceptor — zero LLM cost ─────────────────────
+    is_chitchat, lang = _check_instant_chitchat(question)
+    if is_chitchat:
+        resp = _CHITCHAT_RESPONSES.get(lang, _CHITCHAT_RESPONSES["AR"])
+        # Yield status FIRST — gives React one render cycle to commit the
+        # initial bot message to state before the content token arrives.
+        yield {"type": "status", "message": "💬 ..."}
+        # Yield the full greeting as ONE token (not char-by-char) to avoid
+        # a flood of micro-events that can be dropped during state batching.
+        yield {"type": "token", "content": resp}
+        yield {"type": "done"}
+        return
 
-def _call_with_retry(client, history, config, max_retries: int = 4):
-    """Call Gemini with exponential-backoff retry on 429."""
-    for attempt in range(max_retries):
-        try:
-            return client.models.generate_content(
-                model=MODEL,
-                contents=history,
-                config=config,
-            )
-        except Exception as e:
-            err = str(e)
-            if "429" in err and attempt < max_retries - 1:
-                m = re.search(r"retryDelay['\"]?\s*[:'\"]+\s*['\"]?(\d+)s", err)
-                wait = int(m.group(1)) + 3 if m else 30 * (2 ** attempt)
-                print(f"  [Agent] Rate-limited, waiting {wait}s…")
-                time.sleep(wait)
+    yield {"type": "status", "message": "🔍 جاري تحليل السؤال ومراجعة السياق..."}
+    state = "ROUTE"
+    context_text = ""
+    routing_data = {}
+    detected_language = _detect_language_fast(question)
+
+    while state != "END":
+        if state == "ROUTE":
+            routing_data = _run_router(question, chat_history, model=model)
+            detected_language = routing_data.get("detected_language", detected_language)
+            intent = routing_data.get("intent", "SUBSTANTIVE")
+
+            if intent == "CHITCHAT":
+                direct = routing_data.get("direct_response") or _CHITCHAT_RESPONSES.get(detected_language, _CHITCHAT_RESPONSES["AR"])
+                yield {"type": "status", "message": "💬 ..."}
+                yield {"type": "token", "content": direct}
+                yield {"type": "done"}
+                return
+            
+            lang_label = {"EN": "Offline query", "FR": "Requête hors ligne", "AR": "بحث محلي"}.get(detected_language, "بحث محلي")
+            yield {"type": "status", "message": f"⚖️ {lang_label}: جاري البحث في قاعدة البيانات..."}
+            state = "RETRIEVE"
+
+        elif state == "RETRIEVE":
+            query_to_search = routing_data.get("rewritten_query") or question
+            extracted = routing_data.get("extracted_articles", [])
+            
+            # 100% Offline: Always use graph_retrieve
+            res = graph_retrieve(query_to_search, top_k=7, seeds=extracted)
+            articles, sources = [], []
+            for r in res:
+                law = r.get('law_name', '')
+                num = r.get('article_number', '')
+                txt = r.get('text_original', '') or r.get('summary', '')
+                articles.append(f"[{law} - المادة {num}]:\n{txt}")
+                sources.append({"law_name": law, "article_number": num, "title": r.get('title', ''), "score": r.get('graph_score', 1.0)})
+            context_text = "النصوص القانونية والإجرائية المسترجعة:\n\n" + "\n\n".join(articles)
+            yield {"type": "sources", "sources": sources}
+            yield {"type": "status", "message": "🤖 التفكير في الإجابة وصياغتها..."}
+            state = "VERIFY_AND_ANSWER"
+
+        elif state == "VERIFY_AND_ANSWER":
+            intent = routing_data.get("intent", "SUBSTANTIVE")
+            qa_system = _build_qa_system(detected_language, intent)
+            prompt = qa_system + f"\n\nRetrieved context:\n{context_text}\n\nUser question: {question}\nOutput JSON only:"
+            raw = local_generate(prompt, temperature=0.0, stream=False, model=model)
+            thoughts, final_json = _parse_thought_and_json(raw)
+            if final_json.get("is_context_sufficient") == "yes":
+                ans = final_json.get("answer", "")
+                
+                # Sanitizer: Handle stubborn JSON arrays from 7B model
+                if isinstance(ans, str):
+                    ans = ans.strip()
+                    if ans.startswith("[") and ans.endswith("]"):
+                        try:
+                            maybe_list = json.loads(ans)
+                            if isinstance(maybe_list, list):
+                                ans = "\n".join(str(item) for item in maybe_list)
+                        except: pass
+                
+                if isinstance(ans, list):
+                    ans = "\n".join(str(item) for item in ans)
             else:
-                raise
-    raise RuntimeError("_call_with_retry: all retries exhausted")
+                _no_ctx = {"AR": "عذراً، لم أتمكن من العثور على نص قانوني أو إجرائي دقيق يجيب على هذا السؤال في قاعدة البيانات المحلية.", "EN": "Sorry, I could not find a specific legal or procedural text to answer this question in the local database.", "FR": "Désolé, je n'ai pas trouvé de texte juridique ou procédural précis pour répondre à cette question dans la base de données locale."}
+                ans = _no_ctx.get(detected_language, _no_ctx["AR"])
+            if thoughts:
+                yield {"type": "status", "message": f"💡 فكرة: {thoughts[:200]}"}
+            for char in ans:
+                yield {"type": "token", "content": char}
+            state = "END"
+
+    yield {"type": "done"}

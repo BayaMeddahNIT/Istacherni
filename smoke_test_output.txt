@@ -1,0 +1,58 @@
+﻿[GraphRetriever] Computing PageRank...
+[GraphRetriever] Pre-loading embedding matrix...
+[GraphRetriever] Building BM25 index...
+
+[GraphRetriever] Classifying query: ┘ç┘ä ╪º┘ä┘å╪╡╪¿ ┘ü┘è ╪º┘ä╪¬╪¼╪º╪▒╪⌐ ┘è╪╣╪º┘é╪¿ ╪╣┘ä┘è┘ç ╪º┘ä┘é╪º┘å┘ê┘å╪ƒ
+[CamelBERT] Initialising query classifier (CAMeL-Lab/bert-base-arabic-camelbert-msa)...
+.\.venv\Scripts\python.exe : 
+At line:1 char:1
++ .\.venv\Scripts\python.exe _smoke_test.py 2>&1 | Out-File -FilePath s ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]
+Loading weights: 100%|##########| 199/199 [00:00<00:00, 10878.82it/s]
+[1mBertModel LOAD REPORT[0m from: CAMeL-Lab/bert-base-arabic-camelbert-msa
+Key                                        | Status     |  | 
+-------------------------------------------+------------+--+-
+bert.embeddings.position_ids               | UNEXPECTED |  | 
+cls.predictions.decoder.bias               | UNEXPECTED |  | 
+cls.predictions.transform.dense.bias       | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED |  | 
+cls.predictions.bias                       | UNEXPECTED |  | 
+cls.predictions.decoder.weight             | UNEXPECTED |  | 
+cls.seq_relationship.weight                | UNEXPECTED |  | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED |  | 
+cls.seq_relationship.bias                  | UNEXPECTED |  | 
+cls.predictions.transform.dense.weight     | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+[CamelBERT] Confident domain match: Penal Code (score: 0.585)
+[GraphRetriever] Amplified: ┘ç┘ä ╪º┘ä┘å╪╡╪¿ ┘ü┘è ╪º┘ä╪¬╪¼╪º╪▒╪⌐ ┘è╪╣╪º┘é╪¿ ╪╣┘ä┘è┘ç ╪º┘ä┘é╪º┘å┘ê┘å╪ƒ
+[GraphRetriever] Domain focus: Penal Law
+[Embeddings] Loading model: BAAI/bge-m3 on cpu...
+
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]
+Loading weights: 100%|##########| 391/391 [00:00<00:00, 10722.63it/s]
+[Embeddings] Model loaded.
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:03<00:00,  3.70s/it]
+Batches: 100%|##########| 1/1 [00:03<00:00,  3.71s/it]
+[GraphRetriever] PPR subgraph pulled in: DZ_LABOR_ART_14 (sim=0.334)
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_14 (sim=0.452)
+Query: ┘ç┘ä ╪º┘ä┘å╪╡╪¿ ┘ü┘è ╪º┘ä╪¬╪¼╪º╪▒╪⌐ ┘è╪╣╪º┘é╪¿ ╪╣┘ä┘è┘ç ╪º┘ä┘é╪º┘å┘ê┘å╪ƒ
+
+Top 5 retrieved:
+  [1] ┘é╪º┘å┘ê┘å ╪º┘ä┘ê┘é╪º┘è╪⌐ ┘à┘å ╪º┘ä╪¼╪▒╪º╪ª┘à ╪º┘ä┘à╪¬╪╡┘ä╪⌐ ╪¿╪¬┘â┘å┘ê┘ä┘ê╪¼┘è╪º╪¬ ╪º┘ä╪Ñ╪╣┘ä╪º┘à ┘ê╪º┘ä╪º╪¬╪╡╪º┘ä (09-04) - ╪º┘ä┘à╪º╪»╪⌐ 3  (score=0.6268)
+  [2] ┘é╪º┘å┘ê┘å ╪º┘ä╪╣┘é┘ê╪¿╪º╪¬ - ╪º┘ä┘à╪º╪»╪⌐ 383  (score=0.6187)
+  [3] ┘é╪º┘å┘ê┘å ╪º┘ä╪╣┘é┘ê╪¿╪º╪¬ - ╪º┘ä┘à╪º╪»╪⌐ 372  (score=0.6179)
+  [4] ┘é╪º┘å┘ê┘å ╪º┘ä╪╣┘é┘ê╪¿╪º╪¬ - ╪º┘ä┘à╪º╪»╪⌐ 384  (score=0.5627)
+  [5] ┘é╪º┘å┘ê┘å ╪º┘ä╪╣┘é┘ê╪¿╪º╪¬ - ╪º┘ä┘à╪º╪»╪⌐ 429  (score=0.503)
+
+Penal Code articles: 4/5
+Civil Code articles: 0/5
+
+Fix 1 WORKING ΓÇö domain inversion resolved

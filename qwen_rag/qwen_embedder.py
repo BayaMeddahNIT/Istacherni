@@ -27,8 +27,8 @@ EMBED_BATCH_SIZE: int = int(os.getenv("QWEN_EMBED_BATCH_SIZE", "8"))
 MAX_SEQ_LEN: int = int(os.getenv("QWEN_EMBED_MAX_SEQ_LEN", "512"))
 
 # PFE Optimization Settings
-USE_QUANTIZATION: bool = True  # Set to True to fit in 6GB GPU
-FORCE_CPU: bool = False        # Set to True if you still get OOM errors
+USE_QUANTIZATION: bool = False  # Disabled — bitsandbytes not installed; uses float16 instead
+FORCE_CPU: bool = False          # Set to True if you get OOM errors
 
 # Task instruction used when embedding queries (not documents)
 _QUERY_INSTRUCTION = (

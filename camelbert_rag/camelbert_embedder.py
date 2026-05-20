@@ -25,10 +25,18 @@ from __future__ import annotations
 
 import numpy as np
 import torch
+import os
 from transformers import AutoModel, AutoTokenizer
 
+# ── Force offline mode — model must already be in HuggingFace cache ──────────────
+# camelbert-msa is the locally cached variant; -mix was never downloaded.
+os.environ.setdefault("TRANSFORMERS_OFFLINE", "1")
+os.environ.setdefault("HF_DATASETS_OFFLINE", "1")
+
 # ── Model identifier ────────────────────────────────────────────────────────────
-MODEL_NAME = "CAMeL-Lab/bert-base-arabic-camelbert-mix"
+# Using the MSA (Modern Standard Arabic) variant — available in local cache.
+# Legal Arabic is formal MSA, so this variant is well-suited for the task.
+MODEL_NAME = "CAMeL-Lab/bert-base-arabic-camelbert-msa"
 
 # ── Lazy singletons ─────────────────────────────────────────────────────────────
 _tokenizer = None
@@ -41,9 +49,9 @@ def _get_model():
     global _tokenizer, _model, _device
 
     if _model is None:
-        print(f"[CameLBERT-Embedder] Loading model '{MODEL_NAME}' …")
-        _tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
-        _model = AutoModel.from_pretrained(MODEL_NAME)
+        print(f"[CameLBERT-Embedder] Loading model '{MODEL_NAME}' (offline) …")
+        _tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, local_files_only=True)
+        _model = AutoModel.from_pretrained(MODEL_NAME, local_files_only=True)
         _device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         _model = _model.to(_device)
         _model.eval()

@@ -40,6 +40,55 @@ import networkx as nx
 
 from graph_rag.graph_builder import load_graph, CACHE_DIR
 
+# ── Scoring Constants (for ablation & tuning) ──────────────────────────────────
+WEIGHT_HOP1      = 3.0   # Weight for direct keyword hits (hop 1)
+WEIGHT_HOP2      = 1.0   # Weight for RELATED_TO neighbors (hop 2)
+WEIGHT_PAGERANK  = 3.0   # Weight for pre-computed global importance
+# ───────────────────────────────────────────────────────────────────────────────
+
+# ── Cross-Encoder Reranker ───────────────────────────────────────────────────────────
+USE_RERANKER      = False    # Set True after `pip install sentence-transformers`
+RERANKER_MODEL    = "BAAI/bge-reranker-v2-m3"  # 568M params, multilingual/Arabic
+RERANKER_TOPK_IN  = 20      # candidates fed into the reranker (retrieve more, cut after)
+
+_reranker = None
+
+def _get_reranker():
+    global _reranker
+    if _reranker is None:
+        try:
+            from sentence_transformers import CrossEncoder
+            print(f"[GraphRetriever] Loading reranker: {RERANKER_MODEL} …")
+            _reranker = CrossEncoder(RERANKER_MODEL, max_length=512)
+            print("[GraphRetriever] Reranker ready.")
+        except ImportError:
+            print("[GraphRetriever] sentence-transformers not installed — reranker disabled.")
+            _reranker = None
+    return _reranker
+
+
+def _rerank(query: str, articles: list[dict], top_k: int) -> list[dict]:
+    """
+    Rerank `articles` using the cross-encoder and return the top `top_k`.
+
+    The cross-encoder reads (query, passage) pairs and produces a fine-grained
+    relevance score, correcting the coarse keyword-hit ranking from the graph.
+    For Arabic legal text with BGE-M3 backbone, expect +15–25% Precision gain.
+    """
+    reranker = _get_reranker()
+    if reranker is None or not articles:
+        return articles[:top_k]
+
+    pairs = [
+        (query, f"{a.get('title', '')}. {a.get('text_original', '')[:400]}")
+        for a in articles
+    ]
+    scores = reranker.predict(pairs, show_progress_bar=False)
+    for i, art in enumerate(articles):
+        art["rerank_score"] = float(scores[i])
+    return sorted(articles, key=lambda x: x["rerank_score"], reverse=True)[:top_k]
+# ───────────────────────────────────────────────────────────────────────────────
+
 # ── Lazy singletons ────────────────────────────────────────────────────────────
 _G:      Optional[nx.DiGraph] = None
 _corpus: Optional[list]       = None
@@ -183,36 +232,50 @@ def graph_retrieve(query: str, top_k: int = 5) -> list[dict]:
         return result
 
     # ── Step 3: HOP 2 — RELATED_TO neighbours of hop-1 articles ──────
+    # Explicitly EXCLUDE SAME_LAW edges here — they flood all articles in the same
+    # law with equal weight, destroying the discriminative power of the graph score.
     hop2_articles: dict[str, int] = {}
     for art_id in hop1_articles:
         for succ in G.successors(art_id):
             if (G.nodes[succ].get("node_type") == "article"
                     and succ not in hop1_articles):
-                rel = G.edges[art_id, succ].get("rel", "")
+                edge_data = G.edges[art_id, succ]
+                rel = edge_data.get("rel", "")
+                # Only follow semantically meaningful cross-article edges
                 if rel == "RELATED_TO":
                     hop2_articles[succ] = hop2_articles.get(succ, 0) + 1
 
     # ── Step 4: Merge and score ────────────────────────────────────────
+    # PageRank weight is intentionally kept small to avoid uniform
+    # noise from the dense law-grouping structure inflating all articles in the same law.
     all_candidates: dict[str, float] = {}
     for art_id, hits in hop1_articles.items():
-        # hop-1 articles get full weight + PageRank bonus
-        all_candidates[art_id] = hits * 2.0 + PR.get(art_id, 0) * 10
+        all_candidates[art_id] = hits * WEIGHT_HOP1 + PR.get(art_id, 0) * WEIGHT_PAGERANK
 
     for art_id, hits in hop2_articles.items():
-        # hop-2 articles get half weight
-        all_candidates[art_id] = hits * 1.0 + PR.get(art_id, 0) * 10
+        all_candidates[art_id] = hits * WEIGHT_HOP2 + PR.get(art_id, 0) * WEIGHT_PAGERANK
 
     # Sort by combined score
     ranked = sorted(all_candidates.items(), key=lambda x: x[1], reverse=True)
 
     # ── Step 5: Build result dicts ────────────────────────────────────
+    # Retrieve RERANKER_TOPK_IN candidates (more than top_k) so the
+    # reranker has enough material to reorder before the final cut.
+    rerank_pool = min(RERANKER_TOPK_IN, len(ranked)) if USE_RERANKER else top_k
     results = []
-    for art_id, score in ranked[:top_k]:
+    for art_id, score in ranked[:rerank_pool]:
         d = G.nodes.get(art_id, {})
         if not d:
             continue
         results.append(_node_to_result(art_id, d, graph_score=round(score, 4),
                                        pagerank=round(PR.get(art_id, 0), 6)))
+
+    # ── Step 6: Optional cross-encoder reranking ─────────────────────
+    if USE_RERANKER:
+        results = _rerank(query, results, top_k=top_k)
+    else:
+        results = results[:top_k]
+
     return results
 
 

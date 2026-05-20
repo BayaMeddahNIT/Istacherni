@@ -1,0 +1,4 @@
+﻿Multi-article entries in indexed corpus: 0
+
+Checking if any sub-numbers of merged entries appear in GT:
+Total sub-number GT matches that are being missed: 0

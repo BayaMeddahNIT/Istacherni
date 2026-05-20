@@ -36,154 +36,26 @@ class TestCase:
 # ─────────────────────────────────────────────────────────────────────────────
 # Raw test definitions (20 questions, 5+ domains)
 # ─────────────────────────────────────────────────────────────────────────────
-_RAW_TESTS = [
-    # ── Penal Law ─────────────────────────────────────────────────────────────
-    {
-        "id": "TC01",
-        "question": "ما هي عقوبة السرقة في القانون الجزائري؟",
-        "expected_ids": ["DZ_PENAL_ART_350", "DZ_PENAL_ART_351"],
-        "domain": "Penal Law",
-        "keywords_hint": ["سرقة", "عقوبة"],
-    },
-    {
-        "id": "TC02",
-        "question": "ما هي عقوبة القتل العمد في القانون الجزائري؟",
-        "expected_ids": ["DZ_PENAL_ART_254"],
-        "domain": "Penal Law",
-        "keywords_hint": ["قتل", "عمد", "إعدام"],
-    },
-    {
-        "id": "TC03",
-        "question": "ما هي عقوبة جريمة الاحتيال؟",
-        "expected_ids": ["DZ_PENAL_ART_372"],
-        "domain": "Penal Law",
-        "keywords_hint": ["احتيال", "نصب", "غش"],
-    },
-    {
-        "id": "TC04",
-        "question": "ما هي عقوبة الاغتصاب في القانون الجزائري؟",
-        "expected_ids": ["DZ_PENAL_ART_336"],
-        "domain": "Penal Law",
-        "keywords_hint": ["اغتصاب", "هتك", "عرض"],
-    },
-    {
-        "id": "TC05",
-        "question": "ما هي عقوبة تزوير الوثائق الرسمية؟",
-        "expected_ids": ["DZ_PENAL_ART_214", "DZ_PENAL_ART_216"],
-        "domain": "Penal Law",
-        "keywords_hint": ["تزوير", "وثائق", "مستندات"],
-    },
-    {
-        "id": "TC06",
-        "question": "ما هي عقوبة الرشوة في القانون الجزائري؟",
-        "expected_ids": ["DZ_PENAL_ART_25", "DZ_PENAL_ART_126"],
-        "domain": "Penal Law",
-        "keywords_hint": ["رشوة", "فساد", "موظف"],
-    },
-    # ── Civil Law ─────────────────────────────────────────────────────────────
-    {
-        "id": "TC07",
-        "question": "ما هي شروط صحة عقد البيع؟",
-        "expected_ids": ["DZ_CIVIL_ART_351", "DZ_CIVIL_ART_54"],
-        "domain": "Civil Law",
-        "keywords_hint": ["بيع", "عقد", "شروط"],
-    },
-    {
-        "id": "TC08",
-        "question": "كيف يتم التعويض عن الضرر في القانون المدني الجزائري؟",
-        "expected_ids": ["DZ_CIVIL_ART_124", "DZ_CIVIL_ART_182"],
-        "domain": "Civil Law",
-        "keywords_hint": ["تعويض", "ضرر", "مسؤولية"],
-    },
-    {
-        "id": "TC09",
-        "question": "ما هي شروط الأهلية القانونية لإبرام العقود؟",
-        "expected_ids": ["DZ_CIVIL_ART_40", "DZ_CIVIL_ART_42"],
-        "domain": "Civil Law",
-        "keywords_hint": ["أهلية", "عقد", "سن"],
-    },
-    {
-        "id": "TC10",
-        "question": "ما هي أحكام التقادم المسقط في القانون المدني؟",
-        "expected_ids": ["DZ_CIVIL_ART_308", "DZ_CIVIL_ART_309"],
-        "domain": "Civil Law",
-        "keywords_hint": ["تقادم", "انقضاء"],
-    },
-    {
-        "id": "TC11",
-        "question": "ما هي شروط عقد الإيجار وما هي حقوق المستأجر؟",
-        "expected_ids": ["DZ_CIVIL_ART_467", "DZ_CIVIL_ART_468"],
-        "domain": "Civil Law",
-        "keywords_hint": ["إيجار", "مستأجر", "عقد"],
-    },
-    {
-        "id": "TC12",
-        "question": "ما هي أحكام الوكالة في القانون المدني الجزائري؟",
-        "expected_ids": ["DZ_CIVIL_ART_571", "DZ_CIVIL_ART_572"],
-        "domain": "Civil Law",
-        "keywords_hint": ["وكالة", "وكيل", "موكل"],
-    },
-    # ── Labor Law ─────────────────────────────────────────────────────────────
-    {
-        "id": "TC13",
-        "question": "ما هي حقوق العامل في حالة الفصل التعسفي؟",
-        "expected_ids": [],   # resolved at runtime
-        "domain": "Labor Law",
-        "keywords_hint": ["فصل", "تعسفي", "عمال"],
-    },
-    {
-        "id": "TC14",
-        "question": "ما هي حقوق العامل في العطل السنوية والإجازات؟",
-        "expected_ids": [],
-        "domain": "Labor Law",
-        "keywords_hint": ["إجازة", "عطلة", "عمل"],
-    },
-    {
-        "id": "TC15",
-        "question": "ما هي شروط عقد العمل محدد المدة؟",
-        "expected_ids": [],
-        "domain": "Labor Law",
-        "keywords_hint": ["عقد", "عمل", "مؤقت"],
-    },
-    # ── Commercial Law ────────────────────────────────────────────────────────
-    {
-        "id": "TC16",
-        "question": "ما هي شروط تأسيس شركة تجارية في الجزائر؟",
-        "expected_ids": [],
-        "domain": "Commercial Law",
-        "keywords_hint": ["شركة", "تجارية", "تأسيس"],
-    },
-    {
-        "id": "TC17",
-        "question": "ما هي أحكام الإفلاس التجاري في القانون الجزائري؟",
-        "expected_ids": [],
-        "domain": "Commercial Law",
-        "keywords_hint": ["إفلاس", "تجاري", "توقف"],
-    },
-    # ── Civil & Administrative Procedure ─────────────────────────────────────
-    {
-        "id": "TC18",
-        "question": "ما هي شروط الطعن بالاستئناف في المحاكم الجزائرية؟",
-        "expected_ids": [],
-        "domain": "Civil Procedure",
-        "keywords_hint": ["استئناف", "طعن", "محكمة"],
-    },
-    {
-        "id": "TC19",
-        "question": "ما هي إجراءات الطعن بالنقض أمام المحكمة العليا؟",
-        "expected_ids": [],
-        "domain": "Civil Procedure",
-        "keywords_hint": ["نقض", "محكمة عليا", "طعن"],
-    },
-    # ── Penal — extra ────────────────────────────────────────────────────────
-    {
-        "id": "TC20",
-        "question": "ما هي عقوبة جريمة إخفاء الأشياء المسروقة؟",
-        "expected_ids": ["DZ_PENAL_ART_387"],
-        "domain": "Penal Law",
-        "keywords_hint": ["إخفاء", "مسروقات", "حيازة"],
-    },
-]
+_RAW_TESTS = []
+golden_path = Path(__file__).resolve().parent / "golden_dataset.jsonl"
+if golden_path.exists():
+    with open(golden_path, "r", encoding="utf-8") as f:
+        for idx, line in enumerate(f):
+            line = line.strip()
+            if not line: continue
+            try:
+                obj = json.loads(line)
+                _RAW_TESTS.append({
+                    "id": f"TC{idx:02d}",
+                    "question": obj.get("query", ""),
+                    "expected_ids": [obj.get("expected_article_id")] if obj.get("expected_article_id") else [],
+                    "domain": obj.get("domain", ""),
+                    "keywords_hint": []
+                })
+            except Exception:
+                pass
+else:
+    print("WARNING: evaluation/golden_dataset.jsonl not found. Run evaluation/build_dataset.py first.")
 
 
 # ─────────────────────────────────────────────────────────────────────────────

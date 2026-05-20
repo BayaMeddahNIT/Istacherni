@@ -1,0 +1,89 @@
+{
+  "metadata": {
+    "timestamp": "2026-05-07 15:16:57",
+    "total_questions": 127,
+    "metrics": [
+      "similarity",
+      "correctness",
+      "faithfulness",
+      "article_recall"
+    ]
+  },
+  "configurations": {
+    "Graph RAG + bge": {
+      "similarity": 0.9462400980383341,
+      "correctness": 0.9162216358768981,
+      "faithfulness": 0.125,
+      "article_recall": 0.8100000000000014
+    },
+    "Graph RAG + camelbert": {
+      "similarity": 0.9462400980383341,
+      "correctness": 0.9162216358768981,
+      "faithfulness": 0.09500000000000017,
+      "article_recall": 0.6700000000000014
+    },
+    "Graph RAG + qwen embeddings": {
+      "similarity": 0.9462400980383341,
+      "correctness": 0.9162216358768981,
+      "faithfulness": 0.10999999999999983,
+      "article_recall": 0.7300000000000003
+    },
+    "Agentic RAG + bge": {
+      "similarity": 1.0,
+      "correctness": 1.0,
+      "faithfulness": 0.9020000000000008,
+      "article_recall": 0.9449999999999968
+    },
+    "Agentic RAG + camelbert": {
+      "similarity": 1.0,
+      "correctness": 1.0,
+      "faithfulness": 0.8490000000000005,
+      "article_recall": 0.8250000000000018
+    },
+    "Agentic RAG + qwen embeddings": {
+      "similarity": 1.0,
+      "correctness": 1.0,
+      "faithfulness": 0.875,
+      "article_recall": 0.8850000000000019
+    }
+  },
+  "pipelines": {
+    "Graph RAG": {
+      "similarity": 0.9462400980383345,
+      "correctness": 0.916221635876899,
+      "faithfulness": 0.10999999999999965,
+      "article_recall": 0.7366666666666652
+    },
+    "Agentic RAG": {
+      "similarity": 1.0,
+      "correctness": 1.0,
+      "faithfulness": 0.8753333333333287,
+      "article_recall": 0.8849999999999945
+    }
+  },
+  "embeddings": {
+    "bge": {
+      "similarity": 0.9731200490191675,
+      "correctness": 0.9581108179384482,
+      "faithfulness": 0.5135000000000002,
+      "article_recall": 0.8774999999999986
+    },
+    "camelbert": {
+      "similarity": 0.9731200490191675,
+      "correctness": 0.9581108179384482,
+      "faithfulness": 0.472,
+      "article_recall": 0.7474999999999973
+    },
+    "qwen embeddings": {
+      "similarity": 0.9731200490191675,
+      "correctness": 0.9581108179384482,
+      "faithfulness": 0.49249999999999977,
+      "article_recall": 0.8074999999999976
+    }
+  },
+  "rankings": {
+    "best_overall_configuration": "Agentic RAG + bge",
+    "best_pipeline": "Agentic RAG",
+    "best_embedding_model": "BGE"
+  }
+}

@@ -1,0 +1,27 @@
+[
+  {
+    "pipeline": "BGE + Qwen (Graph RAG)",
+    "n_questions": 5,
+    "errors": 0,
+    "elapsed_s": 45.9,
+    "skip_gen": true,
+    "aggregated": {
+      "context_recall": 0.118,
+      "context_precision": 0.1098,
+      "faithfulness": 0.0,
+      "answer_relevancy": 0.0,
+      "article_recall": 0.0,
+      "final_accuracy": 0.0514
+    },
+    "per_category": {
+      "قانون العقوبات": {
+        "context_recall": 0.118,
+        "context_precision": 0.1098,
+        "faithfulness": 0.0,
+        "answer_relevancy": 0.0,
+        "article_recall": 0.0,
+        "final_accuracy": 0.0514
+      }
+    }
+  }
+]

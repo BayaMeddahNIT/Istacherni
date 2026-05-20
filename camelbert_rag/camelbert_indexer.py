@@ -3,6 +3,7 @@ import sys
 from pathlib import Path
 import chromadb
 from chromadb.config import Settings
+import re
 
 # ── Paths ───────────────────────────────────────────────────────────────────────
 CHROMA_PATH = Path(__file__).parent / "chroma_db"
@@ -10,17 +11,60 @@ COLLECTION_NAME = "algerian_law_camelbert"
 
 # ── Document text builder ───────────────────────────────────────────────────────
 
+def normalize_for_camelbert(text: str) -> str:
+    if not text: return ""
+    # Eastern Arabic → Western Arabic numerals
+    eastern = '٠١٢٣٤٥٦٧٨٩'
+    western = '0123456789'
+    trans = str.maketrans(eastern, western)
+    text = text.translate(trans)
+    
+    # Normalize article reference format
+    text = re.sub(r'المادة\s+(\d+)', r'المادة \1', text)
+    
+    # Remove diacritics (tashkeel)
+    text = re.sub(r'[\u0617-\u061A\u064B-\u065F]', '', text)
+    
+    # Normalize Alef, Ya, Ta Marbuta
+    text = re.sub(r'[إأآا]', 'ا', text)
+    text = text.replace('ى', 'ي')
+    text = text.replace('ة', 'ه')
+    
+    return text
+
 def build_document_text(article: dict) -> str:
-    """Combine several article fields into a single string for embedding."""
+    """
+    Build a clean, coherent passage for embedding.
+
+    Uses only title + original legal text — the most semantically stable
+    representation for a dense retrieval model.
+    """
+    title = article.get("title", "").strip()
+    text  = article.get("text_original", "").strip()
+    
+    law_name = article.get("law_name", "قانون جزائري")
+    article_number = str(article.get("article_number", "") or "").strip()
+    
+    prefix = f"[{law_name} المادة {article_number}] " if article_number else ""
+    
+    combined = f"{title}. {text}" if title and text else (title or text)
+    
+    return normalize_for_camelbert(prefix + combined)
+
+
+def build_bm25_text(article: dict) -> str:
+    """
+    Build a keyword-enriched text string for BM25 / full-text search.
+    This intentionally includes keywords and summaries that would pollute
+    a dense embedding but are useful for lexical retrieval.
+    """
     parts = [
         article.get("title", ""),
-        article.get("title", ""),           # ×2 weight
         article.get("text_original", ""),
         article.get("summary", ""),
         article.get("legal_conditions_summary", ""),
         article.get("penalties_summary", ""),
         " ".join(article.get("keywords", [])),
-        " ".join(article.get("keywords", [])),  # ×2 weight
     ]
     return " ".join(p for p in parts if p).strip()
 
@@ -69,21 +113,22 @@ def build_index(force: bool = False):
 
     for i, a in enumerate(articles):
         text = build_document_text(a)
-        if text.strip():
-            texts_valid.append(text)
-            # Chroma metadata must be flat (strings, ints, floats, bools)
-            # We store the article ID and title for easy retrieval
-            metadatas_valid.append({
-                "law_name": a.get("law_name", ""),
-                "law_domain": a.get("law_domain", ""),
-                "article_number": a.get("article_number", ""),
-                "title": a.get("title", ""),
-                "penalties_summary": a.get("penalties_summary", ""),
-                "legal_conditions_summary": a.get("legal_conditions_summary", "")
-                # Keywords should be converted to a string if they are a list, 
-                # as Chroma metadata doesn't support lists.
-            })
-            ids_valid.append(f"art_{i}")
+        if not text.strip():
+            continue
+        texts_valid.append(text)
+        # Ensure article_number is always a non-empty string.
+        # An empty string here causes sources to be written as "law_name - المادة " (no number).
+        art_num = str(a.get("article_number", "") or "").strip()
+        metadatas_valid.append({
+            "law_name":                    str(a.get("law_name", "") or "قانون جزائري"),
+            "law_domain":                  str(a.get("law_domain", "") or ""),
+            "article_number":              art_num,
+            "title":                       str(a.get("title", "") or ""),
+            "penalties_summary":           str(a.get("penalties_summary", "") or ""),
+            "legal_conditions_summary":    str(a.get("legal_conditions_summary", "") or ""),
+            "keywords_text":               " ".join(a.get("keywords", []) or []),
+        })
+        ids_valid.append(f"art_{i}")
 
     print(f"[Chroma-Indexer] Embedding and Indexing {len(texts_valid)} articles …")
 

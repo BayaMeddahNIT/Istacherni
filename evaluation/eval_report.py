@@ -132,7 +132,7 @@ def save_report(all_results: dict, accuracies: dict, retrieval_only: bool = Fals
         "generation" in v for v in all_results.values()
     )
 
-    # ── Markdown ───────────────────────────────────────────────────────────────
+    # -- Markdown ---------------------------------------------------------------
     lines = [
         "# RAG Architecture Evaluation Report\n",
         "## Summary\n",
@@ -179,7 +179,7 @@ def save_report(all_results: dict, accuracies: dict, retrieval_only: bool = Fals
     md_path.write_text("\n".join(lines), encoding="utf-8")
     print(f"  📄 Report saved → {md_path}")
 
-    # ── JSON summary ───────────────────────────────────────────────────────────
+    # -- JSON summary -----------------------------------------------------------
     summary = {
         k: {
             "model":       all_results[k].get("model", k),

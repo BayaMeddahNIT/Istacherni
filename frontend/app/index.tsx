@@ -1,15 +1,13 @@
-import "@/global.css"
-import { Image, Text, View, TouchableOpacity } from "react-native";
+/**
+ * index.tsx — entry point redirect
+ * The root _layout.tsx handles the auth guard.
+ * This file just renders nothing while the guard runs.
+ */
+import { useEffect } from "react";
 import { router } from "expo-router";
-import images from "@/constants/images";
- 
-export default function App() {
-  return (
-    <View className="bg-call items-center justify-center">
-      <Image source={images.logo} className="img-logo mb-20" />
-      <TouchableOpacity className="btn-primary mt-30 w-3/4 items-center justify-center" onPress={() => router.replace('/home')}>
-        <Text className="text-button text-lg">Get Started</Text>
-      </TouchableOpacity>
-    </View>
-  );
+
+export default function Index() {
+  // The root _layout.tsx RootNavigator handles all routing decisions.
+  // We render nothing here; it will redirect immediately.
+  return null;
 }

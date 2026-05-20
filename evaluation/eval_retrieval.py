@@ -67,9 +67,9 @@ def evaluate_retrieval(
         }
     """
     if verbose:
-        print(f"\n{'─'*60}")
+        print(f"\n{'-'*60}")
         print(f"  Retrieval eval — {model_name}  ({len(test_cases)} queries)")
-        print(f"{'─'*60}")
+        print(f"{'-'*60}")
 
     per_case: list[RetrievalResult] = []
 
@@ -79,7 +79,7 @@ def evaluate_retrieval(
             retrieved_ids = [r.get("id", "") for r in results]
         except Exception as e:
             if verbose:
-                print(f"  ❌ [{tc.id}] retriever error: {e}")
+                print(f"  [X] [{tc.id}] retriever error: {e}")
             retrieved_ids = []
 
         r1  = _hits_at_k(retrieved_ids, tc.expected_ids, 1)
@@ -101,9 +101,9 @@ def evaluate_retrieval(
         per_case.append(result)
 
         if verbose:
-            hit = "✅" if r5 else "❌"
+            hit = "[PASS]" if r5 else "[FAIL]"
             print(f"  {hit} [{tc.id}] R@1={r1:.0f} R@3={r3:.0f} R@5={r5:.0f} MRR={mrr:.3f}"
-                  f"  | {tc.question[:45]}…")
+                  f"  | {tc.question[:45]}...")
 
     # Aggregate
     n = len(per_case) or 1

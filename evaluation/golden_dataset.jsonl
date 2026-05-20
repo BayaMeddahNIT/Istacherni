@@ -1,0 +1,11 @@
+{"query": "هل النصب في التجارة يُعاقب عليه القانون؟", "expected_article_id": "DZ_PENAL_ART_372", "domain": "Penal Law"}
+{"query": "شخص باعني منتج مزور، هل هذا يعتبر جريمة؟", "expected_article_id": "DZ_PENAL_ART_429", "domain": "Penal Law"}
+{"query": "ما هي عقوبة الغش في بيع السلع؟", "expected_article_id": "DZ_PENAL_ART_429", "domain": "Penal Law"}
+{"query": "هل العقد الشفهي ملزم قانونياً؟", "expected_article_id": "DZ_CIVIL_ART_59", "domain": "Civil Law"}
+{"query": "كيف يمكن فسخ عقد بين طرفين؟", "expected_article_id": "DZ_CIVIL_ART_119", "domain": "Civil Law"}
+{"query": "ماذا يحدث إذا لم يلتزم أحد بالعقد؟", "expected_article_id": "DZ_CIVIL_ART_119", "domain": "Civil Law"}
+{"query": "هل يمكن لصاحب العمل عدم دفع راتبي؟", "expected_article_id": "DZ_LABOR_ART_88", "domain": "Labor Law"}
+{"query": "ما هي حقوق العامل في الجزائر؟", "expected_article_id": "DZ_LABOR_ART_5", "domain": "Labor Law"}
+{"query": "هل يمكن طردي بدون سبب؟", "expected_article_id": "DZ_LABOR_ART_73", "domain": "Labor Law"}
+{"query": "ما الفرق بين SARL و SPA؟", "expected_article_id": "DZ_COMM_ART_564", "domain": "Commercial Law"}
+{"query": "ما هي شروط إنشاء شركة؟", "expected_article_id": "DZ_COMM_ART_544", "domain": "Commercial Law"}

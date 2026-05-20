@@ -20,10 +20,10 @@ RESULTS_DIR  = Path(__file__).parent / "results"
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# ── Model adapters ─────────────────────────────────────────────────────────────
+# -- Model adapters -------------------------------------------------------------
 # ═══════════════════════════════════════════════════════════════════════════════
 
-# ── Adapter 1: Standard RAG (ChromaDB + Dense Embeddings) ─────────────────────
+# -- Adapter 1: Standard RAG (ChromaDB + Dense Embeddings) ---------------------
 
 def _make_standard_rag():
     """Returns (retriever_fn, rag_fn) for Standard RAG, or None if unavailable."""
@@ -54,15 +54,15 @@ def _make_standard_rag():
             )
             return {"answer": answer, "context": context}
 
-        print("  [Runner] Standard RAG: ✓ loaded")
+        print("  [Runner] Standard RAG: [OK] loaded")
         return retriever_fn, rag_fn
 
     except Exception as e:
-        print(f"  [Runner] Standard RAG: ✗ skipped ({e})")
+        print(f"  [Runner] Standard RAG: [X] skipped ({e})")
         return None, None
 
 
-# ── Adapter 2: BM25 RAG ─────────────────────────────────────────────────────
+# -- Adapter 2: BM25 RAG -----------------------------------------------------
 
 def _make_bm25_rag():
     from bm25_rag.bm25_retriever import bm25_retrieve
@@ -77,11 +77,11 @@ def _make_bm25_rag():
         context = "\n---\n".join(c.get("text_original", "") for c in chunks)
         return {"answer": answer, "context": context}
 
-    print("  [Runner] BM25 RAG: ✓ loaded")
+    print("  [Runner] BM25 RAG: [OK] loaded")
     return retriever_fn, rag_fn
 
 
-# ── Adapter 3: Agentic RAG ──────────────────────────────────────────────────
+# -- Adapter 3: Agentic RAG --------------------------------------------------
 
 def _make_agentic_rag():
     # For RETRIEVAL evaluation: Agentic RAG uses BM25 as its underlying search
@@ -117,7 +117,7 @@ def _make_agentic_rag():
     return retriever_fn, rag_fn
 
 
-# ── Adapter 4: Graph RAG ────────────────────────────────────────────────────
+# -- Adapter 4: Graph RAG ----------------------------------------------------
 
 def _make_graph_rag():
     from graph_rag.graph_retriever import graph_retrieve
@@ -137,7 +137,7 @@ def _make_graph_rag():
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# ── Main runner ───────────────────────────────────────────────────────────────
+# -- Main runner ---------------------------------------------------------------
 # ═══════════════════════════════════════════════════════════════════════════════
 
 def run_all(
@@ -167,8 +167,8 @@ def run_all(
 
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 
-    # ── Load model adapters ─────────────────────────────────────────────────
-    print("\n[Runner] Loading models…")
+    # -- Load model adapters -------------------------------------------------
+    print("\n[Runner] Loading models...")
     loaders = {
         "standard": _make_standard_rag,
         "bm25":     _make_bm25_rag,
@@ -189,7 +189,7 @@ def run_all(
         try:
             ret_fn, rag_fn = loaders[key]()
         except Exception as e:
-            print(f"  [Runner] {name}: ✗ load failed — {e}")
+            print(f"  [Runner] {name}: [X] load failed — {e}")
             continue
 
         if ret_fn is None:
@@ -197,13 +197,13 @@ def run_all(
 
         model_result = {"model": name}
 
-        # ── Retrieval ────────────────────────────────────────────────────────
+        # -- Retrieval --------------------------------------------------------
         t0 = time.time()
         ret_result = evaluate_retrieval(name, ret_fn, test_cases, verbose=verbose)
         model_result["retrieval"] = ret_result
         model_result["retrieval_time_s"] = round(time.time() - t0, 1)
 
-        # ── Generation (skip if retrieval_only) ──────────────────────────────
+        # -- Generation (skip if retrieval_only) ------------------------------
         if not retrieval_only and rag_fn is not None:
             t0 = time.time()
             gen_result = evaluate_generation(name, rag_fn, test_cases, verbose=verbose)
@@ -212,7 +212,7 @@ def run_all(
 
         all_results[key] = model_result
 
-    # ── Save raw results to disk ─────────────────────────────────────────────
+    # -- Save raw results to disk ---------------------------------------------
     out_path = RESULTS_DIR / "raw_results.json"
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(all_results, f, ensure_ascii=False, indent=2)

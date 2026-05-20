@@ -21,17 +21,17 @@ export default function ProfileEdit() {
   const [saving, setSaving] = useState(false);
 
   const pickAvatar = async () => {
-    Alert.alert("Photo de profil", "Choisissez une source", [
+    Alert.alert(t("profilePhoto"), t("chooseSource"), [
       {
-        text: "Caméra", onPress: async () => {
+        text: t("camera"), onPress: async () => {
           const { status } = await ImagePicker.requestCameraPermissionsAsync();
-          if (status !== "granted") { Alert.alert("Permission refusée"); return; }
+          if (status !== "granted") { Alert.alert(t("permissionDeniedToast")); return; }
           const result = await ImagePicker.launchCameraAsync({ quality: 0.8, allowsEditing: true, aspect: [1, 1] });
           if (!result.canceled) setAvatarUri(result.assets[0].uri);
         }
       },
       {
-        text: "Galerie", onPress: async () => {
+        text: t("gallery"), onPress: async () => {
           const result = await ImagePicker.launchImageLibraryAsync({ quality: 0.8, allowsEditing: true, aspect: [1, 1] });
           if (!result.canceled) setAvatarUri(result.assets[0].uri);
         }
@@ -41,11 +41,11 @@ export default function ProfileEdit() {
   };
 
   const handleSave = async () => {
-    if (!name.trim()) { Alert.alert("Erreur", t("nameRequired")); return; }
+    if (!name.trim()) { Alert.alert(t("errorTitle"), t("nameRequired")); return; }
     setSaving(true);
     await updateUser({ name: name.trim(), email: email.trim(), phone: phone.trim(), city: city.trim(), avatarUri });
     setSaving(false);
-    Alert.alert("✓", t("savedSuccess"), [{ text: "OK", onPress: () => router.back() }]);
+    Alert.alert("✓", t("savedSuccess"), [{ text: t("ok"), onPress: () => router.back() }]);
   };
 
   const fields = [

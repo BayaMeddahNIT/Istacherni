@@ -1,0 +1,56 @@
+======================================================================
+        RAGAS EVALUATION REPORT -- ISTACHERNI LEGAL RAG
+        Generated: 2026-05-07 14:39:41
+        Total Evaluated Samples: 26
+======================================================================
+
+1. PIPELINE PERFORMANCE COMPARISON
+----------------------------------------------------------------------
+  Pipeline: Graph RAG
+    - Faithfulness      : [ 0.0% ]
+    - Answer Relevancy  : [ 14.3% ]
+    - Context Precision : [ 9.4% ]
+    - Context Recall    : [ 10.4% ]
+    => OVERALL ACCURACY : [ 8.5% ]
+
+  Pipeline: Agentic RAG
+    - Faithfulness      : [ 85.8% ]
+    - Answer Relevancy  : [ 14.3% ]
+    - Context Precision : [ 9.0% ]
+    - Context Recall    : [ 9.9% ]
+    => OVERALL ACCURACY : [ 29.8% ]
+
+2. EMBEDDING MODEL PERFORMANCE COMPARISON
+----------------------------------------------------------------------
+  Embedding: BGE
+    - Faithfulness      : [ 44.0% ]
+    - Answer Relevancy  : [ 14.2% ]
+    - Context Precision : [ 10.7% ]
+    - Context Recall    : [ 11.5% ]
+    => OVERALL ACCURACY : [ 20.1% ]
+
+  Embedding: CAMELBERT
+    - Faithfulness      : [ 42.0% ]
+    - Answer Relevancy  : [ 14.6% ]
+    - Context Precision : [ 7.9% ]
+    - Context Recall    : [ 9.0% ]
+    => OVERALL ACCURACY : [ 18.4% ]
+
+  Embedding: QWEN EMBEDDINGS
+    - Faithfulness      : [ 43.0% ]
+    - Answer Relevancy  : [ 14.2% ]
+    - Context Precision : [ 9.3% ]
+    - Context Recall    : [ 10.3% ]
+    => OVERALL ACCURACY : [ 19.2% ]
+
+3. DETAILED CONFIGURATION COMPARISON TABLE
+----------------------------------------------------------------------
+  Configuration                  | Faith  | Relev  | Prec   | Recall | Avg   
+  --------------------------------------------------------------------
+  Agentic RAG + bge              | 0.8800 | 0.1417 | 0.1050 | 0.1120 | 0.3097
+  Agentic RAG + qwen embeddings  | 0.8600 | 0.1417 | 0.0910 | 0.1010 | 0.2984
+  Agentic RAG + camelbert        | 0.8400 | 0.1463 | 0.0780 | 0.0880 | 0.2881
+  Graph RAG + bge                | 0.0000 | 0.1417 | 0.1098 | 0.1180 | 0.0924
+  Graph RAG + qwen embeddings    | 0.0000 | 0.1417 | 0.0950 | 0.1050 | 0.0854
+  Graph RAG + camelbert          | 0.0000 | 0.1463 | 0.0805 | 0.0919 | 0.0797
+----------------------------------------------------------------------

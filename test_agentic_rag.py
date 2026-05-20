@@ -1,61 +1,102 @@
 """
 test_agentic_rag.py
 -------------------
-End-to-end test for the Agentic RAG pipeline.
+End-to-end test for the Hybrid Agentic RAG pipeline.
 
-Unlike standard RAG or BM25 RAG, the agent:
-  • Decides ON ITS OWN which tool(s) to call
-  • May search multiple times (e.g. first broad, then domain-specific)
-  • Produces a richer, self-consistent answer
-
-Usage:
-  python test_agentic_rag.py
+The agent routes queries automatically:
+  - Substantive legal questions  → graph_retrieve (local vector graph)
+  - Procedural/admin questions   → web_search (DuckDuckGo → official Algerian domains)
 """
 
 import sys
+import json
+import os
 from pathlib import Path
+
+# Evaluation Settings
+EVAL_FILE = "evaluation/generated_answers.txt"
+os.makedirs("evaluation", exist_ok=True)
+
+def save_result(record: dict, filepath: str):
+    """Appends a human-readable evaluation record to a .txt file."""
+    with open(filepath, "a", encoding="utf-8") as f:
+        f.write(f"QUERY: {record['query']}\n")
+        f.write(f"RETRIEVED ARTICLES: {', '.join(record['retrieved_articles'])}\n")
+        f.write(f"USED FALLBACK: {record['used_fallback']}\n")
+        f.write(f"ANSWER:\n{record['answer']}\n")
+        f.write(f"{'='*60}\n\n")
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from agentic_rag.agentic_agent import agentic_answer
 
-# ─── Test queries ─────────────────────────────────────────────────────────────
+# ── Canary Queries ─────────────────────────────────────────────────────────────
+# 2 SUBSTANTIVE (must route to graph_retrieve)
+# 2 PROCEDURAL  (must route to web_search)
 TEST_QUERIES = [
-    # Penal Law (قانون العقوبات)
-    #"ما هي عقوبة الغش في بيع السلع؟",
-    #"ما هي عقوبة إصدار شيك بدون رصيد؟",
-    #"هل الاحتيال الإلكتروني (online scam) جريمة؟",
-    # Civil Law (القانون المدني)
-    #"هل العقد الشفهي ملزم قانونياً؟",
-    #"ما هي شروط صحة العقد؟",
-    #"ما هي القوة القاهرة في العقود؟",
-    # Administrative Law (القانون الإداري)
-    #"كيف أتحصل على رخصة تجارية؟",
-    #"هل يمكن مقاضاة إدارة عمومية؟",
-    #"كيف أستخرج سجل تجاري؟",
-    # Labor Law (قانون العمل)
-    #"ما هي حقوق العامل في الجزائر؟",
-    #"هل يمكن طردي بدون سبب؟",
-    "ما هي ساعات العمل القانونية؟",
-    # Commercial Law (القانون التجاري)
-    #"كيف أفتح شركة في الجزائر؟",
-    #"ما الفرق بين SARL و SPA؟",
-    #"ما هي إجراءات الإفلاس؟",
+    # ("SUBSTANTIVE", "ما هي شروط صحة العقد؟"),        # → Civil Code Arts. 59, 94, 96
+    # ("SUBSTANTIVE", "ما الفرق بين SARL و SPA؟"),      # → Commercial Code Arts. 564, 592
+    # ("PROCEDURAL",  "كيف أستخرج سجل تجاري لشخص طبيعي؟"), # → PR_CNRC_01 (Offline)
+    # ("PROCEDURAL",  "كيف أتحصل على رخصة تجارية؟"),    # → PR_CNRC_03 (Offline)
+    # ("SUBSTANTIVE", "ما هي أركان جريمة خيانة الأمانة في السياق التجاري؟"),
+    # ("PROCEDURAL",  "كيف أستخرج شهادة حسن السيرة والسلوك؟"),
+    #("SUBSTANTIVE", "هل يمكن تعديل عقد تجاري بعد توقيعه؟"),
+    #("PROCEDURAL",  "ما هي إجراءات الحصول على شهادة الميلاد رقم 12؟")
+    # ── Complex Reasoning Questions (Graph Logic) ─────────────────────────────
+    # These require graph traversal and synthesis, testing PPR
+    #("SUBSTANTIVE", "ما هي العقوبات المترتبة على الغش التجاري في قانون العقوبات الجزائري؟"),
+    #("SUBSTANTIVE", "إذا باعني شخص منتجاً مقلداً، هل يعتبر هذا احتيالاً؟"),
+    #("SUBSTANTIVE", "ما هي المسؤولية القانونية لصاحب العمل في حالة إصابة عامل أثناء العمل؟"),
+    
+    # ── Procedural Questions (Web Search) ──────────────────────────────────────
+    # These should route to web_search
+    ("PROCEDURAL",  "كيف أستخرج شهادة الميلاد رقم 12؟"),
+    #("PROCEDURAL",  "ما هي الوثائق المطلوبة لتسجيل شركة في الجزائر؟"),
+    #("PROCEDURAL",  "كيف أتقدم بشكوى ضد موظف إداري؟")
+    # ── Boundary Cases (Testing robustness) ──────────────────────────────────────
+    # These test slang, abbreviations, and ambiguous references
+    #("SUBSTANTIVE", "شيك بلا رصيد واش يدير؟"),          # Slang for "شيك بدون رصيد"
+    #("PROCEDURAL",  "سجل تجاري جديد لوحدة جوارية؟"), # Vague reference
+    #("SUBSTANTIVE", "بيع سلع مغشوشة قانونا؟")        # Legal jargon
+    # ── Domain Integration (Cross-Domain Reasoning) ────────────────────────────
+    # Tests seamless navigation between domains via shared entities
+    #("SUBSTANTIVE", "ما هي العقوبات المترتبة على الغش التجاري؟"), # Commercial → Penal
+    #("SUBSTANTIVE", "إذا تأسست شركة ثم أفلست، ما هي الإجراءات القانونية؟"), # Commercial → Civil/Commercial
+    ("SUBSTANTIVE", "هل ي   مكنني توظيف أجنبي في شركتي؟"), # Commercial → Labor/Administrative
+    # ── Legal Concepts (Testing specific legal principles) ──────────────────────
+    # These test understanding of legal concepts rather than simple facts
+    #("SUBSTANTIVE", "ما هي المسؤولية التقصيرية في القانون المدني؟"), # TORT liability
+    #("SUBSTANTIVE", "ما الفرق بين البطلان المطلق والبطلان النسبي؟"), # Nullity concepts
+    #("SUBSTANTIVE", "ما هي أركان جريمة خيانة الأمانة؟"), # Crime elements
+    ("SUBSTANTIVE", "ما هي حقوق العامل في حالة الفصل التعسفي؟"), # Labor rights
 ]
 
-VERBOSE = True   # Show the agent's reasoning steps
+VERBOSE = True
 
-# ─── Runner ───────────────────────────────────────────────────────────────────
-def run(query: str):
+
+def run(expected_intent: str, query: str):
     print(f"\n{'='*68}")
-    print(f"  QUERY : {query}")
+    print(f"  [{expected_intent}] QUERY : {query}")
     print(f"{'='*68}")
 
     result = agentic_answer(query, verbose=VERBOSE)
 
-    print(f"\n  📊 Agent used {result['rounds']} round(s), called {len(result['tools_called'])} tool(s):")
-    for call in result["tools_called"]:
-        print(f"     ├─ Round {call['round']} | {call['tool']}({call['args']})  → {call['result_summary']}")
+    # Logging + Saving Layer for Evaluation
+    save_result({
+        "query": query,
+        "retrieved_articles": result.get("retrieved_ids", []),
+        "answer": result.get("answer", ""),
+        "used_fallback": not result.get("is_context_sufficient", True)
+    }, EVAL_FILE)
+
+    tools = result["tools_called"]
+    print(f"\n  📊 Agent: {result['rounds']} round(s), {len(tools)} tool call(s):")
+    for i, call in enumerate(tools):
+        step_num = call.get("round", i + 1)
+        tool_name = call.get("tool", "state_action")
+        args = call.get("args", {})
+        summary = call.get("result_summary", "Completed")
+        print(f"     ├─ Step {step_num} | {tool_name}({args})  → {summary}")
 
     print(f"\n  ✅ Final Answer:")
     print("  " + "─" * 60)
@@ -65,11 +106,12 @@ def run(query: str):
 
 
 if __name__ == "__main__":
-    print("\n" + "="*68)
-    print("   AGENTIC RAG — End-to-End Test")
-    print("="*68)
+    print("\n" + "=" * 68)
+    print("   HYBRID AGENTIC RAG — Canary Test Suite")
+    print("   Brain: qwen2:7b (Ollama)  |  Graph RAG + DuckDuckGo")
+    print("=" * 68)
 
-    for q in TEST_QUERIES:
-        run(q)
+    for expected_intent, q in TEST_QUERIES:
+        run(expected_intent, q)
 
-    print("\n\n🏁 All tests complete.")
+    print("\n\n🏁 All canary tests complete.")

@@ -1,0 +1,55 @@
+Asking to truncate to max_length but no maximum length is provided and the model has no predefined maximum length. Default to no truncation.
+
+============================================================
+TEST: F4 — Domain Mismatch (Civil vs Commercial)
+Query: ما هي مسؤولية الشركاء؟
+[GraphRetriever] Loading node data from cache...
+[GraphRetriever] Loading BM25 index from cache...
+[GraphRetriever] Loading FAISS index from disk...
+
+[GraphRetriever] Classifying query: ما هي مسؤولية الشركاء؟
+[CamelBERT] Initialising query classifier (CAMeL-Lab/bert-base-arabic-camelbert-msa)...
+[CamelBERT] Confident domain match: Civil Law (score: 0.493)
+[GraphRetriever] Amplified: ما هي مسؤولية الشركاء؟
+[GraphRetriever] Domain focus: Civil Law
+[Embeddings] Loading model: BAAI/bge-m3 on cpu...
+[Embeddings] Model loaded.
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_756BIS_3 (sim=0.344)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_421 (sim=0.503)
+[GraphRetriever] Loading reranker: BAAI/bge-reranker-v2-m3 …
+[GraphRetriever] Reranker ready.
+
+Retrieved 7 chunks:
+  [1] القانون المدني - م.434  score=2.098  [Civil Law]
+  [2] القانون المدني - م.754  score=1.223  [Civil Law]
+  [3] القانون المدني - م.432  score=1.640  [Civil Law]
+  [4] القانون المدني - م.423  score=1.853  [Civil Law]
+  [5] القانون المدني - م.756 مكرر 2  score=1.899  [Civil Law]
+  [6] القانون المدني - م.764  score=1.690  [Civil Law]
+  [7] القانون المدني - م.435  score=1.755  [Civil Law] ❌ BAD
+
+  → Wanted articles found: 0/3
+  → Bad articles avoided:  NO (1 bad articles retrieved)
+
+============================================================
+TEST: F3 — Scope Drift (Buyer vs Contractor obligations)
+Query: ما هي التزامات المشتري؟
+
+[GraphRetriever] Classifying query: ما هي التزامات المشتري؟
+[CamelBERT] Confident domain match: Civil Law (score: 0.585)
+[GraphRetriever] Amplified: ما هي التزامات المشتري؟
+[GraphRetriever] Domain focus: Civil Law
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_756 (sim=0.403)
+[GraphRetriever] PPR subgraph pulled in: DZ_CIVIL_ART_182 (sim=0.391)
+
+Retrieved 7 chunks:
+  [1] القانون المدني - م.361  score=1.042  [Civil Law] ✅ WANT
+  [2] القانون المدني - م.754  score=1.658  [Civil Law] ❌ BAD
+  [3] القانون المدني - م.296  score=1.024  [Civil Law]
+  [4] القانون المدني - م.213  score=1.750  [Civil Law]
+  [5] القانون المدني - م.172  score=1.356  [Civil Law]
+  [6] القانون المدني - م.216  score=1.540  [Civil Law]
+  [7] القانون المدني - م.297  score=1.436  [Civil Law]
+
+  → Wanted articles found: 1/4
+  → Bad articles avoided:  NO (1 bad articles retrieved)

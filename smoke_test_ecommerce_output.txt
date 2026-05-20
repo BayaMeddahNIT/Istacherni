@@ -1,0 +1,62 @@
+Asking to truncate to max_length but no maximum length is provided and the model has no predefined maximum length. Default to no truncation.
+
+=================================================================
+TEST: F1 — Knowledge Gap: Online Sales Legality
+Query: هل البيع عبر الإنترنت قانوني؟
+[GraphRetriever] Computing PageRank...
+[GraphRetriever] Pre-loading embedding matrix from graph...
+[GraphRetriever] Building BM25 index (aligned to search_block)...
+[GraphRetriever] Building FAISS index...
+
+[GraphRetriever] Classifying query: هل البيع عبر الإنترنت قانوني؟
+[CamelBERT] Initialising query classifier (CAMeL-Lab/bert-base-arabic-camelbert-msa)...
+[CamelBERT] Low confidence for Commercial Law (score: 0.548 < 0.65). Falling back.
+[GraphRetriever] Amplified: 合法性在线销售的法律框架和条件是什么？
+[GraphRetriever] HyDE Generated: في القانون المدني، يُعتبر بيع الأشياء عبر الإنترنت قانونياً إذا استوفيت جميع أركان العقد. هذه الأركا...
+[GraphRetriever] Synonyms: تداول افتراضي, تجارة الإلكترونية
+[GraphRetriever] Domain focus: Commercial Law
+[Embeddings] Loading model: BAAI/bge-m3 on cpu...
+[Embeddings] Loading model: BAAI/bge-m3 on cpu...
+[Embeddings] Model loaded.
+[Embeddings] Model loaded.
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_81 (sim=0.439)
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_83 (sim=0.455)
+[GraphRetriever] Loading reranker: BAAI/bge-reranker-v2-m3 …
+[GraphRetriever] Reranker ready.
+
+Retrieved 7 chunks:
+  [1] القانون 18-05 المتعلق بالتجارة الإلكترونية - م.3  score=2.602 ✅ TARGET
+  [2] القانون 18-05 المتعلق بالتجارة الإلكترونية - م.1  score=2.526 ✅ TARGET
+  [3] القانون 18-05 المتعلق بالتجارة الإلكترونية - م.2  score=2.308 ✅ TARGET
+  [4] القانون 18-05 المتعلق بالتجارة الإلكترونية - م.36  score=2.071 🔵 LAW18-05
+  [5] القانون 18-05 المتعلق بالتجارة الإلكترونية - م.5  score=1.319 🔵 LAW18-05
+  [6] القانون 18-05 المتعلق بالتجارة الإلكترونية - م.18  score=1.910 🔵 LAW18-05
+  [7] القانون 18-05 المتعلق بالتجارة الإلكترونية - م.12  score=1.222 🔵 LAW18-05
+
+  → Target articles found: 3/3
+  → Status: ✅ PASS — E-commerce law indexed and retrieved
+
+=================================================================
+TEST: F1b — E-commerce Registration Penalty
+Query: هل يجب التسجيل في السجل التجاري للبيع عبر الإنترنت؟
+
+[GraphRetriever] Classifying query: هل يجب التسجيل في السجل التجاري للبيع عبر الإنترنت؟
+[CamelBERT] Confident domain match: Commercial Law (score: 0.651)
+[GraphRetriever] Amplified: ما هي اللوائح القانونية التي تتطلب تسجيل البائعين على منصات البيع عبر الإنترنت في الجزائر؟
+[GraphRetriever] HyDE Generated: في الجزائر، يتعين على الباعة الذين يقومون ببيع المنتجات أو الخدمات عبر الإنترنت التسجيل في السجل الت...
+[GraphRetriever] Synonyms: التسجيل في سجل الأعمال, التمريض التجاري, الالتزام بالقوانين التجارية
+[GraphRetriever] Domain focus: Commercial Law
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_172 (sim=0.448)
+[GraphRetriever] PPR subgraph pulled in: DZ_COMM_ART_187_BIS_1 (sim=0.448)
+
+Retrieved 7 chunks:
+  [1] القانون 18-05 المتعلق بالتجارة الإلكترونية - م.3  score=2.563 ✅ TARGET
+  [2] القانون 18-05 المتعلق بالتجارة الإلكترونية - م.31  score=3.651 ✅ TARGET
+  [3] القانون 18-05 المتعلق بالتجارة الإلكترونية - م.36  score=2.776 ✅ TARGET
+  [4] القانون التجاري - م.19  score=2.486
+  [5] القانون 04-08 المتعلق بشروط ممارسة الأنشطة التجارية - م.25  score=1.369
+  [6] القانون التجاري - م.21  score=1.577
+  [7] القانون 18-05 المتعلق بالتجارة الإلكترونية - م.1  score=2.334 🔵 LAW18-05
+
+  → Target articles found: 3/3
+  → Status: ✅ PASS — E-commerce law indexed and retrieved

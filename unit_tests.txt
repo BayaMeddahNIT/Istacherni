@@ -1,0 +1,8 @@
+﻿Syntax OK
+Test 1 (exact match): PASS  P=1.00 HR=1.0 MRR=1.00 R=0.67
+Test 2 (dup dedup):   PASS  P=0.50 HR=1.0 MRR=1.00 R=1.00
+Test 3 (no match):    PASS  P=0.00 HR=0.0 MRR=0.00 R=0.00
+Test 4 (parse score): PASS  result='┘é╪º┘å┘ê┘å ╪¼╪▓╪º╪ª╪▒┘è - ╪º┘ä┘à╪º╪»╪⌐ 219'
+Test 5 (single-space): PASS  result='┘é╪º┘å┘ê┘å ╪º┘ä╪╣┘é┘ê╪¿╪º╪¬ - ╪º┘ä┘à╪º╪»╪⌐ 172'
+
+All 5 tests passed!

@@ -1,0 +1,5 @@
+﻿Current match: True
+Repr gt: '┘é╪º┘å┘ê┘å ╪º┘ä╪╣┘é┘ê╪¿╪º╪¬ - ╪º┘ä┘à╪º╪»╪⌐ 219'
+Repr src: '┘é╪º┘å┘ê┘å ╪º┘ä╪╣┘é┘ê╪¿╪º╪¬ - ╪º┘ä┘à╪º╪»╪⌐ 219'
+NFC match: True
+NFKC match: True
