@@ -12,7 +12,7 @@ import * as DocumentPicker from "expo-document-picker";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useTheme, useTranslation } from "@/context/UserContext";
 import EventSource from "react-native-sse";
-import { apiFetch, API_BASE, getAccessToken } from "@/services/api";
+import { apiFetch, API_BASE, getAccessToken, apiCreateSession } from "@/services/api";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -53,7 +53,7 @@ interface Conversation {
 // Emulators can usually use 10.0.2.2.
 const API_URL        = `${API_BASE}/chat`;
 const API_URL_STREAM = `${API_BASE}/api/chat/stream`;
-const REQUEST_TIMEOUT_MS = 300_000; // 5 minutes — covers worst-case CPU inference on qwen2:7b
+const REQUEST_TIMEOUT_MS = 600_000; // 10 minutes — covers worst-case CPU inference on qwen2:7b
 
 // Promise-based timeout (works with Expo's whatwg-fetch polyfill on iOS)
 function withTimeout<T>(promise: Promise<T>, ms: number, timeoutMsg: string): Promise<T> {
@@ -65,7 +65,7 @@ function withTimeout<T>(promise: Promise<T>, ms: number, timeoutMsg: string): Pr
   ]);
 }
 
-async function getBackendResponse(question: string, history: { role: string; content: string }[], ragType: string) {
+async function getBackendResponse(question: string, history: { role: string; content: string }[], ragType: string, sessionId?: string | null) {
   try {
     const fetchPromise = apiFetch("/chat", {
       method: "POST",
@@ -75,6 +75,7 @@ async function getBackendResponse(question: string, history: { role: string; con
         top_k: 7,
         rag_type: ragType,
         history: history,
+        session_id: sessionId || undefined,
       }),
     });
 
@@ -91,9 +92,9 @@ async function getBackendResponse(question: string, history: { role: string; con
     };
   } catch (error: any) {
     console.error("Backend Error:", error);
-    if (error?.message === "TIMEOUT") {
+    if (error?.message === "TIMEOUT" || error?.name === "AbortError" || error?.message?.includes("Network request failed")) {
       return {
-        answer: "⏳ انتهت مهلة الانتظار (3 دقائق). النموذج يعمل على المعالج وقد يحتاج إلى وقت أطول. يرجى المحاولة مرة أخرى.",
+        answer: "⏳ انتهت مهلة الانتظار أو تم قطع الاتصال. النموذج المحلي يعمل على المعالج (CPU) وقد يحتاج إلى أكثر من 7 دقائق للإجابة. يرجى المحاولة مرة أخرى.",
         sources: [],
       };
     }
@@ -109,6 +110,7 @@ async function streamBackendResponse(
   history: { role: string; content: string }[],
   onEvent: (event: { type: string; message?: string; content?: string; sources?: any[] }) => void,
   ragType: string = "agentic",
+  sessionId?: string | null,
 ): Promise<void> {
   // EventSource cannot send Authorization headers — pass token as query param instead.
   const token = await getAccessToken();
@@ -124,6 +126,7 @@ async function streamBackendResponse(
         question: question,
         rag_type: ragType,
         history: history,
+        session_id: sessionId || undefined,
       }),
     });
 
@@ -306,6 +309,8 @@ export default function Chat() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [conversations, setConversations] = useState<Conversation[]>([]);
   const [conversationId, setConversationId] = useState(makeId());
+  const [backendSessionId, setBackendSessionId] = useState<string | null>(null);
+  const sessionCreationRef = useRef<Promise<string | null> | null>(null);
 
   // UI state
   const [inputText, setInputText] = useState("");
@@ -391,6 +396,8 @@ export default function Chat() {
   const loadConversation = (conv: Conversation) => {
     setMessages(conv.messages);
     setConversationId(conv.id);
+    setBackendSessionId(null);
+    sessionCreationRef.current = null;
     aiMessages.current = conv.messages
       .filter(m => m.type === "text" && m.text)
       .map(m => ({ role: m.sender === "user" ? "user" : "assistant", content: m.text! }));
@@ -415,6 +422,8 @@ export default function Chat() {
               setMessages([]);
               aiMessages.current = [];
               setConversationId(makeId());
+              setBackendSessionId(null);
+              sessionCreationRef.current = null;
             }
           },
         },
@@ -439,6 +448,8 @@ export default function Chat() {
             setMessages([]);
             aiMessages.current = [];
             setConversationId(makeId());
+            setBackendSessionId(null);
+            sessionCreationRef.current = null;
           },
         },
       ]
@@ -452,7 +463,39 @@ export default function Chat() {
     setMessages([]);
     aiMessages.current = [];
     setConversationId(makeId());
+    setBackendSessionId(null);
+    sessionCreationRef.current = null;
   };
+
+  // ── Backend Session Helper ────────────────────────────────────────────────
+  // Creates a backend session on first message, with a ref-based lock to
+  // prevent duplicate session creation from rapid sends.
+
+  const ensureBackendSession = useCallback(async (): Promise<string | null> => {
+    // Already have a session — return it immediately
+    if (backendSessionId) return backendSessionId;
+
+    // Another call is already creating the session — wait for it
+    if (sessionCreationRef.current) return sessionCreationRef.current;
+
+    // Create the session with a lock
+    const creationPromise = (async () => {
+      try {
+        const data = await apiCreateSession();
+        const newId = data.session_id as string;
+        setBackendSessionId(newId);
+        return newId;
+      } catch (err) {
+        console.warn("[Chat] Failed to create backend session, falling back to sessionless:", err);
+        return null;
+      } finally {
+        sessionCreationRef.current = null;
+      }
+    })();
+
+    sessionCreationRef.current = creationPromise;
+    return creationPromise;
+  }, [backendSessionId]);
 
   // ── Copy/Edit handlers ────────────────────────────────────────────────────
 
@@ -502,6 +545,7 @@ export default function Chat() {
     setTimeout(() => flatListRef.current?.scrollToEnd({ animated: true }), 100);
     try {
       const historyToSend = aiMessages.current.slice(0, -1);
+      const sessId = await ensureBackendSession();
       
       if (ragMode === "agentic") {
         const botMsgId = makeId();
@@ -531,13 +575,13 @@ export default function Chat() {
             newMsgs[msgIndex] = msg;
             return newMsgs;
           });
-        });
+        }, ragMode, sessId);
         
         aiMessages.current.push({ role: "assistant", content: finalText });
         setTimeout(() => flatListRef.current?.scrollToEnd({ animated: true }), 100);
         setMessages(curr => { saveCurrentConversation(curr); return curr; });
       } else {
-        const response = await getBackendResponse(editingText.trim(), historyToSend, ragMode);
+        const response = await getBackendResponse(editingText.trim(), historyToSend, ragMode, sessId);
         const botMsg: Message = {
           id: makeId(), type: "text", sender: "bot",
           timestamp: new Date(), text: response.answer, sources: response.sources,
@@ -558,7 +602,7 @@ export default function Chat() {
     } finally {
       setIsTyping(false);
     }
-  }, [editingMessageId, editingText, messages, ragMode]);
+  }, [editingMessageId, editingText, messages, ragMode, ensureBackendSession]);
 
   // ── Send Message (with optional pending attachment) ─────────────────────
 
@@ -602,6 +646,7 @@ export default function Chat() {
     setIsTyping(true);
     try {
       const historyToSend = hasText ? aiMessages.current.slice(0, -1) : aiMessages.current;
+      const sessId = await ensureBackendSession();
       
       if (ragMode === "agentic") {
         const botMsgId = makeId();
@@ -648,13 +693,13 @@ export default function Chat() {
             newMsgs[msgIndex] = msg;
             return newMsgs;
           });
-        });
+        }, ragMode, sessId);
         
         aiMessages.current.push({ role: "assistant", content: finalText });
         setTimeout(() => flatListRef.current?.scrollToEnd({ animated: true }), 100);
         setMessages(curr => { saveCurrentConversation(curr); return curr; });
       } else {
-        const response = await getBackendResponse(hasText ? text.trim() : aiContent, historyToSend, ragMode);
+        const response = await getBackendResponse(hasText ? text.trim() : aiContent, historyToSend, ragMode, sessId);
         const botMsg: Message = { 
           id: makeId(), 
           type: "text", 
@@ -679,7 +724,7 @@ export default function Chat() {
     } finally {
       setIsTyping(false);
     }
-  }, [messages, pendingAttachment, ragMode]);
+  }, [messages, pendingAttachment, ragMode, ensureBackendSession]);
 
   // ── Voice Recording ───────────────────────────────────────────────────────
 

@@ -14,7 +14,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 export const API_BASE =
   process.env.EXPO_PUBLIC_API_URL || "https://istacherni-auth.loca.lt";
 
-const TIMEOUT_MS = 300_000; // 5 min (covers slow CPU inference)
+const TIMEOUT_MS = 600_000; // 10 min (covers slow CPU inference)
 
 // ── Storage keys ─────────────────────────────────────────────────────────────
 const KEY_ACCESS = "@jwt_access";

@@ -10,27 +10,20 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   ActivityIndicator,
-  Alert,
   Animated,
-  Dimensions,
 } from "react-native";
 import { useState, useEffect, useRef } from "react";
-import * as WebBrowser from "expo-web-browser";
-import * as Linking from "expo-linking";
-import * as AuthSession from "expo-auth-session";
 import images from "@/constants/images";
-import { Ionicons, AntDesign } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { apiFetch } from "@/services/api";
 import { useAuth } from "@/context/AuthContext";
 import { useUser, useTheme, useTranslation } from "@/context/UserContext";
 import AuthControls from "@/components/AuthControls";
 
-WebBrowser.maybeCompleteAuthSession();
-
 export default function LogIn() {
   const { login } = useAuth();
-  const { updateUser, darkMode, setDarkMode } = useUser();
+  const { updateUser } = useUser();
   const theme = useTheme();
   const { t, isRTL } = useTranslation();
   const [username, setUsername] = useState("");
@@ -72,73 +65,11 @@ export default function LogIn() {
     }
   };
 
-  const clientId = "22785806779-iilte1skpec3mnprd3ss3vstng526nh1.apps.googleusercontent.com";
-  const localUri = AuthSession.makeRedirectUri(); // exp://192.168.1.6:8081
-  // We use our own FastAPI backend via localtunnel as a flawless HTTPS proxy!
-  const redirectUri = "https://istacherni-auth.loca.lt/auth/proxy";
-
-  const [request, response, promptAsync] = AuthSession.useAuthRequest(
-    {
-      clientId,
-      redirectUri,
-      scopes: ["openid", "profile", "email"],
-      prompt: AuthSession.Prompt.SelectAccount,
-      // Pass the local deep link to our proxy
-      state: JSON.stringify({ returnUrl: localUri }),
-    },
-    {
-      authorizationEndpoint: "https://accounts.google.com/o/oauth2/v2/auth",
-    }
-  );
-
-  useEffect(() => {
-    if (response) {
-      console.log("=== OAUTH DEBUG ===");
-      console.log("Full Google Response:", response);
-      if (response.type === "success" && response.params.code) {
-        submitGoogleCode(response.params.code);
-      } else {
-        setLoading(false);
-      }
-    }
-  }, [response]);
-
-  const handleGoogleLogin = async () => {
-    setError("");
-    setLoading(true);
-    console.log("=== OAUTH DEBUG ===");
-    console.log("redirectUri sent to Google:", redirectUri);
-    try {
-      await promptAsync();
-    } catch (e: any) {
-      console.error(e);
-      await submitGoogleCode("mock_google_code");
-    }
-  };
-
-  const submitGoogleCode = async (code: string) => {
-    try {
-      const res = await apiFetch("/auth/google", {
-        method: "POST",
-        body: JSON.stringify({ code, redirect_uri: redirectUri }),
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.detail || "La connexion Google a échoué.");
-      
-      await login(data); // updates AuthContext + saves tokens
-      await updateUser({ name: data.username, email: data.user?.email }); // updates UserContext profile
-      router.replace("/(tabs)/home");
-    } catch (e: any) {
-      setError(e.message || "La connexion Google a échoué.");
-    } finally {
-      setLoading(false);
-    }
-  };
-
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
-      className="flex-1 bg-background"
+      style={{ backgroundColor: theme.background }}
+      className="flex-1"
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <ScrollView
@@ -176,27 +107,44 @@ export default function LogIn() {
           {/* Form */}
           <View className="w-[85%] gap-5">
             {/* Username */}
-            <View className="bg-white rounded-full px-6 h-14 justify-center shadow-sm flex-row items-center">
+            <View 
+              style={{ backgroundColor: theme.card }}
+              className="rounded-full px-6 h-14 justify-center shadow-sm flex-row items-center"
+            >
               <TextInput
                 placeholder={t("username")}
-                placeholderTextColor="#B0ADA8"
+                placeholderTextColor={theme.textMuted}
                 value={username}
                 onChangeText={setUsername}
-                className="flex-1 text-base text-black font-inter-regular"
+                style={{
+                  flex: 1,
+                  fontSize: 16,
+                  color: theme.text,
+                  fontFamily: "inter-regular",
+                  textAlign: isRTL ? "right" : "left",
+                }}
                 autoCapitalize="none"
                 autoCorrect={false}
               />
             </View>
 
             {/* Password */}
-            <View className="bg-white rounded-full px-6 h-14 justify-center shadow-sm flex-row items-center">
+            <View 
+              style={{ backgroundColor: theme.card }}
+              className="rounded-full px-6 h-14 justify-center shadow-sm flex-row items-center"
+            >
               <TextInput
                 placeholder={t("password")}
-                placeholderTextColor="#B0ADA8"
+                placeholderTextColor={theme.textMuted}
                 value={password}
                 onChangeText={setPassword}
                 secureTextEntry={!showPassword}
-                className="flex-1 text-base text-black font-inter-regular"
+                style={{
+                  flex: 1,
+                  fontSize: 16,
+                  color: theme.text,
+                  textAlign: isRTL ? "right" : "left",
+                }}
                 autoCapitalize="none"
               />
               <TouchableOpacity
@@ -206,7 +154,7 @@ export default function LogIn() {
                 <Ionicons
                   name={showPassword ? "eye-off-outline" : "eye-outline"}
                   size={22}
-                  color="#B0ADA8"
+                  color={theme.textMuted}
                 />
               </TouchableOpacity>
             </View>
@@ -221,33 +169,19 @@ export default function LogIn() {
             {/* Login Button */}
             <View className="mt-4">
               <TouchableOpacity
-                className="btn-primary w-full h-14 items-center justify-center rounded-full"
+                style={{ backgroundColor: theme.primary }}
+                className="w-full h-14 items-center justify-center rounded-full"
                 onPress={handleLogin}
                 activeOpacity={0.85}
                 disabled={loading}
               >
                 {loading
                   ? <ActivityIndicator color="#fff" />
-                  : <Text className="text-button text-base">{t("loginBtn")}</Text>
+                  : <Text style={{ color: "#fff" }} className="font-inter-semibold text-base">{t("loginBtn")}</Text>
                 }
               </TouchableOpacity>
             </View>
 
-            {/* Divider gap */}
-            <View className="h-2" />
-
-            {/* Continue with Google */}
-            <TouchableOpacity
-              className="bg-white rounded-full h-14 w-full flex-row items-center justify-center shadow-sm gap-3"
-              onPress={handleGoogleLogin}
-              activeOpacity={0.85}
-              disabled={loading}
-            >
-              <AntDesign name="google" size={22} color="#EA4335" />
-              <Text className="text-base text-black font-inter-medium">
-                {t("googleLogin")}
-              </Text>
-            </TouchableOpacity>
             {/* Sign up link */}
             <View className={`flex-row justify-center mt-2 ${isRTL ? "flex-row-reverse" : ""}`}>
               <Text 
@@ -257,7 +191,7 @@ export default function LogIn() {
                 {t("noAccount")}{" "}
               </Text>
               <TouchableOpacity onPress={() => router.push("/(auth)/sign-up")}>
-                <Text className="text-base text-primary font-inter-semibold">
+                <Text style={{ color: theme.primary }} className="text-base font-inter-semibold">
                   {t("signupBtn")}
                 </Text>
               </TouchableOpacity>
